@@ -1,0 +1,440 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>好宅網-首頁</title>
+<meta name="description" content="free website template" />
+<meta name="keywords" content="enter your keywords here" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+.content_box {
+	border: 1px solid #d9d9d9
+}
+
+.content {
+	background-color: #edf1f2;
+	height: 100%
+}
+
+.content {
+	background: 0 0;
+	padding-top: 10px;
+	font-size: 15px;
+	float: left
+}
+
+.leftSideBar {
+	float: left;
+	width: 150px;
+	padding-top: 18px
+}
+
+.leftSideBar td {
+	height: 23px;
+	line-height: 23px;
+	font-size: 12px;
+	color: #4d4d4d
+}
+
+.rightSideBar {
+	float: left;
+	width: 700px;
+	padding: 18px 10px 0;
+	border-left: 1px solid #c5c5c5;
+	background-color: #FFF
+}
+
+.content_floor {
+	color: #676666;
+	border-bottom: 1px dashed #CCC;
+	padding: 3px 0;
+	font-size: 12px
+}
+
+.content_detail {
+	padding: 40px 0;
+	color: #333;
+	min-height: 130px;
+	_height: 130px;
+	font-size: 15px;
+	word-wrap: break-word;
+	line-height: 1.8em
+}
+.form{
+	float: left;
+	width: 700px;
+	padding: 18px 10px 0;
+	border-left: 1px solid #c5c5c5;
+	background-color: #FFF
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider();
+	});
+	
+	
+</script>
+</head>
+
+<body>
+
+	<div id="main">
+		<div id="site_content">
+			<div id="site_heading">
+				<h1>好宅房屋網</h1>
+				<h2>你刊登房屋的好選擇</h2>
+			</div>
+			<!--close site_heading-->
+			<div id="header">
+				<div id="menubar">
+					<ul id="menu">
+						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
+						<li><a href="ourwork.html">刊登出售</a></li>
+						<li><a href="testimonials.html">刊登出租</a></li>
+						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>
+						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
+						<c:if test="${empty LoginOK}">
+						<li><a href="login.jsp">會員登入</a></li>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
+						<li><a href="logout.jsp">登出</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!--close menubar-->
+			<h1><font color=blue>${LoginOK.user_name}你好</font></h1>
+			</div>
+			<!--close header-->
+			
+			<div id="content">
+				<div class="content_item">
+					<h1>歡迎您來到好宅房屋網</h1>
+
+				</div>
+				<!--close content_item-->
+
+				<div class="content_text">
+					<p></p>
+				</div>
+				<!--close content_text-->
+
+				<div class="content_text_left">
+
+					<b><font color=red></font></b>
+	<table border='1' cellpadding='5' cellspacing='0' width='880'>
+
+		<tr bgcolor='' align='center' valign='middle' height='20'>
+			<td>
+				<h3>討論區</h3> 
+				<br> <a href="/Happyhouse/addarticle.controller">回討論區首頁</a>
+			</td>
+		</tr>
+
+	</table>
+<h2><font color="blue">${param.message_title}
+				</font>
+				<font color="blue">${add.message_title}</font>
+				<font color="blue">${resp.message_title}</font>
+				<font color="blue">${resperror.message_title}</font></h2>
+	<div class="content_box">
+		<c:forEach var="messageVO" items="${list}">
+			
+			<!-- 1 -->
+			<c:if test="${param.message_title==messageVO.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<c:if test="${param.message_title==messageVO.message_title}">
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					</c:if>
+				</div>
+			</c:if>
+				</c:forEach>
+			<!-- 1 End -->
+			
+			<!-- resp -->
+			<c:forEach var="messageVO" items="${list}">
+			<c:if test="${messageVO.message_title==resp.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+									
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					
+				</div>
+			</c:if>
+			</c:forEach>
+			<c:if test="${not empty resp}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${resp.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${resp.user_account}</font>&nbsp;&nbsp;發表於${resp.message_date}</li>
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${resp.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					
+				</div>
+			</c:if>
+	<!-- resp end -->
+	<!-- add -->
+			<c:forEach var="messageVO" items="${list}">
+			<c:if test="${messageVO.message_title==add.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+									
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					
+				</div>
+			</c:if>
+			</c:forEach>
+			<c:if test="${not empty add}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${add.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${add.user_account}</font>&nbsp;&nbsp;發表於${add.message_date}</li>
+									
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${add.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					
+				</div>
+			</c:if>
+	<!-- add end -->
+	<c:forEach var="messageVO" items="${list}">
+	
+	<c:if test="${resperror.message_title==messageVO.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<c:if test="${resperror.message_title==messageVO.message_title}">
+						<jsp:useBean id ="add" class="_04_message.model.MessageVO" scope="page">
+							<jsp:setProperty name="add" property="message_title" value="${resperror.message_title}" />
+						</jsp:useBean>
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					</c:if>
+				</div>
+			</c:if>
+				</c:forEach>
+	</div>
+	
+	
+				
+	<form action="<c:url value="/addarticle.controller" />" method="post">
+	<h3>我要回文:</h3><h4><font color="red">${error.contentEmpty}</font></h4>
+		<table >
+			<tr >
+				<td ><textarea name="content" wrap="physical"
+						style="width: 650px; height: 120px;">${param.content}</textarea></td>
+			</tr>
+			<tr>
+				<td align='right'><input type="submit" name="type" value="回覆">
+				<c:if test="${not empty add}">				
+					<input type="hidden" name="title" value="${add.message_title}">
+				</c:if>
+				<c:if test="${not empty resp}">				
+					<input type="hidden" name="title" value="${resp.message_title}">
+				</c:if>
+				<c:if test="${not empty param}">	
+					<input type="hidden" name="title" value="${param.message_title}">						
+				</c:if>
+				<c:if test="${not empty resperror}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
+				</c:if>
+					
+				</td>
+			</tr>
+		</table>
+</form>
+
+				</div>
+				<!--close content_text-->
+
+			</div>
+			<!--close content-->
+
+			
+
+		</div>
+		<!--close site_content-->
+		<div id="footer">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台
+				|</a> <a href="http://validator.w3.org/check?uri=referer">好宅網有限公司
+				版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
+		<!--close footer-->
+	</div>
+	<!--close main-->
+</body>
+</html>

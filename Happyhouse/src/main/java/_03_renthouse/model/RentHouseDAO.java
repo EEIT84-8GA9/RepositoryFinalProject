@@ -1,0 +1,33 @@
+package _03_renthouse.model;
+
+import java.util.List;
+
+public interface RentHouseDAO {
+
+	public abstract List<RentHouseBean> SELECT_ALL();
+
+	//標題搜尋
+	public abstract List<RentHouseBean> select_renthouse_name(
+			String renthouse_name);
+
+	//使用者搜尋
+	public abstract List<RentHouseBean> select_user_account(String user_account);
+
+	//價格搜尋
+	public abstract List<RentHouseBean> select_renthouse_price(
+			float renthouse_price);
+
+	//地址搜尋
+	public abstract List<RentHouseBean> select_renthouse_address(
+			String renthouse_address);
+
+	//id搜尋
+	public abstract RentHouseBean select_renthouse_id(int id);
+
+	public abstract RentHouseBean insert(RentHouseBean bean);
+
+	public abstract RentHouseBean update(RentHouseBean bean);
+
+	public abstract boolean delete(int id);
+
+}

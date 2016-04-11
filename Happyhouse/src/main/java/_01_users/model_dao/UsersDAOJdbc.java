@@ -1,0 +1,207 @@
+package _01_users.model_dao;
+
+import java.sql.*;
+import java.util.*;
+
+import _01_users.model.UserDAO;
+import _01_users.model.UsersBean;
+
+
+public class UsersDAOJdbc implements UserDAO {
+	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
+	private static final String USERNAME = "sa";
+	private static final String PASSWORD = "sa123456";
+	UsersBean result = null;
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+
+	public static void main(String[] args) throws SQLException {
+		UserDAO ud = new UsersDAOJdbc();
+		// System.out.println(ud.select("Cat777"));
+		List<UsersBean> users = ud.selectAll();
+		// ud.runSelectAll(users);
+		UsersBean user = new UsersBean();
+		// System.out.print(ud.update(user));
+		System.out.println(ud.insert(ud.insertdata(user)));
+
+	}
+
+	private static final String ONE_USER_SELECT = "select *  from users where user_account=? ";
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#select(java.lang.String)
+	 */
+	@Override
+	public UsersBean select(String user_account) {
+
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			pstmt = conn.prepareStatement(ONE_USER_SELECT);
+			pstmt.setString(1, user_account);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = new UsersBean();
+				result.setUser_account(rs.getString("user_account"));
+				result.setUser_password(rs.getString("user_password"));
+				result.setUser_name(rs.getString("user_name"));
+				result.setUser_phone(rs.getString("user_phone"));
+				result.setUser_address(rs.getString("user_address"));
+				result.setUser_email(rs.getString("user_email"));
+				result.setUser_gender(rs.getString("user_gender"));
+				result.setUser_type(rs.getString("user_type"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+		return result;
+
+	}
+
+	private static final String All_USER_SELECT = "select * from users";
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#selectAll()
+	 */
+	@Override
+	public List<UsersBean> selectAll() {
+		UsersBean user = null;
+		List<UsersBean> users = new ArrayList<UsersBean>();
+
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			PreparedStatement pstmt = conn.prepareStatement(All_USER_SELECT);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new UsersBean();
+				user.setUser_account(rs.getString("user_account"));
+				user.setUser_password(rs.getString("user_password"));
+				user.setUser_name(rs.getString("user_name"));
+				user.setUser_phone(rs.getString("user_phone"));
+				user.setUser_email(rs.getString("user_email"));
+				user.setUser_gender(rs.getString("user_gender"));
+				user.setUser_type(rs.getString("user_type"));
+				user.setUser_photo(rs.getBytes("user_photo"));
+				users.add(user);
+
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return users;
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#runSelectAll(java.util.List)
+	 */
+	@Override
+	public void runSelectAll(List<UsersBean> users) {
+
+		for (UsersBean user : users) {
+			System.out.print(user.getUser_account() + ", ");
+			System.out.print(user.getUser_password() + ", ");
+			System.out.print(user.getUser_name() + ", ");
+			System.out.print(user.getUser_phone() + ", ");
+			System.out.print(user.getUser_email() + ", ");
+			System.out.print(user.getUser_gender() + ", ");
+			System.out.print(user.getUser_type() + ", ");
+			System.out.print(user.getUser_photo() + "\n");
+
+		}
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#update(model.UsersBean)
+	 */
+	@Override
+	public int update(UsersBean user) throws SQLException {
+		int updatecount = 0;
+		PreparedStatement pstmt = conn.prepareStatement(USER_UPDATE);
+		pstmt.setString(1, user.getUser_password());
+		pstmt.setString(2, user.getUser_address());
+		pstmt.setString(3, user.getUser_phone());
+		pstmt.setString(4, user.getUser_email());
+		pstmt.setString(5, user.getUser_type());
+		pstmt.setString(6, user.getUser_account());
+		updatecount = pstmt.executeUpdate();
+		return updatecount;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#insert(model.UsersBean)
+	 */
+	@Override
+	public int insert(UsersBean user) throws SQLException {
+		int insertcount = 0;
+		PreparedStatement pstmt = conn.prepareStatement(USER_INSERT);
+
+		pstmt.setString(1, user.getUser_account());
+		pstmt.setString(2, user.getUser_password());
+		pstmt.setString(3, user.getUser_name());
+		pstmt.setString(4, user.getUser_address());
+		pstmt.setString(5, user.getUser_phone());
+		pstmt.setString(6, user.getUser_email());
+		pstmt.setString(7, user.getUser_gender());
+		insertcount = pstmt.executeUpdate();
+
+		return insertcount;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see model.dao.UserDAO#insertdata(model.UsersBean)
+	 */
+	@Override
+	public UsersBean insertdata(UsersBean user) {
+		user.setUser_account("xxx3");
+		user.setUser_password("xxx");
+		user.setUser_name("xxx");
+		user.setUser_phone("09555555");
+		user.setUser_address("台北市建國北路152號");
+		user.setUser_email("123@yahoo.com.tw");
+		user.setUser_gender("男");
+
+		return user;
+
+	}
+}

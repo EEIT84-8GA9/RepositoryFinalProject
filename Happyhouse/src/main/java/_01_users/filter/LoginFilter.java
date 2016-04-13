@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import _01_users.model.UsersBean;
 
 
-@WebFilter("/_01_users/*, /_09_furniture/*")
+@WebFilter("/_01_users/*, /_09_furniture/*,/_08_news/*,/_07_carts/*")
 public class LoginFilter implements Filter {
 
 	@Override

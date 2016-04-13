@@ -3,6 +3,7 @@ package _08_news.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import _05_sms.model.SmsVO;
 import _08_news.model.dao.newDAO;
 
 
@@ -20,6 +21,11 @@ public class NewsService {
 
 	}
 
+	public newsBean select(int id) {
+		newsBean result = dao.select(id);
+		return result;
+	}
+	
 	public List<newsBean> select(newsBean bean) {
 		List<newsBean> result = null;
 

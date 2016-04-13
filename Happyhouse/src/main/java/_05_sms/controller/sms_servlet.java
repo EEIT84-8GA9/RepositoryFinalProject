@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import _04_message.model.LoginVO;
+import _04_message.model.MessageService;
+import _04_message.model.MessageVO;
 import _05_sms.model.SmsVO;
 import _05_sms.model.sms_service;
 
@@ -20,7 +22,7 @@ import _05_sms.model.sms_service;
 public class sms_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	sms_service service = new sms_service();
-
+	private MessageService messageService = new MessageService();
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,7 +30,8 @@ public class sms_servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Map<String, String> error = new HashMap<>();
 		request.setAttribute("error", error);
-
+		
+		String title=request.getParameter("title");
 		String sms_title = request.getParameter("sms_title");
 		String user_account = request.getParameter("user_account");
 		String sms_describe = request.getParameter("sms_describe");
@@ -125,6 +128,20 @@ public class sms_servlet extends HttpServlet {
 			response.sendRedirect("_05_sms/sms_mainpage.jsp");
 			return;
 
+		}else if ("討論區站內信傳送".equals(type)){
+			SmsVO vo = new SmsVO();
+			vo.setSms_describe(sms_describe);
+			vo.setSms_mailers(bean.getUser_account());
+			vo.setUser_account(user_account);
+			vo.setSms_title(sms_title);
+			SmsVO bean_write = service.write(vo);
+			List<MessageVO> list =messageService.getall();
+			session.setAttribute("list", list);
+			//resperror 暫時用此識別字串，因pagecontent已有
+			MessageVO resperror=messageService.select(title);
+			session.setAttribute("resperror", resperror);
+			response.sendRedirect("_04_message/pagecontent.jsp");
+			return;
 		}
 		response.sendRedirect("_05_sms/sms_mainpage.jsp");
 		return;

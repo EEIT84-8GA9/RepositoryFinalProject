@@ -1,6 +1,5 @@
 package _04_message.model;
 
-import java.util.Arrays;
 import java.util.List;
 
 import _04_message.model.dao.MessageJNDIDAO;
@@ -60,5 +59,12 @@ public class MessageService {
 			}
 		}
 		return null;
+	}
+	public MessageVO reportupdate(MessageVO vo) {
+		MessageVO datamember =dao.select(vo);
+		datamember.setMessage_reportfrom(vo.getMessage_reportfrom());
+		datamember.setMessage_reportreason(vo.getMessage_reportreason());
+		MessageVO result = dao.reportupdate(datamember);
+		return result;
 	}
 }

@@ -9,6 +9,8 @@ public class MessageVO {
 	private String message_type;
 	private String message_actiontype;
 	private String user_name;
+	private String message_reportfrom;
+	private String message_reportreason;
 	public MessageVO() {
 		super();
 	}
@@ -68,4 +70,21 @@ public class MessageVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+
+	public String getMessage_reportfrom() {
+		return message_reportfrom;
+	}
+
+	public void setMessage_reportfrom(String message_reportfrom) {
+		this.message_reportfrom = message_reportfrom;
+	}
+
+	public String getMessage_reportreason() {
+		return message_reportreason;
+	}
+
+	public void setMessage_reportreason(String message_reportreason) {
+		this.message_reportreason = message_reportreason;
+	}
+	
 }

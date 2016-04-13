@@ -10,6 +10,8 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <!-- including css file here-->
+    
 <style type="text/css">
 .content_box {
 	border: 1px solid #d9d9d9
@@ -73,20 +75,23 @@
 }
 </style>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" href="/Happyhouse/css/dialog.css"/>
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+	 <!-- including css & jQuery Dialog UI here-->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
-	
-	
 </script>
 </head>
 
 <body>
-
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
@@ -146,10 +151,10 @@
 				<font color="blue">${resp.message_title}</font>
 				<font color="blue">${resperror.message_title}</font></h2>
 	<div class="content_box">
-		<c:forEach var="messageVO" items="${list}">
 			
 			<!-- 1 -->
-			<c:if test="${param.message_title==messageVO.message_title}">
+			<c:forEach var="messageVO" items="${list}">
+			<c:if test="${messageVO.message_title==param.message_title}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -161,20 +166,30 @@
 										width="80" height="80"></td>
 								</tr>
 								<tr>
-									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
+									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${messageVO.user_account}</font></td>
 								</tr>
-
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${messageVO.user_account}">站內信給我</button></td>
+								</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
-					<c:if test="${param.message_title==messageVO.message_title}">
+					
 						<div class="rightSideBar" style="position: relative">
 
 							<div class="blog-wonder-sign"></div>
 							<div class="content_floor" style="height: 20px">
 								<ul>
 									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
-
+<%-- 									<li style="float: right;">檢舉編號<button class="buttonReport">${messageVO.message_id}</button></li> --%>
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button></li>
+								</c:if>
+								<c:if test="${messageVO.user_account==LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}</li>
+								</c:if>
 								</ul>
 							</div>
 							<div class="content_detail">
@@ -183,10 +198,10 @@
 						</div>
 						<img src="/Happyhouse/images/green.jpg"
 							width="948" height="3" style="float: left;">
-					</c:if>
+					
 				</div>
 			</c:if>
-				</c:forEach>
+			</c:forEach>
 			<!-- 1 End -->
 			
 			<!-- resp -->
@@ -205,7 +220,11 @@
 								<tr>
 									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${messageVO.user_account}</font></td>
 								</tr>
-
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${messageVO.user_account}">站內信給我</button></td>
+								</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -216,7 +235,12 @@
 							<div class="content_floor" style="height: 20px">
 								<ul>
 									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
-									
+									<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button></li>
+								</c:if>
+								<c:if test="${messageVO.user_account==LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}</li>
+								</c:if>
 								</ul>
 							</div>
 							<div class="content_detail">
@@ -243,7 +267,9 @@
 								<tr>
 									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${resp.user_account}</font></td>
 								</tr>
-
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${resp.user_account}">站內信給我</button></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -267,45 +293,7 @@
 			</c:if>
 	<!-- resp end -->
 	<!-- add -->
-			<c:forEach var="messageVO" items="${list}">
-			<c:if test="${messageVO.message_title==add.message_title}">
-				<div class="content">
-					<div class="leftSideBar">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tbody>
-								<tr>
-
-									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
-										width="80" height="80"></td>
-								</tr>
-								<tr>
-									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${messageVO.user_account}</font></td>
-								</tr>
-
-							</tbody>
-						</table>
-					</div>
-					
-						<div class="rightSideBar" style="position: relative">
-
-							<div class="blog-wonder-sign"></div>
-							<div class="content_floor" style="height: 20px">
-								<ul>
-									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
-									
-								</ul>
-							</div>
-							<div class="content_detail">
-								<div class="font_15">${messageVO.message_describe}</div>
-							</div>
-						</div>
-						<img src="/Happyhouse/images/green.jpg"
-							width="948" height="3" style="float: left;">
-					
-				</div>
-			</c:if>
-			</c:forEach>
+			
 			<c:if test="${not empty add}">
 				<div class="content">
 					<div class="leftSideBar">
@@ -320,7 +308,11 @@
 								<tr>
 									<td colspan="2" align="center" style="font-weight: 100"><font color="blue">${add.user_account}</font></td>
 								</tr>
-
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${add.user_account}">站內信給我</button></td>
+								</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -331,7 +323,6 @@
 							<div class="content_floor" style="height: 20px">
 								<ul>
 									<li style="float: left;"><font class="orange">${add.user_account}</font>&nbsp;&nbsp;發表於${add.message_date}</li>
-									
 								</ul>
 							</div>
 							<div class="content_detail">
@@ -360,7 +351,9 @@
 								<tr>
 									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
 								</tr>
-
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${messageVO.user_account}">站內信給我</button></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -374,7 +367,12 @@
 							<div class="content_floor" style="height: 20px">
 								<ul>
 									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
-
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button></li>
+								</c:if>
+								<c:if test="${messageVO.user_account==LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}</li>
+								</c:if>
 								</ul>
 							</div>
 							<div class="content_detail">
@@ -389,8 +387,48 @@
 				</c:forEach>
 	</div>
 	
-	
+	<!-- for reportReason form-->
+		<div class="dialog" title="檢舉原因" id="reportform">
+	          <form action="/Happyhouse/reportcontroller.controller" method="post">
+	            <label>您的帳號</label><br/>
+				<input type="text" id="urName" name="urName" value="${LoginOK.user_account}" readonly="readonly"><br/>
+
+	            <label>文章編號</label><br/>
+				<input type="text" id="idNumber" name="idNumber" value="" readonly="readonly"><br/>
+	          	
+	          	<label>檢舉文章主題</label><br/>
+				<input type="text" id="title" name="title" value="${param.message_title}${add.message_title}${resp.message_title}" readonly="readonly"><br/>
 				
+				
+				<label>說明原因</label><br/>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<input type="submit" id="reportsubmit" value="Submit" />
+				
+			  </form>
+		  </div>
+	<!-- end reportReason form -->
+	<!-- for MessageForMe form-->
+		<div class="dialog" title="站內信" id="MessageForMe">
+	          <form action="/Happyhouse/sms.controller" method="post">
+	            <label>收信人</label><br/>
+				<input type="text" id="user_account" name="user_account" value="" readonly="readonly"><br/>
+	          	
+	          	<label>標題</label><br/>
+				<input type="text" id="sms_title" name="sms_title"><br/>
+				
+				<label>訊息內容</label><br/>
+				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
+				
+				<input type="submit" id="messagesubmit" name="type"  value="討論區站內信傳送" />
+				<c:if test="${not empty param}">
+				<input type="hidden" name="title" value="${param.message_title}">
+				</c:if>
+				<c:if test="${not empty resperror}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
+				</c:if>
+			  </form>
+		  </div>
+	<!-- end MessageForMe form -->
 	<form action="<c:url value="/addarticle.controller" />" method="post">
 	<h3>我要回文:</h3><h4><font color="red">${error.contentEmpty}</font></h4>
 		<table >

@@ -33,7 +33,7 @@
 						<li class="current"><a href="../index.jsp">首頁</a></li>
 						<li><a href="ourwork.html">刊登出售</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
-						<li><a href="../addarticle.controller">討論區</a></li>
+						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
 						<c:if test="${empty LoginOK}">
 						<li><a href="login.jsp">會員登入</a></li>

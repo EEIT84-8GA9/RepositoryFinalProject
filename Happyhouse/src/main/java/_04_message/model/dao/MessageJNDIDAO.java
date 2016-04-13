@@ -37,13 +37,66 @@ public class MessageJNDIDAO {
 			e.printStackTrace();
 		}
 	}
+	private static final String SELECT_BY_ID="select * from message where message_id=?";
 	private static final String SELECT_BY_TITLE = "select * from message where message_title=?";
 	private static final String SELECT_ALL = "select * from message";
-//	private static final String UPDATE = "update message set User_account=?, Message_title=?, Message_describe=?, Message_date=getdate(),Message_type=? where Message_id=?";
-	private static final String ADDARTICLE = "insert into message (user_account,message_title,message_describe,message_type,message_date,message_actiontype) values (?,?,?,'A',?,'add')";
-	private static final String RESPARTICLE ="insert into message (user_account,message_title,message_describe,message_type,message_date,message_actiontype) values (?,?,?,'A',?,'res')";
+	private static final String REPORTUPDATE = "update message set User_account=?, Message_title=?, Message_describe=?, Message_date=getdate(),Message_type='B' ,message_actiontype=? ,message_reportfrom=?,message_reportreason=? where Message_id=?";
+	private static final String ADDARTICLE = "insert into message (user_account,message_title,message_describe,message_type,message_date,message_actiontype,message_reportfrom,message_reportreason) values (?,?,?,'A',?,'add',null,null)";
+	private static final String RESPARTICLE ="insert into message (user_account,message_title,message_describe,message_type,message_date,message_actiontype,message_reportfrom,message_reportreason) values (?,?,?,'A',?,'res',null,null)";
 	private static final String DELETE = "delete from message where message_id=?";
 	private static final String SELECT_BY_ACCOUNT = "select * from users where user_account=?";
+	
+	public MessageVO select(MessageVO vo) {
+		MessageVO result = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rset = null;
+		try {
+			//conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			conn = dataSource.getConnection();
+			stmt = conn.prepareStatement(SELECT_BY_ID);
+			stmt.setInt(1,vo.getMessage_id() );
+			rset = stmt.executeQuery();
+			if (rset.next()) {
+				result = new MessageVO();
+				result.setUser_account(rset.getString("user_account"));
+				result.setMessage_title(rset.getString("message_title"));
+				result.setMessage_describe(rset.getString("message_describe"));
+				result.setMessage_date(rset.getDate("message_date"));
+				result.setMessage_type(rset.getString("message_type"));
+				result.setMessage_id(rset.getInt("message_id"));
+				result.setMessage_actiontype(rset.getString("message_actiontype"));
+				result.setMessage_reportfrom(rset.getString("message_reportfrom"));
+				result.setMessage_reportreason(rset.getString("message_reportreason"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rset != null) {
+				try {
+					rset.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+	
 	public MessageVO select(String message_title) {
 		MessageVO result = null;
 		Connection conn = null;
@@ -142,54 +195,58 @@ public class MessageJNDIDAO {
 		}
 		return result;
 	}
+	public MessageVO reportupdate(MessageVO vo) {
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		MessageVO result = null;
+		ResultSet rset = null;
+		
+		try {
+			
+			//conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			conn = dataSource.getConnection();
+			stmt = conn.prepareStatement(REPORTUPDATE);
+			stmt.setString(1, vo.getUser_account());
+			stmt.setString(2, vo.getMessage_title());
+			stmt.setString(3, vo.getMessage_describe());
 
-//	public MessageVO update(String account, String title, String describe,
-//			String type, int id) {
-//		Connection conn = null;
-//		PreparedStatement stmt = null;
-//		MessageVO result = null;
-//		ResultSet rset = null;
-//		try {
-//			//conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//			conn = dataSource.getConnection();
-//			stmt = conn.prepareStatement(UPDATE);
-//			stmt.setString(1, account);
-//			stmt.setString(2, title);
-//			stmt.setString(3, describe);
-//
-//			stmt.setString(4, type);
-//			stmt.setInt(5, id);
-//			int i = stmt.executeUpdate();
-//			if (i == 1) {
-//				result = this.select(id);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			if (rset != null) {
-//				try {
-//					rset.close();
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//			if (stmt != null) {
-//				try {
-//					stmt.close();
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//			if (conn != null) {
-//				try {
-//					conn.close();
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-//		return result;
-//	}
+			stmt.setString(4, vo.getMessage_actiontype());
+			stmt.setString(5, vo.getMessage_reportfrom());
+			stmt.setString(6, vo.getMessage_reportreason());
+			stmt.setInt(7, vo.getMessage_id());
+			int i = stmt.executeUpdate();
+			if (i == 1) {
+				result = vo;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rset != null) {
+				try {
+					rset.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 	public MessageVO addArticle(MessageVO vo) {
 		Connection conn = null;
 		PreparedStatement stmt = null;

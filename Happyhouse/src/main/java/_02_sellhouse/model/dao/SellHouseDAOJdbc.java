@@ -17,6 +17,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.spi.DirStateFactory.Result;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import _02_sellhouse.model.SellHouseBean;
@@ -24,19 +25,17 @@ import _02_sellhouse.model.SellHouseDAO;
 
 
 
-
-
 public class SellHouseDAOJdbc implements SellHouseDAO {
 
-	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
-	private static final String	username="sa";
-	private	static final String password="sa123456";
+//	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
+//	private static final String	username="sa";
+//	private	static final String password="sa123456";
 	private static final String SELECT_ALL="select*from sellhouse";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM sellhouse Where user_account LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_NAME="Select * FROM sellhouse Where sellhouse_name LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_PRICE="Select * FROM sellhouse Where sellhouse_price LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_ADDRESS="Select * FROM sellhouse Where sellhouse_address LIKE ?";
-	private static final String INSERT = "insert into sellhouse values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?)";
+	private static final String INSERT = "insert into sellhouse values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?)";
 	private static final String SELECT_BY_SELLHOUSE_ID="Select * FROM sellhouse Where sellhouse_id=?";
 	private static final String UPDATE
 	="update sellhouse set sellhouse_name=?, sellhouse_price=?, sellhouse_patterns=?,sellhouse_address=?,sellhouse_describe=?,sellhouse_size=?,sellhouse_floor=?,sellhouse_age=?,sellhouse_photo1=?,sellhouse_photo2=?,sellhouse_photo3=?,sellhouse_type=?,sellhouse_message=?,sellhouse_date=getdate(),sellhouse_car=?,sellhouse_phone=?,sellhouse_email=? where sellhouse_id=?";
@@ -49,12 +48,19 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 	public SellHouseDAOJdbc() {
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
-	
+	public SellHouseDAOJdbc(String DBString) {
+		try {
+			Context ctx = new InitialContext();
+			dataSource = (DataSource) ctx.lookup(DBString);
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Override
 	public	List<SellHouseBean> SELECT_ALL(){
@@ -137,6 +143,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 		List<SellHouseBean> result=null;
 		Connection conn =null;
 		ResultSet rset=null;
+		InputStream photoInputStream = null;
 		PreparedStatement pstmt=null;
 		//String se="%"+sellhouse_name+"%";
 		try {
@@ -145,7 +152,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 			 pstmt=conn.prepareStatement(SELECT_BY_SELLHOUSE_NAME);
 			 pstmt.setString(1,"%"+sellhouse_name+"%");
 			 rset=pstmt.executeQuery();
-				result=new ArrayList<SellHouseBean>();
+			 result=new ArrayList<SellHouseBean>();
 			while(rset.next()){
 				bean=new SellHouseBean();
 				bean.setSellhouse_id(rset.getInt("sellhouse_id"));
@@ -158,6 +165,10 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 				bean.setSellhouse_size(rset.getFloat("sellhouse_size"));
 				bean.setSellhouse_floor(rset.getString("sellhouse_floor"));
 				bean.setSellhouse_age(rset.getFloat("sellhouse_age"));
+				//讀取圖片
+				
+				photoInputStream=rset.getBinaryStream("sellhouse_photo1");
+				
 				bean.setSellhouse_photo1(rset.getBlob("sellhouse_photo1"));
 				bean.setSellhouse_photo2(rset.getBlob("sellhouse_photo2"));
 				bean.setSellhouse_photo3(rset.getBlob("sellhouse_photo3"));
@@ -448,6 +459,7 @@ public List<SellHouseBean> select_user_account(String user_account){
 @Override
 public SellHouseBean select_sellhouse_id(int id){
 	SellHouseBean	bean=null;
+	List<SellHouseBean> result=null;
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
@@ -478,6 +490,7 @@ public SellHouseBean select_sellhouse_id(int id){
 			bean.setSellhouse_car(rset.getString("sellhouse_car"));
 			bean.setSellhouse_phone(rset.getString("sellhouse_phone"));
 			bean.setSellhouse_email(rset.getString("sellhouse_email"));
+			
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -520,7 +533,7 @@ public SellHouseBean select_sellhouse_id(int id){
  * @see model.dao.SellHouseDAO#insert(model.SellHouseBean)
  */
 @Override
-public SellHouseBean insert(SellHouseBean bean){
+public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -538,32 +551,33 @@ public SellHouseBean insert(SellHouseBean bean){
 			pstmt.setFloat(7,bean.getSellhouse_size());
 			pstmt.setString(8,bean.getSellhouse_floor());
 			pstmt.setFloat(9,bean.getSellhouse_age());
+			pstmt.setString(10,bean.getSellhouse_photo1_name());
 			//File image1=new File(bean.getSellhouse_photo1());
-			File image1=new File("C:/image/1.jpg");
-			long size=image1.length();
-			InputStream is1=new FileInputStream(image1);
-			pstmt.setBlob(10,is1);
+			//File image1=new File("C:/_JSP/image/1.jpg");
+			//long size=image1.length();
+			//InputStream is1=new FileInputStream(image1);
+			pstmt.setBinaryStream(11,is1,size1);
 			//File image2=new File(bean.getSellhouse_photo1());
-			File image2=new File("C:/image/1.jpg");
-			long size2=image1.length();
-			InputStream is2=new FileInputStream(image2);
-			pstmt.setBlob(11,is2);
+			pstmt.setString(12,bean.getSellhouse_photo2_name());
+			//File image2=new File("C:/_JSP/image/2.jpg");
+			//long size2=image1.length();
+			//InputStream is2=new FileInputStream(image2);
+			pstmt.setBinaryStream(13,is2,size2);
 			//File image2=new File(bean.getSellhouse_photo1());
-			File image3=new File("C:/image/1.jpg");
-			long size3=image1.length();
-			InputStream is3=new FileInputStream(image3);
-			pstmt.setBlob(12,is3);
-			pstmt.setString(13,bean.getSellhouse_type());
-			pstmt.setString(14,bean.getSellhouse_message());
-			pstmt.setString(15,bean.getSellhouse_car());
-			pstmt.setString(16,bean.getSellhouse_phone());
-			pstmt.setString(17,bean.getSellhouse_email());
-		int i=	pstmt.executeUpdate();		
+			pstmt.setString(14,bean.getSellhouse_photo3_name());
+			//File image3=new File("C:/_JSP/image/2.jpg");
+			//long size3=image1.length();
+			//InputStream is3=new FileInputStream(image3);
+			pstmt.setBinaryStream(15,is3,size3);
+			pstmt.setString(16,bean.getSellhouse_type());
+			pstmt.setString(17,bean.getSellhouse_message());
+			pstmt.setString(18,bean.getSellhouse_car());
+			pstmt.setString(19,bean.getSellhouse_phone());
+			pstmt.setString(20,bean.getSellhouse_email());
+			int i=	pstmt.executeUpdate();		
 		System.out.println(i);
 		}
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
-	} catch (SQLException e) {
+	}  catch (SQLException e) {
 		e.printStackTrace();
 	}finally{
 		

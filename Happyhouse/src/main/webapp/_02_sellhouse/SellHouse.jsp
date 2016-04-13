@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<c:url value="/house/house.controller"/>"method="get">
+<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post">
 <table>
 <td>sellhouse_id</td>
 <td><input type="text" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
@@ -71,6 +71,18 @@
 <tr>
 <td>sellhouse_email</td>
 <td><input type="text" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
+</tr>
+<tr>
+<td>sellhouse_photo1</td>
+<td><input type="file" name="sellhouse_photo1"></td>
+</tr>
+<tr>
+<td>sellhouse_photo2</td>
+<td><input type="file" name="sellhouse_photo2"></td>
+</tr>
+<tr>
+<td>sellhouse_photo3</td>
+<td><input type="file" name="sellhouse_photo3"></td>
 </tr>
 </table>
 <table>

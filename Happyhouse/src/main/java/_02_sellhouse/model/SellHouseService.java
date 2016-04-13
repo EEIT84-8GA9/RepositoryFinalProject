@@ -1,7 +1,13 @@
 package _02_sellhouse.model;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 
@@ -34,7 +40,7 @@ public class SellHouseService {
 		//service.delete(bean);
 	}
 	
-	
+	public static final int IMAGE_FILENAME_LENGTH = 20;
 	private SellHouseDAO dao=new SellHouseDAOJdbc(); 
 	public	List<SellHouseBean> select(SellHouseBean bean){
 		List<SellHouseBean> result=null;
@@ -42,22 +48,21 @@ public class SellHouseService {
 			 System.out.println("id");
 			SellHouseBean temp=dao.select_sellhouse_id(bean.getSellhouse_id());
 			if(temp !=null){
-				result=new ArrayList<SellHouseBean>();
-				result.add(temp);
-				return result;
+			System.out.println(temp);
+			result = new ArrayList<SellHouseBean>();
+			result.add(temp);
+				 return result;
 			}
-			
 		}
-		 if(bean !=null &&bean.getSellhouse_price()!=0.0){
+		else if(bean !=null &&bean.getSellhouse_price()!=0.0){
 				 List<SellHouseBean> temp = dao.select_sellhouse_price(bean.getSellhouse_price());
 				 System.out.println("price");
 				 if(temp !=null){
 					 result=temp; 
 					 return result;
 				 }
-				 
 			}
-		 if(bean !=null&&bean.getSellhouse_name().length()!=0){
+		else if(bean !=null&&bean.getSellhouse_name().length()!=0){
 			 List<SellHouseBean> temp = dao.select_sellhouse_name(bean.getSellhouse_name());
 			 System.out.println("name");
 			 if(temp !=null){
@@ -65,16 +70,15 @@ public class SellHouseService {
 				 return result;
 			 }
 		}
-		 if(bean !=null&&bean.getSellhouse_address().length()!=0){
+		 else if(bean !=null&&bean.getSellhouse_address().length()!=0){
 			 List<SellHouseBean> temp = dao.select_sellhouse_address(bean.getSellhouse_address());
 			 System.out.println("address");
 			 if(temp !=null){
 				 result=temp;
 				 return result;
-			 }
-			 
+			 }			 
 		}
-		 if(bean !=null&&bean.getUser_account().length()!=0){
+		 else if(bean !=null&&bean.getUser_account().length()!=0){
 			 List<SellHouseBean> temp = dao.select_user_account(bean.getUser_account());
 			 if(temp !=null){
 				 System.out.println("acc");
@@ -88,10 +92,10 @@ public class SellHouseService {
 		}
 		return result;
 	}
-	public SellHouseBean insert(SellHouseBean bean){
+	public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 		SellHouseBean result=null;
 		if(bean!=null){
-			result=dao.insert(bean);
+			result=dao.insert(bean,is1,size1,is2,size2,is3,size3);
 		}
 		return result;		
 	}
@@ -110,4 +114,60 @@ public class SellHouseService {
 		}
 		return result;	
 	}
+	
+	public static String adjustFileName(String fileName, int maxLength) {
+		  int length = fileName.length();
+		  if ( length <= maxLength ) {
+			  return fileName ;
+		  }
+		int n      = fileName.lastIndexOf(".");
+      int sub    = fileName.length() - n - 1;
+      fileName = fileName.substring(0, maxLength-1-sub) + "." 
+                   + fileName.substring(n+1); 
+		return fileName;
+	}
+	
+	public static String getFileName(final Part part) {
+		for (String content : part.getHeader("content-disposition").split(";")) {
+			if (content.trim().startsWith("filename")) {
+				return content.substring(content.indexOf('=') + 1).trim()
+						.replace("\"", "");
+			}
+		}
+		return null;
+	}
+	
+	public static void exploreParts(Collection<Part> parts, HttpServletRequest req){
+		try {
+			for (Part part: parts){
+				String name = part.getName();
+				String contentType = part.getContentType();
+				String value = "";
+				long size = part.getSize(); // 上傳資料的大小，即上傳資料的位元組數
+				InputStream is =part.getInputStream();
+				if (contentType != null) { // 表示該part為檔案
+				   // 取出上傳檔案的檔名
+				   String filename = SellHouseService.getFileName(part);
+				   // 將上傳的檔案寫入到location屬性所指定的資料夾
+				   if (filename != null && filename.trim().length() > 0) {
+					   part.write(filename);	
+					   System.out.println(part.getClass().getName());
+				   }
+				} else {  // 表示該part為一般的欄位
+				   // 將上傳的欄位資料寫入到location屬性所指定的資料夾，檔名為"part_"+ name
+				   part.write("part_"+ name);	
+				   value = req.getParameter(name);    
+				}
+				System.out.printf("%-15s %-15s %8d  %-20s \n", name, contentType, size, value);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+}
+	
+	
+	
+	
+	
 }

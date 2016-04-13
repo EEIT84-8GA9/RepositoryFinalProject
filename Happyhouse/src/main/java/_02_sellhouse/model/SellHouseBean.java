@@ -1,8 +1,9 @@
 package _02_sellhouse.model;
 
+import java.io.Serializable;
 import java.sql.Blob;
 
-public class SellHouseBean {
+public class SellHouseBean implements Serializable{
 	private int	sellhouse_id;
 	private String	user_account;
 	private	String sellhouse_name;
@@ -13,8 +14,11 @@ public class SellHouseBean {
 	private	float sellhouse_size;
 	private	String sellhouse_floor;
 	private	float	sellhouse_age;
+	private String sellhouse_photo1_name;
 	private	Blob	sellhouse_photo1;
+	private String sellhouse_photo2_name;
 	private	Blob	sellhouse_photo2;
+	private String sellhouse_photo3_name;
 	private	Blob	sellhouse_photo3;
 	private	String	sellhouse_type;
 	private	String	sellhouse_message;
@@ -92,6 +96,36 @@ public class SellHouseBean {
 
 	public void setSellhouse_name(String sellhouse_name) {
 		this.sellhouse_name = sellhouse_name;
+	}
+
+
+	public String getSellhouse_photo1_name() {
+		return sellhouse_photo1_name;
+	}
+
+
+	public void setSellhouse_photo1_name(String sellhouse_photo1_name) {
+		this.sellhouse_photo1_name = sellhouse_photo1_name;
+	}
+
+
+	public String getSellhouse_photo2_name() {
+		return sellhouse_photo2_name;
+	}
+
+
+	public void setSellhouse_photo2_name(String sellhouse_photo2_name) {
+		this.sellhouse_photo2_name = sellhouse_photo2_name;
+	}
+
+
+	public String getSellhouse_photo3_name() {
+		return sellhouse_photo3_name;
+	}
+
+
+	public void setSellhouse_photo3_name(String sellhouse_photo3_name) {
+		this.sellhouse_photo3_name = sellhouse_photo3_name;
 	}
 
 

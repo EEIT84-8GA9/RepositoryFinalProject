@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import _06_currentprice.model.CurrentPriceBean;
+import _06_currentprice.model.CurrentPriceDAO;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 //
-
-
-import _06_currentprice.model.CurrentPriceBean;
-import _06_currentprice.model.CurrentPriceDAO;
 
 
 public class CurrentPriceDAOJdbc implements CurrentPriceDAO {
@@ -80,6 +80,325 @@ public class CurrentPriceDAOJdbc implements CurrentPriceDAO {
 		
 	}
 
+	
+	
+//  第七個方法 select 全部 BY 地址!!  currentprice address
+//  private static final String SELECT_BY_CP_CITY = "select currentprice_housearea,currentprice_tprice from currentprice where currentprice_city =?";
+// currentprice address,currentprice_bdtype, currentprice_trades , currentprice_transes,currentprice_rooms,currentprice_livinroom,
+//	currentprice_toilet,currentprice_enddate,currentprice_tradedate,currentprice_housearea,currentprice_oneprice
+	private static final String SELECT_ALL_BY_ADDRESS 
+	= "select * from currentprice where currentprice_address like ? order by currentprice_tradedate DESC";
+	
+	@Override
+	public List<CurrentPriceBean> select_all_by_address(String currentprice_address) {
+	
+	List<CurrentPriceBean> result = null ;
+	PreparedStatement stmt= null ;
+	ResultSet   rset= null ;
+	Connection conn= null;
+		try {
+//			 JDBC片段
+//			 conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			 
+			 
+			 conn = dataSource.getConnection();
+			 stmt = conn.prepareStatement(SELECT_ALL_BY_ADDRESS );
+				 
+			 stmt.setString(1,"%" + currentprice_address + "%");
+			 rset = stmt.executeQuery();
+			 result = new ArrayList<CurrentPriceBean>();
+			 while(rset.next()){
+				 
+				CurrentPriceBean bean = new CurrentPriceBean();
+			
+				bean.setCurrentprice_address(rset.getString("currentprice_address"));
+				bean.setCurrentprice_bdtype(rset.getString("currentprice_bdtype"));				
+				bean.setCurrentprice_trades(rset.getString("currentprice_trades"));
+				bean.setCurrentprice_transes(rset.getString("currentprice_transes"));
+				bean.setCurrentprice_rooms(rset.getInt("currentprice_rooms"));
+				bean.setCurrentprice_livinroom(rset.getInt("currentprice_livinroom"));
+				bean.setCurrentprice_toilet(rset.getInt("currentprice_toilet"));
+				bean.setCurrentprice_enddate(rset.getInt("currentprice_enddate"));
+				bean.setCurrentprice_tradedate(rset.getInt("currentprice_tradedate"));
+				bean.setCurrentprice_housearea(rset.getFloat("currentprice_housearea"));
+				bean.setCurrentprice_oneprice(rset.getFloat("currentprice_oneprice"));
+												
+//				bean.setCurrentprice_floors(rset.getString("currentprice_floors"));
+//				bean.setCurrentprice_mainway(rset.getString("currentprice_mainway"));
+//				bean.setCurrentprice_maintype(rset.getString("currentprice_maintype"));
+//				bean.setCurrentprice_tprice(rset.getFloat("currentprice_tprice"));
+//				bean.setCurrentprice_caraream(rset.getFloat("currentprice_caraream"));
+				
+			    result.add(bean);
+			    
+							}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{		
+					if (rset !=null) {
+						try {
+							rset.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+					}					
+					if (stmt!=null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+					}					
+					if (conn!=null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} 
+					}								
+		}		
+	return result;		
+	}
+	
+	
+	
+	
+	
+	
+	// 第六個方法 ~~~~~~ pei第三張  樓層
+//		select currentprice_transes ,count(currentprice_transes)as transes_count from currentprice 
+//		 where  currentprice_city ='萬華區' AND currentprice_transes IN ('一層', '二層','三層','四層','五層','六層','七層','八層','九層','十層','十一層','十二層','全')
+//		 group by currentprice_transes order by count(currentprice_transes) desc
+		
+		
+			private static final String SELECT_COUNT_BY_CITY_TRANSES 
+			= "select currentprice_transes ,count(currentprice_transes)as transes_count from currentprice "
+			+ "WHERE  currentprice_city =? AND currentprice_transes IN ('一層', '二層','三層','四層','五層','六層','七層','八層','九層','十層','十一層','十二層','全')"
+			+ "group by currentprice_transes order by count(currentprice_transes) desc";
+
+			// 此處為了 as 新增的欄位 transes_count  在BEAN新增
+			// transes_countGET SET方法
+			// 此為將transes_count DB中AS欄位 匯入上行中新建之 bean~元件 !
+			// bean.setTranses_count(rset.getInt("transes_count")); 將 DB中AS出的新欄位值
+			// 塞入BEAN 新建的 BEAN元件
+			@Override
+			public List<CurrentPriceBean> select_count_by_city_transes(String currentprice_city) {
+				List<CurrentPriceBean> result = null;
+				Connection conn = null;
+				PreparedStatement stmt = null;
+				ResultSet rset = null;
+				try {
+//					conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+					 conn = dataSource.getConnection();
+					stmt = conn.prepareStatement(SELECT_COUNT_BY_CITY_TRANSES);
+					stmt.setString(1, currentprice_city);
+					rset = stmt.executeQuery();
+
+					result = new ArrayList<CurrentPriceBean>();
+					while (rset.next()) {
+						CurrentPriceBean bean = new CurrentPriceBean();
+						bean.setCurrentprice_transes(rset.getString("currentprice_transes"));
+						bean.setTranses_count(rset.getInt("transes_count"));
+
+						result.add(bean);
+
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+
+					if (rset != null) {
+						try {
+							rset.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				return result;
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// 第六個方法 ~~~~~~ pei第二張 坪數
+		// select ROUND(currentprice_housearea,-1,1)as
+		// housearea,count(currentprice_housearea)as housearea_count from
+		// currentprice
+		// where currentprice_city ='萬華區' AND ROUND(currentprice_housearea,-1,1)<>0
+		// AND (ROUND(currentprice_housearea,-1,1)<101)
+		// group by ROUND(currentprice_housearea,-1,1)
+		// order by ROUND(currentprice_housearea,-1,1)
+		private static final String SELECT_COUNT_BY_CITY_HOUSEAREA = "select  ROUND(currentprice_housearea,-1,1)as housearea_range,count(currentprice_housearea)as housearea_count from currentprice"
+				+ " where   currentprice_city =? AND ROUND(currentprice_housearea,-1,1)<>0  AND (ROUND(currentprice_housearea,-1,1)<101)"
+				+ "group by  ROUND(currentprice_housearea,-1,1)" 
+				+ "order by  ROUND(currentprice_housearea,-1,1)";
+
+		// 此處為了 as 新增的欄位 housearea_range housearea_count 在BEAN新增
+		// housearea_range housearea_count GET SET方法
+		// 此為將housearea_range housearea_count DB中AS欄位 匯入上行中新建之 bean~元件 !
+		// bean.setHousearea_range(rset.getInt("housearea_range"));
+		// bean.setHousearea_count(rset.getInt("housearea_count")); 將 DB中AS出的新欄位值
+		// 塞入BEAN 新建的 BEAN元件
+		@Override
+		public List<CurrentPriceBean> select_count_by_city_housearea(String currentprice_city) {
+			List<CurrentPriceBean> result = null;
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rset = null;
+			try {
+//				conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				 conn = dataSource.getConnection();
+				stmt = conn.prepareStatement(SELECT_COUNT_BY_CITY_HOUSEAREA);
+				stmt.setString(1, currentprice_city);
+				rset = stmt.executeQuery();
+
+				result = new ArrayList<CurrentPriceBean>();
+				while (rset.next()) {
+					CurrentPriceBean bean = new CurrentPriceBean();
+					bean.setHousearea_range(rset.getInt("housearea_range"));
+					bean.setHousearea_count(rset.getInt("housearea_count"));
+
+					result.add(bean);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+
+				if (rset != null) {
+					try {
+						rset.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			return result;
+		}
+
+		// 第六個方法 ~~~~~~ pei第一張 類型
+		// select currentprice_bdtype ,count(currentprice_bdtype)as bdtype_count
+		// from currentprice
+		// where currentprice_city ='萬華區' and currentprice_bdtype<>'倉庫' AND
+		// currentprice_bdtype<>'農舍' AND currentprice_bdtype<>'工廠' AND
+		// currentprice_bdtype<>'廠辦'
+		// group by currentprice_bdtype
+
+		private static final String SELECT_COUNT_BY_CITY_TYPE 
+		= "select currentprice_bdtype ,count(currentprice_bdtype)as bdtype_count from currentprice"
+		+ " WHERE  currentprice_city =? AND currentprice_bdtype<>'倉庫' AND currentprice_bdtype<>'農舍'"
+		+ "AND currentprice_bdtype<>'工廠' AND currentprice_bdtype<>'廠辦'"
+		+ "group by currentprice_bdtype";
+
+		// 此處為了 as 新增的欄位 bdtype_count 在BEAN新增
+		// bdtype_count GET SET方法
+		// 此為將"bdtype_count" DB中AS欄位 匯入上行中新建之 bean~元件 !
+		// bean.setBdtype_countGET(rset.getInt("bdtype_count")); 將 DB中AS出的新欄位值
+		// 塞入BEAN 新建的 BEAN元件
+		@Override
+		public List<CurrentPriceBean> select_count_by_city_type(String currentprice_city) {
+			List<CurrentPriceBean> result1 = null;
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			ResultSet rset = null;
+			try {
+//				conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+							 conn = dataSource.getConnection();
+				stmt = conn.prepareStatement(SELECT_COUNT_BY_CITY_TYPE);
+				stmt.setString(1, currentprice_city);
+				rset = stmt.executeQuery();
+			
+
+				result1 = new ArrayList<CurrentPriceBean>();
+				while (rset.next()) {
+					CurrentPriceBean bean = new CurrentPriceBean();
+					bean.setCurrentprice_bdtype(rset.getString("currentprice_bdtype"));
+					bean.setCount_by_city_type(rset.getInt("bdtype_count"));
+
+					result1.add(bean);
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+
+				if (rset != null) {
+					try {
+						rset.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			return result1;
+		}
+
+	
+	
+	
+	
 	
 	//第五個方法
 		//SELECT TOP 84 PERCENT * FROM currentprice WHERE currentprice_city ='大安區' AND  currentprice_bdtype  LIKE '%套房%' AND  currentprice_transes LIKE '三層%' 

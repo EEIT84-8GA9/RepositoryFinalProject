@@ -37,18 +37,19 @@
 						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新(暫時)</a></li>
 						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
-						<c:if test="${empty LoginOK}">
-						<li><a href="_04_message/login.jsp">會員登入</a></li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>
+						<c:if test="${empty user}">
+						<li><a href="_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${not empty LoginOK}">
+						<c:if test="${not empty user}">
 						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			<c:if test="${not empty user}">
+			<h1 align="center"><font color=blue>${user.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
 			<div id="banner_image">

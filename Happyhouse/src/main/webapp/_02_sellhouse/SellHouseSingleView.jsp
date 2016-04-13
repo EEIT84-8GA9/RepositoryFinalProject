@@ -64,7 +64,7 @@
 				<fieldset>
 					<legend>聯絡資訊</legend>
 					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
+					<img src="/Happyhouse/images/phone.jpg" width="50px" padding-bottom="10px">
 					<label>${param.sellhouse_phone}</label><br>
 					</div>
 					<br>

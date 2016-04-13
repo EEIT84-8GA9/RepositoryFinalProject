@@ -49,7 +49,6 @@ public class GetImageServlet01 extends HttpServlet {
 		OutputStream os2=null;
 		InputStream is1=null;
 		InputStream is2=null;
-		InputStream is3=new FileInputStream("C:/Users/Public/Pictures/Sample Pictures/3.jpg");
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		DataSource dataSource;
@@ -66,7 +65,7 @@ public class GetImageServlet01 extends HttpServlet {
 		}
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 			conn=dataSource.getConnection();
 			is1=new FileInputStream(defaultPhoto);
 			pstmt=conn.prepareStatement(SELECT_IMAGE);

@@ -1,6 +1,8 @@
 package _06_currentprice.controller;
 
 import java.io.IOException;
+
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -21,8 +23,9 @@ import _06_currentprice.model.CurrentPriceService;
 
 
 
+
 @WebServlet(
-		urlPatterns={"/pages/cpweb.controller"}
+		urlPatterns={"/_06_currentprice.controller/cpweb.controller"}
 		)
 
 public class CurrentPriceServlet extends HttpServlet {
@@ -41,13 +44,17 @@ public class CurrentPriceServlet extends HttpServlet {
 		String temp1 = request.getParameter("currentprice_housearea");
 		String temp2 = request.getParameter("currentprice_tprice");
 		String prodaction = request.getParameter("prodaction");
+		String currentprice_address = request.getParameter("currentprice_address");
 		//從jsp得到PRODACTION 4種!~用以比對  value 為新刪修選 哪一種
 		
 		
-		
+		System.out.println(currentprice_address);
 	
 //轉換HTML Form資料
 //轉型為需要的資料..如果insert則轉成資料庫的型式
+//Map封裝錯誤訊息~ error.put("currentprice_tprice", "必須是數字");  
+		// request.setAttribute("error", error);
+		// 在顯示頁面 用<span class="error">${error.currentprice_address}</span> 即可顯示 必須是數字
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
 	
@@ -79,6 +86,12 @@ public class CurrentPriceServlet extends HttpServlet {
 				error.put("currentprice_city", "請輸入city以便於執行"+prodaction);
 			}
 		}
+		if("Pick".equals(prodaction)) {
+			if(currentprice_address==null || currentprice_address.trim().length()==0) {
+				error.put("currentprice_address", "請輸入address以便於執行"+prodaction);
+			}
+		}
+		
 		
 		if(error!=null && !error.isEmpty()) {
 			request.getRequestDispatcher(
@@ -97,7 +110,7 @@ public class CurrentPriceServlet extends HttpServlet {
 		bean.setCurrentprice_transes(currentprice_transes);
 		bean.setCurrentprice_housearea(currentprice_housearea);
 		bean.setCurrentprice_tprice(currentprice_tprice);
-
+        bean.setCurrentprice_address(currentprice_address);
 		
 //第二個驗證!!!  如果click的按鈕-prodaction為SELECT的話 使用productService.select 方法..
 //在Service中判斷其為選擇全部 或是 條件選擇
@@ -109,10 +122,19 @@ public class CurrentPriceServlet extends HttpServlet {
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
 					"/pages/display.jsp").forward(request, response);
-		}  else  {
+		}else if("Pick".equals(prodaction)) {
+			System.out.println("s");
+			List<CurrentPriceBean> result = currentpriceService.pick(bean);
+			System.out.println("ss");
+			System.out.println("fff"+result);
+			request.setAttribute("Pick", result);
+			request.getRequestDispatcher(
+					"/_06_currentprice/cpindex.jsp").forward(request, response);}
+		   
+		else  {
 			error.put("action", "Unknown Action:"+prodaction);
 			request.getRequestDispatcher(
-					"/pages/cpweb.jsp").forward(request, response);
+					"/_06_currentprice/cpweb.jsp").forward(request, response);
 		}
 	}
 	

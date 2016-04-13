@@ -128,7 +128,7 @@ public class sms_servlet extends HttpServlet {
 			response.sendRedirect("_05_sms/sms_mainpage.jsp");
 			return;
 
-		}else if ("討論區站內信傳送".equals(type)){
+		}else if ("傳送".equals(type)){
 			SmsVO vo = new SmsVO();
 			vo.setSms_describe(sms_describe);
 			vo.setSms_mailers(bean.getUser_account());

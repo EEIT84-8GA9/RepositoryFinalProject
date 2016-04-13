@@ -1,6 +1,8 @@
-package _10_chart;
+package _10_chart.controller;
 
 import java.io.IOException;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,14 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+
 import _06_currentprice.model.CurrentPriceBean;
+import _10_chart.model.ChartService;
 
 
 
 
-
-
-@WebServlet(urlPatterns = { "/chart.controller" })
+@WebServlet(urlPatterns = {"/chart.controller"})
 
 // ★ ✰ ☆ ✩ ✫ ✬ ✭ ✮ ✡
 public class ChartServlet extends HttpServlet {
@@ -69,7 +72,7 @@ public class ChartServlet extends HttpServlet {
 
 		// 驗證HTML Form資料 此區為絕對必須輸入 City的圖!!! 像是Scatter Pei
 		// 第一個驗證!!! 如果click的按鈕為 新刪修 則City格不可為空..若為空則導回 前頁面..但回傳剛剛輸入的值 回填~~!
-		if ("Scatter".equals(prodaction) || "Pei".equals(prodaction) || "Column".equals(prodaction)) {
+		if ("Scatter".equals(prodaction) || "Pie".equals(prodaction) || "Column".equals(prodaction)) {
 			if (currentprice_city == null || currentprice_city.trim().length() == 0) {
 				error.put("currentprice_city", "請輸入city以便於執行" + prodaction);
 			}
@@ -96,7 +99,7 @@ public class ChartServlet extends HttpServlet {
 		
 		}
 		if (error != null && !error.isEmpty()) {
-			request.getRequestDispatcher("/pages/cpweb.jsp").forward(request,res);
+			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request,res);
 			return;
 		}
 
@@ -111,19 +114,28 @@ public class ChartServlet extends HttpServlet {
 		
 		// 根據Model執行結果顯示View
 		// 4種比對!! prodaction 為SELECT的話 使用productService.select 方法
+		//request.setAttribute("Scatter", result);   "Scatter" 作為EL 標千~ 可以在JSP中用EL呼叫值
 		if ("Scatter".equals(prodaction)) {
 			List<CurrentPriceBean> result = chartService.select(bean);
 			
 			request.setAttribute("Scatter", result);
-			request.getRequestDispatcher("/chart/chart.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/chart.jsp").forward(request,res);
 		} else if (prodaction != null && prodaction.equals("Pie")) {
-			List<CurrentPriceBean> result = chartService.select(bean);
-			if (result == null) {
+			List<CurrentPriceBean> result1 = chartService.select_pei_by_three_type(bean);
+			List<CurrentPriceBean> result2 = chartService.select_pei_by_three_area(bean);
+			List<CurrentPriceBean> result3 = chartService.select_pei_by_three_transes(bean);
+			if (result1 == null) {
 				error.put("action", "xxxx fail");
 			} else {
-				request.setAttribute("Pei", result);
+				request.setAttribute("Pie1", result1);
+				request.setAttribute("Pie2", result2);
+				request.setAttribute("Pie3", result3);
+				System.out.println(result3);
+							
+							
 			}
-			request.getRequestDispatcher("/chart/pei.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/pie.jsp").forward(request,res);
+		
 		}else if (prodaction != null && prodaction.equals("Column")) {
 			List<CurrentPriceBean> result = chartService.select_avg_type(bean);
 			if (result == null) {
@@ -131,7 +143,7 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("Column", result);
 			}
-			request.getRequestDispatcher("/chart/column.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/column.jsp").forward(request,res);
 		}else if (prodaction != null && prodaction.equals("Line")) {
 			List<CurrentPriceBean> result = chartService.select_avg_month(bean);
 			if (result == null) {
@@ -139,7 +151,7 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("Line", result);
 			}
-			request.getRequestDispatcher("/chart/line.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/line.jsp").forward(request,res);
 		}else if (prodaction != null && prodaction.equals("LineLine")) {
 			List<CurrentPriceBean> result = chartService.select_avg_month(bean);
 			if (result == null) {
@@ -147,7 +159,7 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("LineLine", result);
 			}
-			request.getRequestDispatcher("/chart/lineline.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/lineline.jsp").forward(request,res);
 		}else if (prodaction != null && prodaction.equals("Scattermine")) {
 			List<CurrentPriceBean> result = chartService.select_oneprice_area_by_three(bean);
 			if (result == null) {
@@ -155,10 +167,10 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("Scattermine", result);
 			}
-			request.getRequestDispatcher("/chart/scattermine.jsp").forward(request,res);
+			request.getRequestDispatcher("/_10_chart/scattermine.jsp").forward(request,res);
 		}else {
 			error.put("action", "Unknown Action:" + prodaction);
-			request.getRequestDispatcher("/pages/cpweb.jsp").forward(request, res);
+			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request, res);
 		}
 	}
 

@@ -80,7 +80,7 @@ function clearForm() {
 	<tr>
 		<td>
 			<input type="submit" name="prodaction" value="Scatter">
-			<input type="submit" name="prodaction" value="Pei">
+			<input type="submit" name="prodaction" value="Pie">
 			<input type="submit" name="prodaction" value="none">
 			<input type="submit" name="prodaction" value="Select">
 			<input type="button" value="Clear" onclick="clearForm()">
@@ -132,7 +132,7 @@ function clearForm() {
     <tr>
 		<td>
 			<input type="submit" name="prodaction" value="Scatter">
-			<input type="submit" name="prodaction" value="Pei">
+			<input type="submit" name="prodaction" value="Pie">
 		   	<input type="submit" name="prodaction" value="Column">
 			<input type="submit" name="prodaction" value="Line">
 			<input type="submit" name="prodaction" value="LineLine">

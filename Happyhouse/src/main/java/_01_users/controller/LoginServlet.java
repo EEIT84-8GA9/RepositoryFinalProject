@@ -15,64 +15,84 @@ import _01_users.model.UserService;
 import _01_users.model.UsersBean;
 
 
-
-
-@WebServlet(
-		urlPatterns={"/secure/login.controller"}
-)
+@WebServlet(urlPatterns = { "/secure/login.controller" })
 public class LoginServlet extends HttpServlet {
 	private UserService userService = new UserService();
+
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-//接收HTML Form資料
+		// 接收HTML Form資料
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-//驗證HTML Form資料
+		String password1 = request.getParameter("password1");
+		String password2 = request.getParameter("password2");
+		String log = request.getParameter("log");
+	
+		// 驗證HTML Form資料
+
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
 
-		if(username==null || username.length()==0) {
+		if (username == null || username.length() == 0) {
 			error.put("username", "請輸入ID");
 		}
-		if(password==null || password.length()==0) {
+		if (password == null || password.length() == 0) {
 			error.put("password", "請輸入PWD");
 		}
-		
-		if(error!=null && !error.isEmpty()) {
-			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
+
+		if (error != null && !error.isEmpty()) {
+			request.getRequestDispatcher("/_01_users/login.jsp").forward(request,
+					response);
 			return;
 		}
-		
-//呼叫Model
-		UsersBean bean = userService.login(username, password);
-		
-//根據Model執行結果顯示View
-      if(bean==null) {
-			error.put("password", "登入失敗，請再次輸入ID/PWD");
-			request.getRequestDispatcher(
-					"/secure/login.jsp").forward(request, response);
-		} else {
-			HttpSession session = request.getSession();
-			session.setAttribute("user", bean);
-			
-			String dest = (String) session.getAttribute("dest");
-			if(dest==null || dest.length()==0) {
-				String path = request.getContextPath();
-				response.sendRedirect(path+"/index.jsp");
+
+		// 呼叫Model
+		UsersBean bean ;
+       
+		// 根據Model執行結果顯示View
+		if (log != null && "登入".equals(log)) {
+			 bean = userService.login(username, password);
+			if (bean == null) {
+				System.out.println("5555");
+				error.put("password", "登入失敗，請再次輸入ID/PWD");
+				request.getRequestDispatcher("/_01_users/login.jsp").forward(
+						request, response);
 			} else {
-				session.removeAttribute("dest");
-				response.sendRedirect(dest);
+				HttpSession session = request.getSession();
+				session.setAttribute("user", bean);
+				String dest = (String) session.getAttribute("dest");
+				if (dest == null || dest.length() == 0) {
+					String path = request.getContextPath();
+					response.sendRedirect(path + "/index.jsp");
+				} else {
+					session.removeAttribute("dest");
+					response.sendRedirect(dest);
+				}
 			}
 		}
+		if(log!= null && "登出".equals(log)){
+			HttpSession session = request.getSession();
+			session.removeAttribute("user");
+			request.getRequestDispatcher("/_01_users/login.jsp").forward(
+					request, response);
+		}
+		 if(log!= null && "確認更改".equals(log)) {
+			System.out.println("5555");
+			if (password1.equals(password2)) {
+				bean = userService.login(username, password);
+		//		username=bean.getUser_account();
+				userService.changePassword(username, password, password2);
+				
+			}
+		}
+
 	}
-	
+
 	@Override
-	protected void doPost(HttpServletRequest req,
-			HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
 		this.doGet(req, resp);
 	}
 }

@@ -1,4 +1,4 @@
-package _01_users.controller;
+package _01_users.filter;
 
 import java.io.IOException;
 
@@ -12,11 +12,10 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import _01_users.model.UsersBean;
 
 
-@WebFilter("/pages/*")
+@WebFilter("/_01_users/*, /_09_furniture/*")
 public class LoginFilter implements Filter {
 
 	@Override
@@ -40,7 +39,7 @@ public class LoginFilter implements Filter {
 			Session.setAttribute("dest", uri);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path + "/secure/login.jsp");
+			response.sendRedirect(path + "/_01_users/login.jsp");
 		}
 
 	}

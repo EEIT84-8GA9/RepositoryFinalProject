@@ -14,23 +14,7 @@ public class CurrentPriceBean {
 	 private String currentprice_maintype;
 	 private int currentprice_enddate;
 	 private float currentprice_housearea;
-	 private int  currentprice_rooms;
-	 private int  currentprice_livinroom;
-	 private int currentprice_toilet;
-	 private float currentprice_tprice;
-	 private float currentprice_oneprice;
-	 private float currentprice_caraream;
-	 
-	 
-	 //方法三特別~!
-	 private float avgoneprice_by_city_type;
-	 
-	 
-	 //方法四特別~!
-	 private float avgoneprice_by_tradedate;
-
-
-	@Override
+	 @Override
 	public String toString() {
 		return "CurrentPriceBean [currentprice_city=" + currentprice_city + ", currentprice_address="
 				+ currentprice_address + ", currentprice_tradedate=" + currentprice_tradedate + ", currentprice_trades="
@@ -40,10 +24,88 @@ public class CurrentPriceBean {
 				+ currentprice_enddate + ", currentprice_housearea=" + currentprice_housearea + ", currentprice_rooms="
 				+ currentprice_rooms + ", currentprice_livinroom=" + currentprice_livinroom + ", currentprice_toilet="
 				+ currentprice_toilet + ", currentprice_tprice=" + currentprice_tprice + ", currentprice_oneprice="
-				+ currentprice_oneprice + ", currentprice_caraream=" + currentprice_caraream
-				+ ", avgoneprice_by_city_type=" + avgoneprice_by_city_type + ", avgoneprice_by_tradedate="
-				+ avgoneprice_by_tradedate + "]";
+				+ currentprice_oneprice + ", currentprice_caraream=" + currentprice_caraream + ", count_by_city_type="
+				+ count_by_city_type + ", housearea_range=" + housearea_range + ", housearea_count=" + housearea_count
+				+ ", transes_count=" + transes_count + ", avgoneprice_by_city_type=" + avgoneprice_by_city_type
+				+ ", avgoneprice_by_tradedate=" + avgoneprice_by_tradedate + "]";
 	}
+
+
+	private int  currentprice_rooms;
+	 private int  currentprice_livinroom;
+	 private int currentprice_toilet;
+	 private float currentprice_tprice;
+	 private float currentprice_oneprice;
+	 private float currentprice_caraream;
+	 
+	 
+	 
+	//方法六 PEI1
+		private int count_by_city_type;
+		
+		private int housearea_range;
+		 private int housearea_count;
+		 private int transes_count;
+		 
+
+			//方法三特別~!
+		 private float avgoneprice_by_city_type;
+		 
+			//方法四特別~!
+		 private float avgoneprice_by_tradedate;
+
+		 
+		 
+		 
+		 
+		public int getCount_by_city_type() {
+			return count_by_city_type;
+		}
+
+
+		public void setCount_by_city_type(int count_by_city_type) {
+			this.count_by_city_type = count_by_city_type;
+		}
+
+	
+
+	public int getHousearea_range() {
+		return housearea_range;
+	}
+
+
+	public void setHousearea_range(int housearea_range) {
+		this.housearea_range = housearea_range;
+	}
+
+
+	public int getHousearea_count() {
+		return housearea_count;
+	}
+
+
+	public void setHousearea_count(int housearea_count) {
+		this.housearea_count = housearea_count;
+	}
+
+	public int getTranses_count() {
+		return transes_count;
+	}
+
+
+	public void setTranses_count(int transes_count) {
+		this.transes_count = transes_count;
+	}
+
+
+
+	
+
+
+	
+
+
+	
 
 
 	public String getCurrentprice_city() {

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
@@ -78,42 +81,72 @@ public class indexFilter implements Filter {
 		requestURI  = req.getRequestURI();
 	if(mustLogin()){
 					newDAO dao = new newDAO();
+//					// 寫死資料(不從HTML來)
+					//
+//							
+					//
+							int temp1 = 400;
+							int temp2 = 401;
+							int temp3 = 402;
+							int temp4 = 403;
+							int temp5 = 404;
+							int temp6 = 405;
+					//
+//							System.out.println(temp1);
+//							// 直接Select四個
+					//
+							newsBean bean1 = new newsBean();
+							newsBean bean2 = new newsBean();
+							newsBean bean3 = new newsBean();
+							newsBean bean4 = new newsBean();
+							newsBean bean5 = new newsBean();
+							newsBean bean6 = new newsBean();
+					//
+							bean1 = dao.select(temp1);
+							bean2 = dao.select(temp2);
+							bean3 = dao.select(temp3);
+						    bean4 = dao.select(temp4);
+		                    bean5 = dao.select(temp5);
+                            bean6 = dao.select(temp6);
+		                    
+					
+//					List<newsBean> bean = dao.select();
+//					
+//					for(newsBean set : bean){
+//						
+//						 set.getNew_id();
+//						 set.getNew_title();
+//						 set.getNew_describe();
+//						 set.getNew_date();
+//						 set.getNew_photo1();
+//						 set.getNew_photo2();
+//						 set.getNew_photo3();
+//						 
+//						 
+//					}
+	
+
+   
+
+            
+            Map<String,Object> map = new HashMap<String, Object>();
+            
+            map.put("one", bean1);
+            map.put("two", bean2);
+            map.put("three", bean3);
+            map.put("four", bean4);
+            map.put("five",bean5);
+            map.put("six", bean6);
 
 		
+            // 將資料傳送回去
 
-		// 寫死資料(不從HTML來)
-
-		
-
-		int temp1 = 401;
-		int temp2 = 400;
-		int temp3 = 403;
-		int temp4 = 404;
-
-		System.out.println(temp1);
-		// 直接Select四個
-
-		newsBean bean1 = new newsBean();
-		newsBean bean2 = new newsBean();
-		newsBean bean3 = new newsBean();
-		newsBean bean4 = new newsBean();
-
-		bean1 = dao.select(temp1);
-		bean2 = dao.select(temp2);
-		bean3 = dao.select(temp3);
-		bean4 = dao.select(temp4);
-
-		System.out.println(bean2);
-
-		// 將資料傳送回去
-
-		req.setAttribute("select", bean3);
+		req.setAttribute("select", map);
+		System.out.println(map);
 		request.getRequestDispatcher("index.jsp").forward(req, resp);
-		
 //	    resp.sendRedirect("index.jsp");
 		
-		System.out.println(request);
-		System.out.println(response);
+
 	}else{   //不需要登入
 				chain.doFilter(request, response);
 				return;

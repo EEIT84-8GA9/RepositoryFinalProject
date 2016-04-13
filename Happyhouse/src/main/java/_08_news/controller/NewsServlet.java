@@ -19,7 +19,7 @@ import _08_news.model.dao.newDAO;
 
 
 
-@WebServlet(urlPatterns = { "/pages/test.Controller" })
+@WebServlet(urlPatterns = { "/test.controller" })
 public class NewsServlet extends HttpServlet {
 	private NewsService service = new NewsService();
 	private static final long serialVersionUID = 1L;
@@ -64,8 +64,8 @@ public class NewsServlet extends HttpServlet {
 				id = Integer.parseInt(temp3.trim());
 			} catch (NumberFormatException e) {
 				error.put("id", "編號必須要是整數數字才行喔");
-				// request.getRequestDispatcher("/test.jsp").forward(request,
-				// response);
+				 request.getRequestDispatcher("/_08_news/test.jsp").forward(request,
+				 response);
 			}
 		}
 
@@ -84,7 +84,7 @@ public class NewsServlet extends HttpServlet {
 		}
 
 		if (error != null && !error.isEmpty()) {
-			request.getRequestDispatcher("/test.jsp")
+			request.getRequestDispatcher("/_08_news/test.jsp")
 					.forward(request, response);
 			return;
 		}
@@ -101,18 +101,20 @@ public class NewsServlet extends HttpServlet {
 
 		System.out.println(bean);
 
-		// 根據Model執行結我顯示View
+		// 根據Model執行姐果顯示View
 
 		if ("Select".equals(newsupdate)) {
 			List<newsBean> result = service.select(bean);
+			System.out.println(result);
 			newsBean datebean = new newsBean();
 
-			datebean = dao.select(temp1);
-			Date b = datebean.getNew_date();
-			bean.setNew_date(b);
+//			datebean = dao.select(temp1);
+//			System.out.println(datebean);
+//			Date b = datebean.getNew_date();
+//			bean.setNew_date(b);
 
 			request.setAttribute("select", result);
-			request.getRequestDispatcher("/selectpage.jsp").forward(request,
+			request.getRequestDispatcher("/_08_news/selectpage.jsp").forward(request,
 					response);
 		} else if
 
@@ -132,7 +134,7 @@ public class NewsServlet extends HttpServlet {
 
 			request.setAttribute("insert", result);
 			System.out.println(result);
-			request.getRequestDispatcher("/test.jsp")
+			request.getRequestDispatcher("/_08_news/test.jsp")
 					.forward(request, response);
 		} else if
 
@@ -147,9 +149,9 @@ public class NewsServlet extends HttpServlet {
 			request.setAttribute("update", result);
 			System.out.println(result);
 //			session.setAttribute("update", result);
-			request.getRequestDispatcher("/test.jsp")
+			request.getRequestDispatcher("/_08_news/test.jsp")
 					.forward(request, response);
-			response.sendRedirect("/HouseprojectOne/test.jsp");
+			response.sendRedirect("/_08_news/test.jsp");
 		} else if (newsupdate != null && newsupdate.equals("Delete")) {
 			boolean result = service.delete(bean);
 			if (!result) {
@@ -157,7 +159,7 @@ public class NewsServlet extends HttpServlet {
 			} else {
 				request.setAttribute("delete", 1);
 			}
-			request.getRequestDispatcher("/test.jsp")
+			request.getRequestDispatcher("/_08_news/test.jsp")
 					.forward(request, response);
 
 		}

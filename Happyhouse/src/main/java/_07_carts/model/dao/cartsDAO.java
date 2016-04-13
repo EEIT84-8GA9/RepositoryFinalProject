@@ -6,23 +6,50 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import _07_carts.model.cartsBean;
+import _07_carts.model.cartsrentBean;
+import _07_carts.model.cartssellBean;
+import _08_news.model.newsBean;
 
 
 public class cartsDAO {
 
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "sa123456";
+	private DataSource dataSource;
+	
+//	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
+//	private static final String USERNAME = "sa";
+//	private static final String PASSWORD = "sa123456";
+	
+	public  cartsDAO() {
+	
+	try {
+		Context ctx = new InitialContext();
+		dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
+	} catch (NamingException e) {
+		e.printStackTrace();
+	}
+	}
+
 
 	public static void main(String[] args) {
 
 		cartsDAO dao = new cartsDAO();
-
-		cartsBean bean = dao.select(400);
-
+		
+		cartsBean bean = dao.select("Alex123");
+		
 		System.out.println(bean);
+
+//		cartsBean bean = dao.select(400);
+//
+//		System.out.println(bean);
 
 		// 新增
 
@@ -33,13 +60,60 @@ public class cartsDAO {
 
 		// dao.insert(bean1);
 		// System.out.println(bean1);
+		
+		//使用特殊的SQL語法全體搜尋
+		
+	    
+//		List<cartssellBean> bean = dao.selectcartssell("Alex123");
+//		
+//		 for(cartssellBean set : bean){
+//			
+//			 
+//		 set.getCart_id();
+//		 set.getUser_account();
+//		 set.getSellhouse_name();
+//		 set.getSellhouse_price();
+//		 set.getSellhouse_patterns();
+//		 set.getSellhouse_address();
+//		 set.getSellhouse_describe();
+//		 set.getSellhouse_size();
+//		 set.getSellhouse_floor();
+//		 set.getSellhouse_age();
+//		 set.getSellhouse_photo1();
+//		 set.getSellhouse_photo2();
+//		 set.getSellhouse_photo3();
+//		 
+//		 System.out.println(set);
+		 
+//		 List<cartsrentBean> bean1 = dao.selectcartsrent("Tom123");
+//		 
+//		 for(cartsrentBean setrent : bean1){
+//		
+//         setrent.getCart_id();
+//         setrent.getUser_account();
+//         setrent.getRenthouse_name();
+//         setrent.getRenthouse_price();
+//         setrent.getRenthouse_patterns();
+//         setrent.getRenthouse_address();
+//         setrent.getRenthouse_describe();
+//         setrent.getRenthouse_size();
+//         setrent.getRenthouse_floor();
+//         setrent.getRenthouse_photo1();
+//         setrent.getRenthouse_photo2();
+//         setrent.getRenthouse_photo3();
+//         
+//	     System.out.println(setrent);
+			 
+		 
+	
+	
+			 
 
-		Connection con = null;
-		PreparedStatement stm = null;
+		
 
 		// 刪除
 
-		dao.delete(401);
+        //		dao.delete(401);
 
 	}
 
@@ -53,7 +127,8 @@ public class cartsDAO {
 		ResultSet rse = null;
 
 		try {
-			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stm = con.prepareStatement(SELECT_BY_CARTSID);
 			stm.setInt(1, cart_id);
 			rse = stm.executeQuery();
@@ -64,8 +139,9 @@ public class cartsDAO {
 
 				result.setCart_id(rse.getInt("cart_id"));
 				result.setUser_account(rse.getString("user_account"));
-				result.setHouse_id(rse.getInt("house_id"));
-				result.setCatr_date(rse.getDate("cart_date"));
+				result.setSellhouse_id(rse.getInt("sellhouse_id"));
+				result.setRenthouse_id(rse.getInt("renthouse_id"));
+				result.setCart_date(rse.getDate("cart_date"));
 
 			}
 		} catch (SQLException e) {
@@ -97,31 +173,236 @@ public class cartsDAO {
 		return result;
 	}
 
-	private static final String SELECT_BY_SELECTALL = "select c.cart_id , u.user_account	,  s.sellhouse_id , sellhouse_name  ,s.sellhouse_price	, sellhouse_patterns ,s.sellhouse_address	 , s.sellhouse_describe , s.sellhouse_size ,sellhouse_floor,  sellhouse_age , s.sellhouse_car , s.sellhouse_photo1 , s. sellhouse_photo2 , s. sellhouse_photo3from sellhouse s left join carts con s.sellhouse_id=c.sellhouse_id left join users uon c.user_account=u.user_accountwhere c.cart_id is not null";
+	private static final String SELECT_BY_USERSID = "select * from carts where user_account = ?";
+	
+	public cartsBean select(String user_account){
+		
+		cartsBean result = null;
+		Connection con = null;
+		PreparedStatement stm = null;
+		ResultSet rse = null;
+		
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			stm = con.prepareStatement(SELECT_BY_USERSID);
+			stm.setString(1, user_account);
+			rse = stm.executeQuery();
+			
+			if (rse.next()) {
 
+				result = new cartsBean();
+
+				result.setCart_id(rse.getInt("cart_id"));
+				result.setUser_account(rse.getString("user_account"));
+				result.setSellhouse_id(rse.getInt("sellhouse_id"));
+				result.setRenthouse_id(rse.getInt("renthouse_id"));
+				result.setCart_date(rse.getDate("cart_date"));
+				
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if( rse != null){
+				try {
+					rse.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if( stm != null){
+				try {
+					rse.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if( con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		return result;
+	}
 	
 	
 	
+	private static final String SELECT_BY_SELECTSELLALL = "select c.cart_id , u.user_account	 , sellhouse_name  ,s.sellhouse_price	, sellhouse_patterns ,s.sellhouse_address	 , s.sellhouse_describe , s.sellhouse_size ,sellhouse_floor,  sellhouse_age , s.sellhouse_car , s.sellhouse_photo1 , s. sellhouse_photo2 , s. sellhouse_photo3 from sellhouse s left join carts c on s.sellhouse_id = c.sellhouse_id left join users u on c.user_account = u.user_account where  u.user_account = ?";
+
+	public List<cartssellBean> selectcartssell(String user_account){
+		
+		cartssellBean result = null;
+		Connection con = null;
+		PreparedStatement stm = null;
+		ResultSet rse = null;
+		
+		List<cartssellBean> startset = new ArrayList<cartssellBean>();
+		
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			stm = con.prepareStatement(SELECT_BY_SELECTSELLALL);
+			stm.setString(1, user_account);
+			rse = stm.executeQuery();
+			
+			
+		
+			while(rse.next()) {
+
+				result = new cartssellBean();
+
+				result.setCart_id(rse.getInt("cart_id"));
+				result.setUser_account(rse.getString("user_account"));
+				result.setSellhouse_name(rse.getString("sellhouse_name"));
+				result.setSellhouse_price(rse.getFloat("sellhouse_price"));
+			    result.setSellhouse_patterns(rse.getString("sellhouse_patterns"));
+			    result.setSellhouse_address(rse.getString("sellhouse_address"));
+			    result.setSellhouse_describe(rse.getString("sellhouse_describe"));
+			    result.setSellhouse_size(rse.getFloat("sellhouse_size"));
+			    result.setSellhouse_floor(rse.getString("sellhouse_floor"));
+			    result.setSellhouse_age(rse.getFloat("sellhouse_age"));
+			    result.setSellhouse_photo1(rse.getBlob("sellhouse_photo1"));
+			    result.setSellhouse_photo2(rse.getBlob("sellhouse_photo2"));
+			    result.setSellhouse_photo3(rse.getBlob("sellhouse_photo3"));
+			    			    
+			    startset.add(result);
+			
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			if(rse != null){
+				try {
+					rse.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if( stm != null){
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if(con !=null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		
+		return startset;
+				
+	} 
+	
+	
+	private static final String SELECT_BY_SELECTRENTALL ="select c.cart_id , u.user_account	 , renthouse_name  ,r.renthouse_price	, renthouse_patterns ,r.renthouse_address	 , r.renthouse_describe , r.renthouse_size ,renthouse_floor , r.renthouse_car , r.renthouse_photo1 , r. renthouse_photo2 , r. renthouse_photo3 from renthouse r left join carts c on r.renthouse_id=c.renthouse_id left join users u on c.user_account=u.user_account where  u.user_account = ? ";
+	
+	public List<cartsrentBean> selectcartsrent(String user_account){
+		
+		cartsrentBean result = null;
+		Connection con = null;
+		PreparedStatement stm = null;
+		ResultSet rse = null;
+		
+		List<cartsrentBean> startset = new ArrayList<cartsrentBean>();
+		
+		
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+			stm = con.prepareStatement(SELECT_BY_SELECTRENTALL);
+			stm.setString(1, user_account);
+			rse = stm.executeQuery();
+			
+			while (rse.next()) {
+
+				result = new cartsrentBean();
+
+				result.setCart_id(rse.getInt("cart_id"));
+				result.setUser_account(rse.getString("user_account"));
+				result.setRenthouse_name(rse.getString("renthouse_name"));
+				result.setRenthouse_price(rse.getFloat("renthouse_price"));
+			    result.setRenthouse_patterns(rse.getString("renthouse_patterns"));
+			    result.setRenthouse_address(rse.getString("renthouse_address"));
+			    result.setRenthouse_describe(rse.getString("renthouse_describe"));
+			    result.setRenthouse_size(rse.getFloat("renthouse_size"));
+			    result.setRenthouse_floor(rse.getString("renthouse_floor"));
+			    result.setRenthouse_photo1(rse.getBlob("renthouse_photo1"));
+			    result.setRenthouse_photo2(rse.getBlob("renthouse_photo2"));
+			    result.setRenthouse_photo3(rse.getBlob("renthouse_photo3"));
+
+			    
+				
+				startset.add(result);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			if(rse != null){
+				try {
+					rse.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if(stm != null){
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if(con != null){
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		return startset;
+	}
 	
 	
 	private static final String INSERT = "insert into carts (user_account,house_id,cart_date) values (?,?,getdate())";
 
-	private cartsBean insert(cartsBean bean) {
+	public cartsBean insert(cartsBean bean) {
 
 		Connection con = null;
 		PreparedStatement stm = null;
 
 		try {
-			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stm = con.prepareStatement(INSERT);
 
 			// int con1 = bean.getCart_id();
 			String con2 = bean.getUser_account();
-			int con3 = bean.getHouse_id();
+			int con3 = bean.getSellhouse_id();
+			int con4 = bean.getRenthouse_id();
 
 			// stm.setInt(1, con1);
 			stm.setString(1, con2);
 			stm.setInt(2, con3);
+			stm.setInt(3, con4);
 
 			stm.executeUpdate();
 		} catch (SQLException e) {
@@ -143,7 +424,7 @@ public class cartsDAO {
 			}
 		}
 
-		return null;
+		return bean;
 
 	}
 
@@ -155,7 +436,8 @@ public class cartsDAO {
 		PreparedStatement stm = null;
 
 		try {
-			con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stm = con.prepareStatement(DELETE);
 			stm.setInt(1, 401);
 			int i = stm.executeUpdate();

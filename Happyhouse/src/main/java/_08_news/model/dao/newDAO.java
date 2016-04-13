@@ -34,7 +34,7 @@ public class newDAO {
 
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -57,22 +57,22 @@ public class newDAO {
 
 		// 全體查詢
 
-		// List<newsBean> bean = dao.select();
-		//
-		// for(newsBean set : bean){
-		//
-		// set.getNew_id();
-		// set.getNew_title();
-		// set.getNew_describe();
-		// set.getNew_date();
-		// set.getNew_photo1();
-		// set.getNew_photo2();
-		// set.getNew_photo3();
-		//
-		// System.out.println(set);
-		//
-		//
-		// }
+		 List<newsBean> bean = dao.select();
+		
+		 for(newsBean set : bean){
+		
+		 set.getNew_id();
+		 set.getNew_title();
+		 set.getNew_describe();
+		 set.getNew_date();
+		 set.getNew_photo1();
+		 set.getNew_photo2();
+		 set.getNew_photo3();
+		
+		 System.out.println(set);
+		
+		
+		 }
 
 		// 新增
 
@@ -246,6 +246,8 @@ public class newDAO {
 				setall.setNew_photo2(rs.getBlob("new_photo2"));
 				setall.setNew_photo3(rs.getBlob("new_photo3"));
 
+			
+				
 				startset.add(setall);
 
 			}

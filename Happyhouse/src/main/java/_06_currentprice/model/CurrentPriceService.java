@@ -1,6 +1,11 @@
 package _06_currentprice.model;
 
 import java.util.ArrayList;
+
+
+
+
+
 import java.util.List;
 
 import _06_currentprice.model.dao.CurrentPriceDAOJdbc;
@@ -53,6 +58,30 @@ public class CurrentPriceService {
 		return result;
 		
 		}
+	
+	
+	
+	
+	public List<CurrentPriceBean> pick(CurrentPriceBean bean){
+		List<CurrentPriceBean> result = null;
+		if(bean.getCurrentprice_address() != null && bean.getCurrentprice_address().length()!=0){
+//							System.out.println(bean.getCurrentprice_city());
+//	       if(temp!=null){
+//	    	   result = new ArrayList<CurrentPriceBean>();
+//	    	   result.add(temp);\
+			System.out.println("rr"+bean+"ssss");
+			result = currentPriceDao.select_all_by_address(bean.getCurrentprice_address());
+			
+		}
+		System.out.println("ending");
+		System.out.println("ee"+result);
+		return result;
+		
+		}
+	
+	
+	
+	
 	
 	
 	

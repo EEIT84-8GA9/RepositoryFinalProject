@@ -1,6 +1,8 @@
-package _10_chart;
+package _10_chart.model;
 
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import _06_currentprice.model.CurrentPriceBean;
@@ -94,7 +96,7 @@ public class ChartService {
 	// 第五個方法 區 類 樓層  取 坪價 與 坪數 
 	
 	public List<CurrentPriceBean> select_oneprice_area_by_three(CurrentPriceBean bean){
-		List<CurrentPriceBean> result = null;
+		List<CurrentPriceBean> result1 = null;
 		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
 				&&	bean.getCurrentprice_bdtype() != null && bean.getCurrentprice_bdtype().length()!=0			
 				&&	bean.getCurrentprice_transes() != null && bean.getCurrentprice_transes().length()!=0	
@@ -104,13 +106,78 @@ public class ChartService {
 //	       if(temp!=null){
 //	    	   result = new ArrayList<CurrentPriceBean>();
 //	    	   result.add(temp);
-			result = currentPriceDao.select_all_by_city_type_transes(bean.getCurrentprice_city(),bean.getCurrentprice_bdtype(),bean.getCurrentprice_transes());
+			result1 = currentPriceDao.select_all_by_city_type_transes(bean.getCurrentprice_city(),bean.getCurrentprice_bdtype(),bean.getCurrentprice_transes());
 			
 		} 
-		return result;
+		return result1;
 		
 		}
 	
+	
+	
+	// 第六個方法 用區域 取     PEI圖的   類型    坪數範圍 樓層
+	
+	public List<CurrentPriceBean> select_pei_by_three_type(CurrentPriceBean bean){
+		List<CurrentPriceBean> result1 = null;
+		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
+								
+				){
+//							System.out.println(bean.getCurrentprice_city());
+//	       if(temp!=null){
+//	    	   result = new ArrayList<CurrentPriceBean>();
+//	    	   result.add(temp);
+			result1 = currentPriceDao.select_count_by_city_type(bean.getCurrentprice_city());
+			
+		} 
+		return result1;
+		
+		}
+	
+	public List<CurrentPriceBean> select_pei_by_three_area(CurrentPriceBean bean){
+		List<CurrentPriceBean> result2 = null;
+		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
+								
+				){
+//							System.out.println(bean.getCurrentprice_city());
+//	       if(temp!=null){
+//	    	   result = new ArrayList<CurrentPriceBean>();
+//	    	   result.add(temp);
+			result2 = currentPriceDao.select_count_by_city_housearea(bean.getCurrentprice_city());
+			
+		} 
+		return result2;
+		
+		}
+	
+	public List<CurrentPriceBean> select_pei_by_three_transes(CurrentPriceBean bean){
+		List<CurrentPriceBean> result3 = null;
+		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
+								
+				){
+//							System.out.println(bean.getCurrentprice_city());
+//	       if(temp!=null){
+//	    	   result = new ArrayList<CurrentPriceBean>();
+//	    	   result.add(temp);
+			result3 = currentPriceDao.select_count_by_city_transes(bean.getCurrentprice_city());
+			
+		} 
+		return result3;
+		
+		}
+	
+	
+	
+	
+	
+//result = currentPriceDao.select_by_cp_city(bean.getCurrentprice_city());
+//	
+//} else {
+//	result =currentPriceDao.select();	
+//
+//}
+//return result;
+//
+//}
 	
 	
 	

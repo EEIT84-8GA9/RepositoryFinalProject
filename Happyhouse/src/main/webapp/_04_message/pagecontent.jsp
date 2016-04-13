@@ -419,7 +419,7 @@
 				<label>訊息內容</label><br/>
 				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
 				
-				<input type="submit" id="messagesubmit" name="type"  value="討論區站內信傳送" />
+				<input type="submit" id="messagesubmit" name="type"  value="傳送" />
 				<c:if test="${not empty param}">
 				<input type="hidden" name="title" value="${param.message_title}">
 				</c:if>

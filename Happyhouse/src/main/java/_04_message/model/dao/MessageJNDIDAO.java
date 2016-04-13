@@ -24,7 +24,7 @@ public class MessageJNDIDAO {
 	public MessageJNDIDAO(){
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

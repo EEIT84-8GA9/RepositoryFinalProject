@@ -24,7 +24,7 @@ public class SmsJNDIDAO {
 	public SmsJNDIDAO(){
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

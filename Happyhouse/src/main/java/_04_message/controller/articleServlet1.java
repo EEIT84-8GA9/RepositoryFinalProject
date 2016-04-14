@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageService;
 import _04_message.model.MessageVO;
 
@@ -57,7 +57,7 @@ public class articleServlet1 extends HttpServlet {
 				if(content!=null){
 				vo.setMessage_title(title);
 				vo.setMessage_describe(content);
-				LoginVO bean=(LoginVO) session.getAttribute("LoginOK");
+				UsersBean bean=(UsersBean) session.getAttribute("LoginOK");
 				vo.setUser_account(bean.getUser_account());
 				vo.setUser_name(bean.getUser_name());
 				}

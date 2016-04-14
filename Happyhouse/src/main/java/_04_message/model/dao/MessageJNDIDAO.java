@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageVO;
 
 public class MessageJNDIDAO {
@@ -382,8 +382,8 @@ public class MessageJNDIDAO {
 		return false;
 	}
 
-	public LoginVO select_account(String user_account) {
-		LoginVO result = null;
+	public UsersBean select_account(String user_account) {
+		UsersBean result = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rset = null;
@@ -394,7 +394,7 @@ public class MessageJNDIDAO {
 			stmt.setString(1, user_account);
 			rset = stmt.executeQuery();
 			if (rset.next()) {
-				result = new LoginVO();
+				result = new UsersBean();
 				result.setUser_account(rset.getString("user_account"));
 				result.setUser_password(rset.getString("user_password"));
 				result.setUser_name(rset.getString("user_name"));

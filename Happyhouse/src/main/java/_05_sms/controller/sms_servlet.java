@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageService;
 import _04_message.model.MessageVO;
 import _05_sms.model.SmsVO;
@@ -38,7 +38,7 @@ public class sms_servlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String[] sms_id = request.getParameterValues("sms_id");
 
-		LoginVO bean = (LoginVO) session.getAttribute("LoginOK");
+		UsersBean bean = (UsersBean) session.getAttribute("LoginOK");
 		if (bean != null) {
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);

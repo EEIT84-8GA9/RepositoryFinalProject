@@ -2,6 +2,7 @@ package _04_message.model;
 
 import java.util.List;
 
+import _01_users.model.UsersBean;
 import _04_message.model.dao.MessageJNDIDAO;
 
 public class MessageService {
@@ -49,8 +50,8 @@ public class MessageService {
 		MessageVO DBVO = dao.select(title);
 		return DBVO;
 	}
-	public LoginVO login(String username, String password) {
-		LoginVO bean = dao.select_account(username);
+	public UsersBean login(String username, String password) {
+		UsersBean bean = dao.select_account(username);
 		if(bean!=null) {
 			String pass = bean.getUser_password();	//資料庫抓出的密碼
 			

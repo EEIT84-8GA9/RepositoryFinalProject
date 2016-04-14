@@ -32,7 +32,6 @@ import javax.sql.DataSource;
 public class GetImageServlet01 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private File defaultPhoto;
-  
 	public void init() throws ServletException {
 		String defaultFile = this.getInitParameter("defaultFile");
 		ServletContext application = this.getServletContext();

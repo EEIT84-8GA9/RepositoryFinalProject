@@ -77,8 +77,7 @@
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
 				
-				<form>
-					
+				<form>	
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>

@@ -3,14 +3,14 @@ $(document).ready(function(){
 	$(function() {
 		$("#reportform").dialog({
 			autoOpen: false,
-			
+			modal:true,
 			 show: {
-				 	direction:"up",
+				 	direction:"down",
 			        effect: "drop",
 			        duration: 700
 			      },
 			      hide: {
-			    	  direction:"up",
+			    	  direction:"down",
 			          effect: "drop",
 			          duration: 700
 			        }
@@ -29,13 +29,14 @@ $(document).ready(function(){
 	$(function() {
 		$("#MessageForMe").dialog({
 			autoOpen: false,
+			modal:true,
 			 show: {
-				 	direction:"up",
+				 	direction:"down",
 			        effect: "drop",
 			        duration: 700
 			      },
 			      hide: {
-			    	  direction:"up",
+			    	  direction:"down",
 			          effect: "drop",
 			          duration: 700
 			        }

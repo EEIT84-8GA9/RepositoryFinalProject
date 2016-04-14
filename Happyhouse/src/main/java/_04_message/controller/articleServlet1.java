@@ -145,6 +145,7 @@ public class articleServlet1 extends HttpServlet {
 				session.removeAttribute("add");
 //				System.out.println("回討論區");
 //				System.out.println("------------------------------------");
+				session.removeAttribute("report");
 				response.sendRedirect("_04_message/mainpage.jsp");
 				return;
 	}

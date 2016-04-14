@@ -137,9 +137,11 @@ public class sms_servlet extends HttpServlet {
 			SmsVO bean_write = service.write(vo);
 			List<MessageVO> list =messageService.getall();
 			session.setAttribute("list", list);
-			//resperror 暫時用此識別字串，因pagecontent已有
-			MessageVO resperror=messageService.select(title);
-			session.setAttribute("resperror", resperror);
+			session.removeAttribute("resp");
+			session.removeAttribute("add");
+			
+			MessageVO respopt=messageService.select(title);
+			session.setAttribute("respopt", respopt);
 			response.sendRedirect("_04_message/pagecontent.jsp");
 			return;
 		}

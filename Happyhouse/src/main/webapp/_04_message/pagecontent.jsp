@@ -73,6 +73,13 @@
 	border-left: 1px solid #c5c5c5;
 	background-color: #FFF
 }
+#form{
+	display:none;
+
+}
+#response{
+	margin:18px
+}
 </style>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <link rel="stylesheet" href="/Happyhouse/css/dialog.css"/>
@@ -87,6 +94,11 @@
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
+	});
+	$(document).ready(function(){
+	    $("#response").click(function(){
+	        $("#form").slideToggle("slow");
+	    });
 	});
 </script>
 </head>
@@ -145,11 +157,11 @@
 		</tr>
 
 	</table>
-<h2><font color="blue">${param.message_title}
+<h2><font color="blue">param${param.message_title}
 				</font>
-				<font color="blue">${add.message_title}</font>
-				<font color="blue">${resp.message_title}</font>
-				<font color="blue">${resperror.message_title}</font></h2>
+				<font color="blue">add${add.message_title}</font>
+				<font color="blue">resp${resp.message_title}</font>
+				<font color="blue">resperror${resperror.message_title}</font></h2>
 	<div class="content_box">
 			
 			<!-- 1 -->
@@ -385,6 +397,58 @@
 				</div>
 			</c:if>
 				</c:forEach>
+	<!-- resport start -->
+	<c:forEach var="messageVO" items="${list}">
+	
+	<c:if test="${respopt.message_title==messageVO.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${messageVO.user_account}">站內信給我</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<c:if test="${respopt.message_title==messageVO.message_title}">
+						<jsp:useBean id ="resp" class="_04_message.model.MessageVO" scope="page">
+							<jsp:setProperty name="resp" property="message_title" value="${respopt.message_title}" />
+						</jsp:useBean>
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button></li>
+								</c:if>
+								<c:if test="${messageVO.user_account==LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}</li>
+								</c:if>
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					</c:if>
+				</div>
+			</c:if>
+				</c:forEach>
+	<!-- resport end -->
 	</div>
 	
 	<!-- for reportReason form-->
@@ -423,14 +487,16 @@
 				<c:if test="${not empty param}">
 				<input type="hidden" name="title" value="${param.message_title}">
 				</c:if>
-				<c:if test="${not empty resperror}">	
-					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
+				<c:if test="${not empty resport}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='resp' property='message_title'/>">
 				</c:if>
 			  </form>
 		  </div>
 	<!-- end MessageForMe form -->
+	<button id="response"><h4>我要回文:</h4></button><h4><font color="red">${error.contentEmpty}</font></h4>
+	<div id="form">
 	<form action="<c:url value="/addarticle.controller" />" method="post">
-	<h3>我要回文:</h3><h4><font color="red">${error.contentEmpty}</font></h4>
+	
 		<table >
 			<tr >
 				<td ><textarea name="content" wrap="physical"
@@ -455,7 +521,7 @@
 			</tr>
 		</table>
 </form>
-
+</div>
 				</div>
 				<!--close content_text-->
 

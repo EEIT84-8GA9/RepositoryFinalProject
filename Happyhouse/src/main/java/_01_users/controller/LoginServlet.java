@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 						request, response);
 			} else {
 				HttpSession session = request.getSession();
-				session.setAttribute("user", bean);
+				session.setAttribute("LoginOK", bean);
 				String dest = (String) session.getAttribute("dest");
 				if (dest == null || dest.length() == 0) {
 					String path = request.getContextPath();
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		if(log!= null && "登出".equals(log)){
 			HttpSession session = request.getSession();
-			session.removeAttribute("user");
+			session.removeAttribute("LoginOK");
 			request.getRequestDispatcher("/_01_users/login.jsp").forward(
 					request, response);
 		}

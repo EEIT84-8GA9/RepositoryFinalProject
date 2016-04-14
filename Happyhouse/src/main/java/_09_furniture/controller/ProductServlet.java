@@ -90,7 +90,7 @@ public class ProductServlet extends HttpServlet {
 		
 		if(error!=null && !error.isEmpty()) {
 			request.getRequestDispatcher(
-					"/pages/product.jsp").forward(request, response);
+					"/_09_furniture/product.jsp").forward(request, response);
 			return;
 		}
 		

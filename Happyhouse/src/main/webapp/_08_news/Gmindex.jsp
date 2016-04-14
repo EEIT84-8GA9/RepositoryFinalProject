@@ -24,7 +24,7 @@
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>管理者頁面</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
@@ -34,8 +34,6 @@
 							<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理員首頁</a></li>
 						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>
 						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
-						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>
 						<c:if test="${empty user}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>

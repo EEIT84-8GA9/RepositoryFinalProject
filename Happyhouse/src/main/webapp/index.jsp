@@ -35,12 +35,12 @@
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>						
 						<c:if test="${empty LoginOK}">
 						<li><a href="_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>

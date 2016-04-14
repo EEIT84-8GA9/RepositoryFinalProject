@@ -12,11 +12,14 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
 </script>
+
+
 </head>
 
 <body>
@@ -31,7 +34,7 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
-						<li><a href="ourwork.html">刊登出售</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouse.jsp">刊登出售</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新(暫時)</a></li>
@@ -47,6 +50,18 @@
 				</div>
 				<!--close menubar-->
 			</div>
+			<!-- 搜尋 -->
+<%-- 			<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post"> --%>
+<!-- 				<div id="rearch"> -->
+<!-- 					<select name="selection"> -->
+<!-- 　					<option value="rent">出租</option> -->
+<!-- 　					<option value="sell">出售</option> -->
+<!-- 					</select> -->
+<%-- 				<input type="text" name="sellhouse_name" value="${param.sellhouse_name}" value="標題搜尋"> --%>
+<!-- 				<input type="submit" value="搜尋" name="prodaction"/> -->
+<!-- 				</div> -->
+<!-- 				</form> -->
+			<!-- 搜尋 -->
 			<c:if test="${not empty LoginOK}">
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>

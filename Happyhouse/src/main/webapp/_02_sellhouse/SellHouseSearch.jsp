@@ -30,7 +30,7 @@
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
-						<li class="current"><a href="index.jsp">首頁</a></li>
+						<li class="current"><a href="../index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">刊登出售</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
@@ -115,8 +115,6 @@
 </table>
 <table>                                                                 
 </form>
-
-
 <c:if test="${not empty select}">
 		<table border=1 cellpadding=20 >
 <!-- 			<thead> -->
@@ -154,8 +152,7 @@
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
 						
 					</c:url>
-					<tr>
-						
+					<tr>	
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
 						<h3>${row.sellhouse_address}</h5>

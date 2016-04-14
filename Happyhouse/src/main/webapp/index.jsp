@@ -31,7 +31,7 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouse.jsp">出售專區</a>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 <!-- 						<ul> -->
 <!-- 						<li><a href="#">搜尋出售</a></li> -->
 <!--                         <li><a href="#">刊登出售</a></li> -->

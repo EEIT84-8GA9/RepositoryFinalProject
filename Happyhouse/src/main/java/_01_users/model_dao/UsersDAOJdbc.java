@@ -1,10 +1,12 @@
 package _01_users.model_dao;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import _01_users.model.UsersBean;
@@ -54,7 +56,7 @@ public class UsersDAOJdbc implements UserDAO {
 		try {
 			
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	//		conn = dataSource.getConnection();
+//			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(ONE_USER_SELECT);
 			pstmt.setString(1, user_account);
 			rs = pstmt.executeQuery();

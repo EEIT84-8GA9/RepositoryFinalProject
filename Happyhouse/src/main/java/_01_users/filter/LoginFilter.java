@@ -24,8 +24,8 @@ import _01_users.model.UsersBean;
  * Servlet Filter implementation class LoginFilter
  */
 @WebFilter(urlPatterns = { "/*" }, initParams = {
-		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
-		@WebInitParam(name = "url_2", value = "/sms.controller"),
+//		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
+//		@WebInitParam(name = "url_2", value = "/sms.controller"),
 //		@WebInitParam(name = "url_3", value = "/ch05_09/*"),
 //		@WebInitParam(name = "url_4", value = "/ch07_02/*") 
 		})

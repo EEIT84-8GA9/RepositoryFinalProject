@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 @WebServlet(
 		urlPatterns={"/image3"},
 		initParams={
-				@WebInitParam(name="defaultFile", value="/img/x.png")
+				@WebInitParam(name="defaultFile", value="/img/samplehouse.jpg")
 		}
 		)
 public class GetImageServlet03 extends HttpServlet {
@@ -47,7 +47,6 @@ public class GetImageServlet03 extends HttpServlet {
 		Connection conn=null;
 		OutputStream os3=null;
 		InputStream is3=null;
-		InputStream is4=new FileInputStream("C:/Users/Public/Pictures/Sample Pictures/3.jpg");
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		DataSource dataSource;

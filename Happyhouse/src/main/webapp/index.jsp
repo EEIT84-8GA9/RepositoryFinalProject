@@ -18,10 +18,7 @@
 		$('#slider').nivoSlider();
 	});
 </script>
-
-
 </head>
-
 <body>
 	<div id="main">
 		<div id="site_content">
@@ -34,7 +31,7 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouse.jsp">刊登出售</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">刊登出售</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>

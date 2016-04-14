@@ -18,13 +18,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import _02_sellhouse.model.SellHouseBean;
+import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
-//@WebFilter(
-//		urlPatterns = { "/_02_sellhouse/*" }, 
-//		initParams = { 
-//				@WebInitParam(name = "sellhouse", value = "/_02_sellhouse/*"), 			
-//		}
-//		)
+import _02_sellhouse.model.dao.SellHouseDAOJdbc;
+@WebFilter(
+		urlPatterns = { "/_02_sellhouse/SellHouseSearch.jsp" }, 
+		initParams = { 
+	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/SellHouseSearch.jsp"), 			
+		}
+		)
 public class SellHouseFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
@@ -38,15 +40,13 @@ public class SellHouseFilter implements Filter {
 			String path = e.nextElement();
 			url.add(fConfig.getInitParameter(path));
 		}
-		System.out.println(url);			
+		System.out.println("AAAA"+url);			
 	}
-	
-	
 	private boolean mustLogin(){
 		boolean login=false;
 		for(String sURL:url){
 			if(sURL.endsWith("*")){
-				sURL = sURL.substring(0, sURL.length() - 1);
+				sURL = sURL.substring(0, sURL.length() - 2);
 				if (servletPath.startsWith(sURL)) {
 					login = true;
 					break;
@@ -64,23 +64,20 @@ public class SellHouseFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("台北市");
+		System.out.println("AAAAAAAAAAAAAA");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		System.out.println("台北市");
 		servletPath = req.getServletPath();  
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
-		if(mustLogin()){
-			SellHouseService service=new SellHouseService();
-			SellHouseBean bean=new SellHouseBean();
-			bean.setSellhouse_id(103);
-			List<SellHouseBean> result=service.select(bean);
-			System.out.println("台北市");
+		
+			System.out.println("AAAAAAAAAAAAAA");
+			SellHouseDAO dao=new SellHouseDAOJdbc();
+			//SellHouseBean bean=new SellHouseBean();
+			 List<SellHouseBean> result =dao.SELECT_ALL();
 			System.out.println(result);
 			req.setAttribute("select", result);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouseView.jsp").forward(req, resp);
-		}
+			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
 		
 	}
 

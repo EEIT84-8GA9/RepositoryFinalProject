@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+
+
+import _01_users.model.UsersBean;
 import _05_sms.model.SmsVO;
+import _05_sms.model.sms_service;
 import _08_news.model.NewsService;
 import _08_news.model.newsBean;
 import _08_news.model.dao.newDAO;
@@ -23,6 +27,7 @@ import _08_news.model.dao.newDAO;
 
 @WebServlet(urlPatterns = { "/test.controller" })
 public class NewsServlet extends HttpServlet {
+	private sms_service servicelogin = new sms_service();
 	private NewsService service = new NewsService();
 	private static final long serialVersionUID = 1L;
 
@@ -41,7 +46,7 @@ public class NewsServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
 
@@ -58,6 +63,7 @@ public class NewsServlet extends HttpServlet {
 		System.out.println(temp2);
 		System.out.println(temp3);
 		System.out.println(newsupdate);
+		
 		// 轉換HTML的資料
 
 		int id = 0;
@@ -80,7 +86,7 @@ public class NewsServlet extends HttpServlet {
 			}
 		}
 
-		if ("Update".equals(newsupdate) || "Delete".equals(newsupdate)) {
+		if ("更新首頁資訊".equals(newsupdate) || "Delete".equals(newsupdate)) {
 			if (temp3 == null || temp3.trim().length() == 0) {
 				error.put("updateid", "編號不能空白,請先輸入編號" + newsupdate);
 			}
@@ -106,7 +112,7 @@ public class NewsServlet extends HttpServlet {
 
 		// 根據Model執行姐果顯示View
 
-		if ("Select".equals(newsupdate)) {
+		if ("看目前的首頁資訊".equals(newsupdate)) {
 			List<newsBean> result = service.select(bean);
 			System.out.println(result);
 			newsBean datebean = new newsBean();
@@ -141,7 +147,7 @@ public class NewsServlet extends HttpServlet {
 					.forward(request, response);
 		} else if
 
-		(newsupdate != null && newsupdate.equals("Update")) {
+		(newsupdate != null && newsupdate.equals("更新首頁資訊")) {
 
 			newsBean result = service.update(bean);
 			newsBean datebean = new newsBean();

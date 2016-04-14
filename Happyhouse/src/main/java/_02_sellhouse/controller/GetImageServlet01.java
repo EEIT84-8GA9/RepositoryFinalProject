@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 @WebServlet(
 		urlPatterns={"/image1"},
 		initParams={
-				@WebInitParam(name="defaultFile", value="/img/x.png")
+				@WebInitParam(name="defaultFile", value="/img/samplehouse.jpg")
 		}
 		)
 public class GetImageServlet01 extends HttpServlet {

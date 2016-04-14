@@ -51,15 +51,22 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			
-			<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post">
-<table>
-<tr>
-<td>請輸入地址</td>
-<td><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td>
-<td><input type="submit" value="搜尋" name="prodaction"/></td>
-</tr>
-</table>
+			<div style="padding-left:150px">
+		<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post" >
+		
+		<fieldset>
+		<legend>房屋查詢</legend>
+	<div style="padding-left:200px;width:50%;height:50%"><input  style="height:50%" type="text" name="sellhouse_address"  >
+	<input type="submit" value="搜尋" name="prodaction"/>
+	</div>
+	</fieldset>
+<!-- <table> -->
+<!-- <tr> -->
+<!-- <td>請輸入地址</td> -->
+<%-- <td ><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td> --%>
+<!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
+<!-- </tr> -->
+<!-- </table> -->
 <table>
 <tr>
 <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
@@ -111,21 +118,20 @@
 
 
 <c:if test="${not empty select}">
-		<table>
-			<thead>
-				<th>sellhouse_name</th>
-				<th>sellhouse_price</th>
-				<th>sellhouse_patterns</th>
-				<th>sellhouse_address</th>
-				<th>sellhouse_describe</th>
-				<th>sellhouse_size</th>
-				<th>sellhouse_floor</th>
-				<th>sellhouse_age</th>
-				<th>sellhouse_date</th>
-				<th>sellhouse_car</th>
-				<th>sellhouse_phone</th>
-				<th>sellhouse_email</th>
-			</thead>
+		<table border=1 cellpadding=20 >
+<!-- 			<thead> -->
+<!-- 				<th>標題</th> -->
+<!-- 				<th>價格</th> -->
+<!-- 				<th>格局</th> -->
+<!-- 				<th>地址</th> -->
+<!-- 				<th>描述</th> -->
+<!-- 				<th>坪數</th> -->
+<!-- 				<th>樓層</th> -->
+<!-- 				<th>屋齡</th> -->
+<!-- 				<th>刊登日期</th> -->
+<!-- 				<th>車位</th> -->
+
+<!-- 			</thead> -->
 			<tbody>
 				<c:forEach var="row" items="${select}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
@@ -149,27 +155,24 @@
 						
 					</c:url>
 					<tr>
-						<td><a href="${path}">${row.sellhouse_name}</a></td>
+						
+					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
+						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
+						<h3>${row.sellhouse_address}</h5>
+						<h3>${row.sellhouse_patterns}</h3>
+						</td>
 						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_patterns}</td>
-						<td>${row.sellhouse_address}</td>
-						<td>${row.sellhouse_describe}</td>
 						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_floor}</td>
-						<td>${row.sellhouse_age}</td>
 						<td>${row.sellhouse_date}</td>
-						<td>${row.sellhouse_car}</td>
-						<td>${row.sellhouse_phone}</td>
-						<td>${row.sellhouse_email}</td>
-						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</c:if>
-			
+			</div>
 			
 			
 		<!--close site_content-->

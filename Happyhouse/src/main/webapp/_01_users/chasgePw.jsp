@@ -8,17 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Welcome ${user.user_name}</h3>
+<h3>Welcome ${LoginOK.user_name}</h3>
 <form action="<c:url value="/secure/login.controller" />" method="get">
 <table>	
     <tr>
 		<td>您的登入帳號: </td>
-		<td><input type="text" name="username" value="${user.user_account}"></td>
+		<td><input type="text" name="username" value="${LoginOK.user_account}"></td>
 		<td>${error.username}</td>
 	</tr>
 	<tr>
 		<td>您的原密碼 : </td>
-		<td><input type="text" name="password" value="${user.user_password}"></td>
+		<td><input type="text" name="password" value="${LoginOK.user_password}"></td>
 		<td>${error.password}</td>
 	</tr>
 	<tr>

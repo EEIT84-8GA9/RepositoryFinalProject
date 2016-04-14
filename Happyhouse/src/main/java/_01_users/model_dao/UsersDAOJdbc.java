@@ -10,8 +10,6 @@ import javax.sql.DataSource;
 
 import _01_users.model.UsersBean;
 
-
-
 public class UsersDAOJdbc implements UserDAO {
 	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender) values(?,?,?,?,?,?,?)";
 	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
@@ -22,25 +20,27 @@ public class UsersDAOJdbc implements UserDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	private DataSource dataSource;
-//	public UsersDAOJdbc() {
-//		try {
-//			Context ctx = new InitialContext();
-//			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	UsersDAOJdbc ud = new UsersDAOJdbc();
+
+	// public UsersDAOJdbc() {
+	// try {
+	// Context ctx = new InitialContext();
+	// dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
+	// } catch (NamingException e) {
+	// e.printStackTrace();
+	// }
+	// }
 	public static void main(String[] args) throws SQLException {
 		UserDAO ud = new UsersDAOJdbc();
 		// System.out.println(ud.select("Cat777"));
 		List<UsersBean> users = ud.selectAll();
 		// ud.runSelectAll(users);
 		UsersBean user = new UsersBean();
-	
+
 		// System.out.print(ud.update(user));
-	    //	ud.insert(user);
-		//System.out.println(ud.insert(ud.insertdata(user)));
-      
+		// ud.insert(user);
+		// System.out.println(ud.insert(ud.insertdata(user)));
+
 	}
 
 	private static final String ONE_USER_SELECT = "select *  from users where user_account=? ";
@@ -76,27 +76,7 @@ public class UsersDAOJdbc implements UserDAO {
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		  ud.closeAllConn();
 
 		}
 		return result;
@@ -117,7 +97,7 @@ public class UsersDAOJdbc implements UserDAO {
 
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	//		conn = dataSource.getConnection();
+			// conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(All_USER_SELECT);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -131,11 +111,11 @@ public class UsersDAOJdbc implements UserDAO {
 				user.setUser_type(rs.getString("user_type"));
 				user.setUser_photo(rs.getBytes("user_photo"));
 				users.add(user);
-
-			}
+             }
 		} catch (SQLException e) {
-
-			e.printStackTrace();
+           e.printStackTrace();
+		}finally{
+			 ud.closeAllConn();
 		}
 
 		return users;
@@ -173,34 +153,35 @@ public class UsersDAOJdbc implements UserDAO {
 	public int update(UsersBean user) throws SQLException {
 		int updatecount = 0;
 		try {
-			
-		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-		PreparedStatement pstmt = conn.prepareStatement(USER_UPDATE);
-		pstmt.setString(1, user.getUser_password());
-		pstmt.setString(2, user.getUser_address());
-		pstmt.setString(3, user.getUser_phone());
-		pstmt.setString(4, user.getUser_email());
-		pstmt.setString(5, user.getUser_type());
-		pstmt.setString(6, user.getUser_account());
-		updatecount = pstmt.executeUpdate();
-	} catch (SQLException e) {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-				e.printStackTrace();
-			}
-		
+			PreparedStatement pstmt = conn.prepareStatement(USER_UPDATE);
+			pstmt.setString(1, user.getUser_password());
+			pstmt.setString(2, user.getUser_address());
+			pstmt.setString(3, user.getUser_phone());
+			pstmt.setString(4, user.getUser_email());
+			pstmt.setString(5, user.getUser_type());
+			pstmt.setString(6, user.getUser_account());
+			updatecount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally{
+			 ud.closeAllConn();
+		}
+
 		return updatecount;
-		
-	
+
 	}
 
 	@Override
-	public int insert(UsersBean user)  {
-		
+	public int insert(UsersBean user) {
+
 		int insertcount = 0;
 		PreparedStatement pstmt = null;
 		try {
-			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);	
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			pstmt = conn.prepareStatement(USER_INSERT);
 			pstmt.setString(1, user.getUser_account());
 			pstmt.setString(2, user.getUser_password());
@@ -212,33 +193,12 @@ public class UsersDAOJdbc implements UserDAO {
 			insertcount = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
-			if (pstmt !=null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
+		} finally{
+				 ud.closeAllConn();
 			}
-			
-			if (conn !=null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
-			}
-			
-		}
-		
-	
-		
-	
-	return insertcount;
-	}
 
+		return insertcount;
+	}
 
 	@Override
 	public UsersBean insertdata(UsersBean user) {
@@ -252,5 +212,21 @@ public class UsersDAOJdbc implements UserDAO {
 
 		return user;
 
+	}
+
+	private void closeAllConn() {
+		try {
+			if (this.rs != null) {
+				rs.close();
+			}
+			if (this.pstmt != null) {
+				pstmt.close();
+			}
+			if (this.conn != null) {
+				conn.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

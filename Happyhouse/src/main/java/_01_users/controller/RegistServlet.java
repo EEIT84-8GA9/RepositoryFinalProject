@@ -89,9 +89,8 @@ public class RegistServlet extends HttpServlet {
 		System.out.print(bean);
 		// 根據Model執行結果顯示View
 		if (bean != null) {
-			System.out.print("GOOD");
-			HttpSession session = request.getSession();
-			session.setAttribute("user", bean);
+            HttpSession session = request.getSession();
+			session.setAttribute("LoginOK", bean);
 			String dest = (String) session.getAttribute("dest");
 			if (dest == null || dest.length() == 0) {
 				String path = request.getContextPath();

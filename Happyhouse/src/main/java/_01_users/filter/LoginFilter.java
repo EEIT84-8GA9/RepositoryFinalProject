@@ -15,7 +15,9 @@ import javax.servlet.http.HttpSession;
 import _01_users.model.UsersBean;
 
 
+
 @WebFilter("/_01_users/*, /_09_furniture/*,/_08_news/*,/_07_carts/*")
+
 public class LoginFilter implements Filter {
 
 	@Override
@@ -31,7 +33,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) resq;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpSession Session = request.getSession();
-		UsersBean bean = (UsersBean) Session.getAttribute("user");
+		UsersBean bean = (UsersBean) Session.getAttribute("LoginOK");
 		if (bean != null) {
 			chain.doFilter(request, response);
 		} else {

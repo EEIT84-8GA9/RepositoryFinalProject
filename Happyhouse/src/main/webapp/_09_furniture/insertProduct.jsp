@@ -8,20 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>${user.user_name} 您好</h3>
+<h3>${LoginOK.user_name} 您好</h3>
 <form action="<c:url value="/pages/product.controller" />" method="get">
 	<table>
 	 <tr>
-		<td>帳號:   ${user.user_account} </td>
+		<td>帳號:   ${LoginOK.user_account} </td>
 	</tr>
 		<tr>
 		<td>ID : </td>
-		<td><input type="text" name="xxx1" value="${user.user_name}" onblur="doBlur()" onfocus="clearForm()"></td>
+		<td><input type="text" name="xxx1" value="${LoginOK.user_name}" onblur="doBlur()" onfocus="clearForm()"></td>
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
 	<tr>
 		<td>Name : </td>
-		<td><input type="text" name="xxx" value="${user.user_account}"></td>
+		<td><input type="text" name="xxx" value="${LoginOK.user_account}"></td>
 		<td></td>
 	</tr>
 <tr>

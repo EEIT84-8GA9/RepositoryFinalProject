@@ -142,7 +142,7 @@ public class SellHouseServlet extends HttpServlet {
 			System.out.println(bean.getSellhouse_address());
 			List<SellHouseBean> result=sellHouseService.select(bean);
 			request.setAttribute("select", result);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouse.jsp").forward(request, response);
+			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 			
 		}else if(prodaction!=null&&"新增".equals(prodaction)){
 			bean.setUser_account(user_account);

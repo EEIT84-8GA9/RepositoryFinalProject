@@ -44,9 +44,9 @@
 <body>
 <div id="allpage">
 <form action="<c:url value="/house/house.controller"/>"method="post">
-<c:if test="${not empty select}">
+<c:if test="${not empty param}">
 		<div id="content">
-			<article class=>
+			<article>
 				<h2>${param.sellhouse_name}</h2>
 				<figure>
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
@@ -64,7 +64,7 @@
 				<fieldset>
 					<legend>聯絡資訊</legend>
 					<div id="content">
-					<img src="/Happyhouse/images/phone.jpg" width="50px" padding-bottom="10px">
+					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
 					<label>${param.sellhouse_phone}</label><br>
 					</div>
 					<br>
@@ -77,7 +77,8 @@
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
 				
-				<form>	
+				<form>
+					
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>

@@ -18,10 +18,7 @@
 		$('#slider').nivoSlider();
 	});
 </script>
-
-
 </head>
-
 <body>
 	<div id="main">
 		<div id="site_content">

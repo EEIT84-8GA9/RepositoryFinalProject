@@ -26,13 +26,12 @@ import javax.sql.DataSource;
 @WebServlet(
 		urlPatterns={"/image1"},
 		initParams={
-				@WebInitParam(name="defaultFile", value="/img/x.png")
+				@WebInitParam(name="defaultFile", value="/img/samplehouse.jpg")
 		}
 		)
 public class GetImageServlet01 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private File defaultPhoto;
-  
 	public void init() throws ServletException {
 		String defaultFile = this.getInitParameter("defaultFile");
 		ServletContext application = this.getServletContext();

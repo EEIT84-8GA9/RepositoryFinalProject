@@ -166,6 +166,8 @@ public class MessageJNDIDAO {
 				vo.setMessage_type(rset.getString("message_type"));
 				vo.setMessage_id(rset.getInt("message_id"));
 				vo.setMessage_actiontype(rset.getString("message_actiontype"));
+				vo.setMessage_reportfrom(rset.getString("message_reportfrom"));
+				vo.setMessage_reportreason(rset.getString("message_reportreason"));
 				result.add(vo);
 			}
 		} catch (SQLException e) {

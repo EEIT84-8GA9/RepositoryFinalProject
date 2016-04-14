@@ -2,10 +2,23 @@ $(document).ready(function(){
 	
 	$(function() {
 		$("#reportform").dialog({
-			autoOpen: false
+			autoOpen: false,
+			
+			 show: {
+				 	direction:"up",
+			        effect: "drop",
+			        duration: 700
+			      },
+			      hide: {
+			    	  direction:"up",
+			          effect: "drop",
+			          duration: 700
+			        }
+			
 		});
 		$(".buttonReport").on("click", function() {
 			$("#reportform").dialog("open");
+			 
 		});
 	});
 	$(".buttonReport").click(function() {
@@ -15,7 +28,17 @@ $(document).ready(function(){
 	
 	$(function() {
 		$("#MessageForMe").dialog({
-			autoOpen: false
+			autoOpen: false,
+			 show: {
+				 	direction:"up",
+			        effect: "drop",
+			        duration: 700
+			      },
+			      hide: {
+			    	  direction:"up",
+			          effect: "drop",
+			          duration: 700
+			        }
 		});
 		$(".MessageButton").on("click", function() {
 			$("#MessageForMe").dialog("open");

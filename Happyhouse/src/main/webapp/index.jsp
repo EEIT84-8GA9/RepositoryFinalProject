@@ -34,10 +34,9 @@
 						<li><a href="ourwork.html">刊登出售</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
-						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新(暫時)</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<c:if test="${empty user}">
 						<li><a href="_01_users/login.jsp">會員登入</a></li>
 						</c:if>

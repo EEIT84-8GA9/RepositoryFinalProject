@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageVO;
 
 public class MessageJDBCDAO {
@@ -289,8 +289,8 @@ public class MessageJDBCDAO {
 		return false;
 	}
 
-	public LoginVO select_account(String user_account) {
-		LoginVO result = null;
+	public UsersBean select_account(String user_account) {
+		UsersBean result = null;
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rset = null;
@@ -301,7 +301,7 @@ public class MessageJDBCDAO {
 			stmt.setString(1, user_account);
 			rset = stmt.executeQuery();
 			if (rset.next()) {
-				result = new LoginVO();
+				result = new UsersBean();
 				result.setUser_account(rset.getString("user_account"));
 				result.setUser_password(rset.getString("user_password"));
 			}
@@ -383,7 +383,7 @@ public class MessageJDBCDAO {
 //		dao.delete(209);
 //		System.out.println("刪除成功");
 		
-		LoginVO vo=dao.select_account("Alex123");
+		UsersBean vo=dao.select_account("Alex123");
 		System.out.println("User_password : "+vo.getUser_password());
 		System.out.println("User_account : "+vo.getUser_account());
 	}

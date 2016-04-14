@@ -1,13 +1,17 @@
 package _01_users.model_dao;
-
 import java.sql.*;
 import java.util.*;
 
-import _01_users.model.UserDAO;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import _01_users.model.UsersBean;
 
 
 public class UsersDAOJdbc implements UserDAO {
+	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender) values(?,?,?,?,?,?,?)";
 	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
 	private static final String USERNAME = "sa";
 	private static final String PASSWORD = "sa123456";
@@ -15,16 +19,26 @@ public class UsersDAOJdbc implements UserDAO {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-
+	private DataSource dataSource;
+//	public UsersDAOJdbc() {
+//		try {
+//			Context ctx = new InitialContext();
+//			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	public static void main(String[] args) throws SQLException {
 		UserDAO ud = new UsersDAOJdbc();
 		// System.out.println(ud.select("Cat777"));
 		List<UsersBean> users = ud.selectAll();
 		// ud.runSelectAll(users);
 		UsersBean user = new UsersBean();
+	
 		// System.out.print(ud.update(user));
-		System.out.println(ud.insert(ud.insertdata(user)));
-
+	    //	ud.insert(user);
+		//System.out.println(ud.insert(ud.insertdata(user)));
+      
 	}
 
 	private static final String ONE_USER_SELECT = "select *  from users where user_account=? ";
@@ -38,7 +52,9 @@ public class UsersDAOJdbc implements UserDAO {
 	public UsersBean select(String user_account) {
 
 		try {
+			
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+	//		conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(ONE_USER_SELECT);
 			pstmt.setString(1, user_account);
 			rs = pstmt.executeQuery();
@@ -99,6 +115,7 @@ public class UsersDAOJdbc implements UserDAO {
 
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+	//		conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(All_USER_SELECT);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -153,6 +170,10 @@ public class UsersDAOJdbc implements UserDAO {
 	@Override
 	public int update(UsersBean user) throws SQLException {
 		int updatecount = 0;
+		try {
+			
+		conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
 		PreparedStatement pstmt = conn.prepareStatement(USER_UPDATE);
 		pstmt.setString(1, user.getUser_password());
 		pstmt.setString(2, user.getUser_address());
@@ -161,39 +182,65 @@ public class UsersDAOJdbc implements UserDAO {
 		pstmt.setString(5, user.getUser_type());
 		pstmt.setString(6, user.getUser_account());
 		updatecount = pstmt.executeUpdate();
+	} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		
 		return updatecount;
+		
+	
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see model.dao.UserDAO#insert(model.UsersBean)
-	 */
 	@Override
-	public int insert(UsersBean user) throws SQLException {
+	public int insert(UsersBean user)  {
+		
 		int insertcount = 0;
-		PreparedStatement pstmt = conn.prepareStatement(USER_INSERT);
-
-		pstmt.setString(1, user.getUser_account());
-		pstmt.setString(2, user.getUser_password());
-		pstmt.setString(3, user.getUser_name());
-		pstmt.setString(4, user.getUser_address());
-		pstmt.setString(5, user.getUser_phone());
-		pstmt.setString(6, user.getUser_email());
-		pstmt.setString(7, user.getUser_gender());
-		insertcount = pstmt.executeUpdate();
-
-		return insertcount;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);	
+			pstmt = conn.prepareStatement(USER_INSERT);
+			pstmt.setString(1, user.getUser_account());
+			pstmt.setString(2, user.getUser_password());
+			pstmt.setString(3, user.getUser_name());
+			pstmt.setString(4, user.getUser_address());
+			pstmt.setString(5, user.getUser_phone());
+			pstmt.setString(6, user.getUser_email());
+			pstmt.setString(7, user.getUser_gender());
+			insertcount = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			if (pstmt !=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			
+			if (conn !=null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+	
+		
+	
+	return insertcount;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see model.dao.UserDAO#insertdata(model.UsersBean)
-	 */
+
 	@Override
 	public UsersBean insertdata(UsersBean user) {
-		user.setUser_account("xxx3");
+		user.setUser_account("xx5520");
 		user.setUser_password("xxx");
 		user.setUser_name("xxx");
 		user.setUser_phone("09555555");

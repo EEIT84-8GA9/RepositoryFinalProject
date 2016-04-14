@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _04_message.model.LoginVO;
+import _05_sms.model.SmsVO;
 import _08_news.model.NewsService;
 import _08_news.model.newsBean;
 import _08_news.model.dao.newDAO;
@@ -42,6 +44,7 @@ public class NewsServlet extends HttpServlet {
 //		HttpSession session = request.getSession();
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
+
 
 		// 接收HTML的資料
 

@@ -49,8 +49,11 @@
 <table>
 			<tbody>
 			<tr style="border: 1px solid black;">
-				<td>請輸入帳號</td>
-				<td><input type="text" name="user_account" value="">${error.sell}${error.non}</td>
+			<c:if test="${not empty LoginOK}">
+			<h1 align="center"><font color=blue>${LoginOK.user_name}歡迎來到你的-個人收藏</font></h1>
+			</c:if>
+<!-- 				<td>請輸入帳號</td> -->
+<%-- 				<td><input type="text" name="user_account" value="">${error.sell}${error.non}</td> --%>
 			</tr>
 				<tr>
 		           <td style="border: 1px solid black;"><input type="submit"

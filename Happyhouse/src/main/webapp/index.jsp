@@ -31,16 +31,28 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">刊登出售</a></li>
-						<li><a href="testimonials.html">刊登出租</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouse.jsp">出售專區</a>
+<!-- 						<ul> -->
+<!-- 						<li><a href="#">搜尋出售</a></li> -->
+<!--                         <li><a href="#">刊登出售</a></li> -->
+<!--                         <li><a href="#">查詢出售收藏</a></li> -->
+<!-- 						</ul> -->
+						</li>
+						<li><a href="testimonials.html">刊登出租</a>
+<!-- 						<ul> -->
+<!-- 						<li><a href="#">搜尋出租</a></li> -->
+<!--                         <li><a href="#">刊登出租</a></li> -->
+<!--                         <li><a href="#">查詢出租收藏</a></li> -->
+<!-- 						</ul> -->
+						</li>
 						<li><a href="addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">家具</a></li>						
 						<c:if test="${empty LoginOK}">
 						<li><a href="_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
@@ -69,15 +81,15 @@
 						<img src="images/1.jpg" alt="" /> <img src="images/2.jpg" alt="" />
 						<img src="images/3.jpg" alt="" />
 					</div>
-					<!--close slider-->
+<!-- 					close slider -->
 				</div>
-				<!--close slider_wrapper-->
+<!-- 				close slider_wrapper -->
 			</div>
 			<!--close banner_image-->
 			<div id="content">
 				<div class="content_item">
                     <h1>${select.one.new_title}</h1>
-					<p>${select.one.new_describe}</p>
+						<p>${select.one.new_describe}</p>
 				</div>
 				<!--close content_item-->
 				<div class="content_image">

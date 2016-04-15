@@ -52,12 +52,13 @@
 			</c:if>
 			<!--close header-->
 			<div style="padding-left:150px">
-		<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post" >
+		<form  action="<c:url value="/house/house.controller"/>"method="post" >
 		<fieldset>
 		<legend>房屋查詢</legend>
 	<div style="padding-left:200px;width:50%;height:50%">
 	<label>選擇搜尋方式</label>
-	<select name="choise">
+	
+	<select name="choise" value="標題">
 	<option value="address">地址</option>
 	<option value="name">標題</option>
 	<option value="price">價格</option>

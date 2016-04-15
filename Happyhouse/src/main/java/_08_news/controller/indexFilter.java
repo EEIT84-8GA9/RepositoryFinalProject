@@ -32,7 +32,7 @@ import _08_news.model.dao.newDAO;
 		urlPatterns = { "/*" }, 
 		initParams = { 
 				@WebInitParam(name = "mustLogin1", value = "/index/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/_04_ShoppingCart/*"), 
+				@WebInitParam(name = "mustLogin2", value = "/_10_chart.controller/*"), 
 				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
 				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
 		})
@@ -176,7 +176,7 @@ public class indexFilter implements Filter {
 
 		req.setAttribute("select", map);
 		System.out.println(map);
-		request.getRequestDispatcher("index.jsp").forward(req, resp);
+		request.getRequestDispatcher("/index.jsp").forward(req, resp);
 //	    resp.sendRedirect("index.jsp");
 	}else{   //不需要登入
 				chain.doFilter(request, response);

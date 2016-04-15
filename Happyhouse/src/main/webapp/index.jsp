@@ -177,15 +177,17 @@
 				<!--close menubar-->
 			</div>
 			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			<h1 align="center">${LoginOK.user_name}你好</h1>
 			</c:if>
 			<!--close header-->
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
  						    <img src="/Happyhouse/images/house.jpg" alt="" /> 
+
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
+
 <!-- 					</div> -->
 <!-- <!-- 					close slider --> 
 <!-- 				</div> -->

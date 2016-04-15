@@ -25,9 +25,9 @@ $(document).ready(function(){
 	function TextArea1WordCount1()
 	{
 	//允許輸入最大長度
-	var intMaxLength = 500;
+	var intMaxLength = 25;
 	//文字輸入//取得計算字數的物件塊
-	TextArea1 = document.getElementById("sms_describe");
+	TextArea1 = document.getElementById("sms_title");
 	
 	//取得計算字數的物件 
 	lblWordCountNow = document.getElementById("2blWordCountNow");
@@ -37,7 +37,7 @@ $(document).ready(function(){
 	//比對字數是否超過允許長度
 	if (TextArea1.value.length > intMaxLength)
 	{
-		alert("字數超過50字，請修正!");
+		alert("字數超過25字，請修正!");
 	  
 	}
 
@@ -97,7 +97,7 @@ $(document).ready(function(){
 		});
 		$(".MessageButton").on("click", function() {
 			$("#MessageForMe").dialog("open"),
-			$("#sms_describe").keyup(function(){
+			$("#sms_title").keyup(function(){
 			     TextArea1WordCount1();
 			    });
 		});

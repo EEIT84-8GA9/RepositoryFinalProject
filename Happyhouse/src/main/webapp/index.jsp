@@ -12,6 +12,112 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/AddressSelectList.js"></script>
+<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以下偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
+<script type="text/javascript">
+//       google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
+      google.charts.load('current', {packages: ['bar','corechart', 'line']});      
+      google.charts.setOnLoadCallback(drawChart);
+      //下圖為 單一區 類型圖~
+      //24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入
+      function drawChart() {
+    	  <c:choose> 
+    	  <c:when test="${select.data_result3 != null}" >   
+    	  var data = google.visualization.arrayToDataTable([
+    	   ['區域','辦公大樓','住宅大樓', '公寓(5樓以下)','套房','店面','其它','透天厝','華廈(10樓以下)'],
+    	   ['大安區',<c:forEach var="hikari2" items="${select.data_result3}">
+    	   ${hikari2.avgoneprice_by_city_type},</c:forEach>],]);
+    	  </c:when>     
+    	  <c:when test="${Choose1 != null}">   
+    	  var data = google.visualization.arrayToDataTable([
+    	   ['區域','辦公大樓','住宅大樓', '公寓(5樓以下)','套房','店面','其它','透天厝','華廈(10樓以下)'],
+    	    ['"${param.price_city}"', <c:forEach var="hikari2" items="${Choose1}"> ${hikari2.avgoneprice_by_city_type},       
+    	    </c:forEach>],]);
+    	  </c:when> 
+    	  <c:otherwise>
+          No comment sir...
+          </c:otherwise>      
+    	  </c:choose>   
+    	  
+        //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+        var options = {
+          chart: {
+            title: '房屋類型  Performance',
+            subtitle: '該區每種類型的平均一均價格',
+            
+          },
+        backgroundColor: '#f1f8e9'
+        };
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        chart.draw(data, options);
+      }
+    </script>
+
+<!--    下圖為 單一區   單一類型    時間 坪價折線圖~ -->
+<%--    24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入 --%>
+<script type="text/javascript">
+//     google.charts.load('current2', {packages: ['corechart', 'line']});
+    google.charts.load('current2', {packages: ['bar2','corechart2', 'line2']});
+
+    google.charts.setOnLoadCallback(drawBackgroundColor);
+    
+    function drawBackgroundColor() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('string','X');
+          data.addColumn('number', '平均每坪價格');
+          
+          <c:choose> 
+    	  <c:when test="${select.data_result4 != null}" >   
+    	  data.addRows([
+                        <c:forEach var="hikari3" items="${select.data_result4}">
+                        ['${hikari3.currentprice_tradedate}',${hikari3.avgoneprice_by_tradedate}],
+                        </c:forEach>
+          ]);
+    	  </c:when>     
+    	  <c:when test="${Choose2 != null}"> 
+    	  
+    	  data.addRows([
+                        <c:forEach var="hikari3" items="${Choose2}">
+                        ['${hikari3.currentprice_tradedate}',${hikari3.avgoneprice_by_tradedate}],
+                        </c:forEach>
+          ]);
+    	  
+    	  </c:when> 
+    	  <c:otherwise>
+          No comment sir...
+          </c:otherwise>                                                 
+    	        	  
+    	  </c:choose>   
+          
+          console.log("字串1")
+          var options = {
+              title: '平均每坪價格X 時間變動圖',
+              subtitle: 'xxx',
+            hAxis: {
+              title: 'YearMonth(民國月份)'
+            },
+            vAxis: {
+              title: '坪價'
+            },
+            backgroundColor: '#f1f8e9'
+          };
+          console.log("字串2")
+          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          console.log("字串4")
+          chart.draw(data, options);
+          console.log("字串5")
+        }
+          console.log("字串3")
+    </script>
+
+<script type="text/javascript">
+        window.onload = function () {
+        AddressSeleclList.Initialize('cityend', 'areaend');}
+        </script>
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -150,6 +256,45 @@
 			<!--close sidebar_container-->
 
 		</div>
+		
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
+		
+           
+		<form action="<c:url value="/_10_chart.controller/chart.controller"/>"	method="get" name="form_name">
+		<!-- FORM NAME其實沒用到.... -->
+		<select id="cityend" name="currentprice_citymain">
+			<!--     和input box一樣 用name 傳值給SERVLET -->
+		</select>
+		<!--  城市 >> 台北市 .... -->
+
+		<select id="areaend" name="price_city">
+			<!-- <option value = document.getElementById(area)> -->
+		</select>
+		<!--  區域 >> 大安 松山...... -->
+
+	 
+		<select id="typetype" name="price_bdtype">
+			<!-- <option value = document.getElementById(area)> -->
+			<option value="">建物類型</option>
+			<option value="辦公商業大樓">辦公商業大樓</option>
+			<option value="住宅大樓">住宅大樓</option>
+			<option value="公寓">公寓(5樓以下)</option>
+			<option value="套房">套房</option>
+			<option value="店面">店面</option>
+			<option value="其它">其它</option>
+			<option value="透天厝">透天厝</option>
+			<option value="華廈">華廈(10樓以下)</option>
+		</select>
+		<!--  類型 >> -->
+		<input type="submit" name="prodaction" value="Choose">
+		<td><span class="error">${error.currentprice_city}</span></td>
+
+	</form>
+		
+		
+		<div id="columnchart_material" style="width: 450px; height: 350px;"></div>
+	    <div id="chart_div" style="width: 450px; height: 300px;"></div>
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 		<!--close site_content-->
 		<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

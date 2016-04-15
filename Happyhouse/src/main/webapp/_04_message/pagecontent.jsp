@@ -509,10 +509,11 @@
 				<input type="text" id="user_account" name="user_account" value="" readonly="readonly"><br/>
 	          	
 	          	<label>標題</label><br/>
+	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title"><br/>
 				
 				<label>訊息內容</label><br/>
-				<label>目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
+				
 				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
 				
 				<input type="submit" id="messagesubmit" name="type"  value="傳送" />

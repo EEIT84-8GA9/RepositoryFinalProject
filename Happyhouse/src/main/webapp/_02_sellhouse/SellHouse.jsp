@@ -10,7 +10,7 @@
 <body>
 <form enctype="multipart/form-data" action="<c:url value="/house/house1.controller"/>"method="post">
 <table>
-<td>sellhouse_id</td>
+<td>sellhouse_id111</td>
 <td><input type="text" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
 </tr>
 <tr>

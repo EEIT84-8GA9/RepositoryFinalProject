@@ -44,9 +44,7 @@ import _02_sellhouse.model.SellHouseService;
 
 
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
-@WebServlet(
-		urlPatterns={"/house/house1.controller"}
-)
+@WebServlet("/house/house1.controller")
 public class SellHouseServlet_01 extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();
 
@@ -56,6 +54,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
+		System.out.println("55555555");
 		//圖片上傳
 		long sizeInBytes1 = 0;
 		long sizeInBytes2 = 0;
@@ -73,6 +72,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 		InputStream is2 = null;
 		String fileName3 = "";
 		InputStream is3 = null;
+		//接收圖片資料
 		Collection<Part> parts = request.getParts();
 		// 接收資料
 		String keyword=request.getParameter("keyword");
@@ -97,9 +97,8 @@ public class SellHouseServlet_01 extends HttpServlet {
 		
 		String select=request.getParameter("choise");
 		
-		
-		
-		System.out.println(select);
+		System.out.println("444455");
+		System.out.println(prodaction);
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
@@ -112,8 +111,6 @@ public class SellHouseServlet_01 extends HttpServlet {
 				error.put("sellhouse_id", "id必須是數字");
 			}
 		}
-		
-		
 		int sellhouse_price = 0;
 		if (temp3 != null && temp3.trim().length() != 0) {
 			try {
@@ -212,7 +209,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 				for (Part p : parts) {
 					if (p.getContentType() == null) {
 						if (fldName1.equals("text")) {
-							// memberID = value1;
+							//memberID = value1;
 						}
 					} else {
 						if (is1 == null) {
@@ -249,7 +246,8 @@ public class SellHouseServlet_01 extends HttpServlet {
 			}
 			SellHouseBean result=sellHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
 					sizeInBytes3);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouse.jsp").forward(request, response);
+			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
+//			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 		}else if(prodaction!=null&&"修改".equals(prodaction)){
 			bean.setSellhouse_id(sellhouse_id);
 			bean.setSellhouse_name(sellhouse_name);

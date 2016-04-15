@@ -39,8 +39,9 @@ public class SellHouseService {
 
 		//service.delete(bean);
 //	}
-	
+	//+上去
 	public static final int IMAGE_FILENAME_LENGTH = 20;
+	//+上去到此為止
 	private SellHouseDAO dao=new SellHouseDAOJdbc(); 
 	public	List<SellHouseBean> select(SellHouseBean bean){
 		List<SellHouseBean> result=null;
@@ -108,7 +109,7 @@ public class SellHouseService {
 		}
 		return result;	
 	}
-	
+	//+上去
 	public static String adjustFileName(String fileName, int maxLength) {
 		  int length = fileName.length();
 		  if ( length <= maxLength ) {
@@ -157,7 +158,7 @@ public class SellHouseService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+//+上去到此為止
 }
 	
 	

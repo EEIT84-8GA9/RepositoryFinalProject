@@ -31,6 +31,7 @@ import javax.sql.DataSource;
 		)
 public class GetImageServlet01 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	//+上去
 	private File defaultPhoto;
 	public void init() throws ServletException {
 		String defaultFile = this.getInitParameter("defaultFile");
@@ -60,7 +61,6 @@ public class GetImageServlet01 extends HttpServlet {
 		int sellhouse_id=0;
 		if(id !=null&&id.trim().length()!=0){
 				sellhouse_id = Integer.parseInt(id);
-//			System.out.println("55555"+sellhouse_id);
 		}
 		try {
 			Context ctx = new InitialContext();
@@ -70,8 +70,10 @@ public class GetImageServlet01 extends HttpServlet {
 			pstmt=conn.prepareStatement(SELECT_IMAGE);
 			pstmt.setInt(1,sellhouse_id);
 			rset=pstmt.executeQuery();
+			
 			if (rset.next()){
 				is1=rset.getBinaryStream("sellhouse_photo1");
+
 				if(is1==null){
 				is1=new FileInputStream(defaultPhoto);
 				}
@@ -89,7 +91,6 @@ public class GetImageServlet01 extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
-			
 			if (os1 !=null) {
 				try {
 					os1.close();
@@ -133,8 +134,7 @@ public class GetImageServlet01 extends HttpServlet {
 			}		
 		}
 		
-		
-		
+			
 		
 
 	}

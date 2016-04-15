@@ -72,12 +72,12 @@ ol li
 #main, #header, #banner, #menubar, #site_content, #footer, #contact, #footer_content, #banner_image
 { margin-left: auto; 
   margin-right: auto;
-  background: #eee url(../images/backtest1.jpg) repeat-x;}
+  background: #eee url(../images/background.jpg) repeat-x;}
   
-/* #header */
-/* { height: 70px; */
-/*   background: transparent url(../images/bar.jpg) no-repeat; */
-/*   text-align: center;} */
+#header
+{ height: 70px;
+  background: transparent url(../images/bar.jpg) no-repeat;
+  text-align: center;}
   
 #site_heading
 { height: 120px;
@@ -97,13 +97,13 @@ ol li
   letter-spacing: -1px;
   background: transparent;}  
   
-/* #menubar */
-/* { width: 960px; */
-/*   height: 45px; */
-/*   padding-top: 25px; */
-/*   text-align: center;  */
-/*   margin: 0 auto; */
-/*   background: transparent url(../images/bar.jpg) no-repeat;}  */
+#menubar
+{ width: 960px;
+  height: 45px;
+  padding-top: 25px;
+  text-align: center; 
+  margin: 0 auto;
+  background: transparent url(../images/bar.jpg) no-repeat;} 
 
 ul#menu
 { 
@@ -363,127 +363,83 @@ a.nivo-nextNav {
 			border:1px solid #acd6ff;
 			border-radius:10px;}
 
+-----------------------------------------
 
+ ul { /* 取消ul預設的內縮及樣式 */ 
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 
+    ul.drop-down-menu {
+        border: #ccc 1px solid;
+        display: inline-block;
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 13px;
+    }
 
+    ul.drop-down-menu li {
+        position: relative;
+        white-space: nowrap;
+        border-right: #ccc 1px solid;        
+    }
 
----------------------------------------------
+    ul.drop-down-menu > li:last-child {
+        border-right: none;
+    }
 
-
-#menu, #menu ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-align: center;
-}
-#menu {
-    width: 960px;
-    padding: 12px 30px;
-    margin: 60px auto;
-    border: 1px solid #222;
-    background-color: #111;
-    background-image: linear-gradient(#444, #111);
-    border-radius: 6px;
-    box-shadow: 0 1px 1px #777;
-    text-align: center;
-}
-#menu:before,
-#menu:after {
-    content: "";
-    display: table;
-}
-
-#menu:after {
-    clear: both;
-}
-
-#menu {
-    zoom:1;
-}
-#menu li {
-    float: none;
-    border-right: 1px solid #222;
-    box-shadow: 1px 0 0 #444;
-    position: relative;
+    ul.drop-down-menu > li {
+        float: left; /* 只有第一層是靠左對齊*/
+    }  
     
-}
+     ul.drop-down-menu a {
+        background-color: #fff;
+        color: #333;
+        display: block;
+        padding: 0 30px;
+        text-decoration: none;
+        line-height: 40px;
+        
+    }
+    ul.drop-down-menu a:hover { /* 滑鼠滑入按鈕變色*/
+        background-color: #ef5c28;
+        color: #fff;
+    }
+    ul.drop-down-menu li:hover > a { /* 滑鼠移入次選單上層按鈕保持變色*/
+        background-color: #ef5c28;
+        color: #fff;
+    }
 
-#menu a {
-    float: none;
-    padding: 12px 30px;
-    color: #999;
-    text-transform: uppercase;
-    font: bold 12px Arial, Helvetica;
-    text-decoration: none;
-    text-shadow: 0 1px 0 #000;
-}
+ ul.drop-down-menu ul {
+        border: #ccc 1px solid;
+        position: absolute;
+        z-index: 99;
+        left: -1px;
+        top: 100%;
+       min-width: 180px;
+    }
 
-#menu li:hover > a {
-    color: #fafafa;
-}
+    ul.drop-down-menu ul li {
+        border-bottom: #ccc 1px solid;
+    }
 
-*html #menu li a:hover { /* IE6 only */
-    color: #fafafa;
-}
-#menu ul {
-    margin: 20px 0 0 0;
-    _margin: 0; /*IE6 only*/
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 38px;
-    left: 0;
-    z-index: 1;    
-    background: #444;   
-    background: linear-gradient(#444, #111);
-    box-shadow: 0 -1px 0 rgba(255,255,255,.3);  
-    border-radius: 3px;
-    transition: all .2s ease-in-out;
-}
+    ul.drop-down-menu ul li:last-child {
+        border-bottom: none;
+    }
 
-#menu li:hover > ul {
-    opacity: 1;
-    visibility: visible;
-    margin: 0;
-}
+    ul.drop-down-menu ul ul { /*第三層以後的選單出現位置與第二層不同*/
+        z-index: 999;
+        top: 10px;
+        left: 90%;
+    }
+    
+      ul.drop-down-menu ul { /*隱藏次選單*/
+        display: none;
+    } 
 
-#menu ul ul {
-    top: 0;
-    left: 150px;
-    margin: 0 0 0 20px;
-    _margin: 0; /*IE6 only*/
-    box-shadow: -1px 0 0 rgba(255,255,255,.3);      
-}
-
-#menu ul li {
-    float: none;
-    display: block;
-    border: 0;
-    _line-height: 0; /*IE6 only*/
-    box-shadow: 0 1px 0 #111, 0 2px 0 #666;
-}
-
-#menu ul li:last-child {   
-    box-shadow: none;    
-}
-
-#menu ul a {    
-    padding: 10px;
-    width: 130px;
-    _height: 10px; /*IE6 only*/
-    display: block;
-    white-space: nowrap;
-    float: none;
-    text-transform: none;
-}
-
-#menu ul a:hover {
-    background-color: #0186ba;
-    background-image: linear-gradient(#04acec, #0186ba);
-}
-
-
-
+    ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+        display: block;
+    }
 
 
 /* 591  */

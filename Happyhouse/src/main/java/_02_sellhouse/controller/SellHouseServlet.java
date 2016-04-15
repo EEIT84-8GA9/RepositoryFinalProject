@@ -37,6 +37,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.taglibs.standard.lang.jstl.test.PageContextImpl;
 
+import _01_users.model.UsersBean;
 import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseService;
 
@@ -50,12 +51,15 @@ import _02_sellhouse.model.SellHouseService;
 public class SellHouseServlet extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();
 
-
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
+		UsersBean userbean= (UsersBean) session.getAttribute("LoginOK");
+		System.out.println(userbean.getUser_account());
 		//圖片上傳
 		long sizeInBytes1 = 0;
 		long sizeInBytes2 = 0;

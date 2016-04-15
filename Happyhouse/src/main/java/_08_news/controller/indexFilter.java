@@ -83,7 +83,7 @@ public class indexFilter implements Filter {
 					newDAO dao = new newDAO();
 //					// 寫死資料(不從HTML來)
 					//
-//							
+//					
 					//
 							int temp1 = 400;
 							int temp2 = 401;
@@ -123,14 +123,8 @@ public class indexFilter implements Filter {
 //						 set.getNew_photo3();
 //						 
 //						 
-//					}
-	
-
-   
-
-            
+//					}            
             Map<String,Object> map = new HashMap<String, Object>();
-            
             map.put("one", bean1);
             map.put("two", bean2);
             map.put("three", bean3);
@@ -145,8 +139,6 @@ public class indexFilter implements Filter {
 		System.out.println(map);
 		request.getRequestDispatcher("index.jsp").forward(req, resp);
 //	    resp.sendRedirect("index.jsp");
-		
-
 	}else{   //不需要登入
 				chain.doFilter(request, response);
 				return;

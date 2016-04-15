@@ -26,7 +26,7 @@ import javax.sql.DataSource;
 @WebServlet(
 		urlPatterns={"/image2"},
 		initParams={
-				@WebInitParam(name="defaultFile", value="/img/x.png")
+				@WebInitParam(name="defaultFile", value="/img/samplehouse.jpg")
 		}
 		)
 public class GetImageServlet02 extends HttpServlet {
@@ -47,7 +47,7 @@ public class GetImageServlet02 extends HttpServlet {
 		Connection conn=null;
 		OutputStream os2=null;
 		InputStream is2=null;
-		InputStream is3=new FileInputStream("C:/Users/Public/Pictures/Sample Pictures/3.jpg");
+		
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		DataSource dataSource;
@@ -60,31 +60,26 @@ public class GetImageServlet02 extends HttpServlet {
 		int sellhouse_id=0;
 		if(id !=null&&id.trim().length()!=0){
 				sellhouse_id = Integer.parseInt(id);
-			System.out.println("55555"+sellhouse_id);
 		}
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/happyhouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 			conn=dataSource.getConnection();
 			is2=new FileInputStream(defaultPhoto);
 			pstmt=conn.prepareStatement(SELECT_IMAGE);
 			pstmt.setInt(1,sellhouse_id);
 			rset=pstmt.executeQuery();
-			System.out.println(rset);
 			if (rset.next()){
 				is2=rset.getBinaryStream("sellhouse_photo2");
 				if(is2==null){
 				is2=new FileInputStream(defaultPhoto);
 				}
-				System.out.println("kkkkk");
 				response.setContentType("image/png");
 				os2 = response.getOutputStream();
 				byte[] buffer = new byte[4096];
 				int count1=0;
 				while((count1 =is2.read(buffer))!=-1) {
-					System.out.println("22");
 					os2.write(buffer,0,count1);
-					System.out.println("23");
 				}
 	
 				

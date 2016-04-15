@@ -73,6 +73,13 @@
 	border-left: 1px solid #c5c5c5;
 	background-color: #FFF
 }
+#form{
+	display:none;
+
+}
+#response{
+	margin:18px
+}
 </style>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <link rel="stylesheet" href="/Happyhouse/css/dialog.css"/>
@@ -88,37 +95,71 @@
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
+	$(document).ready(function(){
+	    $("#response").click(function(){
+	        $("#form").slideToggle("slow");
+	    });
+	});
 </script>
 </head>
 
 <body>
-	<div id="main">
+<div id="main">
+		<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的好選擇</h2>
+				<h2>你刊登房屋的超棒選擇</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
-						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-						<li><a href="ourwork.html">刊登出售</a></li>
-						<li><a href="testimonials.html">刊登出租</a></li>
-						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>
-						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
+						<li class="current"><a href="index.jsp">首頁</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<ul>
+						<li><a href="#">搜尋出售</a></li>
+                        <li><a href="#">刊登出售</a></li>
+                        <li><a href="#">查詢出售收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="testimonials.html">刊登出租</a>
+						<ul>
+						<li><a href="#">搜尋出租</a></li>
+                        <li><a href="#">刊登出租</a></li>
+                        <li><a href="#">查詢出租收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
+						<ul>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">刊登二手家具</a></li>	
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
 						<c:if test="${empty LoginOK}">
-						<li><a href="login.jsp">會員登入</a></li>
+						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="">個人管理頁面</a>
+						<ul>
+						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
+						<li></li>
+						</ul>
+						</li>
+						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
-			<h1><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</div>
-			<!--close header-->
+			<c:if test="${not empty LoginOK}">
+			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			</c:if>
+
+
 			
 			<div id="content">
 				<div class="content_item">
@@ -149,7 +190,8 @@
 				</font>
 				<font color="blue">${add.message_title}</font>
 				<font color="blue">${resp.message_title}</font>
-				<font color="blue">${resperror.message_title}</font></h2>
+				<font color="blue">${resperror.message_title}</font>
+				<font color="blue">${report.message_title}</font></h2>
 	<div class="content_box">
 			
 			<!-- 1 -->
@@ -385,6 +427,58 @@
 				</div>
 			</c:if>
 				</c:forEach>
+	<!-- report start -->
+	<c:forEach var="messageVO" items="${list}">
+	
+	<c:if test="${report.message_title==messageVO.message_title}">
+				<div class="content">
+					<div class="leftSideBar">
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tbody>
+								<tr>
+
+									<td colspan="2" align="center"><img
+										src="/Happyhouse/images/head-image.png"
+										width="80" height="80"></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100" ><font color="blue">${messageVO.user_account}</font></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center" style="font-weight: 100"><button class="MessageButton" value="${messageVO.user_account}">站內信給我</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<c:if test="${report.message_title==messageVO.message_title}">
+						<jsp:useBean id ="resp" class="_04_message.model.MessageVO" scope="page">
+							<jsp:setProperty name="resp" property="message_title" value="${report.message_title}" />
+						</jsp:useBean>
+						<div class="rightSideBar" style="position: relative">
+
+							<div class="blog-wonder-sign"></div>
+							<div class="content_floor" style="height: 20px">
+								<ul>
+									<li style="float: left;"><font class="orange">${messageVO.user_account}</font>&nbsp;&nbsp;發表於${messageVO.message_date}</li>
+								<c:if test="${messageVO.user_account!=LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button></li>
+								</c:if>
+								<c:if test="${messageVO.user_account==LoginOK.user_account}">
+										<li style="float: right;">編號${messageVO.message_id}</li>
+								</c:if>
+								</ul>
+							</div>
+							<div class="content_detail">
+								<div class="font_15">${messageVO.message_describe}</div>
+							</div>
+						</div>
+						<img src="/Happyhouse/images/green.jpg"
+							width="948" height="3" style="float: left;">
+					</c:if>
+				</div>
+			</c:if>
+				</c:forEach>
+	<!-- report end -->
 	</div>
 	
 	<!-- for reportReason form-->
@@ -419,18 +513,23 @@
 				<label>訊息內容</label><br/>
 				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
 				
-				<input type="submit" id="messagesubmit" name="type"  value="討論區站內信傳送" />
+				<input type="submit" id="messagesubmit" name="type"  value="傳送" />
 				<c:if test="${not empty param}">
 				<input type="hidden" name="title" value="${param.message_title}">
 				</c:if>
-				<c:if test="${not empty resperror}">	
-					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
+				<c:if test="${not empty report}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='resp' property='message_title'/>">
 				</c:if>
+				
+					<input type="hidden" name="title" value="${resperror.message_title}">
+				
 			  </form>
 		  </div>
 	<!-- end MessageForMe form -->
+	<button id="response"><h4>我要回文:</h4></button><h4><font color="red">${error.contentEmpty}</font></h4>
+	<div id="form">
 	<form action="<c:url value="/addarticle.controller" />" method="post">
-	<h3>我要回文:</h3><h4><font color="red">${error.contentEmpty}</font></h4>
+	
 		<table >
 			<tr >
 				<td ><textarea name="content" wrap="physical"
@@ -450,12 +549,14 @@
 				<c:if test="${not empty resperror}">	
 					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
 				</c:if>
-					
+				<c:if test="${not empty report}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='resp' property='message_title'/>">
+				</c:if>
 				</td>
 			</tr>
 		</table>
 </form>
-
+</div>
 				</div>
 				<!--close content_text-->
 

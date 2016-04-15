@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageService;
 import _04_message.model.MessageVO;
 import _05_sms.model.SmsVO;
@@ -37,8 +37,8 @@ public class sms_servlet extends HttpServlet {
 		String sms_describe = request.getParameter("sms_describe");
 		String type = request.getParameter("type");
 		String[] sms_id = request.getParameterValues("sms_id");
-
-		LoginVO bean = (LoginVO) session.getAttribute("LoginOK");
+		System.out.println(title);
+		UsersBean bean = (UsersBean) session.getAttribute("LoginOK");
 		if (bean != null) {
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);
@@ -128,7 +128,7 @@ public class sms_servlet extends HttpServlet {
 			response.sendRedirect("_05_sms/sms_mainpage.jsp");
 			return;
 
-		}else if ("討論區站內信傳送".equals(type)){
+		}else if ("傳送".equals(type)){
 			SmsVO vo = new SmsVO();
 			vo.setSms_describe(sms_describe);
 			vo.setSms_mailers(bean.getUser_account());
@@ -137,9 +137,12 @@ public class sms_servlet extends HttpServlet {
 			SmsVO bean_write = service.write(vo);
 			List<MessageVO> list =messageService.getall();
 			session.setAttribute("list", list);
-			//resperror 暫時用此識別字串，因pagecontent已有
-			MessageVO resperror=messageService.select(title);
-			session.setAttribute("resperror", resperror);
+			session.removeAttribute("resp");
+			session.removeAttribute("add");
+			
+			MessageVO report=messageService.select(title);
+			System.out.println(report);
+			session.setAttribute("report", report);
 			response.sendRedirect("_04_message/pagecontent.jsp");
 			return;
 		}

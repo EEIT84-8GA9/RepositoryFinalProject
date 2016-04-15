@@ -12,13 +12,13 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
-</script>
+</script>  
 </head>
-
 <body>
 	<div id="main">
 		<div id="site_content">
@@ -31,16 +31,39 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
-						<li><a href="ourwork.html">刊登出售</a></li>
-						<li><a href="testimonials.html">刊登出租</a></li>
-						<li><a href="addarticle.controller">討論區</a></li>
-						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新(暫時)</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
-						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<ul>
+						<li><a href="#">搜尋出售</a></li>
+                        <li><a href="#">刊登出售</a></li>
+                        <li><a href="#">查詢出售收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="testimonials.html">刊登出租</a>
+						<ul>
+						<li><a href="#">搜尋出租</a></li>
+                        <li><a href="#">刊登出租</a></li>
+                        <li><a href="#">查詢出租收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
+						<ul>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">刊登二手家具</a></li>	
+						</ul>
+						</li>
+						<li><a href="addarticle.controller">討論區</a></li>										
 						<c:if test="${empty LoginOK}">
-						<li><a href="_04_message/login.jsp">會員登入</a></li>
+						<li><a href="_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="">個人管理頁面</a>
+						<ul>
+						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
+						<li></li>
+						</ul>
+						</li>
 						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
@@ -51,21 +74,22 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div id="banner_image">
-				<div id="slider-wrapper">
-					<div id="slider" class="nivoSlider">
-						<img src="images/1.jpg" alt="" /> <img src="images/2.jpg" alt="" />
-						<img src="images/3.jpg" alt="" />
-					</div>
-					<!--close slider-->
-				</div>
-				<!--close slider_wrapper-->
-			</div>
+<!-- 			<div id="banner_image"> -->
+<!-- 				<div id="slider-wrapper"> -->
+<!-- 					<div id="slider" class="nivoSlider"> -->
+ 						    <img src="images/house.jpg" alt="" /> 
+<!--                        <img src="images/2.jpg" alt="" />  -->
+<!-- 					<img src="images/3.jpg" alt="" /> -->
+<!-- 					</div> -->
+<!-- <!-- 					close slider --> 
+<!-- 				</div> -->
+<!-- <!-- 				close slider_wrapper --> 
+<!-- 			</div> -->
 			<!--close banner_image-->
 			<div id="content">
 				<div class="content_item">
                     <h1>${select.one.new_title}</h1>
-					<p>${select.one.new_describe}</p>
+						<p>${select.one.new_describe}</p>
 				</div>
 				<!--close content_item-->
 				<div class="content_image">
@@ -127,8 +151,7 @@
 
 		</div>
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+		<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

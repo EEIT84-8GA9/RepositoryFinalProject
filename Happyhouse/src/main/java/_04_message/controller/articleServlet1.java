@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 import _04_message.model.MessageService;
 import _04_message.model.MessageVO;
 
@@ -57,7 +57,7 @@ public class articleServlet1 extends HttpServlet {
 				if(content!=null){
 				vo.setMessage_title(title);
 				vo.setMessage_describe(content);
-				LoginVO bean=(LoginVO) session.getAttribute("LoginOK");
+				UsersBean bean=(UsersBean) session.getAttribute("LoginOK");
 				vo.setUser_account(bean.getUser_account());
 				vo.setUser_name(bean.getUser_name());
 				}
@@ -91,7 +91,7 @@ public class articleServlet1 extends HttpServlet {
 //						System.out.println("84行刪session-add");
 						session.removeAttribute("add");
 						MessageVO DBVO=messageService.select(title);
-//						System.out.println("呼叫dao-select(title),request.setAttribute('resperror', DBVO)");
+						System.out.println("呼叫dao-select(title),request.setAttribute('resperror', DBVO)");
 						request.setAttribute("resperror", DBVO);
 						request.getRequestDispatcher(
 								"/_04_message/pagecontent.jsp").forward(request, response);
@@ -129,6 +129,7 @@ public class articleServlet1 extends HttpServlet {
 //					System.out.println("118行刪session-resp");
 					session.removeAttribute("add");
 					session.removeAttribute("resp");
+					session.removeAttribute("report");
 //					System.out.println("新增session-resp");
 					session.setAttribute("resp", result);
 //					System.out.println("已新增回應待轉頁");
@@ -145,6 +146,7 @@ public class articleServlet1 extends HttpServlet {
 				session.removeAttribute("add");
 //				System.out.println("回討論區");
 //				System.out.println("------------------------------------");
+				session.removeAttribute("report");
 				response.sendRedirect("_04_message/mainpage.jsp");
 				return;
 	}

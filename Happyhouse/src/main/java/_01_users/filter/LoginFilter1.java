@@ -1,4 +1,4 @@
-package _01_users.controller;
+package _01_users.filter;
 
 import java.io.IOException;
 
@@ -12,12 +12,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import _01_users.model.UsersBean;
 
 
-@WebFilter("/pages/*")
-public class LoginFilter implements Filter {
+
+@WebFilter("/_01_users/*, /_09_furniture/*,/_08_news/*,/_07_carts/*,_04_message/mainpage.jsp")
+
+public class LoginFilter1 implements Filter {
 
 	@Override
 	public void destroy() {
@@ -32,7 +33,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) resq;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpSession Session = request.getSession();
-		UsersBean bean = (UsersBean) Session.getAttribute("user");
+		UsersBean bean = (UsersBean) Session.getAttribute("LoginOK");
 		if (bean != null) {
 			chain.doFilter(request, response);
 		} else {
@@ -40,7 +41,7 @@ public class LoginFilter implements Filter {
 			Session.setAttribute("dest", uri);
 			
 			String path = request.getContextPath();
-			response.sendRedirect(path + "/secure/login.jsp");
+			response.sendRedirect(path + "/_01_users/login.jsp");
 		}
 
 	}

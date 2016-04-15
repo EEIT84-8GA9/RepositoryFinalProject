@@ -10,7 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import _01_users.model.UsersBean;
+import _05_sms.model.SmsVO;
 import _07_carts.model.cartsService;
 import _07_carts.model.cartsrentBean;
 import _07_carts.model.cartssellBean;
@@ -43,14 +46,22 @@ public class cartsServlet extends HttpServlet {
 		
 		//裝錯誤訊息用
 		
+		HttpSession session = request.getSession();
+		
+
+		
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
 		
 		// 接收HTML的資料
-		System.out.println("11111111111111111111111111111111111");
-		String user_account = request.getParameter("user_account");
+		//String user_account = request.getParameter("user_account");
+		// 改接收session的使用者資料
 		
+		UsersBean bean1 = (UsersBean) session.getAttribute("LoginOK");
+		if (bean1 != null) {
+		    String user_account = bean1.getUser_account();
 		
+	
 		
 		String sell = request.getParameter("sell");
 		String rent = request.getParameter("rent");
@@ -59,8 +70,7 @@ public class cartsServlet extends HttpServlet {
 		
 		// 驗證HTML的資料 ()
 		
-		System.out.println("sell");
-		System.out.println("sell".equals(sell));
+
 		
 		if("這裡往出售".equals(sell)){
 			if(user_account == null || user_account.trim().length() == 0){
@@ -131,7 +141,7 @@ public class cartsServlet extends HttpServlet {
 		
 		}
 		
-		
+		}
 		
 		
 	}

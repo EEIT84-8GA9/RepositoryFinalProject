@@ -1,4 +1,4 @@
-package _04_message.controller;
+package _01_users.filter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,16 +18,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _04_message.model.LoginVO;
+import _01_users.model.UsersBean;
 
 /**
  * Servlet Filter implementation class LoginFilter
  */
 @WebFilter(urlPatterns = { "/*" }, initParams = {
-		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
-		@WebInitParam(name = "url_2", value = "/sms.controller"),
-//		@WebInitParam(name = "url_3", value = "/ch05_09/*"),
-//		@WebInitParam(name = "url_4", value = "/ch07_02/*") 
+
+//		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
+//		@WebInitParam(name = "url_2", value = "/sms.controller"),
+		@WebInitParam(name = "url_3", value = "/_08_news/test.jsp"),
+		@WebInitParam(name = "url_4", value = "/_07_carts/gousejsp.jsp") 
+
 		})
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
@@ -43,7 +45,6 @@ public class LoginFilter implements Filter {
 			HttpServletRequest req = (HttpServletRequest) request;
 			HttpServletResponse resp = (HttpServletResponse) response;
 			String servletPath = req.getServletPath();
-			// CLICK 顯示會員資料(Lab07_02) http://localhost:8080/jspExercise/ch07_02/ShowMember.jsp
 //			System.out.println("111--->" + servletPath);
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
@@ -55,7 +56,7 @@ public class LoginFilter implements Filter {
 //					System.out.println("333-->需要Login, 尚未Login , ServletPath="
 //							+ req.getServletPath());
 					RequestDispatcher rd = request
-							.getRequestDispatcher("/_04_message/login.jsp");
+							.getRequestDispatcher("/_01_users/login.jsp");
 					rd.forward(req, resp);
 				}
 			} else {
@@ -87,7 +88,7 @@ public class LoginFilter implements Filter {
 
 	private boolean checkLogin(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		LoginVO loginToken = (LoginVO) session.getAttribute("LoginOK");
+		UsersBean loginToken = (UsersBean) session.getAttribute("LoginOK");
 //		System.out.println("checkLogin");
 		if (loginToken == null) {
 //			System.out.println("return false;");

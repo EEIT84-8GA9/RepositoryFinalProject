@@ -37,7 +37,7 @@
 						<li><a href="#">出售區檢舉</a></li>
                         <li><a href="#">出租區檢舉</a></li>
                         <li><a href="#">留言板檢舉</a></li>
-                        <li><a href="#">惡意信件檢舉</a></li>                        
+                        <li><a href="#">信件檢舉</a></li>                        
                         <li><a href="#">封鎖會員</a></li>                   
 						</ul>
 						</li>

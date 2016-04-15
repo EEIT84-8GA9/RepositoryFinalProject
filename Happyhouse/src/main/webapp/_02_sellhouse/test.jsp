@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,15 +13,19 @@
 	<link rel='stylesheet prefetch' href='/Happyhouse/css/Insert/reset.css'>
 	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
 	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
-
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
 </head>
 <body>
-<form enctype="multipart/form-data" action="house/house1.controller"  method="post">
-<input type="submit" name="prodaction" class="submit action-button" value="新增" />
-</form>
-
-<form  enctype="multipart/form-data" action="<c:url value="/house/house1.controller"/>" method="post" id="msform">
-	<input type="submit" name="prodaction" class="submit action-button" value="新增" />
+<!-- 	<header class="htmleaf-header"> -->
+<!-- 		<h1>分步式用户注册表单UI界面设计 <span>A Step By Step User Register Form </span></h1> -->
+<!-- 		<div class="htmleaf-links"> -->
+<!-- 			<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a> -->
+<!-- 			<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/css3/ui-design/201509062532.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a> -->
+<!-- 		</div> -->
+<!-- 	</header> -->
+<form enctype="multipart/form-data" action="<c:url value="/house/house1.controller"/>"method="post" id="msform">
 	<article class="htmleaf-content">  
 		<!-- multistep form -->
 			<!-- progressbar -->
@@ -50,7 +55,6 @@
 				<input type="text" name="sellhouse_car" placeholder="請填寫有無車位" />
 				<input type="text" name="sellhouse_phone" placeholder="請填寫連絡電話" />
 				<input type="text" name="sellhouse_email" placeholder="請填寫連絡EMAIL" />	
-				<input type="text" name="sellhouse_type" placeholder="請填寫連絡EMAIL" />	
 				<textarea name="sellhouse_describe" placeholder="請填寫額外描述"></textarea>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -127,10 +131,9 @@
 	        easing: 'easeInOutBack'
 	    });
 	});
-// 	$('.submit').click(function () {
-// 	    return false;
-// 	});
-
+	$('.submit').click(function () {
+	    return false;
+	});
 	</script>
 </body>
 </html>

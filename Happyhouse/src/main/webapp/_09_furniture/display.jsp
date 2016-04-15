@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -49,47 +50,66 @@ $(document).ready(function() {
 <body>
 
 <h3>Select Product Table Result : XXX row(s) selected</h3>
+<form action="<c:url value="/pages/product.controller" />" method="get">
 <c:if test="${not empty select}">
+
 <table>
 	<thead>
 	<tr>
-		<th>ID</th>
-		<th>Name</th>
-		<th>Price</th>
-		<th>time</th>
-		<th>message</th>
-		<th>Photo</th>
+	    
+		<th>商品編號</th>
+		<th>商品名稱</th>
+		<th>商品價格</th>
+		<th>商品新舊</th>
+		<th>商品資訊</th>
+		<th>商品照片</th>
 	</tr>
 	</thead>
+
 	<tbody>
 	<c:forEach var="row" items="${select}">
-		<c:url value="/_09_furniture/product.jsp" var="path" scope="page">
-			<c:param name="id" value="${row.furniture_id}" />
+		<c:url value="/_09_furniture/updateProduct.jsp" var="path" scope="page">
+			<c:param name="furniture_id" value="${row.furniture_id}" />
 			<c:param name="name" value="${row.furniture_neme}" />
 			<c:param name="price" value="${row.furniture_price}" />
 			<c:param name="time" value="${row.furniture_time}" />
-			<c:param name="message" value="${row.furnitur_message}" />
+			<c:param name="message" value="${row.furniture_message}" />
 		</c:url>
 		
 		<c:url value="/pages/photo.view" var="url" scope="page">
 			<c:param name="photoid" value="${row.furniture_id}" />
 		</c:url>
-	<tr>
-		<td><a href="${path}">${row.furniture_id}</a></td>
-		<td>${row.furniture_neme}</td>
+<!-- 	<tr> -->
+<!-- 		<td> -->
+<%-- 	<input type="button" value=":${row.furniture_id}" onclick="location.href= --%>
+<%-- 		'<c:url value="/_09_furniture/updateProduct.jsp" />'"> --%>
+<!-- 		</td> -->
+		
+		<td><a href="${path}">更新商品編號   :${row.furniture_id}</a></td>
+	   <td> <input type="submit" name="prodaction" value="Delete">更新商品編號   :${row.furniture_id}</td>
+        <td>${row.furniture_neme}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
-		<td>${row.furnitur_message}</td>
+		<td>${row.furniture_message}</td>
 		<td><a href="${url}" data-title="${row.furniture_neme}"><img src="../img/click.png"></a></td>
 	</tr>
 	</c:forEach>
 	</tbody>
 </table>
 </c:if>
-
+</form>
+<%-- <c:if test="${not empty update}"> --%>
+<!-- <h3>Update Product Table Success</h3> -->
+<!-- <table border="1"> -->
+<%-- 	<tr><td>Name</td><td>${update.furniture_neme}</td></tr> --%>
+<%-- 	<tr><td>Price</td><td>${update.furniture_price}</td></tr> --%>
+<%-- 	<tr><td>Meaasge</td><td>${update.furniture_message}</td></tr> --%>
+<!-- </table> -->
+<!-- <script type="text/javascript">clearForm();</script> -->
+<%-- </c:if> --%>
 <h3><a href="<c:url value="/_09_furniture/product.jsp" />">Product Table</a></h3>
 <div id="photo"></div>
-
 <script type="text/javascript" src="../js/lightbox.min.js"></script>
 </body>
+	
 </html>

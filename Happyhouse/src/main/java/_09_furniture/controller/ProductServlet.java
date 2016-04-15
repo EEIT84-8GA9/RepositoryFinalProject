@@ -30,14 +30,27 @@ public class ProductServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		
 //接收HTML Form資料
-		String temp1 = request.getParameter("id");
-		String name = request.getParameter("name");
-		String temp2 = request.getParameter("price");
-		String time = request.getParameter("time");
-		String message = request.getParameter("message");
+		String temp1 = request.getParameter("furniture_id");
+		
+//		String temp2 = request.getParameter("price");
+//		String time = request.getParameter("time");
+//		String message = request.getParameter("message");
 		String prodaction = request.getParameter("prodaction");
-		String xxx =request.getParameter("xxx");
-		System.out.println("111111"+xxx);
+		
+		String user_account =request.getParameter("user_account");
+		String insname = request.getParameter("insname");
+		String dubleprice = request.getParameter("insprice");
+		String insstatus = request.getParameter("insstatus");
+		String instime = request.getParameter("instime");
+		String insaddress = request.getParameter("insaddress");
+		String insmessage = request.getParameter("insmessage");
+		String instype = request.getParameter("instype");
+		
+
+	
+		
+		
+	
 		
 //轉換HTML Form資料
 		Map<String, String> error = new HashMap<String, String>();
@@ -54,41 +67,25 @@ public class ProductServlet extends HttpServlet {
 		}
 
 		double price = 0;
-		if(temp2!=null && temp2.trim().length()!=0) {
+		if(dubleprice!=null && dubleprice.trim().length()!=0) {
 			try {
-				price = Double.parseDouble(temp2.trim());
+				price = Double.parseDouble(dubleprice.trim());
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("price", "Price必須是數字");
 			}
 		}
-//		String make = null;
-//		if(temp3!=null && temp3.trim().length()!=0) {
-//			try {
-//				make = sFormat.parse(temp3.trim());
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//				error.put("make", "Make必須是日期、格式為YYYY-MM-DD");
-//			}
-//		}
-//		int expire = 0;
-//		if(temp4!=null && temp4.trim().length()!=0) {
-//			try {
-//				expire = Integer.parseInt(temp4.trim());
-//			} catch (NumberFormatException e) {
-//				e.printStackTrace();
-//				error.put("expire", "Expire必須是整數");
-//			}
-//		}
+
 		
 //驗證HTML Form資料
-		if("Insert".equals(prodaction) || "Update".equals(prodaction) || "Delete".equals(prodaction)) {
-			if(temp1==null || temp1.trim().length()==0) {
-				error.put("id", "請輸入Id以便於執行"+prodaction);
-			}
-		}
+//		if("Insert".equals(prodaction) || "Update".equals(prodaction) || "Delete".equals(prodaction)) {
+//			if(temp1==null || temp1.trim().length()==0) {
+//				error.put("id", "請輸入Id以便於執行"+prodaction);
+//			}
+//		}
 		
 		if(error!=null && !error.isEmpty()) {
+			System.out.println("5555");
 			request.getRequestDispatcher(
 					"/_09_furniture/product.jsp").forward(request, response);
 			return;
@@ -96,21 +93,34 @@ public class ProductServlet extends HttpServlet {
 		
 //呼叫Model
 		FurnitureBean bean = new FurnitureBean();
-		bean.setFurniture_id(id);
-		bean.setFurniture_neme(name);
+//		bean.setFurniture_id(id);
+//		bean.setFurniture_neme(name);
+//		bean.setFurniture_price(price);
+//	    bean.setFurniture_time(time);
+//		bean.setFurnitur_message(message);
+		bean.setUser_account(user_account);
+		bean.setFurniture_neme(insname);
+		bean.setFurniture_status(insstatus);
+		bean.setFurniture_time(instime);
+		bean.setFurniture_address(insaddress);
 		bean.setFurniture_price(price);
-	    bean.setFurniture_time(time);
-		bean.setFurnitur_message(message);
-		
+		bean.setFurniture_message(insmessage);
+		bean.setFurniture_type(instype);
+		bean.setFurniture_id(id);
+	
 //根據Model執行結果顯示View
 	
-		if("Select".equals(prodaction)) {
+		if("Select".equals(prodaction)) { 
+//			System.out.println(bean);
 			List<FurnitureBean> result = productService.select(bean);
+		
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
 					"/_09_furniture/display.jsp").forward(request, response);
-		} else if(prodaction!=null && prodaction.equals("Insert")) {
+		} 
+		else if(prodaction!=null && prodaction.equals("新增刊登")) {
 			FurnitureBean result = productService.insert(bean);
+			System.out.print(result);
 			if(result==null) {
 				error.put("action", "Insert fail");
 			} else {
@@ -118,11 +128,13 @@ public class ProductServlet extends HttpServlet {
 			}
 			request.getRequestDispatcher(
 					"/_09_furniture/product.jsp").forward(request, response);
-		} else if(prodaction!=null && prodaction.equals("Update")) {
+		} else if(prodaction!=null && prodaction.equals("更新商品資訊")) {
 			FurnitureBean result = productService.update(bean);
+			System.out.println("5555"+id);
 			if(result==null) {
 				error.put("action", "Update fail");
 			} else {
+				System.out.println("resultd="+result);
 				request.setAttribute("update", result);
 			}
 			request.getRequestDispatcher(
@@ -130,14 +142,17 @@ public class ProductServlet extends HttpServlet {
 		} else if(prodaction!=null && prodaction.equals("Delete")) {
 			boolean result = productService.delete(bean);
 			if(!result) {
+				System.out.println("0"+bean);
 				request.setAttribute("delete", 0);
 			} else {
+				System.out.println("1"+bean);
 				request.setAttribute("delete", 1);
 			}
 			request.getRequestDispatcher(
 					"/_09_furniture/product.jsp").forward(request, response);
 		} else  {
 			error.put("action", "Unknown Action:"+prodaction);
+			System.out.println("5555");
 			request.getRequestDispatcher(
 					"/_09_furniture/product.jsp").forward(request, response);
 		}

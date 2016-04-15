@@ -10,10 +10,10 @@ public class FurnitureBean {
 	private double furniture_price;
 	private String furniture_status;
 	private String furniture_time;
-	private String furnitur_address;
-	private byte[] furnitur_photo1;
-	private byte[] furnitur_photo2;
-	private String furnitur_message;
+	private String furniture_address;
+	private byte[] furniture_photo1;
+	private byte[] furniture_photo2;
+	private String furniture_message;
 	private String furniture_type;
 
 	public int getFurniture_id() {
@@ -64,36 +64,40 @@ public class FurnitureBean {
 		this.furniture_time = furniture_time;
 	}
 
-	public String getFurnitur_address() {
-		return furnitur_address;
+
+
+	public String getFurniture_address() {
+		return furniture_address;
 	}
 
-	public void setFurnitur_address(String furnitur_address) {
-		this.furnitur_address = furnitur_address;
+	public void setFurniture_address(String furniture_address) {
+		this.furniture_address = furniture_address;
 	}
 
-	public byte[] getFurnitur_photo1() {
-		return furnitur_photo1;
+
+
+	public byte[] getFurniture_photo1() {
+		return furniture_photo1;
 	}
 
-	public void setFurnitur_photo1(byte[] furnitur_photo1) {
-		this.furnitur_photo1 = furnitur_photo1;
+	public void setFurniture_photo1(byte[] furniture_photo1) {
+		this.furniture_photo1 = furniture_photo1;
 	}
 
-	public byte[] getFurnitur_photo2() {
-		return furnitur_photo2;
+	public byte[] getFurniture_photo2() {
+		return furniture_photo2;
 	}
 
-	public void setFurnitur_photo2(byte[] furnitur_photo2) {
-		this.furnitur_photo2 = furnitur_photo2;
+	public void setFurniture_photo2(byte[] furniture_photo2) {
+		this.furniture_photo2 = furniture_photo2;
 	}
 
-	public String getFurnitur_message() {
-		return furnitur_message;
+	public String getFurniture_message() {
+		return furniture_message;
 	}
 
-	public void setFurnitur_message(String furnitur_message) {
-		this.furnitur_message = furnitur_message;
+	public void setFurniture_message(String furniture_message) {
+		this.furniture_message = furniture_message;
 	}
 
 	public String getFurniture_type() {
@@ -110,11 +114,14 @@ public class FurnitureBean {
 				+ ", user_account=" + user_account + ", furniture_neme="
 				+ furniture_neme + ", furniture_price=" + furniture_price
 				+ ", furniture_status=" + furniture_status
-				+ ", furniture_time=" + furniture_time + ", furnitur_address="
-				+ furnitur_address + ", furnitur_photo1="
-				+ Arrays.toString(furnitur_photo1) + ", furnitur_photo2="
-				+ Arrays.toString(furnitur_photo2) + ", furnitur_message="
-				+ furnitur_message + ", furniture_type=" + furniture_type + "]";
+				+ ", furniture_time=" + furniture_time + ", furniture_address="
+				+ furniture_address + ", furniture_photo1="
+				+ Arrays.toString(furniture_photo1) + ", furniture_photo2="
+				+ Arrays.toString(furniture_photo2) + ", furniture_message="
+				+ furniture_message + ", furniture_type=" + furniture_type
+				+ "]";
 	}
+
+	
 
 }

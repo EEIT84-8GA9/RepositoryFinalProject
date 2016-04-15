@@ -8,13 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>${LoginOK.user_name} 您好, 歡迎來到刊登商品頁面</h3>
+<h3>${LoginOK.user_name} 歡迎來到更新二手家具 </h3>
 <form action="<c:url value="/pages/product.controller" />" method="get">
 	<table>
 	<tr>
 		<td>帳號: </td>
 		<td><input type="text" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()"></td>
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
+	</tr>
+	<tr>
+		<td>產品編號 : </td>
+		<td><input type="text" name="furniture_id" value="${param.furniture_id}"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>家具名稱 : </td>
@@ -54,9 +59,10 @@
 
 	<tr>
 		<td>
-			<input type="submit" name="prodaction" value="新增刊登">
-			<input type="button" value="取消刊登" onclick="location.href=
-		'<c:url value="/_09_furniture/product.jsp" />'"></td>
+			<input type="submit" name="prodaction" value="更新商品資訊">
+			<input type="button" value="取消更新" onclick="location.href=
+		'<c:url value="/_09_furniture/product.jsp" />'">
+		</td>
 	</tr>
 	</table>
 	</form>

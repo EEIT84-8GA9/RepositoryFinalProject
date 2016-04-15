@@ -8,17 +8,20 @@ import _09_furniture.model.FurnitureBean;
 
 public interface FurnitureDAO {
 
-	public abstract List<FurnitureBean> selectAllFurniture();
+	public List<FurnitureBean> selectAllFurniture();
 
-	public abstract List<FurnitureBean> selectKeyWord(String user_account);
+	public List<FurnitureBean> selectKeyWord(String user_account);
 
-	public abstract FurnitureBean select(int id);
+	public FurnitureBean select(int id);
 	
 	public FurnitureBean insert(FurnitureBean bean);
 
-	public FurnitureBean update(String name, double price, String status,String message,
-			int id);
+	public FurnitureBean update(FurnitureBean bean);
 
 	public boolean delete(int furniture_id);
+
+	public List<FurnitureBean> select(String user_account);
+
+	
 
 }

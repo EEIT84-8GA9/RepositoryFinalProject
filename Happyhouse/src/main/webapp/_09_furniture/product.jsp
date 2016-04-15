@@ -44,46 +44,49 @@ $(document).ready(function() {
 </head>
 <body>
 
-<h3>Welcome ${LoginOK.user_name}</h3>
-<h3>Product Table</h3>
+<h3>歡迎來到二手家具首頁  ${LoginOK.user_name}</h3>
+<h3>Furniture Table</h3>
 
 <form action="<c:url value="/pages/product.controller" />" method="get">
 <table>
 	<tr>
-		<td>ID : </td>
-		<td><input type="text" name="id" value="${param.furniture_id}" onblur="doBlur()" onfocus="clearForm()"></td>
+		<td>搜尋商品編號 : </td>
+		<td><input type="text" name="furniture_id" value="${param.furniture_id}" onblur="doBlur()" onfocus="clearForm()"></td>
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
 	<tr>
-		<td>Name : </td>
-		<td><input type="text" name="name" value="${param.furniture_neme}"></td>
+		<td>搜尋刊登者 : </td>
+		<td><input type="text" name="user_account" value="${param.user_account}"></td>
 		<td></td>
 	</tr>
-
 	<tr>
-		<td>Price : </td>
-		<td><input type="text" name="price" value="${param.furniture_price}"></td>
+		<td>進階商品名稱比對搜尋 : </td>
+		<td><input type="text" name="insname" value="${param.furniture_neme}"></td>
 		<td><span class="error">${error.price}</span></td>
 	</tr>
-	<tr>
-		<td>Time : </td>
-		<td><input type="text" name="time" value="${param.furniture_time}"></td>
-		<td><span class="error">${error.make}</span></td>
-	</tr>
-	<tr>
-		<td>Message : </td>
-		<td><input type="text" name="message" value="${param.furnitur_message}"></td>
-		<td><span class="error">${error.expire}</span></td>
-	</tr>
+<!-- 	<tr> -->
+<!-- 		<td>Time : </td> -->
+<%-- 		<td><input type="text" name="time" value="${param.furniture_time}"></td> --%>
+<%-- 		<td><span class="error">${error.make}</span></td> --%>
+<!-- 	</tr> -->
+<!-- 	<tr> -->
+<!-- 		<td>Message : </td> -->
+<%-- 		<td><input type="text" name="message" value="${param.furniture_message}"></td> --%>
+<%-- 		<td><span class="error">${error.expire}</span></td> --%>
+<!-- 	</tr> -->
 	<tr>
 		<td>
 			<input type="button"  value="Insert"  onclick="location.href=
 		'<c:url value="/_09_furniture/insertProduct.jsp" />'"> >
-			<input type="submit" name="prodaction" value="Update">
+<!-- 			<input type="submit" name="prodaction" value="Update"> -->
+<!-- 	<td> -->
+<%-- 	<input type="button" value="更新商品" onclick="location.href= --%>
+<%-- 		'<c:url value="/_09_furniture/display.jsp" />'"> --%>
+<!-- 		</td> -->
+			
 		
-		</td>
 		<td>
-			<input type="submit" name="prodaction" value="Delete">
+<!-- 			<input type="submit" name="prodaction" value="Delete"> -->
 			<input type="submit" name="prodaction" value="Select">
 			<input type="button" value="Clear" onclick="clearForm()">
 		</td>
@@ -99,21 +102,30 @@ $(document).ready(function() {
 <script type="text/javascript">clearForm();</script>
 </c:if>
 <c:if test="${not empty insert}">
-<h3>Insert Product Table Success</h3>
+<h3>新增商品成功</h3>
 <table border="1">
-	<tr><td>Name</td><td>${insert.furniture_neme}</td></tr>
-	<tr><td>Price</td><td>${insert.furniture_price}</td></tr>
-	<tr><td>Meaasge</td><td>${insert.furnitur_message}</td></tr>
+
+		<tr><td>家具名稱</td><td>${insert.furniture_neme}</td></tr>
+		<tr><td>刊登價格</td><td>${insert.furniture_price}</td></tr>
+		<tr><td>新舊程度</td><td>${insert.furniture_status}</td></tr> 
+		<tr><td>使用年度 </td><td>${insert.furniture_time}</td></tr>
+		<tr><td>商品地址</td><td>${insert.furniture_address}</td></tr>
+		<tr><td>商品介紹</td><td>${insert.furniture_message}</td></tr>
+	    <tr><td>商品種類</td><td>${insert.furniture_type}</td></tr>
 </table>
 <script type="text/javascript">clearForm();</script>
 </c:if>
 
 <c:if test="${not empty update}">
-<h3>Update Product Table Success</h3>
+<h3>更新商品成功 </h3>
 <table border="1">
-	<tr><td>Name</td><td>${update.furniture_neme}</td></tr>
-	<tr><td>Price</td><td>${update.furniture_price}</td></tr>
-	<tr><td>Meaasge</td><td>${update.furnitur_message}</td></tr>
+		<tr><td>家具名稱</td><td>${update.furniture_neme}</td></tr>
+		<tr><td>刊登價格</td><td>${update.furniture_price}</td></tr>
+		<tr><td>新舊程度</td><td>${update.furniture_status}</td></tr> 
+		<tr><td>使用年度 </td><td>${update.furniture_time}</td></tr>
+		<tr><td>商品地址</td><td>${update.furniture_address}</td></tr>
+		<tr><td>商品介紹</td><td>${update.furniture_message}</td></tr>
+	    <tr><td>商品種類</td><td>${update.furniture_type}</td></tr>
 </table>
 <script type="text/javascript">clearForm();</script>
 </c:if>

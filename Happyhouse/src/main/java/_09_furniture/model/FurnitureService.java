@@ -11,16 +11,28 @@ public class FurnitureService {
 	private FurnitureDAO productDao = new FurnitureDAOJdbc();
 	public static void main(String[] args) {
 		FurnitureService service = new FurnitureService();
-		List<FurnitureBean> beans = service.select(null);
+		FurnitureBean f=new FurnitureBean();
+		f.setFurniture_id(1000);
+		f.setUser_account("Alex123");
+		List<FurnitureBean> beans = service.select(f);
 		System.out.println("beans="+beans);
 	}
 	public List<FurnitureBean> select(FurnitureBean bean) {
 		List<FurnitureBean> result = null;
-		if(bean!=null && bean.getFurniture_id()!=0) {
+	
+	 if((bean!=null && bean.getFurniture_id()!=0) ||(bean!=null && bean.getUser_account()!="")
+			 ||(bean!=null && bean.getFurniture_neme()!="")) {
 			FurnitureBean temp = productDao.select(bean.getFurniture_id());
+			String temp1= bean.getUser_account();
+			String temp2= bean.getFurniture_neme();
 			if(temp!=null) {
 				result = new ArrayList<FurnitureBean>();
 				result.add(temp);
+			}
+			else if(temp1!=""){
+				result =productDao.select(temp1);
+			}else if(temp2!="") {
+				result =productDao.selectKeyWord(temp2);
 			}
 		} else {
 			result = productDao.selectAllFurniture(); 
@@ -38,8 +50,7 @@ public class FurnitureService {
 	public FurnitureBean update(FurnitureBean bean) {
 		FurnitureBean result = null;
 		if(bean!=null) {
-			result = productDao.update(bean.getFurniture_neme(), bean.getFurniture_price(),
-					bean.getFurniture_status(), bean.getFurnitur_message(), bean.getFurniture_id());
+			result = productDao.update(bean);
 		}
 		return result;
 	}

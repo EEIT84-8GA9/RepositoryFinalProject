@@ -3,6 +3,7 @@ package _10_chart.controller;
 import java.io.IOException;
 
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,35 +16,63 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthScrollBarUI;
+import javax.swing.text.Document;
 
 import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import _06_currentprice.model.CurrentPriceBean;
+
+import _09_furniture.model.dao.FurnitureDAOJdbc;
 import _10_chart.model.ChartService;
 
 
 
 
-@WebServlet(urlPatterns = {"/chart.controller"})
+@WebServlet("/_10_chart.controller/chart.controller")
+
+
 
 // ★ ✰ ☆ ✩ ✫ ✬ ✭ ✮ ✡
 public class ChartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static void main(String[] args) {
+		
+		System.out.println("ccccccccccccccccc");
+	}
+	
 	private ChartService chartService = new ChartService();
-	protected void doGet(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
+		String currentprice_city = null ;
+		String currentprice_bdtype = null;
 		// 接收HTML Form資料
-		String currentprice_city = request.getParameter("currentprice_city");
-		String currentprice_bdtype = request.getParameter("currentprice_bdtype");
+		if (request.getParameter("price_city") != null){
+		 currentprice_city = request.getParameter("price_city");
+		}else 
+		 currentprice_city = request.getParameter("currentprice_city");
+			
+		System.out.println("剛GET的currentprice_city"+currentprice_city);
+		
+		if (request.getParameter("price_bdtype") != null){
+			 currentprice_bdtype = request.getParameter("price_bdtype");
+			}else 
+			 currentprice_bdtype = request.getParameter("currentprice_bdtype");
+		System.out.println("剛GET的currentprice_bdtype"+currentprice_bdtype);		
+		
 		String currentprice_transes = request.getParameter("currentprice_transes");
 		String temp1 = request.getParameter("currentprice_housearea");
 		String temp2 = request.getParameter("currentprice_tprice");
 		String prodaction = request.getParameter("prodaction");
+		System.out.println(currentprice_city);
+		System.out.println("fucccccc");
+		 
+		
 		// 從cpweb得到 4種!~用以比對 value 為 哪一種圖型 之後...
-
+        System.out.println("this is get");
 		// 轉換HTML Form資料
 		// 轉型為需要的資料..如果insert則轉成資料庫的型式
 		// 因為cpweb頁面輸入值為字串 所以需將 坪數與總價 轉換為float
@@ -72,7 +101,7 @@ public class ChartServlet extends HttpServlet {
 
 		// 驗證HTML Form資料 此區為絕對必須輸入 City的圖!!! 像是Scatter Pei
 		// 第一個驗證!!! 如果click的按鈕為 新刪修 則City格不可為空..若為空則導回 前頁面..但回傳剛剛輸入的值 回填~~!
-		if ("Scatter".equals(prodaction) || "Pie".equals(prodaction) || "Column".equals(prodaction)) {
+		if ("Scatter".equals(prodaction) || "Pie".equals(prodaction) || "Column".equals(prodaction) ||  "Choose".equals(prodaction)) {
 			if (currentprice_city == null || currentprice_city.trim().length() == 0) {
 				error.put("currentprice_city", "請輸入city以便於執行" + prodaction);
 			}
@@ -100,6 +129,7 @@ public class ChartServlet extends HttpServlet {
 		}
 		if (error != null && !error.isEmpty()) {
 			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request,res);
+			System.out.println("出現NULL");
 			return;
 		}
 
@@ -111,7 +141,7 @@ public class ChartServlet extends HttpServlet {
 		bean.setCurrentprice_housearea(currentprice_housearea);
 		bean.setCurrentprice_tprice(currentprice_tprice);
 
-		
+		System.out.println("此為塞BEAN"+bean);
 		// 根據Model執行結果顯示View
 		// 4種比對!! prodaction 為SELECT的話 使用productService.select 方法
 		//request.setAttribute("Scatter", result);   "Scatter" 作為EL 標千~ 可以在JSP中用EL呼叫值
@@ -168,6 +198,22 @@ public class ChartServlet extends HttpServlet {
 				request.setAttribute("Scattermine", result);
 			}
 			request.getRequestDispatcher("/_10_chart/scattermine.jsp").forward(request,res);
+		}else if (prodaction != null && prodaction.equals("Choose")) {
+			List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
+			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result1 == null || result2 == null) {
+				error.put("action", "xxxx fail");
+			} else {
+				request.setAttribute("Choose1",result1);
+				request.setAttribute("Choose2",result2);
+			}
+			System.out.println("T"+result1);
+			System.out.println("R"+result2);
+//			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
+//          上為TEST 首頁二題之JSP檔 同樣一組的filter為  _10_ 中的chartFilter.java 
+			request.getRequestDispatcher("/index.jsp").forward(request,res);
+			
+			System.out.println("SOS");
 		}else {
 			error.put("action", "Unknown Action:" + prodaction);
 			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request, res);
@@ -191,7 +237,7 @@ public class ChartServlet extends HttpServlet {
 //	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
-
+    System.out.println("WWWWWWPWWWWWWyou");
 	}
 
 }

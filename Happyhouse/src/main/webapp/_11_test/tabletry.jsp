@@ -5,14 +5,56 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
 <script>
 $(document).ready(function(){
     $("#city,#types").change(function(){
-        alert("The text has been changed.");
- $('#selecttable').submit();
-    });
-});
-</script>
+    	  var URLs="/ChartPageServlet.do";
+          
+          $.ajax({
+              url: URLs,
+              data: $('#sentToBack').serialize(),
+              type:"GET",
+              dataType:'text',
+
+              success: function(msg){
+                  alert(msg);
+              },
+
+               error:function(xhr, ajaxOptions, thrownError){ 
+                  alert(xhr.status); 
+                  alert(thrownError); 
+               }
+          });
+          
+      }
+</script>	
+
+
+
+
+
+
+
+<!-- <script> -->
+<!--  $(document).ready(function(){ -->
+<!--      $("#city,#types").change(function(){ -->
+<!--         alert("The text has been changed."); -->
+<!--   $('#selecttable').submit(); -->
+<!--      }); -->
+<!--  }); -->
+<!-- </script>	 -->
+
+
+
+
+
+
 </head>
 <body>
 

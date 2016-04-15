@@ -81,7 +81,7 @@ public class CurrentPriceServlet extends HttpServlet {
 		
 //驗證HTML Form資料
 //第一個驗證!!!  如果click的按鈕為 新刪修 則City格不可為空..若為空則導回 前頁面..但回傳剛剛輸入的值 回填~~!
-		if("Insert".equals(prodaction) || "Update".equals(prodaction) || "Delete".equals(prodaction)) {
+		if("Insert".equals(prodaction) || "Update".equals(prodaction) || "Delete".equals(prodaction) ) {
 			if(currentprice_city==null || currentprice_city.trim().length()==0) {
 				error.put("currentprice_city", "請輸入city以便於執行"+prodaction);
 			}
@@ -129,9 +129,8 @@ public class CurrentPriceServlet extends HttpServlet {
 			System.out.println("fff"+result);
 			request.setAttribute("Pick", result);
 			request.getRequestDispatcher(
-					"/_06_currentprice/cpindex.jsp").forward(request, response);}
-		   
-		else  {
+					"/_06_currentprice/cpindex.jsp").forward(request, response);
+	    }else  {
 			error.put("action", "Unknown Action:"+prodaction);
 			request.getRequestDispatcher(
 					"/_06_currentprice/cpweb.jsp").forward(request, response);

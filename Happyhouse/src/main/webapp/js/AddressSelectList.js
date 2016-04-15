@@ -2,7 +2,8 @@
 var app = window.AddressSeleclList =
 {
     AdrressArray: [
-                    ['台北市', '100中正區', '103大同區', '104中山區', '105松山區', '106大安區', '108萬華區', '110信義區', '111士林區', '112北投區', '114內湖區', '115南港區', '116文山區'],
+
+                    ['台北市', '中正區', '大同區', '中山區', '松山區', '大安區', '萬華區', '信義區', '士林區', '北投區', '內湖區', '南港區', '文山區'],
                     ['台北縣', '207萬里鄉', '208金山鄉', '220板橋市', '221汐止市', '222深坑鄉', '223石碇鄉', '224瑞芳鎮', '226平溪鄉', '227雙溪鄉', '228貢寮鄉', '231新店市', '232坪林鄉', '233烏來鄉', '234永和市', '235中和市', '236土城市', '237三峽鎮', '238樹林市', '239鶯歌鎮', '241三重市', '242新莊市', '243泰山鄉', '244林口鄉', '247蘆洲市', '248五股鄉', '248新莊市', '249八里鄉', '251淡水鎮', '252三芝鄉', '253石門鄉'],
                     ['台中市', '400中區', '401東區', '402南區', '403西區', '404北區', '406北屯區', '407西屯區', '408南屯區'],
                     ['台中縣', '411太平市', '412大里市', '413霧峰鄉', '414烏日鄉', '420豐原市', '421后里鄉', '422石岡鄉', '423東勢鎮', '424和平鄉', '426新社鄉', '427潭子鄉', '428大雅鄉', '429神岡鄉', '432大肚鄉', '433沙鹿鎮', '434龍井鄉', '435梧棲鎮', '436清水鎮', '437大甲鎮', '438外埔鄉', '439大安鄉'],
@@ -32,9 +33,9 @@ var app = window.AddressSeleclList =
                   ]
     ,
 
-    defaultOptionCityText: '請選擇縣市',
+    defaultOptionCityText: '城市',
     defaultOptionCityValue: '',
-    defaultOptionAreaText: '請選擇鄉鎮',
+    defaultOptionAreaText: '區域',
     defaultOptionAreaValue: '',
     
     Initialize: function (city, area, defaultCityText, defaultCityValue, defaultAreaText, defaultAreaValue) {
@@ -72,5 +73,29 @@ var app = window.AddressSeleclList =
         var city = document.getElementById(city);
         var area = document.getElementById(area);
         return city.value + area.value;
+         
+    
+    },
+    
+    BagaCity:function (city){
+    	var city = document.getElementById(city);
+    	return city.value;
+    },
+   
+    BagaArea:function (area){
+    	
+          var area = document.getElementById(area);
+    	return area.value;
+    },
+   
+    Baga0:function(){
+     
+      return this.defaultOptionCityText ;    
+    },
+    
+    Baga1:function(){
+    	
+    	 return this.defaultOptionAreaText ;    
+
     }
 };

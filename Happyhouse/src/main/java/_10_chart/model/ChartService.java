@@ -39,6 +39,11 @@ public class ChartService {
 	
 	
 
+	
+	
+	
+	
+	
 //由CurrentPriveServlet而來
 //		if("Select".equals(prodaction)) {
 //	List<CurrentPriceBean> result = currentpriceService.select(bean);

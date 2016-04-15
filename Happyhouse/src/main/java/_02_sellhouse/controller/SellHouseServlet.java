@@ -73,6 +73,7 @@ public class SellHouseServlet extends HttpServlet {
 		InputStream is3 = null;
 		Collection<Part> parts = request.getParts();
 		// 接收資料
+		String keyword=request.getParameter("keyword");
 		String temp1 = request.getParameter("sellhouse_id");
 		String user_account = request.getParameter("user_account");
 		String sellhouse_name = request.getParameter("sellhouse_name");
@@ -89,7 +90,9 @@ public class SellHouseServlet extends HttpServlet {
 		String sellhouse_car = request.getParameter("sellhouse_car");
 		String sellhouse_phone = request.getParameter("sellhouse_phone");
 		String sellhouse_email = request.getParameter("sellhouse_email");
-		String prodaction = request.getParameter("prodaction");    
+		String prodaction = request.getParameter("prodaction"); 
+		String select=request.getParameter("choise");
+		System.out.println(select);
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
@@ -133,9 +136,9 @@ public class SellHouseServlet extends HttpServlet {
 		}
 		//驗證HTML Form資料
 		SellHouseBean bean=new SellHouseBean();
-		if("搜尋".equals(prodaction)){
+		if("搜尋".equals(prodaction)&&"address".equals(select)){
 			bean.setUser_account(user_account);
-			bean.setSellhouse_address(sellhouse_address);
+			bean.setSellhouse_address(keyword);
 			bean.setSellhouse_price(sellhouse_price);
 			bean.setSellhouse_name(sellhouse_name);
 			bean.setSellhouse_id(sellhouse_id);
@@ -143,7 +146,46 @@ public class SellHouseServlet extends HttpServlet {
 			List<SellHouseBean> result=sellHouseService.select(bean);
 			request.setAttribute("select", result);
 			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
-		}else if(prodaction!=null&&"新增".equals(prodaction)){
+		}else if("搜尋".equals(prodaction)&&"name".equals(select)){
+			bean.setUser_account(user_account);
+			bean.setSellhouse_address(sellhouse_address);
+			bean.setSellhouse_price(sellhouse_price);
+			bean.setSellhouse_name(keyword);
+			bean.setSellhouse_id(sellhouse_id);
+			System.out.println(bean.getSellhouse_address());
+			List<SellHouseBean> result=sellHouseService.select(bean);
+			request.setAttribute("select", result);
+			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);	
+		}else if("搜尋".equals(prodaction)&&"price".equals(select)){
+		int price=0;
+		try {
+			price = Integer.parseInt(keyword);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+			if(price==0.0){
+				bean.setUser_account(user_account);
+				bean.setSellhouse_address(sellhouse_address);
+				bean.setSellhouse_name(sellhouse_name);
+				bean.setSellhouse_id(sellhouse_id);
+				bean.setSellhouse_price(sellhouse_price);
+				List<SellHouseBean> result=sellHouseService.select(bean);
+				request.setAttribute("select", result);
+				request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
+			}
+			else{
+				bean.setUser_account(user_account);
+				bean.setSellhouse_address(sellhouse_address);
+				bean.setSellhouse_name(sellhouse_name);
+				bean.setSellhouse_id(sellhouse_id);
+				bean.setSellhouse_price(price);
+				List<SellHouseBean> result=sellHouseService.select(bean);
+				request.setAttribute("select", result);
+				request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
+			}
+	
+		}	
+		else if(prodaction!=null&&"新增".equals(prodaction)){
 			bean.setUser_account(user_account);
 			bean.setSellhouse_name(sellhouse_name);
 			bean.setSellhouse_price(sellhouse_price);
@@ -158,7 +200,7 @@ public class SellHouseServlet extends HttpServlet {
 			bean.setSellhouse_car(sellhouse_car);
 			bean.setSellhouse_phone(sellhouse_phone);
 			bean.setSellhouse_email(sellhouse_email);
-			//圖片上傳部分
+			//圖片上傳部分		
 			if (parts != null) {
 				for (Part p : parts) {
 					if (p.getContentType() == null) {

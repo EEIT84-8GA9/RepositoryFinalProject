@@ -60,7 +60,6 @@ public class GetImageServlet02 extends HttpServlet {
 		int sellhouse_id=0;
 		if(id !=null&&id.trim().length()!=0){
 				sellhouse_id = Integer.parseInt(id);
-			System.out.println("55555"+sellhouse_id);
 		}
 		try {
 			Context ctx = new InitialContext();
@@ -70,21 +69,17 @@ public class GetImageServlet02 extends HttpServlet {
 			pstmt=conn.prepareStatement(SELECT_IMAGE);
 			pstmt.setInt(1,sellhouse_id);
 			rset=pstmt.executeQuery();
-			System.out.println(rset);
 			if (rset.next()){
 				is2=rset.getBinaryStream("sellhouse_photo2");
 				if(is2==null){
 				is2=new FileInputStream(defaultPhoto);
 				}
-				System.out.println("kkkkk");
 				response.setContentType("image/png");
 				os2 = response.getOutputStream();
 				byte[] buffer = new byte[4096];
 				int count1=0;
 				while((count1 =is2.read(buffer))!=-1) {
-					System.out.println("22");
 					os2.write(buffer,0,count1);
-					System.out.println("23");
 				}
 	
 				

@@ -37,10 +37,11 @@
 
 						
                         <c:if test="${empty LoginOK}">
-						<li><a href="/Happyhouse/_04_message/Gmmessage.jsp">討論區04</a></li>
+						
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
+						<li><a href="/Happyhouse/_04_message/Gmmessage.jsp">討論區04</a></li>
 						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>

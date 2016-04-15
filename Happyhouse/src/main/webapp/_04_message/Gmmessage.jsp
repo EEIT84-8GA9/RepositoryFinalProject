@@ -63,11 +63,17 @@
  		user_account:"${row.user_account}",
  		message_title:"${row.message_title}",
  		message_describe:"${row.message_describe}",
- 		message_type:"${row.message_type}",
- 		message_actiontype:"${row.message_actiontype}",
+ 		message_type:
+ 			"<select id='sel2'>
+ 			<option value='0'>請選擇</option>
+ 		  	<option value='1'>國家</option>
+ 			<option value='2'>地區</option>
+ 			</select>",
+//  		message_actiontype:"<select id='sel2'></select>",
  		message_reportfrom:"${row.message_reportfrom}",
- 		message_reportreason:"${row.message_reportreason}",
- 	
+//  		message_reportreason:"${row.message_reportreason}",
+ 		message_reportreason:"<button value='${messageVO.message_id}'>我要檢舉</button>"
+ 		
  	
  	},
  	</c:if>
@@ -126,5 +132,7 @@
     </div>
 	<!--close main-->
 	</div>
+	
+<br/>
 </body>
 </html>

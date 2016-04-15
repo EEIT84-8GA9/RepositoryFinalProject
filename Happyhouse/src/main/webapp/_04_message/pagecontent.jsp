@@ -157,11 +157,12 @@
 		</tr>
 
 	</table>
-<h2><font color="blue">param${param.message_title}
+<h2><font color="blue">${param.message_title}
 				</font>
-				<font color="blue">add${add.message_title}</font>
-				<font color="blue">resp${resp.message_title}</font>
-				<font color="blue">resperror${resperror.message_title}</font></h2>
+				<font color="blue">${add.message_title}</font>
+				<font color="blue">${resp.message_title}</font>
+				<font color="blue">${resperror.message_title}</font>
+				<font color="blue">${report.message_title}</font></h2>
 	<div class="content_box">
 			
 			<!-- 1 -->
@@ -397,10 +398,10 @@
 				</div>
 			</c:if>
 				</c:forEach>
-	<!-- resport start -->
+	<!-- report start -->
 	<c:forEach var="messageVO" items="${list}">
 	
-	<c:if test="${respopt.message_title==messageVO.message_title}">
+	<c:if test="${report.message_title==messageVO.message_title}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -420,9 +421,9 @@
 							</tbody>
 						</table>
 					</div>
-					<c:if test="${respopt.message_title==messageVO.message_title}">
+					<c:if test="${report.message_title==messageVO.message_title}">
 						<jsp:useBean id ="resp" class="_04_message.model.MessageVO" scope="page">
-							<jsp:setProperty name="resp" property="message_title" value="${respopt.message_title}" />
+							<jsp:setProperty name="resp" property="message_title" value="${report.message_title}" />
 						</jsp:useBean>
 						<div class="rightSideBar" style="position: relative">
 
@@ -448,7 +449,7 @@
 				</div>
 			</c:if>
 				</c:forEach>
-	<!-- resport end -->
+	<!-- report end -->
 	</div>
 	
 	<!-- for reportReason form-->
@@ -487,9 +488,12 @@
 				<c:if test="${not empty param}">
 				<input type="hidden" name="title" value="${param.message_title}">
 				</c:if>
-				<c:if test="${not empty resport}">	
+				<c:if test="${not empty report}">	
 					<input type="hidden" name="title" value="<jsp:getProperty name='resp' property='message_title'/>">
 				</c:if>
+				
+					<input type="hidden" name="title" value="${resperror.message_title}">
+				
 			  </form>
 		  </div>
 	<!-- end MessageForMe form -->
@@ -516,7 +520,9 @@
 				<c:if test="${not empty resperror}">	
 					<input type="hidden" name="title" value="<jsp:getProperty name='add' property='message_title'/>">
 				</c:if>
-					
+				<c:if test="${not empty report}">	
+					<input type="hidden" name="title" value="<jsp:getProperty name='resp' property='message_title'/>">
+				</c:if>
 				</td>
 			</tr>
 		</table>

@@ -91,7 +91,7 @@ public class articleServlet1 extends HttpServlet {
 //						System.out.println("84行刪session-add");
 						session.removeAttribute("add");
 						MessageVO DBVO=messageService.select(title);
-//						System.out.println("呼叫dao-select(title),request.setAttribute('resperror', DBVO)");
+						System.out.println("呼叫dao-select(title),request.setAttribute('resperror', DBVO)");
 						request.setAttribute("resperror", DBVO);
 						request.getRequestDispatcher(
 								"/_04_message/pagecontent.jsp").forward(request, response);
@@ -129,6 +129,7 @@ public class articleServlet1 extends HttpServlet {
 //					System.out.println("118行刪session-resp");
 					session.removeAttribute("add");
 					session.removeAttribute("resp");
+					session.removeAttribute("report");
 //					System.out.println("新增session-resp");
 					session.setAttribute("resp", result);
 //					System.out.println("已新增回應待轉頁");

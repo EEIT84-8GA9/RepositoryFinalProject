@@ -8,11 +8,11 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript" src="js/AddressSelectList.js"></script>
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/AddressSelectList.js"></script>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 
 
@@ -183,9 +183,9 @@
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
- 						    <img src="images/house.jpg" alt="" /> 
-<!--                        <img src="images/2.jpg" alt="" />  -->
-<!-- 					<img src="images/3.jpg" alt="" /> -->
+ 						    <img src="/Happyhouse/images/house.jpg" alt="" /> 
+<!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
+<!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 <!-- 					</div> -->
 <!-- <!-- 					close slider --> 
 <!-- 				</div> -->
@@ -200,7 +200,7 @@
 				<!--close content_item-->
 				<div class="content_image">
 					<a href="#"><img style="border: 10px solid #FFF;" alt="image"
-						src="images/11.jpg" /></a>
+						src="/Happyhouse/images/11.jpg" /></a>
 				</div>
 				<!--close content_image-->
 				<div class="content_text">
@@ -211,7 +211,7 @@
 				<br style="clear: both" />
 				<div class="content_image_right">
 					<a href="#"><img style="border: 10px solid #FFF;" alt="image"
-						src="images/22.jpg" /></a>
+						src="/Happyhouse/images/22.jpg" /></a>
 				</div>
 				
 				<!--close content_image-->

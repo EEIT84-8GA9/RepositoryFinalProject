@@ -1,4 +1,56 @@
 $(document).ready(function(){
+	function TextArea1WordCount()
+	{
+	//允許輸入最大長度
+	var intMaxLength = 50;
+	//文字輸入//取得計算字數的物件塊
+	TextArea1 = document.getElementById("reportreason");
+	
+	//取得計算字數的物件 
+	lblWordCountNow = document.getElementById("lblWordCountNow");
+	//將文字輸入方塊表度寫入顯示Label
+	lblWordCountNow.innerHTML = TextArea1.value.length;
+
+	//比對字數是否超過允許長度
+	if (TextArea1.value.length > intMaxLength)
+	{
+		alert("字數超過50字，請修正!");
+	  
+	}
+
+	//250毫秒後再執行一次此function
+	setTimeout("TextArea1WordCount()", 250);
+
+	}
+	function TextArea1WordCount1()
+	{
+	//允許輸入最大長度
+	var intMaxLength = 500;
+	//文字輸入//取得計算字數的物件塊
+	TextArea1 = document.getElementById("sms_describe");
+	
+	//取得計算字數的物件 
+	lblWordCountNow = document.getElementById("2blWordCountNow");
+	//將文字輸入方塊表度寫入顯示Label
+	lblWordCountNow.innerHTML = TextArea1.value.length;
+
+	//比對字數是否超過允許長度
+	if (TextArea1.value.length > intMaxLength)
+	{
+		alert("字數超過50字，請修正!");
+	  
+	}
+
+	//250毫秒後再執行一次此function
+	setTimeout("TextArea1WordCount1()", 250);
+
+	}
+	
+	
+//	 $("#reportreason").keydown(function(){
+//	     TextArea1WordCount();
+//	    });
+	
 	
 	$(function() {
 		$("#reportform").dialog({
@@ -17,8 +69,10 @@ $(document).ready(function(){
 			
 		});
 		$(".buttonReport").on("click", function() {
-			$("#reportform").dialog("open");
-			 
+			$("#reportform").dialog("open"),
+			 $("#reportreason").keyup(function(){
+			     TextArea1WordCount();
+			    });
 		});
 	});
 	$(".buttonReport").click(function() {
@@ -42,7 +96,10 @@ $(document).ready(function(){
 			        }
 		});
 		$(".MessageButton").on("click", function() {
-			$("#MessageForMe").dialog("open");
+			$("#MessageForMe").dialog("open"),
+			$("#sms_describe").keyup(function(){
+			     TextArea1WordCount1();
+			    });
 		});
 	});
 	$(".MessageButton").click(function() {

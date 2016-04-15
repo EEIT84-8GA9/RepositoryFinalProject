@@ -495,6 +495,7 @@
 				
 				
 				<label>說明原因</label><br/>
+				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
 				<input type="submit" id="reportsubmit" value="Submit" />
 				
@@ -511,6 +512,7 @@
 				<input type="text" id="sms_title" name="sms_title"><br/>
 				
 				<label>訊息內容</label><br/>
+				<label>目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
 				
 				<input type="submit" id="messagesubmit" name="type"  value="傳送" />

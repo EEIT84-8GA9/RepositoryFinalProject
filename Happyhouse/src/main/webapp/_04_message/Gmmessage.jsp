@@ -63,16 +63,12 @@
  		user_account:"${row.user_account}",
  		message_title:"${row.message_title}",
  		message_describe:"${row.message_describe}",
- 		message_type:
- 			"<select id='sel2'>
- 			<option value='0'>請選擇</option>
- 		  	<option value='1'>國家</option>
- 			<option value='2'>地區</option>
- 			</select>",
+ 		message_type:"<select id='sel2'><option value='B'>審核中</option><option value='A'>正常</option><option value='C'>違規</option></select>",
 //  		message_actiontype:"<select id='sel2'></select>",
  		message_reportfrom:"${row.message_reportfrom}",
-//  		message_reportreason:"${row.message_reportreason}",
- 		message_reportreason:"<button value='${messageVO.message_id}'>我要檢舉</button>"
+ 		message_reportreason:"${row.message_reportreason}",
+//  		message_reportreason:"<button value='${messageVO.message_id}'>我要檢舉</button>"
+
  		
  	
  	},
@@ -99,11 +95,11 @@
 		fitColumns:true,
 		columns:[
 		{title:"Id", field:"id", width:40},
-		{title:"會員名稱", field:"user_account", width:320},
+		{title:"會員名稱", field:"user_account", width:100},
 		{title:"討論區主題", field:"message_title", width:220},
 		{title:"發文內容", field:"message_describe", width:130},
-		{title:"目前狀態", field:"message_type", width:130},
-		{title:"檢舉他的人", field:"message_reportfrom"},
+		{title:"目前狀態", field:"message_type", width:90},
+		{title:"檢舉他的人", field:"message_reportfrom",width:100},
 		{title:"被檢舉原因", field:"message_reportreason"},
 		
 

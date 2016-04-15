@@ -40,7 +40,7 @@ function clearForm() {
 <h3>Welcome ${user.email}</h3>
 <h3>CP Table </h3>
 
-<form action="<c:url value="/pages/cpweb.controller"/>" method="get">
+<form action="<c:url value="/_10_chart.controller/chart.controller"/>" method="get">
 <!-- 以各區分別     currentprice_city -->
 <!-- 以類別區分     currentprice_bdtype  -->
 <!-- 賣的樓層       currentprice_transes   -->
@@ -95,7 +95,8 @@ function clearForm() {
 
 
 <!-- 此區為 Chart導向 form -->
-<form action="<c:url value="/chart.controller"/>" method="get">
+<form action="<c:url value="/_10_chart.controller/chart.controller"/>" method="get">
+
 <!-- 以各區分別     currentprice_city -->
 <!-- 以類別區分     currentprice_bdtype  -->
 <!-- 賣的樓層       currentprice_transes   -->

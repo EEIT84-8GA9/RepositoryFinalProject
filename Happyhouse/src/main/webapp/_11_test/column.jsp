@@ -20,6 +20,14 @@
           
           
         ]);
+        
+        
+//         ['"${param.currentprice_city}"',
+//          <c:forEach var="hikari2" items="${get_chart_data.data_result3}">
+//          ${hikari2.avgoneprice_by_city_type},       
+//         </c:forEach>],
+        //filter寫法
+        
         //上面的 items關鍵!!!  因為值是由 filter匯入~ 所以由get_chart_data.data_result3
         //去找 圖檔所在的預設資料~EX column圖為 方法3 line圖 & lineline圖為 方法4 
         //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)

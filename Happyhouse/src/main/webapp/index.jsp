@@ -81,9 +81,9 @@
 <!--                        <img src="images/2.jpg" alt="" />  -->
 <!-- 					<img src="images/3.jpg" alt="" /> -->
 <!-- 					</div> -->
-<!-- <!-- 					close slider --> -->
+<!-- <!-- 					close slider --> 
 <!-- 				</div> -->
-<!-- <!-- 				close slider_wrapper --> -->
+<!-- <!-- 				close slider_wrapper --> 
 <!-- 			</div> -->
 			<!--close banner_image-->
 			<div id="content">

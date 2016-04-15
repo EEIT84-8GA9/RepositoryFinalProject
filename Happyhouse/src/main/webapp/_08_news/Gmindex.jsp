@@ -24,50 +24,53 @@
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>管理者頁面</h2>
+				<h2>你刊登房屋的超棒選擇</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-							<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理員首頁</a></li>
-						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
-
-						
-                        <c:if test="${empty LoginOK}">
-						
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">檢舉管理</a>
+						<ul>
+						<li><a href="#">出售區檢舉</a></li>
+                        <li><a href="#">出租區檢舉</a></li>
+                        <li><a href="#">留言板檢舉</a></li>
+                        <li><a href="#">惡意信件檢舉</a></li>                        
+                        <li><a href="#">封鎖會員</a></li>                   
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>									
+						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="/Happyhouse/_04_message/Gmmessage.jsp">討論區04</a></li>
-						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
+						<li><a href="_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty user}">
-			<h1 align="center"><font color=blue>${user.user_name}你好</font></h1>
+			<c:if test="${not empty LoginOK}">
+			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
-			<div id="content">
-				<div class="content_item">
-                      <div id="slider" class="nivoSlider">
-						<img src="../images/1.jpg" alt="" /> <img src="../images/2.jpg" alt="" />
-						<img src="../images/3.jpg" alt="" />
-					</div>
+			<!--close header-->
+<!-- 			<div id="banner_image"> -->
+<!-- 				<div id="slider-wrapper"> -->
+<!-- 					<div id="slider" class="nivoSlider"> -->
+ 						    <img src="/Happyhouse/images/house.jpg" alt="" /> 
+<!--                        <img src="images/2.jpg" alt="" />  -->
+<!-- 					<img src="images/3.jpg" alt="" /> -->
+<!-- 					</div> -->
+<!-- <!-- 					close slider --> 
+<!-- 				</div> -->
+<!-- <!-- 				close slider_wrapper --> 
+<!-- 			</div> -->
+			<!--close banner_image-->
 					<div>
 					<h4>更新專區~測試中 敬請期待</h4>
 					</div>
-					<!--close sidebar_item-->
-				</div>
-				<!--close sidebar-->
-			</div>
-			<!--close sidebar_container-->
-
-		</div>
-		<!--close site_content-->
 		<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

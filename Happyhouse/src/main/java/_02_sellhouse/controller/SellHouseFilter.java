@@ -64,18 +64,18 @@ public class SellHouseFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("AAAAAAAAAAAAAA");
+
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		servletPath = req.getServletPath();  
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
 		
-			System.out.println("AAAAAAAAAAAAAA");
+			
 			SellHouseDAO dao=new SellHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();
 			 List<SellHouseBean> result =dao.SELECT_ALL();
-			System.out.println(result);
+			System.out.println("ddddd"+result);
 			req.setAttribute("select", result);
 			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
 		

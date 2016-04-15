@@ -37,7 +37,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.taglibs.standard.lang.jstl.test.PageContextImpl;
 
-import _01_users.model.UsersBean;
 import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseService;
 
@@ -46,20 +45,17 @@ import _02_sellhouse.model.SellHouseService;
 
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet(
-		urlPatterns={"/house/house.controller"}
+		urlPatterns={"/house/house1.controller"}
 )
-public class SellHouseServlet extends HttpServlet {
+public class SellHouseServlet_01 extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();
 
-	
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
-		UsersBean userbean= (UsersBean) session.getAttribute("LoginOK");
-		System.out.println(userbean.getUser_account());
 		//圖片上傳
 		long sizeInBytes1 = 0;
 		long sizeInBytes2 = 0;
@@ -77,7 +73,7 @@ public class SellHouseServlet extends HttpServlet {
 		InputStream is2 = null;
 		String fileName3 = "";
 		InputStream is3 = null;
-//		Collection<Part> parts = request.getParts();
+		Collection<Part> parts = request.getParts();
 		// 接收資料
 		String keyword=request.getParameter("keyword");
 		String temp1 = request.getParameter("sellhouse_id");
@@ -97,7 +93,12 @@ public class SellHouseServlet extends HttpServlet {
 		String sellhouse_phone = request.getParameter("sellhouse_phone");
 		String sellhouse_email = request.getParameter("sellhouse_email");
 		String prodaction = request.getParameter("prodaction"); 
+		
+		
 		String select=request.getParameter("choise");
+		
+		
+		
 		System.out.println(select);
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
@@ -111,6 +112,8 @@ public class SellHouseServlet extends HttpServlet {
 				error.put("sellhouse_id", "id必須是數字");
 			}
 		}
+		
+		
 		int sellhouse_price = 0;
 		if (temp3 != null && temp3.trim().length() != 0) {
 			try {
@@ -187,88 +190,85 @@ public class SellHouseServlet extends HttpServlet {
 				request.setAttribute("select", result);
 				request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 			}
-		}else{
-			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
-			
+	
 		}	
-		
-//		else if(prodaction!=null&&"新增".equals(prodaction)){
-//			bean.setUser_account(user_account);
-//			bean.setSellhouse_name(sellhouse_name);
-//			bean.setSellhouse_price(sellhouse_price);
-//			bean.setSellhouse_patterns(sellhouse_patterns);
-//			bean.setSellhouse_address(sellhouse_address);
-//			bean.setSellhouse_size(sellhouse_size);
-//			bean.setSellhouse_describe(sellhouse_describe);
-//			bean.setSellhouse_floor(sellhouse_floor);
-//			bean.setSellhouse_age(sellhouse_age);
-//			bean.setSellhouse_type(sellhouse_type);
-//			bean.setSellhouse_message(sellhouse_message);
-//			bean.setSellhouse_car(sellhouse_car);
-//			bean.setSellhouse_phone(sellhouse_phone);
-//			bean.setSellhouse_email(sellhouse_email);
-//			//圖片上傳部分		
-//			if (parts != null) {
-//				for (Part p : parts) {
-//					if (p.getContentType() == null) {
-//						if (fldName1.equals("text")) {
-//							// memberID = value1;
-//						}
-//					} else {
-//						if (is1 == null) {
-//							is1 = p.getInputStream();
-//							sizeInBytes1 = p.getSize();
-//							fileName1 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
-//							fileName1 = sellHouseService.adjustFileName(fileName1,
-//									sellHouseService.IMAGE_FILENAME_LENGTH);
-//						} else if (is2 == null && is1 != null) {
-//							is2 = p.getInputStream();
-//							sizeInBytes2 = p.getSize();
-//							fileName2 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
-//							fileName2 = sellHouseService.adjustFileName(fileName2,
-//									sellHouseService.IMAGE_FILENAME_LENGTH);
-//						} else if (is3 == null && is1 != null && is2 != null) {
-//							is3 = p.getInputStream();
-//							sizeInBytes3 = p.getSize();
-//							fileName3 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
-//							fileName3 = sellHouseService.adjustFileName(fileName3,
-//									sellHouseService.IMAGE_FILENAME_LENGTH);
-//						}
-//						if (fileName1 != null && fileName1.trim().length() > 0) {
-//							bean.setSellhouse_photo1_name(fileName3);
-//							bean.setSellhouse_photo2_name(fileName2);
-//							bean.setSellhouse_photo3_name(fileName3);
-//							System.out.println("fileName1=" + fileName1
-//									+ "sizeInBytes1=" + sizeInBytes1);
-//							System.out.println("fileName2=" + fileName2
-//									+ "sizeInBytes2=" + sizeInBytes2);
-//							// dao.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2);
-//						}
-//					}
-//				}
-//			}
-//			SellHouseBean result=sellHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
-//					sizeInBytes3);
-//			request.getRequestDispatcher("/_02_sellhouse/SellHouse.jsp").forward(request, response);
-//		}else if(prodaction!=null&&"修改".equals(prodaction)){
-//			bean.setSellhouse_id(sellhouse_id);
-//			bean.setSellhouse_name(sellhouse_name);
-//			bean.setSellhouse_price(sellhouse_price);
-//			bean.setSellhouse_patterns(sellhouse_patterns);
-//			bean.setSellhouse_address(sellhouse_address);
-//			bean.setSellhouse_describe(sellhouse_describe);
-//			bean.setSellhouse_floor(sellhouse_floor);
-//			bean.setSellhouse_age(sellhouse_age);
-//			bean.setSellhouse_type(sellhouse_type);
-//			bean.setSellhouse_message(sellhouse_message);
-//			bean.setSellhouse_car(sellhouse_car);
-//			bean.setSellhouse_phone(sellhouse_phone);
-//			bean.setSellhouse_email(sellhouse_email);
-//			SellHouseBean result=sellHouseService.update(bean);	
-//		}else if(prodaction!=null&&"刪除".equals(prodaction)){
-//			bean.setSellhouse_id(sellhouse_id);
-//			boolean result=sellHouseService.delete(bean);
-//		}
+		else if(prodaction!=null&&"新增".equals(prodaction)){
+			bean.setUser_account(user_account);
+			bean.setSellhouse_name(sellhouse_name);
+			bean.setSellhouse_price(sellhouse_price);
+			bean.setSellhouse_patterns(sellhouse_patterns);
+			bean.setSellhouse_address(sellhouse_address);
+			bean.setSellhouse_size(sellhouse_size);
+			bean.setSellhouse_describe(sellhouse_describe);
+			bean.setSellhouse_floor(sellhouse_floor);
+			bean.setSellhouse_age(sellhouse_age);
+			bean.setSellhouse_type(sellhouse_type);
+			bean.setSellhouse_message(sellhouse_message);
+			bean.setSellhouse_car(sellhouse_car);
+			bean.setSellhouse_phone(sellhouse_phone);
+			bean.setSellhouse_email(sellhouse_email);
+			//圖片上傳部分		
+			if (parts != null) {
+				for (Part p : parts) {
+					if (p.getContentType() == null) {
+						if (fldName1.equals("text")) {
+							// memberID = value1;
+						}
+					} else {
+						if (is1 == null) {
+							is1 = p.getInputStream();
+							sizeInBytes1 = p.getSize();
+							fileName1 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
+							fileName1 = sellHouseService.adjustFileName(fileName1,
+									sellHouseService.IMAGE_FILENAME_LENGTH);
+						} else if (is2 == null && is1 != null) {
+							is2 = p.getInputStream();
+							sizeInBytes2 = p.getSize();
+							fileName2 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
+							fileName2 = sellHouseService.adjustFileName(fileName2,
+									sellHouseService.IMAGE_FILENAME_LENGTH);
+						} else if (is3 == null && is1 != null && is2 != null) {
+							is3 = p.getInputStream();
+							sizeInBytes3 = p.getSize();
+							fileName3 = sellHouseService.getFileName(p); // 此為圖片檔的檔名
+							fileName3 = sellHouseService.adjustFileName(fileName3,
+									sellHouseService.IMAGE_FILENAME_LENGTH);
+						}
+						if (fileName1 != null && fileName1.trim().length() > 0) {
+							bean.setSellhouse_photo1_name(fileName3);
+							bean.setSellhouse_photo2_name(fileName2);
+							bean.setSellhouse_photo3_name(fileName3);
+							System.out.println("fileName1=" + fileName1
+									+ "sizeInBytes1=" + sizeInBytes1);
+							System.out.println("fileName2=" + fileName2
+									+ "sizeInBytes2=" + sizeInBytes2);
+							// dao.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2);
+						}
+					}
+				}
+			}
+			SellHouseBean result=sellHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
+					sizeInBytes3);
+			request.getRequestDispatcher("/_02_sellhouse/SellHouse.jsp").forward(request, response);
+		}else if(prodaction!=null&&"修改".equals(prodaction)){
+			bean.setSellhouse_id(sellhouse_id);
+			bean.setSellhouse_name(sellhouse_name);
+			bean.setSellhouse_price(sellhouse_price);
+			bean.setSellhouse_patterns(sellhouse_patterns);
+			bean.setSellhouse_address(sellhouse_address);
+			bean.setSellhouse_describe(sellhouse_describe);
+			bean.setSellhouse_floor(sellhouse_floor);
+			bean.setSellhouse_age(sellhouse_age);
+			bean.setSellhouse_type(sellhouse_type);
+			bean.setSellhouse_message(sellhouse_message);
+			bean.setSellhouse_car(sellhouse_car);
+			bean.setSellhouse_phone(sellhouse_phone);
+			bean.setSellhouse_email(sellhouse_email);
+			SellHouseBean result=sellHouseService.update(bean);	
+		}else if(prodaction!=null&&"刪除".equals(prodaction)){
+			bean.setSellhouse_id(sellhouse_id);
+			boolean result=sellHouseService.delete(bean);
+		}
 	}
 
 	@Override

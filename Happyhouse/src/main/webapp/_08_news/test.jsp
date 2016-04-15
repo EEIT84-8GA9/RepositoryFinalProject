@@ -25,27 +25,42 @@
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的好選擇</h2>
+				<h2>你刊登房屋的超棒選擇</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理員首頁</a></li>
-						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">查看個人收藏(暫時)</a></li>
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">檢舉管理</a>
+						<ul>
+						<li><a href="#">出售區檢舉</a></li>
+                        <li><a href="#">出租區檢舉</a></li>
+                        <li><a href="#">留言板檢舉</a></li>
+                        <li><a href="#">惡意信件檢舉</a></li>                        
+                        <li><a href="#">封鎖會員</a></li>                   
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>									
+						<c:if test="${empty LoginOK}">
+						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
+						<li><a href="_04_message/logout.jsp">登出</a></li>
+						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
+			<c:if test="${not empty LoginOK}">
+			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			</c:if>
 			<!--close header-->
-
-			<!--close slider_wrapper-->
 			<form action="<c:url value="/test.controller" />" method="post">
 				<table>
 					<tr style="border: 1px solid black;">
-						<td>文章編號(update用)</td>
+						<td>文章編號</td>
 						<td><input type="text" name="id" value="${param.id}">${error.id}
 							${error.updateid}</td>
 					</tr>

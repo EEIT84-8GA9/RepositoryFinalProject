@@ -32,8 +32,17 @@
       
       }
     </script>
+  <script language="javascript">
+      function ShowHello(){
+    	 String currentprice_city=AddressSeleclList.Baga0();
+    }
+</script>
   </head>
-  <body>
+  
+<body onload="ShowHello()">
+<span id="ShowBox"></span>
+   
+    
     
     <div id="chart_div2" style="width: 900px; height:500px;"></div>
   </body>

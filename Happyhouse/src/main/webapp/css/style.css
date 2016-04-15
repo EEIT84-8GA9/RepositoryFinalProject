@@ -374,7 +374,6 @@ a.nivo-nextNav {
     margin: 0;
     padding: 0;
     list-style: none;
-    text-align: center;
 }
 #menu {
     width: 960px;
@@ -431,7 +430,7 @@ a.nivo-nextNav {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    top: 38px;
+    top: 20px;
     left: 0;
     z-index: 1;    
     background: #444;   

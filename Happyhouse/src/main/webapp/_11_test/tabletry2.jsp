@@ -7,10 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/AddressSelectList.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script type="text/javascript">
 //       google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
@@ -279,7 +277,7 @@
 
 
 	<form
-		action="<c:url value="../_10_chart.controller/chart.controller"/>"
+		action="<c:url value="/_10_chart.controller/chart.controller"/>"
 		method="get" name="form_name">
 		<!-- FORM NAME其實沒用到.... -->
 		<select id="cityend" name="currentprice_citymain">
@@ -304,7 +302,7 @@
 			<option value="其它">其它</option>
 			<option value="透天厝">透天厝</option>
 			<option value="華廈">華廈(10樓以下)</option>
-		</select> </select>
+		</select> 
 		<!--  類型 >> -->
 		<input type="submit" name="prodaction" value="Choose">
 		<td><span class="error">${error.currentprice_city}</span><img

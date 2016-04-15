@@ -3,6 +3,7 @@ package _10_chart.controller;
 import java.io.IOException;
 
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import _06_currentprice.model.CurrentPriceBean;
-import _09_furniture.model.FurnitureDAO;
+
 import _09_furniture.model.dao.FurnitureDAOJdbc;
 import _10_chart.model.ChartService;
 
@@ -208,7 +209,10 @@ public class ChartServlet extends HttpServlet {
 			}
 			System.out.println("T"+result1);
 			System.out.println("R"+result2);
-			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
+//			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
+//          上為TEST 首頁二題之JSP檔 同樣一組的filter為  _10_ 中的chartFilter.java 
+			request.getRequestDispatcher("/index.jsp").forward(request,res);
+			
 			System.out.println("SOS");
 		}else {
 			error.put("action", "Unknown Action:" + prodaction);

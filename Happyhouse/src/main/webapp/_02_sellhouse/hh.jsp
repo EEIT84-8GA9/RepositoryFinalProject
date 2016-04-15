@@ -38,7 +38,6 @@
 				<input type="text" name="sellhouse_address" placeholder="請輸入地址" />
 				<input type="text" name="sellhouse_price" placeholder="請輸入售價" />
 				<input type="text" name="sellhouse_patterns" placeholder="請輸入格局" />
-				<input type="text" name="sellhouse_patterns" placeholder="請輸入格局" />
 				<input type="text" name="sellhouse_size" placeholder="請輸入坪數" />
 				<input type="text" name="sellhouse_floor" placeholder="請輸入樓層" />
 				<input type="button" name="next" class="next action-button" value="Next" />
@@ -50,7 +49,7 @@
 				<input type="text" name="sellhouse_car" placeholder="請填寫有無車位" />
 				<input type="text" name="sellhouse_phone" placeholder="請填寫連絡電話" />
 				<input type="text" name="sellhouse_email" placeholder="請填寫連絡EMAIL" />	
-				<input type="text" name="sellhouse_type" placeholder="請填寫連絡EMAIL" />	
+<!-- 				<input type="text" name="sellhouse_type" placeholder="請填寫連絡EMAIL" />	 -->
 				<textarea name="sellhouse_describe" placeholder="請填寫額外描述"></textarea>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />

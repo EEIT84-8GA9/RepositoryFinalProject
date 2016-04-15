@@ -569,7 +569,8 @@ public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputS
 			//long size3=image1.length();
 			//InputStream is3=new FileInputStream(image3);
 			pstmt.setBinaryStream(15,is3,size3);
-			pstmt.setString(16,bean.getSellhouse_type());
+			//預設值為A
+			pstmt.setString(16,"A");
 			pstmt.setString(17,bean.getSellhouse_message());
 			pstmt.setString(18,bean.getSellhouse_car());
 			pstmt.setString(19,bean.getSellhouse_phone());

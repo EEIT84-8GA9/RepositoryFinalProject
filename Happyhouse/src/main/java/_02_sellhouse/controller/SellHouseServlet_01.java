@@ -54,7 +54,6 @@ public class SellHouseServlet_01 extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
-		System.out.println("55555555");
 		//圖片上傳
 		long sizeInBytes1 = 0;
 		long sizeInBytes2 = 0;
@@ -86,23 +85,19 @@ public class SellHouseServlet_01 extends HttpServlet {
 		String temp7 = request.getParameter("sellhouse_size");
 		String sellhouse_floor = request.getParameter("sellhouse_floor");
 		String temp9 = request.getParameter("sellhouse_age");
-		String sellhouse_type = request.getParameter("sellhouse_type");
+		String sellhouse_type = request.getParameter("sellhouse_type");//預設值，記得去jdbc加
 		String sellhouse_message = request.getParameter("sellhouse_message");
 		String sellhouse_date = request.getParameter("sellhouse_date");
 		String sellhouse_car = request.getParameter("sellhouse_car");
 		String sellhouse_phone = request.getParameter("sellhouse_phone");
 		String sellhouse_email = request.getParameter("sellhouse_email");
 		String prodaction = request.getParameter("prodaction"); 
-		
-		
 		String select=request.getParameter("choise");
-		
-		System.out.println("444455");
-		System.out.println(prodaction);
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
 		request.setAttribute("error", error);
 		int sellhouse_id=0;
+		//ID
 		if(temp1 !=null&&temp1.trim().length()!=0){
 			try {
 				sellhouse_id = Integer.parseInt(temp1);
@@ -111,6 +106,15 @@ public class SellHouseServlet_01 extends HttpServlet {
 				error.put("sellhouse_id", "id必須是數字");
 			}
 		}
+		//帳號
+		if(user_account ==null&&user_account.trim().length()==0){
+			error.put("user_account", "請輸入使用者帳號");
+		}
+		//標題
+		if(sellhouse_name==null&&sellhouse_name.trim().length()==0){
+			error.put("sellhouse_name", "請輸入標題");
+		}
+		//價格
 		int sellhouse_price = 0;
 		if (temp3 != null && temp3.trim().length() != 0) {
 			try {
@@ -119,7 +123,22 @@ public class SellHouseServlet_01 extends HttpServlet {
 				e.printStackTrace();
 				error.put("sellhouse_price", "價錢必須是數字");
 			}
+		}else if(temp3==null&&temp3.trim().length()==0){
+			error.put("sellhouse_price", "請輸入價錢");
 		}
+		//格局
+		if(sellhouse_patterns==null&&sellhouse_patterns.trim().length()==0){
+			error.put("sellhouse_patterns", "請輸入格局");
+		}
+		//地址
+		if(sellhouse_address==null&&sellhouse_address.trim().length()==0){
+			error.put("sellhouse_address", "請輸入地址");
+		}
+		//額外描述  可以為NULL
+		if(sellhouse_describe==null&&sellhouse_describe.trim().length()==0){
+			error.put("sellhouse_describe", "請輸入額外描述");
+		}
+		//坪數
 		int sellhouse_size = 0;
 		if (temp7 != null && temp7.trim().length() != 0) {
 			try {
@@ -128,17 +147,42 @@ public class SellHouseServlet_01 extends HttpServlet {
 				e.printStackTrace();
 				error.put("sellhouse_size", "坪數必須是數字");
 			}
+		}else if(temp7==null&&temp7.trim().length() ==0){
+			error.put("sellhouse_size", "請輸入坪數");
 		}
+		//樓層
+		if(sellhouse_floor==null&&sellhouse_floor.trim().length()==0){
+			error.put("sellhouse_floor", "請輸入樓層");
+		}
+		//屋齡 不需要?
 		int sellhouse_age = 0;
 		if (temp9 != null && temp9.trim().length() != 0) {
 			try {
 				sellhouse_age = Integer.parseInt(temp9);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
-				error.put("sellhouse_age", "屋齡必須是數字");
+				error.put("sellhouse_age","屋齡必須是數字");
 			}
+		}else if(temp9==null&&temp9.trim().length() ==0){
+			error.put("sellhouse_size", "請輸入屋齡");
+		}
+		//車位
+		if(sellhouse_car==null&&sellhouse_car.trim().length()==0){
+			error.put("sellhouse_car", "請輸入有無車位");
+		}
+		//電話
+		if(sellhouse_phone==null&&sellhouse_phone.trim().length()==0){
+			error.put("sellhouse_phone", "請輸入電話");
+		}
+		//電話
+		if(sellhouse_email==null&&sellhouse_email.trim().length()==0){
+					error.put("sellhouse_email", "請輸入EMAIL");
 		}
 		//驗證HTML Form資料
+		
+		
+		
+		
 		SellHouseBean bean=new SellHouseBean();
 		if("搜尋".equals(prodaction)&&"address".equals(select)){
 			bean.setUser_account(user_account);

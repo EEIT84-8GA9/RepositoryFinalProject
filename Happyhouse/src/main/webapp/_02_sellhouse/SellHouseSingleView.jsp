@@ -43,7 +43,7 @@
 </style>
 <body>
 <div id="allpage">
-<form action="<c:url value="/house/house.controller"/>"method="post">
+<form action="<c:url value="/house/house.controller"/>"method="POST">
 <c:if test="${not empty param}">
 		<div id="content">
 			<article>
@@ -76,9 +76,7 @@
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
-				
 				<form>
-					
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>

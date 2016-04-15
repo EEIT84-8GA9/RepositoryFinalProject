@@ -31,7 +31,7 @@
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="../index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">刊登出售</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a></li>
 						<li><a href="testimonials.html">刊登出租</a></li>
 						<li><a href="addarticle.controller">討論區</a></li>
 						<li><a href="/Happyhouse/sms.controller">站內信</a></li>
@@ -53,10 +53,18 @@
 			<!--close header-->
 			<div style="padding-left:150px">
 		<form enctype="multipart/form-data" action="<c:url value="/house/house.controller"/>"method="post" >
-		
 		<fieldset>
 		<legend>房屋查詢</legend>
-	<div style="padding-left:200px;width:50%;height:50%"><input  style="height:50%" type="text" name="sellhouse_address"  >
+	<div style="padding-left:200px;width:50%;height:50%">
+	<label>選擇搜尋方式</label>
+	<select name="choise">
+	<option value="address">地址</option>
+	<option value="name">標題</option>
+	<option value="price">價格</option>
+	</select>
+	<input  style="height:50%" type="hidden" name="sellhouse_address">
+	<input  style="height:50%" type="hidden" name="null">
+	<input  style="height:50%" type="text" name="keyword">
 	<input type="submit" value="搜尋" name="prodaction"/>
 	</div>
 	</fieldset>

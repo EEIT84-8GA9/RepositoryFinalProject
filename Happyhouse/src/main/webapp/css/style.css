@@ -430,8 +430,8 @@ a.nivo-nextNav {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    top: 20px;
-    left: 0;
+    top: 15px;
+    left: -30px;
     z-index: 1;    
     background: #444;   
     background: linear-gradient(#444, #111);

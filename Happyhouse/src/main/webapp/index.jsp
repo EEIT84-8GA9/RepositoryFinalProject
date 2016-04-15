@@ -48,7 +48,7 @@
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">刊登二手家具</a></li>	
+						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 						</ul>
 						</li>
 						<li><a href="addarticle.controller">討論區</a></li>										
@@ -64,7 +64,7 @@
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="_04_message/logout.jsp">登出</a></li>
+						<li><a href="_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>

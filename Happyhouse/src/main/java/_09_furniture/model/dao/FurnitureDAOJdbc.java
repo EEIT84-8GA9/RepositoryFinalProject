@@ -57,6 +57,7 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 //		bean.setFurniture_id(1091);
 //		System.out.println(fc.update(bean));
 //		System.out.println(fc.insert(bean));
+		System.out.println(fc.select("Alex123"));
 		//fc.selectAllFurniture();
 	//	 System.out.println(fc.selectAllFurniture());
 	//	System.out.println(fc.selectKeyWord("l"));

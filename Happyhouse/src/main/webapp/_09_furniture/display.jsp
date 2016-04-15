@@ -56,7 +56,7 @@ $(document).ready(function() {
 <table>
 	<thead>
 	<tr>
-	    
+	
 		<th>商品編號</th>
 		<th>商品名稱</th>
 		<th>商品價格</th>
@@ -86,8 +86,7 @@ $(document).ready(function() {
 <!-- 		</td> -->
 		
 		<td><a href="${path}">更新商品編號   :${row.furniture_id}</a></td>
-	   <td> <input type="submit" name="prodaction" value="Delete">更新商品編號   :${row.furniture_id}</td>
-        <td>${row.furniture_neme}</td>
+	    <td>${row.furniture_neme}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>

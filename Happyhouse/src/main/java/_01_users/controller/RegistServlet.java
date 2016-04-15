@@ -91,13 +91,13 @@ public class RegistServlet extends HttpServlet {
 		if (bean != null) {
             HttpSession session = request.getSession();
 			session.setAttribute("LoginOK", bean);
-			String dest = (String) session.getAttribute("dest");
-			if (dest == null || dest.length() == 0) {
+			String target = (String) session.getAttribute("target");
+			if (target == null || target.length() == 0) {
 				String path = request.getContextPath();
 				response.sendRedirect(path + "/index.jsp");
 			} else {
-				session.removeAttribute("dest");
-				response.sendRedirect(dest);
+				session.removeAttribute("target");
+				response.sendRedirect(target);
 			}
 		}
 

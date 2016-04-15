@@ -11,10 +11,10 @@ public class FurnitureService {
 	private FurnitureDAO productDao = new FurnitureDAOJdbc();
 	public static void main(String[] args) {
 		FurnitureService service = new FurnitureService();
-		FurnitureBean f=new FurnitureBean();
-		f.setFurniture_id(1000);
-		f.setUser_account("Alex123");
-		List<FurnitureBean> beans = service.select(f);
+//		FurnitureBean f=new FurnitureBean();
+//		f.setFurniture_id(1000);
+//		f.setUser_account("Alex123");
+		List<FurnitureBean> beans = service.selectSelf("Alex123");
 		System.out.println("beans="+beans);
 	}
 	public List<FurnitureBean> select(FurnitureBean bean) {
@@ -29,9 +29,10 @@ public class FurnitureService {
 				result = new ArrayList<FurnitureBean>();
 				result.add(temp);
 			}
-			else if(temp1!=""){
-				result =productDao.select(temp1);
-			}else if(temp2!="") {
+//			else if(temp1!=""){
+//				result =productDao.select(temp1);
+//			}
+			else if(temp2!="") {
 				result =productDao.selectKeyWord(temp2);
 			}
 		} else {
@@ -39,6 +40,23 @@ public class FurnitureService {
 		}
 		return result;
 	}
+	
+	public List<FurnitureBean> selectSelf(String user_account){
+		List<FurnitureBean> result = null;
+		
+		if(user_account!=""){
+			
+			result=	productDao.select(user_account);
+			
+			
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
 	
 	public FurnitureBean insert(FurnitureBean bean) {
 		FurnitureBean result = null;

@@ -55,15 +55,17 @@ $(document).ready(function() {
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
 	<tr>
-		<td>搜尋刊登者 : </td>
-		<td><input type="text" name="user_account" value="${param.user_account}"></td>
-		<td></td>
+		<td>您所刊登的家具 : </td>
+		<td><input type="text" name="user_account" value="${LoginOK.user_account}"></td>
+	
 	</tr>
 	<tr>
-		<td>進階商品名稱比對搜尋 : </td>
+		<td>進階商品名稱搜尋 : </td>
 		<td><input type="text" name="insname" value="${param.furniture_neme}"></td>
 		<td><span class="error">${error.price}</span></td>
 	</tr>
+	<tr>
+
 <!-- 	<tr> -->
 <!-- 		<td>Time : </td> -->
 <%-- 		<td><input type="text" name="time" value="${param.furniture_time}"></td> --%>
@@ -75,9 +77,9 @@ $(document).ready(function() {
 <%-- 		<td><span class="error">${error.expire}</span></td> --%>
 <!-- 	</tr> -->
 	<tr>
-		<td>
-			<input type="button"  value="Insert"  onclick="location.href=
-		'<c:url value="/_09_furniture/insertProduct.jsp" />'"> >
+<!-- 		<td> -->
+<%-- 			<input type="button"  value="Insert"  onclick="location.href= --%>
+<%-- 		'<c:url value="/_09_furniture/insertProduct.jsp" />'"> > --%>
 <!-- 			<input type="submit" name="prodaction" value="Update"> -->
 <!-- 	<td> -->
 <%-- 	<input type="button" value="更新商品" onclick="location.href= --%>
@@ -85,9 +87,12 @@ $(document).ready(function() {
 <!-- 		</td> -->
 			
 		
-		<td>
+<!-- 		<td> -->
 <!-- 			<input type="submit" name="prodaction" value="Delete"> -->
+			
+		<td>
 			<input type="submit" name="prodaction" value="Select">
+			<input type="submit" name="prodaction" value="SelectSelf">
 			<input type="button" value="Clear" onclick="clearForm()">
 		</td>
 	</tr>

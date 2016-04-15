@@ -118,11 +118,17 @@ public class ProductServlet extends HttpServlet {
 			request.getRequestDispatcher(
 					"/_09_furniture/display.jsp").forward(request, response);
 		} 
+		else if("SelectSelf".equals(prodaction)){
+			List<FurnitureBean> result = productService.selectSelf(user_account);
+			request.setAttribute("select", result);
+			request.getRequestDispatcher(
+					"/_09_furniture/display.jsp").forward(request, response);
+		}
 		else if(prodaction!=null && prodaction.equals("新增刊登")) {
 			FurnitureBean result = productService.insert(bean);
 			System.out.print(result);
 			if(result==null) {
-				error.put("action", "Insert fail");
+				error.put("action", "Insert 失敗");
 			} else {
 				request.setAttribute("insert", result);
 			}

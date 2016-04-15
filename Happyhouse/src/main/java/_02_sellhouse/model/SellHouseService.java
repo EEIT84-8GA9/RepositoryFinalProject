@@ -14,12 +14,12 @@ import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 
 
 public class SellHouseService {
-	public static void main(String[] args){
-		SellHouseService service=new SellHouseService();
-		SellHouseBean bean=new SellHouseBean();
-		bean.setUser_account("Alex123");
-		List<SellHouseBean>	beans=service.select(bean);
-		System.err.println(beans);
+//	public static void main(String[] args){
+//		SellHouseService service=new SellHouseService();
+//		SellHouseBean bean=new SellHouseBean();
+//		bean.setUser_account("Alex123");
+//		List<SellHouseBean>	beans=service.select(bean);
+//		System.err.println(beans);
 		//bean.setSellhouse_id(110);
 //		bean.setUser_account("Alex123");
 //		bean.setSellhouse_name("qqaaa公dddd寓出租");
@@ -38,17 +38,15 @@ public class SellHouseService {
 //		SellHouseBean beansss=service.update(bean);
 
 		//service.delete(bean);
-	}
+//	}
 	
 	public static final int IMAGE_FILENAME_LENGTH = 20;
 	private SellHouseDAO dao=new SellHouseDAOJdbc(); 
 	public	List<SellHouseBean> select(SellHouseBean bean){
 		List<SellHouseBean> result=null;
 		if(bean !=null&&bean.getSellhouse_id()!=0){
-			 System.out.println("id");
 			SellHouseBean temp=dao.select_sellhouse_id(bean.getSellhouse_id());
 			if(temp !=null){
-			System.out.println(temp);
 			result = new ArrayList<SellHouseBean>();
 			result.add(temp);
 				 return result;
@@ -64,7 +62,6 @@ public class SellHouseService {
 			}
 		else if(bean !=null&&bean.getSellhouse_name().length()!=0){
 			 List<SellHouseBean> temp = dao.select_sellhouse_name(bean.getSellhouse_name());
-			 System.out.println("name");
 			 if(temp !=null){
 				 result=temp;
 				 return result;
@@ -72,7 +69,6 @@ public class SellHouseService {
 		}
 		 else if(bean !=null&&bean.getSellhouse_address().length()!=0){
 			 List<SellHouseBean> temp = dao.select_sellhouse_address(bean.getSellhouse_address());
-			 System.out.println("address");
 			 if(temp !=null){
 				 result=temp;
 				 return result;
@@ -81,13 +77,11 @@ public class SellHouseService {
 		 else if(bean !=null&&bean.getUser_account().length()!=0){
 			 List<SellHouseBean> temp = dao.select_user_account(bean.getUser_account());
 			 if(temp !=null){
-				 System.out.println("acc");
-				 result=temp;
-				
+
+				 result=temp;	
 			 }
 			 return result;
 		}else{
-			System.out.println("all");
 			 result = dao.SELECT_ALL();		 
 		}
 		return result;

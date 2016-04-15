@@ -46,6 +46,9 @@
 				<c:if test="${not empty select}">
 					<table>
 						<thead>
+						<form>
+						
+						</form>
 							<tr>
 								<th>編號</th>
 								<th>標題</th>
@@ -57,9 +60,9 @@
 							<c:forEach var="row" items="${select}">
 								<c:url value="/_08_news/test.jsp" var="path" scope="page">
 									<c:param name="id" value="${row.new_id}" />
-									<c:param name="title" value="${row.new_title}" />
-									<c:param name="describe" value="${row.new_describe}" />
-									<c:param name="date" value="${row.new_date}" />
+<%-- 									<c:param name="title" value="${row.new_title}" /> --%>
+<%-- 									<c:param name="describe" value="${row.new_describe}" /> --%>
+<%-- 									<c:param name="date" value="${row.new_date}" /> --%>
 								</c:url>
 								<tr>
 									<td><a href="${path}">${row.new_id}</a></td>
@@ -72,9 +75,7 @@
 					</table>
 				</c:if>
 
-				<h3>
-					<a href="<c:url value="/_08_news/test.jsp" />">回主頁面</a>
-				</h3>
+
 		</div>
 		<!--close site_content-->
 		<div id="footer">

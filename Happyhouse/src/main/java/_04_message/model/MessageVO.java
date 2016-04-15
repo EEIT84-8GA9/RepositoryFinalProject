@@ -86,5 +86,16 @@ public class MessageVO {
 	public void setMessage_reportreason(String message_reportreason) {
 		this.message_reportreason = message_reportreason;
 	}
+
+	@Override
+	public String toString() {
+		return "MessageVO [message_id=" + message_id + ", user_account="
+				+ user_account + ", message_title=" + message_title
+				+ ", message_describe=" + message_describe + ", message_date="
+				+ message_date + ", message_type=" + message_type
+				+ ", message_actiontype=" + message_actiontype + ", user_name="
+				+ user_name + ", message_reportfrom=" + message_reportfrom
+				+ ", message_reportreason=" + message_reportreason + "]";
+	}
 	
 }

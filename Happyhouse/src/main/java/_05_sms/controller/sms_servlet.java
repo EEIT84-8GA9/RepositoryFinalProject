@@ -37,7 +37,7 @@ public class sms_servlet extends HttpServlet {
 		String sms_describe = request.getParameter("sms_describe");
 		String type = request.getParameter("type");
 		String[] sms_id = request.getParameterValues("sms_id");
-
+		System.out.println(title);
 		UsersBean bean = (UsersBean) session.getAttribute("LoginOK");
 		if (bean != null) {
 			List<SmsVO> result = service.select(bean.getUser_account());
@@ -137,9 +137,12 @@ public class sms_servlet extends HttpServlet {
 			SmsVO bean_write = service.write(vo);
 			List<MessageVO> list =messageService.getall();
 			session.setAttribute("list", list);
-			//resperror 暫時用此識別字串，因pagecontent已有
-			MessageVO resperror=messageService.select(title);
-			session.setAttribute("resperror", resperror);
+			session.removeAttribute("resp");
+			session.removeAttribute("add");
+			
+			MessageVO report=messageService.select(title);
+			System.out.println(report);
+			session.setAttribute("report", report);
 			response.sendRedirect("_04_message/pagecontent.jsp");
 			return;
 		}

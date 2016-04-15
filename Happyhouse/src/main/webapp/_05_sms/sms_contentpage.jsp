@@ -17,6 +17,7 @@ td{
 <title>Insert title here</title>
 </head>
 <body>
+
 <table border="1" >
 		<tr>
 			<td >標題:${param.sms_title}</td>

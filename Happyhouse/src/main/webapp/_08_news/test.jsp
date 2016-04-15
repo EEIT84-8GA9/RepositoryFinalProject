@@ -46,7 +46,7 @@
 				<table>
 					<tr style="border: 1px solid black;">
 						<td>文章編號(update用)</td>
-						<td><input type="text" name="id" value="">${error.id}
+						<td><input type="text" name="id" value="${param.id}">${error.id}
 							${error.updateid}</td>
 					</tr>
 
@@ -66,15 +66,15 @@
 					<tbody>
 						<tr>
 							<td style="border: 1px solid black;"><input type="submit"
-								name="newsupdate" value="Select"></td>
-							<td style="border: 1px solid black; width: 10px"><input
-								type="submit" name="newsupdate" value="Insert"></td>
+								name="newsupdate" value="看目前的首頁資訊"></td>
+<!-- 							<td style="border: 1px solid black; width: 10px"><input -->
+<!-- 								type="submit" name="newsupdate" value="Insert"></td> -->
 							<td style="border: 1px solid black;"><input type="submit"
-								name="newsupdate" value="Update"></td>
-							<td style="border: 1px solid black;"><input type="submit"
-								name="newsupdate" value="Delete"></td>
-							<td style="border: 1px solid black;"><input type="button"
-								value="Clear" onclick="clearForm()"></td>
+								name="newsupdate" value="更新首頁資訊"></td>
+<!-- 							<td style="border: 1px solid black;"><input type="submit" -->
+<!-- 								name="newsupdate" value="Delete"></td> -->
+<!-- 							<td style="border: 1px solid black;"><input type="button" -->
+<!-- 								value="Clear" onclick="clearForm()"></td> -->
 						</tr>
 
 
@@ -131,7 +131,6 @@
 						</c:if>
 				</table>
 
-				<a href="/Happyhouse/index.jsp">首頁</a>
 
 			</form>
 		</div>

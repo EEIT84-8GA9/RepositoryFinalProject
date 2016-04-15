@@ -60,7 +60,7 @@
 			<form action="<c:url value="/test.controller" />" method="post">
 				<table>
 					<tr style="border: 1px solid black;">
-						<td>文章編號(update用)</td>
+						<td>文章編號</td>
 						<td><input type="text" name="id" value="${param.id}">${error.id}
 							${error.updateid}</td>
 					</tr>

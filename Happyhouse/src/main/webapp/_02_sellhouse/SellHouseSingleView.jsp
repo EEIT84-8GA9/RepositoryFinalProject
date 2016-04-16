@@ -33,6 +33,26 @@
 	        $("#form").slideToggle("slow");
 	    });
 	});
+	
+	/*站內*/
+	  $(function() {
+		    $( "#dialog" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "blind",
+		        duration: 1000
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 1000
+		      }
+		    });
+		 
+		    $( "#opener" ).click(function() {
+		      $( "#dialog" ).dialog( "open" );
+		    });
+		  });
+	
 </script>
  
  
@@ -158,6 +178,8 @@
 					<label><a href="">站內信</a></label>
 				</fieldset>
 				</form>
+				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
+				<button id="opener">站內信</button>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
@@ -179,16 +201,37 @@
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
 	            <label>您的帳號</label><br/>
-				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="Tom123"><br/>
+				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="100"><br/>	
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
-<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button>
+<%-- <button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button> --%>
+
+<!-- 站內信 -->
+<div id="dialog" title="站內信" >
+  <form action="/Happyhouse/SellHouseSMS" method="post">
+	            <label>對方帳號</label><br/>
+				<input type="text" id="user_account" name="user_account" value="Tom123"><br/>
+	            <label>你的帳號</label><br/>
+				<input type="text" id="sms_mailers" name="sms_mailers" value="Alex123"><br/>	
+				<label>標題</label><br/>
+				<input type="text" id="sms_title" name="sms_title" value=""><br/>
+				<label>內容</label><br/>
+				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
+				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
+				<input type="submit" id="reportsubmit" value="Submit" />
+			  </form>
+</div>
+ 
+<!-- <button id="opener">站內信</button> -->
+<!-- 站內信 -->
+
+
 
 <!--  -->
 </body>

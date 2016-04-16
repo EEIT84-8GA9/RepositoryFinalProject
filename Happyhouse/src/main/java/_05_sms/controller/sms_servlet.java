@@ -30,7 +30,6 @@ public class sms_servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Map<String, String> error = new HashMap<>();
 		request.setAttribute("error", error);
-		
 		String title=request.getParameter("title");
 		String sms_title = request.getParameter("sms_title");
 		String user_account = request.getParameter("user_account");

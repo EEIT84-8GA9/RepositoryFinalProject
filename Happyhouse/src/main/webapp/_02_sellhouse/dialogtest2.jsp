@@ -19,6 +19,29 @@
 	        $("#form").slideToggle("slow");
 	    });
 	});
+	
+	/*站內*/
+	  $(function() {
+		    $( "#dialog" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "blind",
+		        duration: 1000
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 1000
+		      }
+		    });
+		 
+		    $( "#opener" ).click(function() {
+		      $( "#dialog" ).dialog( "open" );
+		    });
+		  });
+		  </script>
+	
+	
+	
 </script>
 
 
@@ -28,7 +51,6 @@
 
 </head>
 <body>
-
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
@@ -45,5 +67,22 @@
 <button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button>
 
 
+<!-- 站內信 -->
+<div id="dialog" title="站內信" >
+  <form action="/Happyhouse/reportsellhouse.controller" method="post">
+	            <label>您的帳號</label><br/>
+				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="Tom123"><br/>
+	            <label>文章編號</label><br/>
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="100"><br/>	
+				<label>說明原因</label><br/>
+				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<input type="submit" id="reportsubmit" value="Submit" />
+			  </form>
+</div>
+ 
+<button id="opener">站內信</button>
+<!-- 站內信 -->
+<!-- 第二個 -->
 </body>
 </html>

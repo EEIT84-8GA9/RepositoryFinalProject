@@ -42,7 +42,8 @@ public class SellHouseService {
 	//+上去
 	public static final int IMAGE_FILENAME_LENGTH = 20;
 	//+上去到此為止
-	private SellHouseDAO dao=new SellHouseDAOJdbc(); 
+	private SellHouseDAO dao=new SellHouseDAOJdbc();
+//	private SellHouseDAO dao= new SellHouseDAOJdbc(); 
 	public	List<SellHouseBean> select(SellHouseBean bean){
 		List<SellHouseBean> result=null;
 		if(bean !=null&&bean.getSellhouse_id()!=0){
@@ -109,6 +110,12 @@ public class SellHouseService {
 		}
 		return result;	
 	}
+	public SellHouseBean updatereport(SellHouseBean bean){
+		SellHouseBean result=null;
+		result=dao.updatereport(bean);
+		return bean;	
+	}
+	
 	//+上去
 	public static String adjustFileName(String fileName, int maxLength) {
 		  int length = fileName.length();

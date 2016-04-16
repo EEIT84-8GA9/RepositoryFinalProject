@@ -7,16 +7,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
+
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
+<!-- 檢舉彈跳視窗 -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
+<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+<!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+<!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
+ 
+ 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
+	$(document).ready(function(){
+	    $("#response").click(function(){
+	        $("#form").slideToggle("slow");
+	    });
+	});
 </script>
+ 
+ 
+ <!-- 檢舉按鍵事件 -->
 <title>Insert title here</title>
 </head>
 <style>
@@ -147,14 +167,29 @@
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
 				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
-			
-				</form>
+				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															
+				
 		</tbody>
 	</c:if>
-
-
 </form>
 </div>
+
+<!--  -->
+
+<div class="dialog" title="檢舉原因" id="reportform">
+	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
+	            <label>您的帳號</label><br/>
+				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="Tom123"><br/>
+	            <label>文章編號</label><br/>
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="100"><br/>	
+				<label>說明原因</label><br/>
+				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<input type="submit" id="reportsubmit" value="Submit" />
+			  </form>
+		  </div>
+<button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button>
+
+<!--  -->
 </body>
 </html>

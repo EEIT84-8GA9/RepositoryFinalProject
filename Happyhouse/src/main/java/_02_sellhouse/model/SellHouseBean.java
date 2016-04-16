@@ -26,7 +26,8 @@ public class SellHouseBean implements Serializable{
 	private	String	sellhouse_car;
 	private	String sellhouse_phone;
 	private	String	sellhouse_email;
-	
+	private String  sellhouse_reportfrom;
+	private String sellhouse_reportreason;
 	
 
 	
@@ -208,6 +209,26 @@ public class SellHouseBean implements Serializable{
 	}
 	public void setSellhouse_phone(String sellhouse_phone) {
 		this.sellhouse_phone = sellhouse_phone;
+	}
+
+
+	public String getSellhouse_reportfrom() {
+		return sellhouse_reportfrom;
+	}
+
+
+	public void setSellhouse_reportfrom(String sellhouse_reportfrom) {
+		this.sellhouse_reportfrom = sellhouse_reportfrom;
+	}
+
+
+	public String getSellhouse_reportreason() {
+		return sellhouse_reportreason;
+	}
+
+
+	public void setSellhouse_reportreason(String sellhouse_reportreason) {
+		this.sellhouse_reportreason = sellhouse_reportreason;
 	}
 	
 	

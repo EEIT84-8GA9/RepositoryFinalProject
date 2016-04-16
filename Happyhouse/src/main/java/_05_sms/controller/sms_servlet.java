@@ -145,6 +145,21 @@ public class sms_servlet extends HttpServlet {
 			session.setAttribute("report", report);
 			response.sendRedirect("_04_message/pagecontent.jsp");
 			return;
+			
+			//個人信件區
+		}else if ("送出".equals(type)){
+				
+			
+			SmsVO vo = new SmsVO();
+			vo.setSms_describe(sms_describe);
+			vo.setSms_mailers(bean.getUser_account());
+			vo.setUser_account(user_account);
+			vo.setSms_title(sms_title);
+			SmsVO bean_write = service.write(vo);
+			List<SmsVO> result = service.select(bean.getUser_account());
+			session.setAttribute("list", result);
+			response.sendRedirect("test.jsp");
+			return;
 		}
 		response.sendRedirect("_05_sms/sms_mainpage.jsp");
 		return;

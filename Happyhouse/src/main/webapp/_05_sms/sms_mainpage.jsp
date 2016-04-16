@@ -4,52 +4,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>好宅網-首頁</title>
+<title>站內信-首頁</title>
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
 
-.ML-tb1 {
-    width: 100%;
-    border-width: 3px;
-}
-.BH-table {
-    background-color: #FFFFFF;
-    margin-bottom: 10px;
-    
-}
-table {
-    border-collapse:collapse;
-    padding: 10px;
-}
-.ML-tb1 td {
-    font-size: 13px;
-    border-width: 1px 0;
-}
-.BH-table td {
-    border-bottom: 1px solid #e5e5e5;
-    padding: 8px;
-}
-.ML-tb1 tr:first-child {
-    /* background-color: #f6f6f6; */
-}
-table {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 2px;
-    border-color: grey;0
-}
+#re{
 
-#footer {
+    width: 30%;
+    border: 1px solid #59b4d4;
+    background: #0078a3;
+    color: #eeeeee;
+    padding: 3px 0px;
+    border-radius: 5px;
+    margin-left: 33%;
+    cursor: pointer;
 
 }
-
+#writebutton{
+ width: 30%;
+    border: 1px solid #59b4d4;
+    background: #0078a3;
+    color: #eeeeee;
+    padding: 3px 0px;
+    border-radius: 5px;
+/*     margin-left: 33%; */
+    cursor: pointer;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/default.css">
+<link rel="stylesheet" href="/Happyhouse/css/sms_menu/style.css">
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
@@ -63,7 +54,12 @@ table {
 		}
 </script>
 </head>
-
+<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
+ <!-- including css & jQuery Dialog UI here-->
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/Happyhouse/js/for_sms/dialog.js"></script>
 <body>
 	<div id="main">
 		<div id="site_content">
@@ -119,41 +115,57 @@ table {
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<font color="red">${error.deleteSms_idEmpty}</font>
-<form action="/Happyhouse/sms.controller" method="post">
+			
+	<article class="htmleaf-container">
+<font color="red">${error.deleteSms_idEmpty}</font>
 
-	<table class="BH-table ML-tb1">
-		<tbody>
-			<tr>
-			
-				<td width="20"><input type="checkbox" onClick="toggle(this)" /> All</td>
-				<td class="ML-tb1B">寄件者</td>
-				<td>標題</td>
-				<td align="center" nowrap="nowrap">時間</td>
-		
-	<c:forEach var="smsVO" items="${list}">
-			<c:url value="/_05_sms/sms_contentpage.jsp" var="path" scope="session">
-					<c:param name="user_account" value="${smsVO.user_account}"/>
-					<c:param name="sms_mailers" value="${smsVO.sms_mailers}" />
-					<c:param name="sms_title" value="${smsVO.sms_title}" />
-					<c:param name="sms_describe" value="${smsVO.sms_describe}" />
-					<c:param name="sms_date" value="${smsVO.sms_date}" />
-					<c:param name="sms_id" value="${smsVO.sms_id}" />
-			</c:url>
-		
-			<tr>
-				<td width="20" ><input name="sms_id" value="${smsVO.sms_id}"
-					type="checkbox"></td>
-				<td class="ML-tb1B"  width="10%">${smsVO.sms_mailers}</td>
-				<td width="80%"><a href='${path}'>${smsVO.sms_title}</a></td>
-				<td nowrap="nowrap"  width="10%">${smsVO.sms_date}</td>
-			</tr>
-			</c:forEach>
-			
-			<td><input type="submit" name="type" value="刪除信件"></td>
-			<td><a href="/Happyhouse/_05_sms/sms_addnewpage.jsp"><input type="button" name="delete" value="寫信"></a></td>
-		</tbody>
-	</table>
+	<form action="/Happyhouse/sms.controller" method="post">
+
+		<table class="BH-table ML-tb1">
+			<tbody>
+				<div id="container">
+					<h1>站內信箱</h1>
+					<div class="title">
+						&nbsp&nbsp&nbsp&nbsp<input type="checkbox" onClick="toggle(this)" />&nbsp全選
+					</div>
+						<ul class="faq">
+							<c:forEach var="smsVO" items="${list}">
+							<li class="q">
+							<input name="sms_id" value="${smsVO.sms_id}" type="checkbox">
+							Title&nbsp&nbsp<font size="4px" color="blue" >${smsVO.sms_title}</font><br><font size="2px">From:${smsVO.sms_mailers} Date:${smsVO.sms_date}</font>
+							</li>
+							<li class="a">${smsVO.sms_describe}<br><br><br><br><br>
+							<button type="button"  id="re" class="re" value="${smsVO.sms_mailers}">回覆</button>
+							</li>
+							</c:forEach>
+						</ul>
+						<input type="submit" name="type" value="刪除信件" >
+						<button type="button" class="re" value="" id="writebutton">寫信</button>
+			</tbody>
+		</table>
+	</form>
+	</article>
+	<!-- for MessageForMe form-->
+		<div class="dialog" title="站內信" id="MessageForMe">
+	          <form action="/Happyhouse/sms.controller" method="post" class="sms">
+	            <label>收信人</label><br/>
+				<input type="text" id="user_account" name="user_account" value="" ><br/>
+	          	
+	          	<label>標題</label><br/>
+	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
+				<input type="text" id="sms_title" name="sms_title" ><br/>
+				
+				<label>訊息內容</label><br/>
+				
+				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
+				
+				<input type="submit" id="messagesubmit" name="type"  value="送出" />
+				
+			  </form>
+		 </div>
+	<!-- end MessageForMe form -->
+	<script src="/Happyhouse/js/for_sms/script.js"></script>
+
 	</form>
 		</div>
 		<!--close site_content-->

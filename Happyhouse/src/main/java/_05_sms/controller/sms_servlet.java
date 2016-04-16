@@ -157,7 +157,7 @@ public class sms_servlet extends HttpServlet {
 			SmsVO bean_write = service.write(vo);
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);
-			response.sendRedirect("test.jsp");
+			response.sendRedirect("_05_sms/sms_mainpage.jsp");
 			return;
 		}
 		response.sendRedirect("_05_sms/sms_mainpage.jsp");

@@ -25,12 +25,13 @@ import _02_sellhouse.model.SellHouseDAO;
 
 
 
+
 public class SellHouseDAOJdbc implements SellHouseDAO {
 
 //	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 //	private static final String	username="sa";
 //	private	static final String password="sa123456";
-	private static final String UPDATE_REPORT="";
+	private static final String UPDATE_REPORT="UPDATE sellhouse SET sellhouse_reportfrom=?,sellhouse_reportreason=?,sellhouse_type='B' WHERE sellhouse_id=?";
 	private static final String SELECT_ALL="select*from sellhouse";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM sellhouse Where user_account LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_NAME="Select * FROM sellhouse Where sellhouse_name LIKE ?";
@@ -41,9 +42,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 	private static final String UPDATE
 	="update sellhouse set sellhouse_name=?, sellhouse_price=?, sellhouse_patterns=?,sellhouse_address=?,sellhouse_describe=?,sellhouse_size=?,sellhouse_floor=?,sellhouse_age=?,sellhouse_photo1=?,sellhouse_photo2=?,sellhouse_photo3=?,sellhouse_type=?,sellhouse_message=?,sellhouse_date=getdate(),sellhouse_car=?,sellhouse_phone=?,sellhouse_email=? where sellhouse_id=?";
 	private static final String DELETE = "delete from sellhouse where sellhouse_id=?";
-	/* (non-Javadoc)
-	 * @see model.dao.SellHouseDAO#SELECT_ALL()
-	 */
+
 	private DataSource dataSource;
 
 	public SellHouseDAOJdbc() {
@@ -63,6 +62,10 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 		}
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see _02_sellhouse.model.dao.SellHouseDAO#SELECT_ALL()
+	 */
 	@Override
 	public	List<SellHouseBean> SELECT_ALL(){
 	List<SellHouseBean> result=null;
@@ -133,11 +136,12 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 
 
 
-//標題搜尋
-/* (non-Javadoc)
- * @see model.dao.SellHouseDAO#select_sellhouse_name(java.lang.String)
- */
 
+
+
+	/* (non-Javadoc)
+	 * @see _02_sellhouse.model.dao.SellHouseDAO#select_sellhouse_name(java.lang.String)
+	 */
 	@Override
 	public List<SellHouseBean> select_sellhouse_name(String sellhouse_name){
 		SellHouseBean bean=null;
@@ -218,9 +222,10 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 	}
 
 
-//使用者搜尋
+
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#select_sellhouse_price(float)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#select_sellhouse_price(float)
  */
 @Override
 public List<SellHouseBean> select_sellhouse_price(float sellhouse_price){
@@ -306,8 +311,9 @@ public List<SellHouseBean> select_sellhouse_price(float sellhouse_price){
 }
 
 
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#select_sellhouse_address(java.lang.String)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#select_sellhouse_address(java.lang.String)
  */
 @Override
 public List<SellHouseBean> select_sellhouse_address(String sellhouse_address){
@@ -381,6 +387,10 @@ public List<SellHouseBean> select_sellhouse_address(String sellhouse_address){
 	return result;
 }
 
+
+/* (non-Javadoc)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#select_user_account(java.lang.String)
+ */
 @Override
 public List<SellHouseBean> select_user_account(String user_account){
 	SellHouseBean bean=null;
@@ -453,9 +463,9 @@ public List<SellHouseBean> select_user_account(String user_account){
 	return result;
 }
 
-//id搜尋
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#select_sellhouse_id(int)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#select_sellhouse_id(int)
  */
 @Override
 public SellHouseBean select_sellhouse_id(int id){
@@ -530,8 +540,10 @@ public SellHouseBean select_sellhouse_id(int id){
 
 
 
+
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#insert(model.SellHouseBean)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#insert(_02_sellhouse.model.SellHouseBean, java.io.InputStream, long, java.io.InputStream, long, java.io.InputStream, long)
  */
 @Override
 public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
@@ -603,8 +615,9 @@ public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputS
 	return bean;
 }
 
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#update(model.SellHouseBean)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#update(_02_sellhouse.model.SellHouseBean)
  */
 @Override
 public SellHouseBean update(SellHouseBean bean){
@@ -674,8 +687,10 @@ public SellHouseBean update(SellHouseBean bean){
 	return null;
 }
 
+
+
 /* (non-Javadoc)
- * @see model.dao.SellHouseDAO#delete(int)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#delete(int)
  */
 @Override
 public boolean delete(int id){
@@ -719,6 +734,52 @@ public boolean delete(int id){
 	
 }
 
+/* (non-Javadoc)
+ * @see _02_sellhouse.model.dao.SellHouseDAO#updatereport(_02_sellhouse.model.SellHouseBean)
+ */
+@Override
+public SellHouseBean updatereport(SellHouseBean bean){
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	SellHouseBean result=null;
+	try {
+		conn=dataSource.getConnection();
+		pstmt=conn.prepareStatement(UPDATE_REPORT);
+		pstmt.setString(1,bean.getSellhouse_reportfrom());
+		pstmt.setString(2,bean.getSellhouse_reportreason());
+		pstmt.setInt(3,bean.getSellhouse_id());
+		int i=pstmt.executeUpdate();
+		if(i==1){
+			result=bean;
+		}
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	if (pstmt!=null) {
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	if (conn !=null) {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	return result;
+
+	
+}
+
 
 public static void main(String[] args){
 //	SellHouseDAOJdbc dao=new SellHouseDAOJdbc();
@@ -757,9 +818,9 @@ public static void main(String[] args){
 //	bean.setSellhouse_email("xX");
 //	dao.update(bean);
 //	System.out.println(bean);
-	SellHouseDAO dao=new SellHouseDAOJdbc();
-	List<SellHouseBean>bean=dao.select_user_account("Tom123");
-	System.out.println(bean);
+	//SellHouseDAO dao=new SellHouseDAOJdbc();
+//	List<SellHouseBean>bean=dao.select_user_account("Tom123");
+//	System.out.println(bean);
 	
 }
 	

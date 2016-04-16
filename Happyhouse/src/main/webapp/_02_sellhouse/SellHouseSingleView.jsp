@@ -11,16 +11,14 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
+<!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
-<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
- <script src="//code.jquery.com/jquery-1.10.2.js"></script>
- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
- <link rel="stylesheet" href="/resources/demos/style.css">
- <!-- 檢舉彈跳視窗 -->
- <!-- 檢舉按鍵事件 -->
-<!-- 檢舉按鍵事件 -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
+<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+<!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+<!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+<!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
  
  	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

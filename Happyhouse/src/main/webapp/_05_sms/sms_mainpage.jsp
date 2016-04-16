@@ -75,7 +75,7 @@ table {
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
-						<li class="current"><a href="index.jsp">首頁</a></li>
+						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
 						<li><a href="#">搜尋出售</a></li>
@@ -109,7 +109,7 @@ table {
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>

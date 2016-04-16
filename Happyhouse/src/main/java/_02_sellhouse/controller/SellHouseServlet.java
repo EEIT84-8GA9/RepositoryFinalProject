@@ -187,10 +187,11 @@ public class SellHouseServlet extends HttpServlet {
 				request.setAttribute("select", result);
 				request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 			}
-		}else{
+		}
+		else{
 			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
 			
-		}	
+		}
 		
 //		else if(prodaction!=null&&"新增".equals(prodaction)){
 //			bean.setUser_account(user_account);

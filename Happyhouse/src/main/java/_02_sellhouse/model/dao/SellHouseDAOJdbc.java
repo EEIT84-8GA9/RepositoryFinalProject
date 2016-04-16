@@ -30,12 +30,13 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 //	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 //	private static final String	username="sa";
 //	private	static final String password="sa123456";
+	private static final String UPDATE_REPORT="";
 	private static final String SELECT_ALL="select*from sellhouse";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM sellhouse Where user_account LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_NAME="Select * FROM sellhouse Where sellhouse_name LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_PRICE="Select * FROM sellhouse Where sellhouse_price LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_ADDRESS="Select * FROM sellhouse Where sellhouse_address LIKE ?";
-	private static final String INSERT = "insert into sellhouse values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?)";
+	private static final String INSERT = "insert into sellhouse values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?,NULL,NULL)";
 	private static final String SELECT_BY_SELLHOUSE_ID="Select * FROM sellhouse Where sellhouse_id=?";
 	private static final String UPDATE
 	="update sellhouse set sellhouse_name=?, sellhouse_price=?, sellhouse_patterns=?,sellhouse_address=?,sellhouse_describe=?,sellhouse_size=?,sellhouse_floor=?,sellhouse_age=?,sellhouse_photo1=?,sellhouse_photo2=?,sellhouse_photo3=?,sellhouse_type=?,sellhouse_message=?,sellhouse_date=getdate(),sellhouse_car=?,sellhouse_phone=?,sellhouse_email=? where sellhouse_id=?";

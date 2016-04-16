@@ -8,16 +8,16 @@
 <!-- 	<meta charset="UTF-8"> -->
 <!-- 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
 <!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-	<title>分步式用户注册表单UI界面设计|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
-	<link rel='stylesheet prefetch' href='/Happyhouse/css/Insert/reset.css'>
-	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
-	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
+	<title>刊登房屋資料填寫</title>
+<link rel='stylesheet prefetch' href='/Happyhouse/css/Insert/reset.css'>
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
 
-</head>
-<body>
+
+ </head> 
+ <body>
 
 <form  enctype="multipart/form-data" action="<c:url value="/house/house1.controller"/>" method="post" id="msform">
-	<input type="submit" name="prodaction" class="submit action-button" value="新增" />
 	<article class="htmleaf-content">  
 		<!-- multistep form -->
 			<!-- progressbar -->
@@ -30,24 +30,24 @@
 			<fieldset>
 				<h2 class="fs-title">刊登您的房屋</h2>
 				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" name="user_account" placeholder="請輸入使用者帳號"  />
-				<input type="text" style="${style.sellhouse_name}" name="sellhouse_name" placeholder="請輸入標題" value="${error.sellhouse_name}" />
-				<input type="text" style="${style.sellhouse_address}" name="sellhouse_address" placeholder="請輸入地址" value="${error.sellhouse_address}"/>
-				<input type="text" style="${style.sellhouse_price}" name="sellhouse_price" placeholder="請輸入售價" value="${error.sellhouse_price}" />
-				<input type="text" style="${style.sellhouse_patterns}" name="sellhouse_patterns" placeholder="請輸入格局" value="${error.sellhouse_patterns}" />
-				<input type="text" style="${style.sellhouse_size}" name="sellhouse_size" placeholder="請輸入坪數" value="${error.sellhouse_size}"/>
-				<input type="text" style="${style.sellhouse_floor}" name="sellhouse_floor" placeholder="請輸入樓層" value="${error.sellhouse_floor}" />
+				<input type="text" name="user_account" placeholder="請輸入使用者帳號" value="Alex123" />
+				<input type="text" style="${style.sellhouse_name}" name="sellhouse_name" placeholder="請輸入標題" value="${right.sellhouse_name}" />
+				<input type="text" style="${style.sellhouse_address}" name="sellhouse_address" placeholder="請輸入地址" value="${right.sellhouse_address}"/>
+				<input type="text" style="${style.sellhouse_price}" name="sellhouse_price" placeholder="請輸入售價，必須是數字且不得為0" value="${right.sellhouse_price}" />
+				<input type="text" style="${style.sellhouse_patterns}" name="sellhouse_patterns" placeholder="請輸入格局" value="${right.sellhouse_patterns}" />
+				<input type="text" style="${style.sellhouse_size}" name="sellhouse_size" placeholder="請輸入坪數，必須是數字且不得為0" value="${right.sellhouse_size}"/>
+				<input type="text" style="${style.sellhouse_floor}" name="sellhouse_floor" placeholder="請輸入樓層" value="${right.sellhouse_floor}" />
 				<input type="button"  name="next" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset>
 				<h2 class="fs-title">刊登您的房屋</h2>
 				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" style="${style.sellhouse_age}" name="sellhouse_age" placeholder="請填寫屋齡" value="${error.sellhouse_age}" />
-				<input type="text" style="${style.sellhouse_car}" name="sellhouse_car" placeholder="請填寫有無車位" value="${error.sellhouse_car}" />
-				<input type="text" style="${style.sellhouse_phone}" name="sellhouse_phone" placeholder="請填寫連絡電話" value="${error.sellhouse_phone}" />
-				<input type="text" style="${style.sellhouse_email}" name="sellhouse_email" placeholder="請填寫連絡EMAIL" value="${error.sellhouse_email}" />	
+				<input type="text" style="${style.sellhouse_age}" name="sellhouse_age" placeholder="請填寫屋齡，必須是數字且不得為0" value="${right.sellhouse_age}" />
+				<input type="text" style="${style.sellhouse_car}" name="sellhouse_car" placeholder="請填寫有無車位" value="${right.sellhouse_car}" />
+				<input type="text" style="${style.sellhouse_phone}" name="sellhouse_phone" placeholder="請填寫連絡電話" value="${right.sellhouse_phone}" />
+				<input type="text" style="${style.sellhouse_email}" name="sellhouse_email" placeholder="請填寫連絡EMAIL" value="${right.sellhouse_email}" />	
 <!-- 				<input type="text" name="sellhouse_type" placeholder="請填寫連絡EMAIL" />	 -->
-				<textarea name="sellhouse_describe" style="${style.sellhouse_describe}"  placeholder="請填寫額外描述" value="${error.sellhouse_describe}"></textarea>
+				<textarea name="sellhouse_describe" style="${style.sellhouse_describe}"  placeholder="請填寫額外描述" >${right.sellhouse_describe}</textarea>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>
@@ -62,6 +62,11 @@
 			</fieldset>
 	</article>
 	</form>
+
+	
+	
+	
+	
 	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 	<script>window.jQuery || document.write('<script src="/Happyhouse/js/test/jquery-2.1.1.min.js"><\/script>')</script>
 	<script src="/Happyhouse/js/test/jquery.easing.min.js" type="text/javascript"></script>

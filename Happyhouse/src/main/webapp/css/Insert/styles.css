@@ -4,19 +4,21 @@
 * {margin: 0; padding: 0;}
 
 html {
-	height: 100%;
-	/*Image only BG fallback*/
-	background: url('http://localhost:8080/Happyhouse/img/gs.png');
-	/*background = gradient + image pattern combo*/
-	background: 
-		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 
-		url('http://localhost:8080/Happyhouse/img/gs.png');
+	height: 50%;
+	/*Image only BG fallback */
+/* 	background: url('http://localhost:8080/Happyhouse/img/gs.png'); */
+	/*background = gradient + image pattern combo */
+/* 	background:  */
+/* 		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),  */
+/* 		url('http://localhost:8080/Happyhouse/img/gs.png'); */
 }
 
-body {
-	font-family: "Microsoft YaHei",montserrat, arial, verdana;
-}
+/* body { */
+/* 	font-family: "Microsoft YaHei",montserrat, arial, verdana; */
+/* } */
+
 /*form styles*/
+
 #msform {
 	width: 400px;
 	margin: 50px auto;
@@ -126,7 +128,7 @@ body {
 }
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
-#progressbar li.active:before,  #progressbar li.active:after{
+#progressbar li.active:before,  #progressbar li.active1:after{
 	background: #27AE60;
 	color: white;
 }

@@ -179,7 +179,7 @@
 				</fieldset>
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
-				<button id="opener">站內信</button>
+				<button id="opener">發送站內信</button>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>

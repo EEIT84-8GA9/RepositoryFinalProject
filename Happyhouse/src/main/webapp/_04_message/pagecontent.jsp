@@ -193,7 +193,7 @@
 				<font color="blue">${resperror.message_title}</font>
 				<font color="blue">${report.message_title}</font></h2>
 	<div class="content_box">
-			
+
 			<!-- 1 -->
 			<c:forEach var="messageVO" items="${list}">
 			<c:if test="${messageVO.message_title==param.message_title}">

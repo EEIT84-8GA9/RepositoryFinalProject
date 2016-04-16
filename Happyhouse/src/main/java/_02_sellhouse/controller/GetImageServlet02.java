@@ -52,11 +52,11 @@ public class GetImageServlet02 extends HttpServlet {
 		ResultSet rset=null;
 		DataSource dataSource;
 		//SELECT sellhouse_photo1_name,sellhouse_photo1 from sellhouse where sellhouse_id='109'
-		String SELECT_IMAGE="SELECT sellhouse_photo2 from sellhouse where sellhouse_id=?";
+		String SELECT_IMAGE="SELECT sellhouse_photo2_name, sellhouse_photo2 from sellhouse where sellhouse_id=?";
 //		String SELECT_IMAGE="SELECT sellhouse_photo1_name,sellhouse_photo1,,sellhouse_photo2_name,sellhouse_photo2,sellhouse_photo3_name,sellhouse_photo3"
 //		+ " from sellhouse where sellhouse_id=?";
 		// 接收資料
-		
+		String name=null;
 		int sellhouse_id=0;
 		if(id !=null&&id.trim().length()!=0){
 				sellhouse_id = Integer.parseInt(id);
@@ -70,8 +70,9 @@ public class GetImageServlet02 extends HttpServlet {
 			pstmt.setInt(1,sellhouse_id);
 			rset=pstmt.executeQuery();
 			if (rset.next()){
+				name=rset.getString("sellhouse_photo2_name");
 				is2=rset.getBinaryStream("sellhouse_photo2");
-				if(is2==null){
+				if(name==null||name.equals("")){
 				is2=new FileInputStream(defaultPhoto);
 				}
 				response.setContentType("image/png");

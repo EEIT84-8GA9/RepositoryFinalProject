@@ -22,9 +22,9 @@
 		<!-- multistep form -->
 			<!-- progressbar -->
 			<ul id="progressbar">
-				<li class="active">账号设置</li>
-				<li>社交账号</li>
-				<li>个人详细信息</li>
+				<li class="active">填寫資料</li>
+				<li>填寫資料</li>
+				<li>上傳圖片</li>
 			</ul>
 			<!-- fieldsets -->
 			<fieldset>

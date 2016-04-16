@@ -38,7 +38,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.taglibs.standard.lang.jstl.test.PageContextImpl;
 
 import _02_sellhouse.model.SellHouseBean;
+import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
+import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 
 
 
@@ -47,6 +49,7 @@ import _02_sellhouse.model.SellHouseService;
 @WebServlet("/house/house1.controller")
 public class SellHouseServlet_01 extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();
+	private SellHouseDAO dao=new SellHouseDAOJdbc();
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -399,18 +402,21 @@ public class SellHouseServlet_01 extends HttpServlet {
 							fileName3 = sellHouseService.adjustFileName(fileName3,
 									sellHouseService.IMAGE_FILENAME_LENGTH);
 						}
-						if (fileName1 != null && fileName1.trim().length() > 0) {
-							bean.setSellhouse_photo1_name(fileName3);
+						if (fileName1 !=null && fileName1.trim().length() > 0) {
+							bean.setSellhouse_photo1_name(fileName1);
 							bean.setSellhouse_photo2_name(fileName2);
 							bean.setSellhouse_photo3_name(fileName3);
 							System.out.println("fileName1=" + fileName1
 									+ "sizeInBytes1=" + sizeInBytes1);
 							System.out.println("fileName2=" + fileName2
 									+ "sizeInBytes2=" + sizeInBytes2);
-							// dao.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2);
+							//dao.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2,is3,sizeInBytes3);
 						}
+						
 					}
+					
 				}
+			
 			}
 			SellHouseBean result=sellHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
 					sizeInBytes3);

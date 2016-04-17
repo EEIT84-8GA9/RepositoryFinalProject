@@ -22,6 +22,9 @@ $(document).ready(function(){
 	setTimeout("TextArea1WordCount()", 250);
 
 	}
+	
+	
+	
 	function TextArea1WordCount1()
 	{
 	//允許輸入最大長度

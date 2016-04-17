@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
+<link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
@@ -33,25 +34,31 @@
 	        $("#form").slideToggle("slow");
 	    });
 	});
+	$(document).ready(function(){
+	    $("#response").click(function(){
+	        $("#form").slideToggle("slow");
+	    });
+	});
+	
 	
 	/*站內*/
-	  $(function() {
-		    $( "#dialog" ).dialog({
-		      autoOpen: false,
-		      show: {
-		        effect: "blind",
-		        duration: 1000
-		      },
-		      hide: {
-		        effect: "explode",
-		        duration: 1000
-		      }
-		    });
+// 	  $(function() {
+// 		    $( "#dialog" ).dialog({
+// 		      autoOpen: false,
+// 		      show: {
+// 		        effect: "blind",
+// 		        duration: 1000
+// 		      },
+// 		      hide: {
+// 		        effect: "explode",
+// 		        duration: 1000
+// 		      }
+// 		    });
 		 
-		    $( "#opener" ).click(function() {
-		      $( "#dialog" ).dialog( "open" );
-		    });
-		  });
+// 		    $( "#opener" ).click(function() {
+// 		      $( "#dialog" ).dialog( "open" );
+// 		    });
+// 		  });
 	
 </script>
  
@@ -179,7 +186,7 @@
 				</fieldset>
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
-				<button id="opener">發送站內信</button>
+				<button type="button" class="MessageButton" value="" >寄送站內信</button>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
@@ -213,20 +220,23 @@
 <%-- <button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button> --%>
 
 <!-- 站內信 -->
-<div id="dialog" title="站內信" >
-  <form action="/Happyhouse/SellHouseSMS" method="post">
-	            <label>對方帳號</label><br/>
-				<input type="text" id="user_account" name="user_account" value="Tom123"><br/>
-	            <label>你的帳號</label><br/>
-				<input type="text" id="sms_mailers" name="sms_mailers" value="Alex123"><br/>	
-				<label>標題</label><br/>
-				<input type="text" id="sms_title" name="sms_title" value=""><br/>
-				<label>內容</label><br/>
-				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
-				<textarea rows="10" cols="40" name="sms_describe" id="sms_describe" ></textarea>
-				<input type="submit" id="reportsubmit" value="Submit" />
+<div class="dialog" title="站內信" id="MessageForMe">
+	          <form action="/Happyhouse/sms.controller" method="post" class="sms">
+	            <label>收信人</label><br/>
+				<input type="text" id="user_account" name="user_account" value="" ><br/>
+	          	
+	          	<label>標題</label><br/>
+	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
+				<input type="text" id="sms_title" name="sms_title" ><br/>
+				
+				<label>訊息內容</label><br/>
+				
+				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
+				
+				<input type="submit" id="messagesubmit" name="type"  value="送出" />
+				
 			  </form>
-</div>
+		 </div>
  
 <!-- <button id="opener">站內信</button> -->
 <!-- 站內信 -->

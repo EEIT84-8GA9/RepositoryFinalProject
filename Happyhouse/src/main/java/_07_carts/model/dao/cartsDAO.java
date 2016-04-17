@@ -431,15 +431,15 @@ public class cartsDAO {
 	private static final String DELETE = "delete from carts where cart_id=?";
 
 	public boolean delete(int id) {
-
+		
 		Connection con = null;
 		PreparedStatement stm = null;
-
+		
 		try {
 			con = dataSource.getConnection();
 			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stm = con.prepareStatement(DELETE);
-			stm.setInt(1, 401);
+			stm.setInt(1, id);
 			int i = stm.executeUpdate();
 
 			if (i == 1) {
@@ -465,4 +465,57 @@ public class cartsDAO {
 		}
 		return false;
 	}
+	private static final String SELECT_BY_SELL_HOUSE_ID="SELECT * FROM carts where sellhouse_id=?";
+	public cartsBean selectbysellhouseid(cartsBean bean){
+		cartsBean result = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		try {
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(SELECT_BY_SELL_HOUSE_ID);
+			pstmt.setInt(1,bean.getSellhouse_id());
+			rset=pstmt.executeQuery();
+			if(rset.next()){
+				result = new cartsBean();
+				result.setCart_id(rset.getInt("cart_id"));
+				result.setUser_account(rset.getString("user_account"));
+				result.setSellhouse_id(rset.getInt("sellhouse_id"));
+				result.setRenthouse_id(rset.getInt("renthouse_id"));
+				result.setCart_date(rset.getDate("cart_date"));
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}finally{
+		
+		if (rset!=null) {
+			try {
+				rset.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pstmt!=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (conn!=null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		}
+		return result;
+	}
+	
 }

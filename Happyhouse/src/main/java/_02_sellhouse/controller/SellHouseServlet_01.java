@@ -75,6 +75,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 		//接收圖片資料
 	Collection<Part> parts = request.getParts() ;
 		// 接收資料
+		
 		String keyword=request.getParameter("keyword");
 		String temp1 = request.getParameter("sellhouse_id");
 		String user_account = request.getParameter("user_account");
@@ -101,6 +102,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 		request.setAttribute("style", style);
 		request.setAttribute("error", error);
 		request.setAttribute("right", right);
+		
 		
 	
 		//判斷
@@ -443,8 +445,8 @@ public class SellHouseServlet_01 extends HttpServlet {
 			
 			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
 		}
-//		else if(prodaction!=null&&"刪除".equals(prodaction)){
-//			bean.setSellhouse_id(sellhouse_id);
+//		  if(delete!=null&&"刪除".equals(delete)){
+//			bean.setSellhouse_id(delete_sellhouse_id);
 //			boolean result=sellHouseService.delete(bean);
 //		}
 	}

@@ -45,7 +45,7 @@ public class MessageJNDIDAO {
 	private static final String RESPARTICLE ="insert into message (user_account,message_title,message_describe,message_type,message_date,message_actiontype,message_reportfrom,message_reportreason) values (?,?,?,'A',?,'res',null,null)";
 	private static final String DELETE = "delete from message where message_id=?";
 	private static final String SELECT_BY_ACCOUNT = "select * from users where user_account=?";
-	
+	private static final String TYPEUPDATE ="update message set User_account=?, Message_title=?, Message_describe=?, Message_date=?,Message_type=? ,message_actiontype=? ,message_reportfrom=?,message_reportreason=? where Message_id=?";
 	public MessageVO select(MessageVO vo) {
 		MessageVO result = null;
 		Connection conn = null;
@@ -402,6 +402,62 @@ public class MessageJNDIDAO {
 				result.setUser_name(rset.getString("user_name"));
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rset != null) {
+				try {
+					rset.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+	
+
+	public MessageVO message_typeUpdate(MessageVO vo) {
+		
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		MessageVO result = null;
+		ResultSet rset = null;
+		
+		try {
+			
+			//conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			conn = dataSource.getConnection();
+			stmt = conn.prepareStatement(TYPEUPDATE);
+			stmt.setString(1, vo.getUser_account());
+			stmt.setString(2, vo.getMessage_title());
+			stmt.setString(3, vo.getMessage_describe());
+
+			stmt.setDate(4, vo.getMessage_date());
+			stmt.setString(5, vo.getMessage_type());
+			stmt.setString(6, vo.getMessage_actiontype());
+			stmt.setString(7,vo.getMessage_reportfrom());
+			stmt.setString(8,vo.getMessage_reportreason());
+			stmt.setInt(9, vo.getMessage_id());
+			int i = stmt.executeUpdate();
+			if (i == 1) {
+				result = vo;
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (rset != null) {

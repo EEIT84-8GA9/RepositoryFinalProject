@@ -68,4 +68,16 @@ public class MessageService {
 		MessageVO result = dao.reportupdate(datamember);
 		return result;
 	}
+	//管理者更新狀態
+	public MessageVO message_typeUpdate(MessageVO vo){
+		MessageVO datamember =dao.select(vo);
+		System.out.println("SELECT");
+		datamember.setMessage_type(vo.getMessage_type());
+//		datamember.setMessage_reportfrom(vo.getMessage_reportfrom());
+//		datamember.setMessage_reportreason(vo.getMessage_reportreason());
+		MessageVO result=dao.message_typeUpdate(datamember);
+		System.out.println("UPDATE");
+		System.out.println();
+		return result;
+	}
 }

@@ -105,7 +105,6 @@
 
 <body>
 <div id="main">
-		<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>

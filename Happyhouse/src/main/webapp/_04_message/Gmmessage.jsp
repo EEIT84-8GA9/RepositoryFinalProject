@@ -62,12 +62,12 @@
  	{id:"${(loop.index)+1}",
  		user_account:"${row.user_account}",
  		message_title:"${row.message_title}",
- 		message_describe:"${row.message_describe}",
+//  		message_describe:"",
  		message_type:"<select id='sel2'><option value='B'>審核中</option><option value='A'>正常</option><option value='C'>違規</option></select>",
 //  		message_actiontype:"<select id='sel2'></select>",
  		message_reportfrom:"${row.message_reportfrom}",
  		message_reportreason:"${row.message_reportreason}",
-//  		message_reportreason:"<button value='${messageVO.message_id}'>我要檢舉</button>"
+ 		account_update:"<button value='${messageVO.message_id}'>更新</button>"
 
  		
  	
@@ -97,11 +97,11 @@
 		{title:"Id", field:"id", width:40},
 		{title:"會員名稱", field:"user_account", width:100},
 		{title:"討論區主題", field:"message_title", width:220},
-		{title:"發文內容", field:"message_describe", width:130},
+
 		{title:"目前狀態", field:"message_type", width:90},
-		{title:"檢舉他的人", field:"message_reportfrom",width:100},
+		{title:"檢舉他的人", field:"message_reportfrom",width:110},
 		{title:"被檢舉原因", field:"message_reportreason"},
-		
+		{title:"狀態更新", field:"account_update", width:90},
 
 		
 		],

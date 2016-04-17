@@ -36,7 +36,7 @@
 						<ul>
 						<li><a href="#">出售區檢舉</a></li>
                         <li><a href="#">出租區檢舉</a></li>
-                        <li><a href="#">留言板檢舉</a></li>
+                        <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>
                         <li><a href="#">信件檢舉</a></li>                        
                         <li><a href="#">封鎖會員</a></li>                   
 						</ul>
@@ -46,7 +46,7 @@
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>

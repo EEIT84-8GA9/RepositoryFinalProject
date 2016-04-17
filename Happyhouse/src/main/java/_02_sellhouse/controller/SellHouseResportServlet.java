@@ -26,6 +26,8 @@ public class SellHouseResportServlet extends HttpServlet {
 	bean.setSellhouse_reportfrom(sellhouse_reportfrom);
 	bean.setSellhouse_reportreason(reportreason);
 	SellHouseBean result = service.updatereport(bean);
+	String path= request.getServletContext().getRealPath("/");
+	System.out.println(path);
 	if(result !=null){
 		response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
 		return;

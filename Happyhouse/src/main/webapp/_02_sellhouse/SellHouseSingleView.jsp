@@ -164,6 +164,7 @@
 				<figure>
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
 				</figure>
+					<p>帳號:${param.user_account}</p>
 					<p>價格:${param.sellhouse_price}</p>
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>坪數:${param.sellhouse_size}</p>
@@ -207,6 +208,7 @@
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
+	          <p>帳號:${param.user_account}</p>
 	            <label>您的帳號</label><br/>
 				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
@@ -217,14 +219,15 @@
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
-<%-- <button class="buttonReport" value="${messageVO.message_id}">我要檢舉</button> --%>
+
 
 <!-- 站內信 -->
 <div class="dialog" title="站內信" id="MessageForMe">
-	          <form action="/Happyhouse/sms.controller" method="post" class="sms">
+	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
-				<input type="text" id="user_account" name="user_account" value="" ><br/>
-	          	
+<%-- 	            <p>帳號:${param.user_account}</p> --%>
+				<input type="hidden" id="user_account" name="user_account" value="${param.user_account}"><br/>
+	          	<input type="text" id="user_account" name="user_account" value="${param.user_account}" readonly="readonly"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title" ><br/>

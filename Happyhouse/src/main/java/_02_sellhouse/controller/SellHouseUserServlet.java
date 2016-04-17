@@ -23,21 +23,56 @@ public class SellHouseUserServlet extends HttpServlet {
 		cartsBean cartbean=new cartsBean();
 		SellHouseBean bean =new SellHouseBean();
 		String delete=request.getParameter("delete");
-		String temp_delete=request.getParameter("delete_sellhouse_id");
-		int delete_sellhouse_id=Integer.parseInt(temp_delete);
+		String []temp_delete=request.getParameterValues("delete_sellhouse_id");
+//		int delete_sellhouse_id=Integer.parseInt(temp_delete);
 		if(delete!=null&&"刪除".equals(delete)){
-			//刪除購物車
-			cartbean.setSellhouse_id(delete_sellhouse_id);
-			cartsBean cartresult=dao.selectbysellhouseid(cartbean);
-			if(cartresult.getCart_id()!=null){
-				int cartid = cartresult.getCart_id();
-				boolean a=	dao.delete(cartid);
-				System.out.println(a);
+			for (String id : temp_delete) {
+				int delete_sellhouse_id=Integer.parseInt(id);
+				cartbean.setSellhouse_id(delete_sellhouse_id);
+				cartsBean cartresult=dao.selectbysellhouseid(cartbean);
+				int cartid=0;
+				try {
+					cartid = cartresult.getCart_id();
+				} catch (Exception e) {
+				
+				}	
+				if(cartid!=0){
+					boolean a=	dao.delete(cartid);
+					System.out.println(a);
+					bean.setSellhouse_id(delete_sellhouse_id);
+					boolean result=sellHouseService.delete(bean);
+				}else if(cartid==0)	
+			bean.setSellhouse_id(delete_sellhouse_id);
+			boolean result=sellHouseService.delete(bean);
+			}													
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			//刪除購物車
-		bean.setSellhouse_id(delete_sellhouse_id);
-		boolean result=sellHouseService.delete(bean);
-		}
+//			cartbean.setSellhouse_id(delete_sellhouse_id);
+//			cartsBean cartresult=dao.selectbysellhouseid(cartbean);
+//			int cartid=0;
+//			try {
+//				cartid = cartresult.getCart_id();
+//			} catch (Exception e) {
+//			
+//			}	
+//			if(cartid!=0){
+//				boolean a=	dao.delete(cartid);
+//				System.out.println(a);
+//				bean.setSellhouse_id(delete_sellhouse_id);
+//				boolean result=sellHouseService.delete(bean);
+//			}else if(cartid==0)	
+//		bean.setSellhouse_id(delete_sellhouse_id);
+//		boolean result=sellHouseService.delete(bean);
+//		}
 		
 		
 	}

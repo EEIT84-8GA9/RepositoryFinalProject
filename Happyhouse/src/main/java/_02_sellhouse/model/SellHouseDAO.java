@@ -23,7 +23,7 @@ public interface SellHouseDAO {
 	public abstract SellHouseBean insert(SellHouseBean bean, InputStream is1,
 			long size1, InputStream is2, long size2, InputStream is3, long size3);
 
-	public abstract SellHouseBean update(SellHouseBean bean);
+	public abstract SellHouseBean update(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3);
 
 	public abstract boolean delete(int id);
 

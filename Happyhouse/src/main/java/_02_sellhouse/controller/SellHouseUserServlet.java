@@ -23,9 +23,13 @@ public class SellHouseUserServlet extends HttpServlet {
 		cartsBean cartbean=new cartsBean();
 		SellHouseBean bean =new SellHouseBean();
 		String delete=request.getParameter("delete");
+	
+//		String temp=request.getParameter("sellhouse_id");
+//		int sellhouse_id=Integer.parseInt(temp);
 		String []temp_delete=request.getParameterValues("delete_sellhouse_id");
 //		int delete_sellhouse_id=Integer.parseInt(temp_delete);
 		if(delete!=null&&"刪除".equals(delete)){
+			System.out.println("中!!");
 			for (String id : temp_delete) {
 				int delete_sellhouse_id=Integer.parseInt(id);
 				cartbean.setSellhouse_id(delete_sellhouse_id);
@@ -44,8 +48,9 @@ public class SellHouseUserServlet extends HttpServlet {
 				}else if(cartid==0)	
 			bean.setSellhouse_id(delete_sellhouse_id);
 			boolean result=sellHouseService.delete(bean);
-			}													
+			}response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseUser.jsp");												
 			}
+	
 			
 			
 			

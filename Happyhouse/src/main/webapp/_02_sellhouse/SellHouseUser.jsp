@@ -190,6 +190,29 @@
 						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
 					</c:url>
+				
+					<!-- 修改用 -->
+					<c:url value="/_02_sellhouse/UpdateSellHouse.jsp" var="path2" scope="page">
+						<c:param name="user_account" value="${row.user_account}" />
+						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
+						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
+						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
+						<c:param name="sellhouse_patterns"
+							value="${row.sellhouse_patterns}" />
+						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
+						<c:param name="sellhouse_describe"
+							value="${row.sellhouse_describe}" />
+						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
+						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
+						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
+						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
+						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
+						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
+						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+					</c:url>
+					<!-- 修改用 -->
+					
 					<tr>
 					<td><input type="checkbox" value="${row.sellhouse_id}" name="delete_sellhouse_id"/></td>	
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
@@ -200,16 +223,20 @@
 						<td>${row.sellhouse_price}</td>
 						<td>${row.sellhouse_size}</td>
 						<td>${row.sellhouse_date}</td>
+						<td><a href="${path2}">修改</a></td>
+					
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 					</tr>
+					
 				</c:forEach>
 			
 			</tbody>
 		</table>
 	</c:if>
 	<input type="submit" name="delete" value="刪除" >
+
 			</div>
 		</form>		
 			

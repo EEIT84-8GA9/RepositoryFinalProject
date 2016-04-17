@@ -95,11 +95,10 @@ public class SellHouseService {
 		}
 		return result;		
 	}
-	public SellHouseBean update(SellHouseBean bean){
+	public SellHouseBean update(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 		SellHouseBean result=null;
-		result=dao.select_sellhouse_id(bean.getSellhouse_id());
-		if(result !=null){
-			result=dao.update(bean);
+		if(bean !=null){
+			result=dao.update(bean,is1,size1,is2,size2,is3,size3);
 		}
 		return result;
 	}

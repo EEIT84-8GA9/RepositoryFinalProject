@@ -40,7 +40,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 	private static final String INSERT = "insert into sellhouse values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?,NULL,NULL)";
 	private static final String SELECT_BY_SELLHOUSE_ID="Select * FROM sellhouse Where sellhouse_id=?";
 	private static final String UPDATE
-	="update sellhouse set sellhouse_name=?, sellhouse_price=?, sellhouse_patterns=?,sellhouse_address=?,sellhouse_describe=?,sellhouse_size=?,sellhouse_floor=?,sellhouse_age=?,sellhouse_photo1=?,sellhouse_photo2=?,sellhouse_photo3=?,sellhouse_type=?,sellhouse_message=?,sellhouse_date=getdate(),sellhouse_car=?,sellhouse_phone=?,sellhouse_email=? where sellhouse_id=?";
+	="update sellhouse set sellhouse_name=?, sellhouse_price=?, sellhouse_patterns=?,sellhouse_address=?,sellhouse_describe=?,sellhouse_size=?,sellhouse_floor=?,sellhouse_age=?,sellhouse_photo1_name=?,sellhouse_photo1=?,sellhouse_photo2_name=?,sellhouse_photo2=?,sellhouse_photo3_name=?,sellhouse_photo3=?,sellhouse_type=?,sellhouse_message=?,sellhouse_date=getdate(),sellhouse_car=?,sellhouse_phone=?,sellhouse_email=? where sellhouse_id=?";
 	private static final String DELETE = "delete from sellhouse where sellhouse_id=?";
 
 	private DataSource dataSource;
@@ -620,14 +620,14 @@ public SellHouseBean insert(SellHouseBean bean,InputStream is1,long size1,InputS
  * @see _02_sellhouse.model.dao.SellHouseDAO#update(_02_sellhouse.model.SellHouseBean)
  */
 @Override
-public SellHouseBean update(SellHouseBean bean){
+public SellHouseBean update(SellHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	try {
 		//conn=DriverManager.getConnection(url,username,password);
 		conn=dataSource.getConnection();
 		pstmt = conn.prepareStatement(UPDATE);
-		pstmt.setInt(17,bean.getSellhouse_id());
+		pstmt.setInt(20,bean.getSellhouse_id());
 		pstmt.setString(1,bean.getSellhouse_name());
 		pstmt.setFloat(2,bean.getSellhouse_price());
 		pstmt.setString(3,bean.getSellhouse_patterns());
@@ -637,28 +637,29 @@ public SellHouseBean update(SellHouseBean bean){
 		pstmt.setString(7,bean.getSellhouse_floor());
 		pstmt.setFloat(8,bean.getSellhouse_age());
 		//File image1=new File(bean.getSellhouse_photo1());
-		File image1=new File("C:/_JSP/image/1.jpg");
-		long size=image1.length();
-		InputStream is1=new FileInputStream(image1);
-		pstmt.setBlob(9,is1);
+//		File image1=new File("C:/_JSP/image/1.jpg");
+//		long size=image1.length();
+		pstmt.setString(9,bean.getSellhouse_photo1_name());
+//		InputStream is1=new FileInputStream(image1);
+		pstmt.setBinaryStream(10,is1,size1);
 		//File image2=new File(bean.getSellhouse_photo1());
-		File image2=new File("C:/_JSP/image/2.jpg");
-		long size2=image1.length();
-		InputStream is2=new FileInputStream(image2);
-		pstmt.setBlob(10,is2);
+//		File image2=new File("C:/_JSP/image/2.jpg");
+//		long size2=image1.length();
+//		InputStream is2=new FileInputStream(image2);
+		pstmt.setString(11,bean.getSellhouse_photo2_name());
+		pstmt.setBinaryStream(12,is2,size2);
 		//File image2=new File(bean.getSellhouse_photo1());
-		File image3=new File("C:/_JSP/image/2.jpg");
-		long size3=image1.length();
-		InputStream is3=new FileInputStream(image3);
-		pstmt.setBlob(11,is3);
-		pstmt.setString(12,bean.getSellhouse_type());
-		pstmt.setString(13,bean.getSellhouse_message());
-		pstmt.setString(14,bean.getSellhouse_car());
-		pstmt.setString(15,bean.getSellhouse_phone());
-		pstmt.setString(16,bean.getSellhouse_email());
+//		File image3=new File("C:/_JSP/image/2.jpg");
+//		long size3=image1.length();
+//		InputStream is3=new FileInputStream(image3);
+		pstmt.setString(13,bean.getSellhouse_photo2_name());
+		pstmt.setBinaryStream(14,is3,size3);
+		pstmt.setString(15,"A");
+		pstmt.setString(16,bean.getSellhouse_message());
+		pstmt.setString(17,bean.getSellhouse_car());
+		pstmt.setString(18,bean.getSellhouse_phone());
+		pstmt.setString(19,bean.getSellhouse_email());
 		int i=	pstmt.executeUpdate();	
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}

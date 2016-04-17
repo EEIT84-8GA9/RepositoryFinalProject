@@ -46,8 +46,8 @@ import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 
 
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
-@WebServlet("/house/house1.controller")
-public class SellHouseServlet_01 extends HttpServlet {
+@WebServlet("/house/house2.controller")
+public class UpdateSellHouseServlet extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();
 	private SellHouseDAO dao=new SellHouseDAOJdbc();
 	@Override
@@ -72,6 +72,8 @@ public class SellHouseServlet_01 extends HttpServlet {
 		InputStream is2 = null;
 		String fileName3 = "";
 		InputStream is3 = null;
+		
+	
 		//接收圖片資料
 	Collection<Part> parts = request.getParts() ;
 		// 接收資料
@@ -81,6 +83,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 		String user_account = request.getParameter("user_account");
 		String sellhouse_name = request.getParameter("sellhouse_name");
 		String temp3 = request.getParameter("sellhouse_price");
+//		float temp3=(float) Double.parseDouble(temp4);
 		String sellhouse_patterns = request.getParameter("sellhouse_patterns");
 		String sellhouse_address = request.getParameter("sellhouse_address");
 		String sellhouse_describe = request.getParameter("sellhouse_describe");
@@ -98,11 +101,11 @@ public class SellHouseServlet_01 extends HttpServlet {
 		String select=request.getParameter("choise");
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
-		Map<String, String> right = new HashMap<String, String>();
+		Map<String, String> param = new HashMap<String, String>();
 		Map<String, String> style = new HashMap<String, String>();
 		request.setAttribute("style", style);
 		request.setAttribute("error", error);
-		request.setAttribute("right", right);
+		request.setAttribute("param", param);
 		
 		
 	
@@ -125,31 +128,32 @@ public class SellHouseServlet_01 extends HttpServlet {
 		//標題
 		if(sellhouse_name==null||sellhouse_name.trim().length()==0){
 			error.put("sellhouse_name", "");
-			right.put("sellhouse_name", "");
+			param.put("sellhouse_name", "");
 			style.put("sellhouse_name", "background-color:pink");
 		}
 		else if(sellhouse_name!=null){
-			right.put("sellhouse_name", sellhouse_name);
+			param.put("sellhouse_name", sellhouse_name);
 			style.put("sellhouse_name", "");
 		}
 		//價格
-		int sellhouse_price = 0;
+		float sellhouse_price = 0;
+	
 		if (temp3 != null || temp3.trim().length() != 0) {
 			try {
-				sellhouse_price = Integer.parseInt(temp3);
+				sellhouse_price=(float) Double.parseDouble(temp3);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("sellhouse_price", "");
-				right.put("sellhouse_price", "");
+				param.put("sellhouse_price", "");
 				style.put("sellhouse_price", "background-color:pink");
 			}
 		}	
 		if(sellhouse_price!=0.0){
-			right.put("sellhouse_price",""+sellhouse_price);
+			param.put("sellhouse_price",""+sellhouse_price);
 			style.put("sellhouse_price", "");
 		}else if(sellhouse_price==0.0){
 			error.put("sellhouse_price", "");
-			right.put("sellhouse_price", "");
+			param.put("sellhouse_price", "");
 			style.put("sellhouse_price", "background-color:pink");
 		}
 		
@@ -164,54 +168,54 @@ public class SellHouseServlet_01 extends HttpServlet {
 		//格局
 		if(sellhouse_patterns==null||sellhouse_patterns.trim().length()==0){
 			error.put("sellhouse_patterns", "");
-			right.put("sellhouse_patterns", "");
+			param.put("sellhouse_patterns", "");
 			style.put("sellhouse_patterns", "background-color:pink");
 		}
 		else if(sellhouse_patterns!=null){
-			right.put("sellhouse_patterns",sellhouse_patterns);
+			param.put("sellhouse_patterns",sellhouse_patterns);
 			style.put("sellhouse_patterns","");
 		}
 		//地址
 		if(sellhouse_address==null||sellhouse_address.trim().length()==0){
 			error.put("sellhouse_address", "");
-			right.put("sellhouse_address", "");
+			param.put("sellhouse_address", "");
 			style.put("sellhouse_address", "background-color:pink");
 		}
 		else if(sellhouse_address!=null){
-			right.put("sellhouse_address", sellhouse_address);
+			param.put("sellhouse_address", sellhouse_address);
 			style.put("sellhouse_address","");
 		}
 		//額外描述  可以為NULL
 		if(sellhouse_describe==null||sellhouse_describe.trim().length()==0){
 			error.put("sellhouse_describe", "");
-			right.put("sellhouse_describe", "");
+			param.put("sellhouse_describe", "");
 			style.put("sellhouse_describe", "background-color:pink");
 		}
 		else if(sellhouse_describe !=null){
-			right.put("sellhouse_describe", sellhouse_describe);
+			param.put("sellhouse_describe", sellhouse_describe);
 			style.put("sellhouse_describe","");
 		}
 		//坪數
-		int sellhouse_size = 0;
+		float sellhouse_size = 0;
 		System.out.println(temp7);
 		if (temp7 != null || temp7.trim().length() != 0) {
 			try {
-				sellhouse_size = Integer.parseInt(temp7);
+				sellhouse_size=(float) Double.parseDouble(temp7);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("sellhouse_size", "");
-				right.put("sellhouse_size", "");
+				param.put("sellhouse_size", "");
 				style.put("sellhouse_size", "background-color:pink");
 			}
 		}
 		
 		
 		if(sellhouse_size!=0.0){
-			right.put("sellhouse_size",""+sellhouse_size);
+			param.put("sellhouse_size",""+sellhouse_size);
 			style.put("sellhouse_size", "");
 		}else if(sellhouse_size==0.0){
 			error.put("sellhouse_size", "");
-			right.put("sellhouse_size", "");
+			param.put("sellhouse_size", "");
 			style.put("sellhouse_size", "background-color:pink");
 		}
 //		else if(temp7==null||temp7.trim().length() ==0){
@@ -224,34 +228,34 @@ public class SellHouseServlet_01 extends HttpServlet {
 		//樓層
 		if(sellhouse_floor==null||sellhouse_floor.trim().length()==0){
 			error.put("sellhouse_floor", "");
-			right.put("sellhouse_floor", "");
+			param.put("sellhouse_floor", "");
 			style.put("sellhouse_floor", "background-color:pink");
 		}
 		else if(sellhouse_floor!=null){
-			right.put("sellhouse_floor", sellhouse_floor);
+			param.put("sellhouse_floor", sellhouse_floor);
 			style.put("sellhouse_floor", "");
 		}
 		//屋齡 不需要?
-		int sellhouse_age = 0;
+		float sellhouse_age = 0;
 		if (temp9 != null || temp9.trim().length() != 0) {
 			try {
-				sellhouse_age = Integer.parseInt(temp9);
+				sellhouse_age =(float) Double.parseDouble(temp9);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("sellhouse_age","");
-				right.put("sellhouse_age","");
-				style.put("sellhouse_age", "background-color:pink");
+				param.put("sellhouse_age","");
+//				style.put("sellhouse_age", "background-color:pink");
 			}
 		}
 
 		
 		
 		if(sellhouse_age!=0.0){
-			right.put("sellhouse_age",""+sellhouse_age);
+			param.put("sellhouse_age",""+sellhouse_age);
 			style.put("sellhouse_age", "");
 		}else if(sellhouse_age==0.0){
 			error.put("sellhouse_age", "");
-			right.put("sellhouse_age", "");
+			param.put("sellhouse_age", "");
 			style.put("sellhouse_age", "background-color:pink");
 		}
 //		else if(temp9==null||temp9.trim().length() ==0){
@@ -264,31 +268,31 @@ public class SellHouseServlet_01 extends HttpServlet {
 		//車位
 		if(sellhouse_car==null||sellhouse_car.trim().length()==0){
 			error.put("sellhouse_car", "");
-			right.put("sellhouse_car", "");
+			param.put("sellhouse_car", "");
 			style.put("sellhouse_car", "background-color:pink");
 		}
 		else if(sellhouse_car!=null){
-			right.put("sellhouse_car", sellhouse_car);
+			param.put("sellhouse_car", sellhouse_car);
 			style.put("sellhouse_car", "");
 		}
 		//電話
 		if(sellhouse_phone==null||sellhouse_phone.trim().length()==0){
 			error.put("sellhouse_phone", "");
-			right.put("sellhouse_phone", "");
+			param.put("sellhouse_phone", "");
 			style.put("sellhouse_phone", "background-color:pink");
 		}
 		else if(sellhouse_phone!=null){
-			right.put("sellhouse_phone", sellhouse_phone);
+			param.put("sellhouse_phone", sellhouse_phone);
 			style.put("sellhouse_phone", "");
 		}
 		//電話
 		if(sellhouse_email==null||sellhouse_email.trim().length()==0){
 		error.put("sellhouse_email", "");
-		right.put("sellhouse_email", "");
+		param.put("sellhouse_email", "");
 		style.put("sellhouse_email", "background-color:pink");
 		}
 		else if(sellhouse_email !=null){
-			right.put("sellhouse_email", sellhouse_email);
+			param.put("sellhouse_email", sellhouse_email);
 			style.put("sellhouse_email", "");
 		}
 		//驗證HTML Form資料
@@ -301,7 +305,7 @@ public class SellHouseServlet_01 extends HttpServlet {
 		if(error!=null&&! error.isEmpty()){
 			System.out.println("errior");
 			request.getRequestDispatcher(
-					"/_02_sellhouse/InsertSellHouse.jsp").forward(request, response);
+					"/_02_sellhouse/UpdateSellHouse.jsp").forward(request, response);
 			return;
 		}
 		//判斷
@@ -359,14 +363,14 @@ public class SellHouseServlet_01 extends HttpServlet {
 //			}
 //	
 //		}	
-		 if(prodaction!=null&&"新增".equals(prodaction)){
+		 if(prodaction!=null&&"修改".equals(prodaction)){
 			 //parts = request.getParts();
-			System.out.println("新增");
+			System.out.println("修改");
+			bean.setSellhouse_id(sellhouse_id);
+			System.out.println("有無抓到ID"+bean.getSellhouse_id());
 			bean.setUser_account(user_account);
 			bean.setSellhouse_name(sellhouse_name);
-			System.out.println(bean.getSellhouse_name());
 			bean.setSellhouse_price(sellhouse_price);
-			System.out.println(bean.getSellhouse_price());
 			bean.setSellhouse_patterns(sellhouse_patterns);
 			bean.setSellhouse_address(sellhouse_address);
 			bean.setSellhouse_size(sellhouse_size);
@@ -421,8 +425,10 @@ public class SellHouseServlet_01 extends HttpServlet {
 				}
 			
 			}
-			SellHouseBean result=sellHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
+			System.out.println(bean.getSellhouse_name());
+			SellHouseBean result=sellHouseService.update(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
 					sizeInBytes3);
+			System.out.println(result);
 			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
 //			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 		}

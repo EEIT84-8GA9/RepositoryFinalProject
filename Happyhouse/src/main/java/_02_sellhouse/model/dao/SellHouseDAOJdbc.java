@@ -31,6 +31,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 //	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 //	private static final String	username="sa";
 //	private	static final String password="sa123456";
+	private static final String UPDATE_TYPE="UPDATE sellhouse set sellhouse_type=? where sellhouse_id=?";
 	private static final String SELECT_BY_TYPE="SELECT * FROM sellhouse WHERE sellhouse_type=?";
 	private static final String UPDATE_REPORT="UPDATE sellhouse SET sellhouse_reportfrom=?,sellhouse_reportreason=?,sellhouse_type='B' WHERE sellhouse_id=?";
 	private static final String SELECT_ALL="select*from sellhouse";
@@ -772,6 +773,46 @@ public SellHouseBean update(SellHouseBean bean,InputStream is1,long size1,InputS
 	
 	return null;
 }
+
+@Override
+public SellHouseBean GMupdate(SellHouseBean bean){
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	try {
+		//conn=DriverManager.getConnection(url,username,password);
+		conn=dataSource.getConnection();
+		pstmt = conn.prepareStatement(UPDATE_TYPE);
+		pstmt.setString(1,bean.getSellhouse_type());
+		pstmt.setInt(2,bean.getSellhouse_id());
+		int i=	pstmt.executeUpdate();	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally{
+		
+		if (pstmt !=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (conn !=null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	return null;
+}
+
 
 
 

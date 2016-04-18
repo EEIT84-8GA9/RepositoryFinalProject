@@ -31,4 +31,6 @@ public interface SellHouseDAO {
 
 	List<SellHouseBean> select_sellhouse_type(String sellhouse_type);
 
+	SellHouseBean GMupdate(SellHouseBean bean);
+
 }

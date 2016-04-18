@@ -17,6 +17,9 @@
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 
 
+
+
+
 <!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以下偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 <script type="text/javascript">
 //       google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
@@ -134,7 +137,7 @@
 				<h2>你刊登房屋的超棒選擇</h2>
 			</div>
 			<!--close site_heading-->
-			<div id="header">
+			<div id="header">			
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="index.jsp">首頁</a></li>
@@ -175,7 +178,8 @@
 						<li><a href="_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
-				</div>
+					
+                    </div>
 				<!--close menubar-->
 			</div>
 			<c:if test="${not empty LoginOK}">

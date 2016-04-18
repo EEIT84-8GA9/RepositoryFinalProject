@@ -75,9 +75,9 @@ public class SellHouseGMFilter implements Filter {
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
 		SellHouseDAO dao=new SellHouseDAOJdbc();
-		List<SellHouseBean> result =dao.select_sellhouse_type("A");
+		List<SellHouseBean> result =dao.SELECT_ALL();
 		System.out.println("ddddd"+result);
-		req.setAttribute("select", result);
+		req.setAttribute("GMselect", result);
 		request.getRequestDispatcher("/_02_sellhouse/SellHouseGM.jsp").forward(req, resp);
 		
 	}

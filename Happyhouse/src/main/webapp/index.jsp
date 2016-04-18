@@ -292,11 +292,14 @@
 		<input type="submit" name="prodaction" value="Choose">
 		<td><span class="error">${error.currentprice_city}</span></td>
 
+		<div id="columnchart_material" style="width: 450px; height: 350px;"></div>
+		<div id="chart_div" style="width: 450px; height: 300px;"></div>
+
 	</form>
 		
 		
-		<div id="columnchart_material" style="width: 450px; height: 350px;"></div>
-	    <div id="chart_div" style="width: 450px; height: 300px;"></div>
+
+	    
 <!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 		<!--close site_content-->
 		<div id="menu">

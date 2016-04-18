@@ -392,6 +392,7 @@ public List<SellHouseBean> select_sellhouse_address(String sellhouse_address){
 /* (non-Javadoc)
  * @see _02_sellhouse.model.dao.SellHouseDAO#select_user_account(java.lang.String)
  */
+@Override
 public List<SellHouseBean> select_sellhouse_type(String sellhouse_type){
 	SellHouseBean bean=null;
 	List<SellHouseBean> result=null;

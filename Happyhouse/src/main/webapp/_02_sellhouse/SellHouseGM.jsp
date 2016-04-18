@@ -13,6 +13,8 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
+
+
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();

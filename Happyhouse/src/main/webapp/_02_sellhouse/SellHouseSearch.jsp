@@ -183,7 +183,7 @@
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
 						<c:param name="sellhouse_type" value="${row.sellhouse_type}" />
 					</c:url>
-						<c:if test="${row.sellhouse_type!='B'&&row.sellhouse_type!='C'}">
+						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>

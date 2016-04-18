@@ -24,7 +24,8 @@ import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import _06_currentprice.model.CurrentPriceBean;
-
+import _08_news.model.newsBean;
+import _08_news.model.dao.newDAO;
 import _09_furniture.model.dao.FurnitureDAOJdbc;
 import _10_chart.model.ChartService;
 
@@ -206,14 +207,49 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("Choose1",result1);
 				request.setAttribute("Choose2",result2);
+				
+				newDAO dao = new newDAO();
+				
+				newsBean bean1 = new newsBean();
+				newsBean bean2 = new newsBean();
+				newsBean bean3 = new newsBean();
+				newsBean bean4 = new newsBean();
+				newsBean bean5 = new newsBean();
+				newsBean bean6 = new newsBean();
+		
+				bean1 = dao.select(400);
+				bean2 = dao.select(401);
+				bean3 = dao.select(402);
+			    bean4 = dao.select(403);
+                bean5 = dao.select(404);
+                bean6 = dao.select(405);
+				
+				
+				
+                Map<String,Object> map = new HashMap<String, Object>();
+                map.put("one", bean1);
+                map.put("two", bean2);
+                map.put("three", bean3);
+                map.put("four", bean4);
+                map.put("five",bean5);
+                map.put("six", bean6);
+				
+                request.setAttribute("select", map);
+				
+				
+				
+				
+				
 			}
 			System.out.println("T"+result1);
 			System.out.println("R"+result2);
 //			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
 //          上為TEST 首頁二題之JSP檔 同樣一組的filter為  _10_ 中的chartFilter.java 
 			System.out.println("SOS");
+			
+			
 			request.getRequestDispatcher("/index.jsp").forward(request,res);
-//			res.sendRedirect("/index.jsp");
+//			res.sendRedirect("/Happyhouse/index.jsp");
 //			return;
 		
 		}else {

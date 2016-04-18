@@ -32,7 +32,7 @@ import _08_news.model.dao.newDAO;
 		urlPatterns = { "/*" }, 
 		initParams = { 
 				@WebInitParam(name = "mustLogin1", value = "/index/*"), 
-				@WebInitParam(name = "mustLogin2", value = "/_10_chart.controller/*"), 
+//				@WebInitParam(name = "mustLogin2", value = "/_10_chart.controller/*"), 
 				@WebInitParam(name = "mustLogin3", value = "/_05_orderProcess/*"),
 				@WebInitParam(name = "mustLogin4", value = "/_20_productMaintain/*")				
 		})

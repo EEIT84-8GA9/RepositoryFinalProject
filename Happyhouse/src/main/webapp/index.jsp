@@ -158,9 +158,9 @@
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 						</ul>
 						</li>
-						<li><a href="addarticle.controller">討論區</a></li>										
+						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
 						<c:if test="${empty LoginOK}">
-						<li><a href="_01_users/login.jsp">會員登入</a></li>
+						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
@@ -293,11 +293,14 @@
 		<input type="submit" name="prodaction" value="Choose">
 		<td><span class="error">${error.currentprice_city}</span></td>
 
+		<div id="columnchart_material" style="width: 450px; height: 350px;"></div>
+		<div id="chart_div" style="width: 450px; height: 300px;"></div>
+
 	</form>
 		
 		
-		<div id="columnchart_material" style="width: 450px; height: 350px;"></div>
-	    <div id="chart_div" style="width: 450px; height: 300px;"></div>
+
+	    
 <!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 		<!--close site_content-->
 		<div id="menu">

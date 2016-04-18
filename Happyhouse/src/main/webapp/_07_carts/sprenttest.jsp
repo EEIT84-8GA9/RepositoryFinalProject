@@ -26,7 +26,9 @@
 		<header>
 			<h2>好宅網</h2>
             <h2>出租收藏</h2>
-            
+            <br>
+            <br>
+            <a href="/Happyhouse/index.jsp"><img style="border: 10px solid #FFF;" alt="image"src="/Happyhouse/images/houseindex.jpg" /></a>
             <a href="" class="reset">回首頁</a>
 			<div class="actions">
 				<a href="#0" class="reset">回到預設值</a>

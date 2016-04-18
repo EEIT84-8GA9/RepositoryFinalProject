@@ -110,7 +110,7 @@ public class ProductServlet extends HttpServlet {
 	
 //根據Model執行結果顯示View
 	
-		if("Select".equals(prodaction)) { 
+		if("查詢所有刊登家具".equals(prodaction)) { 
 //			System.out.println(bean);
 			List<FurnitureBean> result = productService.select(bean);
 		
@@ -118,11 +118,11 @@ public class ProductServlet extends HttpServlet {
 			request.getRequestDispatcher(
 					"/_09_furniture/display.jsp").forward(request, response);
 		} 
-		else if("SelectSelf".equals(prodaction)){
+		else if("查詢您的刊登家具".equals(prodaction)){
 			List<FurnitureBean> result = productService.selectSelf(user_account);
-			request.setAttribute("select", result);
+			request.setAttribute("select1", result);
 			request.getRequestDispatcher(
-					"/_09_furniture/display.jsp").forward(request, response);
+					"/_09_furniture/display1.jsp").forward(request, response);
 		}
 		else if(prodaction!=null && prodaction.equals("新增刊登")) {
 			FurnitureBean result = productService.insert(bean);

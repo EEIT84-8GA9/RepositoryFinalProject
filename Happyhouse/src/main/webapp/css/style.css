@@ -163,6 +163,14 @@ ul#menu li a:hover
   float: right;
   border: 1px solid #DDD;}
   
+  
+.content_select_div  
+{
+ width: 540px;
+ height:220px;
+ 
+ 
+  }
 .content_text
 { width: 520px;
   float: right;
@@ -174,6 +182,13 @@ ul#menu li a:hover
   float: left;
   margin-top: 20px;
   padding-left: 20px;}
+  
+.content_text_test{
+  width: 920px;
+  float: left;
+  margin-top: 20px;
+  padding-left: 20px;
+}
 
 #banner_image {
 	width: 960px;

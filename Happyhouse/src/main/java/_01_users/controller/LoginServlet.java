@@ -84,8 +84,18 @@ public class LoginServlet extends HttpServlet {
 				bean = userService.login(username, password);
 		//		username=bean.getUser_account();
 				userService.changePassword(username, password, password2);
+				HttpSession session = request.getSession();
+				session.setAttribute("ChangeOK", bean);
+				String path = request.getContextPath();
+				response.sendRedirect(path + "/index.jsp");
+				
+			
+			}else{
+				request.getRequestDispatcher("/_01_users/chasgePw.jsp").forward(
+						request, response);
 				
 			}
+			
 		}
 
 	}

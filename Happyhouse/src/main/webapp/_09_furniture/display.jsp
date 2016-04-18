@@ -162,7 +162,7 @@ $(document).ready(function() {
 <!-- </table> -->
 <!-- <script type="text/javascript">clearForm();</script> -->
 <%-- </c:if> --%>
-<h3><a href="<c:url value="/_09_furniture/product.jsp" />">Product Table</a></h3>
+<h3 align="center"><a href="<c:url value="/_09_furniture/product.jsp" />">回二手家具首頁</a></h3>
 <div id="photo"></div>
 <script type="text/javascript" src="../js/lightbox.min.js"></script>
 <div id="footer">

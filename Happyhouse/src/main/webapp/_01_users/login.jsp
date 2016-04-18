@@ -70,7 +70,7 @@
 				<!--close menubar-->
 			</div>
 			
-<h3>Login Welcome </h3>
+<h2 align="center">Login Welcome </h2>
 
 <form action="<c:url value="/secure/login.controller" />" method="get">
 <table>

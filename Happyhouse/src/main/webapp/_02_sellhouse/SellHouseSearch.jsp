@@ -172,8 +172,7 @@
 						<c:param name="sellhouse_patterns"
 							value="${row.sellhouse_patterns}" />
 						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
-						<c:param name="sellhouse_describe"
-							value="${row.sellhouse_describe}" />
+						<c:param name="sellhouse_describe" value="${row.sellhouse_describe}" />
 						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
 						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
 						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
@@ -182,8 +181,9 @@
 						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
 						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
-						
+						<c:param name="sellhouse_type" value="${row.sellhouse_type}" />
 					</c:url>
+						<c:if test="${row.sellhouse_type!='B'&&row.sellhouse_type!='C'}">
 					<tr>	
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
@@ -197,6 +197,7 @@
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 					</tr>
+					</c:if>
 				</c:forEach>
 			</tbody>
 		</table>

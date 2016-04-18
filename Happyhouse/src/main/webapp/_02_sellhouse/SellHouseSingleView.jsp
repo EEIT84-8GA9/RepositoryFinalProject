@@ -156,7 +156,9 @@
 			</c:if>
 			<!--close header-->
 <div id="allpage">
-<form action="<c:url value="/house/house.controller"/>"method="POST">
+<!-- param -->
+<%-- <c:url value="/reportsellhouse.controller"/> --%>
+<form action=""method="POST">
 <c:if test="${not empty param}">
 		<div id="content">
 			<article>
@@ -164,6 +166,8 @@
 				<figure>
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
 				</figure>
+					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
+					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<p>帳號:${param.user_account}</p>
 					<p>價格:${param.sellhouse_price}</p>
 					<p>格局:${param.sellhouse_patterns}</p>
@@ -201,8 +205,114 @@
 				
 		</tbody>
 	</c:if>
+	<!-- bean2 -->
+	
+	
+	<c:if test="${not empty bean2}">
+		<div id="content">
+			<article>
+				<h2>${bean2.sellhouse_name}</h2>
+				<figure>
+				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px">
+				</figure>
+					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/>
+					<input type="hidden" value="${bean2.user_account}" name="user_account"/>
+					<p>帳號:${bean2.user_account}</p>
+					<p>價格:${bean2.sellhouse_price}</p>
+					<p>格局:${bean2.sellhouse_patterns}</p>
+					<p>坪數:${bean2.sellhouse_size}</p>
+					<p>樓層:${bean2.sellhouse_floor}</p>
+					<p>屋齡:${bean2.sellhouse_age}</p>
+					<p>格局:${bean2.sellhouse_patterns}</p>
+					<p>車位:${bean2.sellhouse_car}</p>
+					<p>地址:${bean2.sellhouse_address}</p>
+			</article>
+		</div>
+				<fieldset>
+					<legend>聯絡資訊</legend>
+					<div id="content">
+					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
+					<label>${bean2.sellhouse_phone}</label><br>
+					</div>
+					<br>
+					<label>e-mail:${bean2.sellhouse_email}</label>
+					<label><a href="">站內信</a></label>
+				</fieldset>
+				</form>
+				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
+				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				<fieldset>
+				<legend>其他資訊</legend>
+				<p>${bean2.sellhouse_describe}</p>
+				</fieldset>
+				<form>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
+				<br>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
+				<br>
+				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>															
+				
+		</tbody>
+	</c:if>
+	
+	
+	
 </form>
 </div>
+<!-- param -->
+
+
+
+<%-- <c:if test="${not empty bean2}"> --%>
+<!-- 		<div id="content"> -->
+<!-- 			<article> -->
+<%-- 				<h2>${bean2.sellhouse_name}</h2> --%>
+<!-- 				<figure> -->
+<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"> --%>
+<!-- 				</figure> -->
+<%-- 					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/> --%>
+<%-- 					<p>帳號:${bean2.user_account}</p> --%>
+<%-- 					<p>價格:${bean2.sellhouse_price}</p> --%>
+<%-- 					<p>格局:${bean2.sellhouse_patterns}</p> --%>
+<%-- 					<p>坪數:${bean2.sellhouse_size}</p> --%>
+<%-- 					<p>樓層:${bean2.sellhouse_floor}</p> --%>
+<%-- 					<p>屋齡:${bean2.sellhouse_age}</p> --%>
+<%-- 					<p>格局:${bean2.sellhouse_patterns}</p> --%>
+<%-- 					<p>車位:${bean2.sellhouse_car}</p> --%>
+<%-- 					<p>地址:${bean2.sellhouse_address}</p> --%>
+<!-- 			</article> -->
+<!-- 		</div> -->
+<!-- 				<fieldset> -->
+<!-- 					<legend>聯絡資訊</legend> -->
+<!-- 					<div id="content"> -->
+<!-- 					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px"> -->
+<%-- 					<label>${bean2.sellhouse_phone}</label><br> --%>
+<!-- 					</div> -->
+<!-- 					<br> -->
+<%-- 					<label>e-mail:${bean2.sellhouse_email}</label> --%>
+<!-- 					<label><a href="">站內信</a></label> -->
+<!-- 				</fieldset> -->
+<!-- 				</form> -->
+<%-- 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button> --%>
+<!-- 				<button type="button" class="MessageButton" value="" >寄送站內信</button> -->
+<!-- 				<fieldset> -->
+<!-- 				<legend>其他資訊</legend> -->
+<%-- 				<p>${bean2.sellhouse_describe}</p> --%>
+<!-- 				</fieldset> -->
+<!-- 				<form> -->
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>															 --%>
+				
+<!-- 		</tbody> -->
+<%-- 	</c:if> --%>
+<!-- </form> -->
+<!-- </div> -->
+<!-- param -->
+
+
 
 <!--  -->
 
@@ -226,8 +336,9 @@
 	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="hidden" id="user_account" name="user_account" value="${param.user_account}"><br/>
-	          	<input type="text" id="user_account" name="user_account" value="${param.user_account}" readonly="readonly"><br/>	 
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}${bean2.user_account}"><br/>
+				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}${bean2.sellhouse_id}"><br/>
+	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}${bean2.user_account}" readonly="readonly"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title" ><br/>

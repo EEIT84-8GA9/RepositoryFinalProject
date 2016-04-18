@@ -164,7 +164,7 @@
 <!-- 			</thead> -->
 			<tbody>
 				<c:forEach var="row" items="${select}">
-					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
+					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
 						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />

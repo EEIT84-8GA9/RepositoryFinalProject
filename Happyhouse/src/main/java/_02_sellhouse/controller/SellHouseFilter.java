@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseDAO;
@@ -67,6 +68,7 @@ public class SellHouseFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
+		HttpSession session =req.getSession();
 		servletPath = req.getServletPath();  
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
@@ -76,6 +78,7 @@ public class SellHouseFilter implements Filter {
 			//SellHouseBean bean=new SellHouseBean();
 			 List<SellHouseBean> result =dao.SELECT_ALL();
 			System.out.println("ddddd"+result);
+			session.removeAttribute("bean2");
 			req.setAttribute("select", result);
 			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
 		

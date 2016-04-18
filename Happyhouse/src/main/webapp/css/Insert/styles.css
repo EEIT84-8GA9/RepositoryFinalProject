@@ -4,13 +4,13 @@
 * {margin: 0; padding: 0;}
 
 html {
-	height: 50%;
-	/*Image only BG fallback */
-/* 	background: url('http://localhost:8080/Happyhouse/img/gs.png'); */
-	/*background = gradient + image pattern combo */
-/* 	background:  */
-/* 		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)),  */
-/* 		url('http://localhost:8080/Happyhouse/img/gs.png'); */
+height: 100%;
+	/*Image only BG fallback*/
+	background: url('/Happyhouse/img/gs.png');
+	/*background = gradient + image pattern combo*/
+	background: 
+		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 
+		url('/Happyhouse/img/gs.png');
 }
 
 /* body { */

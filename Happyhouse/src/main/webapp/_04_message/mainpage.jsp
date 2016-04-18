@@ -16,7 +16,7 @@ tr:hover td {
 }
 </style>
 <script type="text/javascript" src="../js/jquery-2.2.1.min.js"></script>
-<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript">

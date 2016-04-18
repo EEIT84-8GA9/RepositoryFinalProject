@@ -429,7 +429,7 @@ public class UpdateSellHouseServlet extends HttpServlet {
 			SellHouseBean result=sellHouseService.update(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
 					sizeInBytes3);
 			System.out.println(result);
-			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
+			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseUser.jsp");
 //			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(request, response);
 		}
 //		 else if(prodaction!=null&&"修改".equals(prodaction)){
@@ -450,7 +450,7 @@ public class UpdateSellHouseServlet extends HttpServlet {
 //		}
 		else{
 			
-			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSearch.jsp");
+			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseUser.jsp");
 		}
 //		  if(delete!=null&&"刪除".equals(delete)){
 //			bean.setSellhouse_id(delete_sellhouse_id);

@@ -31,6 +31,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 //	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 //	private static final String	username="sa";
 //	private	static final String password="sa123456";
+	private static final String SELECT_BY_TYPE="SELECT * FROM sellhouse WHERE sellhouse_type=?";
 	private static final String UPDATE_REPORT="UPDATE sellhouse SET sellhouse_reportfrom=?,sellhouse_reportreason=?,sellhouse_type='B' WHERE sellhouse_id=?";
 	private static final String SELECT_ALL="select*from sellhouse";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM sellhouse Where user_account LIKE ?";
@@ -392,6 +393,85 @@ public List<SellHouseBean> select_sellhouse_address(String sellhouse_address){
  * @see _02_sellhouse.model.dao.SellHouseDAO#select_user_account(java.lang.String)
  */
 @Override
+public List<SellHouseBean> select_sellhouse_type(String sellhouse_type){
+	SellHouseBean bean=null;
+	List<SellHouseBean> result=null;
+	Connection conn =null;
+	PreparedStatement pstmt=null;
+	ResultSet rset=null;
+	try {
+		conn=dataSource.getConnection();
+		pstmt=conn.prepareStatement(SELECT_BY_TYPE);
+		pstmt.setString(1,sellhouse_type);
+		rset=pstmt.executeQuery();
+		result=new ArrayList<SellHouseBean>();
+		while(rset.next()){
+			bean=new SellHouseBean();
+			bean.setSellhouse_id(rset.getInt("sellhouse_id"));
+			bean.setUser_account(rset.getString("user_account"));
+			bean.setSellhouse_name(rset.getString("sellhouse_name"));
+			bean.setSellhouse_price(rset.getFloat("sellhouse_price"));
+			bean.setSellhouse_patterns(rset.getString("sellhouse_patterns"));
+			bean.setSellhouse_address(rset.getString("sellhouse_address"));
+			bean.setSellhouse_describe(rset.getString("sellhouse_describe"));
+			bean.setSellhouse_size(rset.getFloat("sellhouse_size"));
+			bean.setSellhouse_floor(rset.getString("sellhouse_floor"));
+			bean.setSellhouse_age(rset.getFloat("sellhouse_age"));
+			bean.setSellhouse_photo1(rset.getBlob("sellhouse_photo1"));
+			bean.setSellhouse_photo2(rset.getBlob("sellhouse_photo2"));
+			bean.setSellhouse_photo3(rset.getBlob("sellhouse_photo3"));
+			bean.setSellhouse_type(rset.getString("sellhouse_type"));
+			bean.setSellhouse_message(rset.getString("sellhouse_message"));
+			bean.setSellhouse_date(rset.getDate("sellhouse_date"));
+			bean.setSellhouse_car(rset.getString("sellhouse_car"));
+			bean.setSellhouse_phone(rset.getString("sellhouse_phone"));
+			bean.setSellhouse_email(rset.getString("sellhouse_email"));
+			result.add(bean);
+			
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally{
+		
+		if (rset!=null) {
+			try {
+				rset.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (pstmt !=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (conn!=null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
+	
+
+	
+	return result;
+	
+}
+
+
+
+
+@Override
 public List<SellHouseBean> select_user_account(String user_account){
 	SellHouseBean bean=null;
 	List<SellHouseBean> result=null;
@@ -467,6 +547,11 @@ public List<SellHouseBean> select_user_account(String user_account){
 /* (non-Javadoc)
  * @see _02_sellhouse.model.dao.SellHouseDAO#select_sellhouse_id(int)
  */
+
+
+
+
+
 @Override
 public SellHouseBean select_sellhouse_id(int id){
 	SellHouseBean	bean=null;

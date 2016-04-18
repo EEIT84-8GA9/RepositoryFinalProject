@@ -29,4 +29,6 @@ public interface SellHouseDAO {
 
 	public abstract SellHouseBean updatereport(SellHouseBean bean);
 
+	List<SellHouseBean> select_sellhouse_type(String sellhouse_type);
+
 }

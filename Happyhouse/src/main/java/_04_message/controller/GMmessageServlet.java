@@ -37,7 +37,7 @@ public class GMmessageServlet extends HttpServlet {
 	}
 	List<MessageVO> list=messageService.getall();
 	session.setAttribute("list", list);
-	response.sendRedirect("/Happyhouse/GMmessage.jsp");
+	response.sendRedirect("/Happyhouse/_04_message/GMmessage.jsp");
 	return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

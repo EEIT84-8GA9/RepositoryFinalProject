@@ -74,7 +74,7 @@
 						<td>${row.message_id}</td>
 						<td>${row.user_account}</td>
 						<td>${row.message_title}</td>
-						<td><input  type="radio" name="message_type" value="A">正常
+						<td>狀態改為<input  type="radio" name="message_type" value="A">正常
 							<input  type="radio" name="message_type" value="C">違規
 							<button type="submit" name="id" value="${row.message_id}"  onClick="confirmChoice()">更新</button>
 						</td>

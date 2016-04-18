@@ -128,7 +128,7 @@ tr:hover td {
 					<c:param name="message_describe" value="${messageVO.message_describe}" />
 					<c:param name="message_type" value="${messageVO.message_type}" />
 				</c:url>
-				<c:if test="${messageVO.message_actiontype=='add'}">
+				<c:if test="${messageVO.message_actiontype=='add' && messageVO.message_type!='C'}">
 				<tr>
 					<td width='500' height='20'><a href='${path}'>${messageVO.message_title}</a></td>
 					<td align='center'>${messageVO.message_id}</td>

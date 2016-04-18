@@ -81,7 +81,7 @@
 			</c:if>
 			<!--close header-->
 			<div style="padding-left:150px">
-		<form  action="<c:url value="/house/sellhouseuser.controller"/>"method="post" >
+		<form  action="<c:url value="/sellhouse.GM.controller"/>"method="post" >
 <!-- 		<fieldset> -->
 <!-- 		<legend>房屋查詢</legend> -->
 <!-- 	<div style="padding-left:200px;width:50%;height:50%"> -->
@@ -153,7 +153,7 @@
 </table>
 <table>                                                                 
 
-<c:if test="${not empty select}">
+<c:if test="${not empty GMselect}">
 		<table border=1 cellpadding=20 >
 <!-- 			<thead> -->
 <!-- 				<th>標題</th> -->
@@ -168,9 +168,84 @@
 <!-- 				<th>車位</th> -->
 
 <!-- 			</thead> -->
+<tr><td>遭檢舉</td></tr>
 			<tbody>
-			<input type="checkbox" onClick="toggle(this)" />&nbsp全選
-				<c:forEach var="row" items="${select}">
+				<c:forEach var="row" items="${GMselect}">
+					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
+						<c:param name="user_account" value="${row.user_account}" />
+						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
+						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
+						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
+						<c:param name="sellhouse_patterns"
+							value="${row.sellhouse_patterns}" />
+						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
+						<c:param name="sellhouse_describe"
+							value="${row.sellhouse_describe}" />
+						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
+						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
+						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
+						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
+						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
+						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
+						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+					</c:url>
+	
+					<!-- 修改用 -->
+					
+					<c:url value="/_02_sellhouse/UpdateSellHouse.jsp" var="path2" scope="page">
+						<c:param name="user_account" value="${row.user_account}" />
+						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
+						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
+						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
+						<c:param name="sellhouse_patterns"
+							value="${row.sellhouse_patterns}" />
+						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
+						<c:param name="sellhouse_describe"
+							value="${row.sellhouse_describe}" />
+						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
+						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
+						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
+						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
+						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
+						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
+						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+					</c:url>
+					<!-- 修改用 -->
+					
+					<tr>
+						<c:if test="${row.sellhouse_type=='B'}">
+					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
+						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
+						<input type="hidden" name="id" value="${row.sellhouse_id}">
+						<h3>${row.sellhouse_address}</h5>
+						<h3>${row.sellhouse_patterns}</h3>
+						</td>
+						<td>${row.sellhouse_price}</td>
+						<td>${row.sellhouse_size}</td>
+						<td>${row.sellhouse_date}</td>
+						<td>${row.sellhouse_type}</td>
+						<td><select name="type" value="狀態">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						</select>
+					<input type="submit" value="修改" name="prodaction"/></td>
+<%-- 						<td><a href="${path2}">修改</a></td> --%>
+					
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+					</c:if>
+					</tr>
+					
+				</c:forEach>
+			
+			</tbody>
+			<tr><td>以封鎖</td></tr>
+			<tbody>
+				<c:forEach var="row" items="${GMselect}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
@@ -214,30 +289,40 @@
 					<!-- 修改用 -->
 					
 					<tr>
-					<td><input type="checkbox" value="${row.sellhouse_id}" name="delete_sellhouse_id"/></td>	
+					<c:if test="${row.sellhouse_type=='C'}">
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
+						<input type="hidden" name="id" value="${row.sellhouse_id}">
 						<h3>${row.sellhouse_address}</h5>
 						<h3>${row.sellhouse_patterns}</h3>
 						</td>
 						<td>${row.sellhouse_price}</td>
 						<td>${row.sellhouse_size}</td>
 						<td>${row.sellhouse_date}</td>
-						<td><a href="${path2}">修改</a></td>
+						<td>${row.sellhouse_type}</td>
+						<td><select name="type" value="狀態">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						</select>
+					<input type="submit" value="修改" name="prodaction"/></td>
+<%-- 						<td><a href="${path2}">修改</a></td> --%>
 					
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+					</c:if>
 					</tr>
 					
 				</c:forEach>
 			
 			</tbody>
+			
+			
+			
 		</table>
 	</c:if>
-	<input type="submit" name="delete" value="刪除" >
-
-			</div>
+	</div>
 		</form>		
 			
 		<!--close site_content-->

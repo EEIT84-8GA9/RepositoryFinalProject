@@ -22,17 +22,17 @@
 		</header>
 	</section> <!-- .cd-intro -->
 
+
 	<section class="cd-products-comparison-table">
 		<header>
 			<h2>好宅網</h2>
             <h2>出售收藏</h2>
-            
-          
-			
+            <br>
+            <br>
+            <a href="/Happyhouse/index.jsp"><img style="border: 10px solid #FFF;" alt="image"src="/Happyhouse/images/houseindex.jpg" /></a>
 			<div class="actions">
 				<a href="#0" class="reset">回到預設值</a>
 				<a href="#0" class="filter">只對打勾做選擇</a>
-				  <h2><a href="/Happyhouse/index.jsp" class="reset">回首頁</a></h2>
 			</div>
 		</header>
 
@@ -140,6 +140,8 @@
 				
 				</ul> <!-- .cd-products-columns -->
 			</div> <!-- .cd-products-wrapper -->
+			
+		    <h2><a href="/Happyhouse/index.jsp" class="reset">回首頁</a></h2>
 
 			
 			<ul class="cd-table-navigation">

@@ -68,7 +68,7 @@ public class sellhouse_sms_servlet extends HttpServlet {
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);
 			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");
-			session.removeAttribute("bean2");
+//			session.removeAttribute("bean2");
 			return;
 		}
 //		response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");

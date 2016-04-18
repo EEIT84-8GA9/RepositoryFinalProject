@@ -318,11 +318,10 @@
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
-	          <p>帳號:${param.user_account}</p>
 	            <label>您的帳號</label><br/>
 				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}${bean2.sellhouse_id}" readonly="readonly"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>

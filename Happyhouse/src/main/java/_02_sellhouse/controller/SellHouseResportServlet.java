@@ -39,7 +39,7 @@ public class SellHouseResportServlet extends HttpServlet {
 		SellHouseBean result = service.updatereport(bean);
 		if(result !=null){
 		response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");
-		session.removeAttribute("bean2");
+//		session.removeAttribute("bean2");
 		return;
 	}
 

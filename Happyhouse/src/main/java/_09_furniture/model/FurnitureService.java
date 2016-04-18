@@ -20,11 +20,10 @@ public class FurnitureService {
 	public List<FurnitureBean> select(FurnitureBean bean) {
 		List<FurnitureBean> result = null;
 	
-	 if((bean!=null && bean.getFurniture_id()!=0) ||(bean!=null && bean.getUser_account()!="")
-			 ||(bean!=null && bean.getFurniture_neme()!="")) {
+	 if((bean!=null && bean.getFurniture_id()!=0) ) {
 			FurnitureBean temp = productDao.select(bean.getFurniture_id());
-			String temp1= bean.getUser_account();
-			String temp2= bean.getFurniture_neme();
+//			String temp1= bean.getUser_account();
+//			String temp2= bean.getFurniture_neme();
 			if(temp!=null) {
 				result = new ArrayList<FurnitureBean>();
 				result.add(temp);
@@ -32,9 +31,9 @@ public class FurnitureService {
 //			else if(temp1!=""){
 //				result =productDao.select(temp1);
 //			}
-			else if(temp2!="") {
-				result =productDao.selectKeyWord(temp2);
-			}
+//			else if(temp2!="") {
+//				result =productDao.selectKeyWord(temp2);
+//			}
 		} else {
 			result = productDao.selectAllFurniture(); 
 		}

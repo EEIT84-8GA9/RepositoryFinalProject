@@ -195,7 +195,7 @@
 
 			<!-- 1 -->
 			<c:forEach var="messageVO" items="${list}">
-			<c:if test="${messageVO.message_title==param.message_title}">
+			<c:if test="${messageVO.message_title==param.message_title && messageVO.message_type!='C'}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -247,7 +247,7 @@
 			
 			<!-- resp -->
 			<c:forEach var="messageVO" items="${list}">
-			<c:if test="${messageVO.message_title==resp.message_title}">
+			<c:if test="${messageVO.message_title==resp.message_title && messageVO.message_type!='C'}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -378,7 +378,7 @@
 	<!-- add end -->
 	<c:forEach var="messageVO" items="${list}">
 	
-	<c:if test="${resperror.message_title==messageVO.message_title}">
+	<c:if test="${resperror.message_title==messageVO.message_title && messageVO.message_type!='C'}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -429,7 +429,7 @@
 	<!-- report start -->
 	<c:forEach var="messageVO" items="${list}">
 	
-	<c:if test="${report.message_title==messageVO.message_title}">
+	<c:if test="${report.message_title==messageVO.message_title && messageVO.message_type!='C'}">
 				<div class="content">
 					<div class="leftSideBar">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">

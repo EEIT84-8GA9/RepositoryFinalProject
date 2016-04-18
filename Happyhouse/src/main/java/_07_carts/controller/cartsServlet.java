@@ -119,7 +119,7 @@ public class cartsServlet extends HttpServlet {
         	}else{
         		request.setAttribute("sell", result);
         		System.out.println("有咧");
-            	request.getRequestDispatcher("/_07_carts/selltestnew.jsp").forward(request, response);
+            	request.getRequestDispatcher("/_07_carts/spselltest.jsp").forward(request, response);
             	
         	}
           }
@@ -135,7 +135,7 @@ public class cartsServlet extends HttpServlet {
 		}else{
 			
 			request.setAttribute("rent", result);
-			request.getRequestDispatcher("/_07_carts/renttestnew.jsp").forward(request, response);
+			request.getRequestDispatcher("/_07_carts/sprenttest.jsp").forward(request, response);
 			
 		}
 		

@@ -211,9 +211,11 @@ public class ChartServlet extends HttpServlet {
 			System.out.println("R"+result2);
 //			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
 //          上為TEST 首頁二題之JSP檔 同樣一組的filter為  _10_ 中的chartFilter.java 
-			request.getRequestDispatcher("/index.jsp").forward(request,res);
-			
 			System.out.println("SOS");
+			request.getRequestDispatcher("/index.jsp").forward(request,res);
+//			res.sendRedirect("/index.jsp");
+//			return;
+		
 		}else {
 			error.put("action", "Unknown Action:" + prodaction);
 			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request, res);

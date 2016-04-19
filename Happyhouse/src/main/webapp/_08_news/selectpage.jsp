@@ -58,9 +58,10 @@
 			</div>
 			<c:if test="${not empty LoginOK}">
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			<h1 align="center" >點擊標題即可更新首頁資訊~~</h1>
 			</c:if>
 			<!--close header-->
-			<form action="<c:url value="/test.controller" />" method="post">
+<%-- 	<form action="<c:url value="/test.controller" />" method="post"> --%>
 
 <article class="htmleaf-container">
 		<div id="container">
@@ -69,8 +70,8 @@
 	      <c:url value="/_08_news/test.jsp" var="path" scope="page">
 	      	<c:param name="id" value="${row.new_id}" />
 								</c:url>
-	        <li class="q"><img src="img/arrow.png"><a href="/Happyhouse/index.jsp">${row.new_title}</a></li>
-	        <li class="a">${row.new_describe}   更新日期為:${row.new_date}
+	        <li class="q"><img src="/Happyhouse/img/arrow.png"><a href="/Happyhouse/_08_news/test.jsp">${row.new_title}</a></li>
+	        <li class="a">${row.new_describe}
 	        </li>
 	        
 	        </c:forEach>

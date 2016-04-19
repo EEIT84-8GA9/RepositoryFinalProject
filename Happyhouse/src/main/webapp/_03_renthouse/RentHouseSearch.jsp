@@ -75,7 +75,7 @@
 			</c:if>
 			<!--close header-->
 			<div style="padding-left:150px">
-		<form  action="<c:url value="/house/house.controller"/>"method="post" >
+		<form  action="<c:url value="/house/renthouse.controller"/>"method="post" >
 		<fieldset>
 		<legend>房屋查詢</legend>
 	<div style="padding-left:200px;width:50%;height:50%">

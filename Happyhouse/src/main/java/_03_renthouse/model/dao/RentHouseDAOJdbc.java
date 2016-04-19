@@ -159,6 +159,7 @@ public List<RentHouseBean> select_renthouse_name(String renthouse_name){
 			result=new ArrayList<RentHouseBean>();
 		while(rset.next()){
 			bean=new RentHouseBean();
+			bean.setRenthouse_id(rset.getInt("renthouse_id"));
 			bean.setUser_account(rset.getString("user_account"));
 			bean.setRenthouse_name(rset.getString("renthouse_name"));
 			bean.setRenthouse_price(rset.getFloat("renthouse_price"));
@@ -236,6 +237,7 @@ public List<RentHouseBean> select_user_account(String user_account){
 			result=new ArrayList<RentHouseBean>();
 		while(rset.next()){
 			bean=new RentHouseBean();
+			bean.setRenthouse_id(rset.getInt("renthouse_id"));
 			bean.setUser_account(rset.getString("user_account"));
 			bean.setRenthouse_name(rset.getString("renthouse_name"));
 			bean.setRenthouse_price(rset.getFloat("renthouse_price"));
@@ -322,6 +324,7 @@ public List<RentHouseBean> select_renthouse_price(float renthouse_price){
 			result=new ArrayList<RentHouseBean>();
 		while(rset.next()){
 			bean=new RentHouseBean();
+			bean.setRenthouse_id(rset.getInt("renthouse_id"));
 			bean.setUser_account(rset.getString("user_account"));
 			bean.setRenthouse_name(rset.getString("renthouse_name"));
 			bean.setRenthouse_price(rset.getFloat("renthouse_price"));
@@ -400,6 +403,7 @@ public List<RentHouseBean> select_renthouse_address(String renthouse_address){
 		result=new ArrayList<RentHouseBean>();
 		while(rset.next()){
 			bean=new RentHouseBean();
+			bean.setRenthouse_id(rset.getInt("renthouse_id"));
 			bean.setUser_account(rset.getString("user_account"));
 			bean.setRenthouse_name(rset.getString("renthouse_name"));
 			bean.setRenthouse_price(rset.getFloat("renthouse_price"));
@@ -471,6 +475,7 @@ public RentHouseBean select_renthouse_id(int id){
 		rset = pstmt.executeQuery();	
 		if(rset.next()){
 			bean=new RentHouseBean();
+			
 			bean.setRenthouse_id(rset.getInt("renthouse_id"));
 			bean.setUser_account(rset.getString("user_account"));
 			bean.setRenthouse_name(rset.getString("renthouse_name"));

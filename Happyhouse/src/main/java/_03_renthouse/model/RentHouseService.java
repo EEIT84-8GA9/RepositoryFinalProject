@@ -1,5 +1,6 @@
 package _03_renthouse.model;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,10 +76,10 @@ public class RentHouseService {
 		}
 		return result;
 	}
-	public RentHouseBean insert(RentHouseBean bean){
+	public RentHouseBean insert(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 		RentHouseBean result=null;
 		if(bean!=null){
-			result=dao.insert(bean);
+			result=dao.insert(bean, is1, size1, is2,size2,is3,size3);
 		}
 		return result;		
 	}

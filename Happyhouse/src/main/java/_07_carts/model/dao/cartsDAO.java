@@ -398,7 +398,6 @@ public class cartsDAO {
 			String con2 = bean.getUser_account();
 			int con3 = bean.getSellhouse_id();
 			//int con4 = bean.getRenthouse_id();   //賣租屋要分開寫，因為一個有的畫另一個就要是NULL，分開寫比較簡單不然要寫判斷
-
 			// stm.setInt(1, con1);
 			stm.setString(1, con2);
 			stm.setInt(2, con3);
@@ -427,7 +426,57 @@ public class cartsDAO {
 		return bean;
 
 	}
+	
+	private static final String INSERT2 = "insert into carts (user_account,renthouse_id,cart_date) values (?,?,getdate())";
 
+	public cartsBean insert2(cartsBean bean) {
+
+		Connection con = null;
+		PreparedStatement stm = null;
+
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			stm = con.prepareStatement(INSERT2);
+
+			// int con1 = bean.getCart_id();
+			String con2 = bean.getUser_account();
+			int con3 = bean.getRenthouse_id();
+			//int con4 = bean.getRenthouse_id();   //賣租屋要分開寫，因為一個有的畫另一個就要是NULL，分開寫比較簡單不然要寫判斷
+			// stm.setInt(1, con1);
+			stm.setString(1, con2);
+			stm.setInt(2, con3);
+			//stm.setInt(3, con4);
+
+			stm.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (stm != null) {
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return bean;
+
+	}
+	
+	
+	
+	
+	
+	
 	private static final String DELETE = "delete from carts where cart_id=?";
 
 	public boolean delete(int id) {

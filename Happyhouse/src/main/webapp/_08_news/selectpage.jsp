@@ -67,21 +67,45 @@
 		<div id="container">
 	      <ul class="faq">
 	      <c:forEach var="row" items="${select}">
-	      <c:url value="/_08_news/test.jsp" var="path" scope="page">
-	      	<c:param name="id" value="${row.new_id}" />
-								</c:url>
-	        <li class="q"><img src="/Happyhouse/img/arrow.png"><a href="/Happyhouse/_08_news/test.jsp">${row.new_title}</a></li>
+	      
+	     <c:url value="/_08_news/test.jsp" var="path" scope="page">
+	     <c:param name="new_id" value="${row.new_id}" />
+	     <c:param name="new_title" value="${row.new_title}" />
+	     <c:param name="new_describe" value="${row.new_describe}" />
+<%-- 		 <c:param name="make" value="${row.make}" /> --%>
+<%-- 		 <c:param name="expire" value="${row.expire}" /> --%>
+		 </c:url>
+	      
+	      
+	        <li class="q"><img src="/Happyhouse/img/arrow.png"><a href="${path}">${row.new_title}</a></li>
 	        <li class="a">${row.new_describe}
 	        </li>
 	        
 	        </c:forEach>
+							
+<%-- 						<c:forEach var="row" items="${select}"> --%>
+<%-- 		<c:url value="/pages/product.jsp" var="path" scope="page"> --%>
+<%-- 			<c:param name="id" value="${row.id}" /> --%>
+<%-- 			<c:param name="name" value="${row.name}" /> --%>
+<%-- 			<c:param name="price" value="${row.price}" /> --%>
+<%-- 			<c:param name="make" value="${row.make}" /> --%>
+<%-- 			<c:param name="expire" value="${row.expire}" /> --%>
+<%-- 		</c:url> --%>
+<!-- 	<tr> -->
+<%-- 		<td><a href="${path}">${row.id}</a></td> --%>
+<%-- 		<td>${row.name}</td> --%>
+<%-- 		<td>${row.price}</td> --%>
+<%-- 		<td>${row.make}</td> --%>
+<%-- 		<td>${row.expire}</td> --%>
+<!-- 	</tr> -->
+<%-- 	</c:forEach>	 --%>
 							
 							
 						      </ul>			
 								</div>
 <%-- 	<a href="${path}">${row.new_id}</a> --%>
 								
-						
+						</article>
 							
 
 

@@ -101,6 +101,9 @@
 <!-- </table> -->
 <table>
 <tr>
+<td><input type="hidden" name="user_name" value="${param.user_name}" ></td>
+</tr>
+<tr>
 <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
 </tr>
 <tr>
@@ -165,6 +168,7 @@
 			<tbody>
 				<c:forEach var="row" items="${select}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
+						<c:param name="user_name" value="${row.user_name}" />
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
 						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />

@@ -169,6 +169,7 @@
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<p>帳號:${param.user_account}</p>
+					<p>姓名:${param.user_name}</p>
 					<p>價格:${param.sellhouse_price}</p>
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>坪數:${param.sellhouse_size}</p>
@@ -218,6 +219,7 @@
 					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${bean2.user_account}" name="user_account"/>
 					<p>帳號:${bean2.user_account}</p>
+					<p>姓名:${bean2.user_name}</p>
 					<p>價格:${bean2.sellhouse_price}</p>
 					<p>格局:${bean2.sellhouse_patterns}</p>
 					<p>坪數:${bean2.sellhouse_size}</p>

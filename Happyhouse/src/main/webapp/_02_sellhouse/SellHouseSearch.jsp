@@ -189,7 +189,7 @@
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
+					<td colspan=2> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
 						<h3>${row.sellhouse_address}</h5>
 						<h3>${row.sellhouse_patterns}</h3>

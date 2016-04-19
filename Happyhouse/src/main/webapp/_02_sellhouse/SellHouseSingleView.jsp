@@ -330,7 +330,7 @@
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
-
+		
 
 <!-- 站內信 -->
 <div class="dialog" title="站內信" id="MessageForMe">

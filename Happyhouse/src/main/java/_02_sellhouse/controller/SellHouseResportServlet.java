@@ -35,10 +35,12 @@ public class SellHouseResportServlet extends HttpServlet {
 		bean.setSellhouse_reportreason(reportreason);
 	SellHouseBean bean2 = dao.select_sellhouse_id(id);
 		System.out.println("地址"+bean2.getSellhouse_address());
-		session.setAttribute("bean2", bean2);
+		//session.setAttribute("bean2", bean2);
 		SellHouseBean result = service.updatereport(bean);
 		if(result !=null){
-		response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");
+			String url = request.getHeader("referer");
+			
+			response.sendRedirect(url);
 //		session.removeAttribute("bean2");
 		return;
 	}

@@ -64,15 +64,15 @@ public class sellhouse_sms_servlet extends HttpServlet {
 			System.out.println("title"+vo.getSms_title());
 			System.out.println("密碼"+vo.getSms_mailers());
 			SmsVO bean_write = service.write(vo);
-			session.setAttribute("bean2", bean2);
+		//	session.setAttribute("bean2", bean2);
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);
-			response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");
-//			session.removeAttribute("bean2");
+	
+		String url = request.getHeader("referer");
+			response.sendRedirect(url);
 			return;
 		}
-//		response.sendRedirect("/Happyhouse/_02_sellhouse/SellHouseSingleView.jsp");
-//		return;
+
 	}
 
 	protected void doPost(HttpServletRequest request,

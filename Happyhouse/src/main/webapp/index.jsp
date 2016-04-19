@@ -8,7 +8,7 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
+"src/main/webapp/css/jquery-confirm.css"
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
@@ -132,6 +132,9 @@
 <body>
 	<div id="main">
 		<div id="site_content">
+				<c:if test="${not empty LoginOK}">
+				<h2 align="right">${LoginOK.user_name}你好</h2>
+				</c:if>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
 				<h2>你刊登房屋的超棒選擇</h2>
@@ -183,9 +186,6 @@
                     </div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center">${LoginOK.user_name}你好</h1>
-			</c:if>
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
             </c:if>

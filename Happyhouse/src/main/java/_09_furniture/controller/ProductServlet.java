@@ -134,7 +134,8 @@ public class ProductServlet extends HttpServlet {
 			}
 			request.getRequestDispatcher(
 					"/_09_furniture/product.jsp").forward(request, response);
-		} else if(prodaction!=null && prodaction.equals("更新商品資訊")) {
+		} 
+		else if(prodaction!=null && prodaction.equals("更新商品資訊")) {
 			FurnitureBean result = productService.update(bean);
 			System.out.println("5555"+id);
 			if(result==null) {

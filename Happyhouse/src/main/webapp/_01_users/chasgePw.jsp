@@ -61,14 +61,14 @@
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="_01_users/logout.jsp">登出</a></li>
+						<li><a href="logout.jsp">登出</a></li>
 						
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
 <h1 align="center">Welcome ${LoginOK.user_name}</h1>
-    <img src="/Happyhouse/images/house.jpg" alt="" /> 
+   
 
 <form action="<c:url value="/secure/login.controller" />" method="get">
 <table>	
@@ -102,6 +102,7 @@
 	
 </table>
 </form>
+ <img src="/Happyhouse/images/pro.jpg" alt="" /> 
 <div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

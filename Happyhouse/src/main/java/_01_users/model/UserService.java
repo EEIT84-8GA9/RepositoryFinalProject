@@ -1,9 +1,5 @@
 package _01_users.model;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 import _01_users.model_dao.UserDAO;
 import _01_users.model_dao.UsersDAOJdbc;
@@ -31,7 +27,7 @@ public class UserService {
 		System.out.print(service.changePassword("Alex123", "sa123", "sa1234"));
 
 	}
-
+	
 	public UsersBean login(String username, String password) {
 		UsersBean bean = userDAO.select(username);
 		if (bean != null) {
@@ -43,10 +39,6 @@ public class UserService {
 		}
 		return null;
 	}
-
-	// public UsersBean regist(String account, String password,String name,
-	// String address,String phone,String email,String gender) throws
-	// SQLException {
 
 	public UsersBean regist(UsersBean bean) {
 
@@ -65,7 +57,6 @@ public class UserService {
 			if (newPassword != null && newPassword.trim().length() != 0) {
 				if(oldPassword!=newPassword){
 				bean.setUser_password(newPassword);
-				
 				// temp = mDigest.digest(temp);
 				try {
 					return userDAO.update(bean);

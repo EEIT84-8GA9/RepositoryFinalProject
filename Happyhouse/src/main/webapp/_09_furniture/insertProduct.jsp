@@ -74,47 +74,47 @@
 			<!--close header-->
 			<div style="padding-left:150px">
 	<form action="<c:url value="/pages/product.controller" />" method="get">
-		
+	
 <table>
      <tr>
 		<td>帳號: </td>
 		<td><input type="text" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()"></td>
-		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
+		<td><span class="error"></span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
 	<tr>
 		<td>家具名稱 : </td>
 		<td><input type="text" name="insname" value="${param.furniture_neme}"></td>
-		<td></td>
+		<td>${error.insname}</td>
 	</tr>
      <tr>
 		<td>刊登價格 : </td>
 		<td><input type="text" name="insprice" value="${param.furniture_price}"></td>
-		<td></td>
+		<td>${error.dubleprice}</td>
 	</tr>
 	<tr>
 		<td>新舊程度 : </td>
 		<td><input type="text" name="insstatus" value="${param.furniture_status}"></td>
-		<td></td>
+		<td>${error.insstatus}</td>
 	</tr>
 	<tr>
 		<td>使用年度 : </td>
 		<td><input type="text" name="instime" value="${param.furniture_time}"></td>
-		<td></td>
+		<td>${error.instime}</td>
 	</tr>
 	<tr>
 		<td>商品地址 : </td>
 		<td><input type="text" name="insaddress" value="${param.furniture_address}"></td>
-		<td></td>
+		<td>${error.insaddress}</td>
 	</tr>
 	<tr>
 		<td>商品介紹 : </td>
 		<td><input type="text" name="insmessage" value="${param.furniture_message}"></td>
-		<td></td>
+		<td>${error.insmessage}</td>
 	</tr>
 	<tr>
 		<td>商品種類 : </td>
 		<td><input type="text" name="instype" value="${param.furniture_type}"></td>
-		<td></td>
+		<td>${error.insname}</td>
 	</tr>
 
 	<tr>

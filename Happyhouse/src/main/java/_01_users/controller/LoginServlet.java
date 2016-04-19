@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import _01_users.model.UserService;
 import _01_users.model.UsersBean;
 
-
 @WebServlet(urlPatterns = { "/secure/login.controller" })
 public class LoginServlet extends HttpServlet {
 	private UserService userService = new UserService();
@@ -29,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 		String password1 = request.getParameter("password1");
 		String password2 = request.getParameter("password2");
 		String log = request.getParameter("log");
-	
+
 		// 驗證HTML Form資料
 
 		Map<String, String> error = new HashMap<String, String>();
@@ -43,17 +42,17 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		if (error != null && !error.isEmpty()) {
-			request.getRequestDispatcher("/_01_users/login.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/_01_users/login.jsp").forward(
+					request, response);
 			return;
 		}
 
 		// 呼叫Model
-		UsersBean bean ;
-       
+		UsersBean bean;
+
 		// 根據Model執行結果顯示View
 		if (log != null && "登入".equals(log)) {
-			 bean = userService.login(username, password);
+			bean = userService.login(username, password);
 			if (bean == null) {
 				System.out.println("5555");
 				error.put("password", "登入失敗，請再次輸入ID/PWD");
@@ -72,30 +71,29 @@ public class LoginServlet extends HttpServlet {
 				}
 			}
 		}
-		if(log!= null && "登出".equals(log)){
+		if (log != null && "登出".equals(log)) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("LoginOK");
 			request.getRequestDispatcher("/_01_users/login.jsp").forward(
 					request, response);
 		}
-		 if(log!= null && "確認更改".equals(log)) {
+		if (log != null && "確認更改".equals(log)) {
 			System.out.println("5555");
 			if (password1.equals(password2)) {
 				bean = userService.login(username, password);
-		//		username=bean.getUser_account();
+				// username=bean.getUser_account();
 				userService.changePassword(username, password, password2);
 				HttpSession session = request.getSession();
 				session.setAttribute("ChangeOK", bean);
 				String path = request.getContextPath();
 				response.sendRedirect(path + "/index.jsp");
-				
-			
-			}else{
-				request.getRequestDispatcher("/_01_users/chasgePw.jsp").forward(
-						request, response);
-				
+
+			} else {
+				request.getRequestDispatcher("/_01_users/chasgePw.jsp")
+						.forward(request, response);
+
 			}
-			
+
 		}
 
 	}

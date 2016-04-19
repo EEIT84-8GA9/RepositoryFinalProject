@@ -124,16 +124,7 @@ $(window).load(function() {
 <!-- 	</tr> -->
 	<tr>
 
-<!-- 	<tr> -->
-<!-- 		<td>Time : </td> -->
-<%-- 		<td><input type="text" name="time" value="${param.furniture_time}"></td> --%>
-<%-- 		<td><span class="error">${error.make}</span></td> --%>
-<!-- 	</tr> -->
-<!-- 	<tr> -->
-<!-- 		<td>Message : </td> -->
-<%-- 		<td><input type="text" name="message" value="${param.furniture_message}"></td> --%>
-<%-- 		<td><span class="error">${error.expire}</span></td> --%>
-<!-- 	</tr> -->
+
 	<tr>
 <!-- 		<td> -->
 <%-- 			<input type="button"  value="Insert"  onclick="location.href= --%>

@@ -1,5 +1,6 @@
 package _03_renthouse.model;
 
+import java.io.InputStream;
 import java.util.List;
 
 public interface RentHouseDAO {
@@ -24,7 +25,7 @@ public interface RentHouseDAO {
 	//id搜尋
 	public abstract RentHouseBean select_renthouse_id(int id);
 
-	public abstract RentHouseBean insert(RentHouseBean bean);
+	public abstract RentHouseBean insert(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3);
 
 	public abstract RentHouseBean update(RentHouseBean bean);
 

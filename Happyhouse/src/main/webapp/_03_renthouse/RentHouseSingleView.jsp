@@ -162,32 +162,32 @@
 <c:if test="${not empty param}">
 		<div id="content">
 			<article>
-				<h2>${param.sellhouse_name}</h2>
+				<h2>${param.renthouse_name}</h2>
 				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
+				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px">
 				</figure>
-					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
+					<input type="hidden" value="${param.renthouse_id}" name="renthouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<p>帳號:${param.user_account}</p>
 					<p>姓名:${param.user_name}</p>
-					<p>價格:${param.sellhouse_price}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>坪數:${param.sellhouse_size}</p>
-					<p>樓層:${param.sellhouse_floor}</p>
-					<p>屋齡:${param.sellhouse_age}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>車位:${param.sellhouse_car}</p>
-					<p>地址:${param.sellhouse_address}</p>
+					<p>價格:${param.renthouse_price}</p>
+					<p>格局:${param.renthouse_patterns}</p>
+					<p>坪數:${param.renthouse_size}</p>
+					<p>樓層:${param.renthouse_floor}</p>
+					<p>租金:${param.renthouse_price}</p>
+					<p>格局:${param.renthouse_patterns}</p>
+					<p>車位:${param.renthouse_car}</p>
+					<p>地址:${param.renthouse_address}</p>
 			</article>
 		</div>
 				<fieldset>
 					<legend>聯絡資訊</legend>
 					<div id="content">
 					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.sellhouse_phone}</label><br>
+					<label>${param.renthouse_phone}</label><br>
 					</div>
 					<br>
-					<label>e-mail:${param.sellhouse_email}</label>
+					<label>e-mail:${param.renthouse_email}</label>
 					<label><a href="">站內信</a></label>
 				</fieldset>
 				</form>
@@ -195,14 +195,14 @@
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
 				<fieldset>
 				<legend>其他資訊</legend>
-				<p>${param.sellhouse_describe}</p>
+				<p>${param.renthouse_describe}</p>
 				</fieldset>
 				<form>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															
+				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" width="150px"></p>															
 				
 		</tbody>
 	</c:if>
@@ -212,32 +212,32 @@
 	<c:if test="${not empty bean2}">
 		<div id="content">
 			<article>
-				<h2>${bean2.sellhouse_name}</h2>
+				<h2>${bean2.renthouse_name}</h2>
 				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px">
+				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="150px">
 				</figure>
-					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/>
+					<input type="hidden" value="${bean2.renthouse_id}" name="renthouse_id"/>
 					<input type="hidden" value="${bean2.user_account}" name="user_account"/>
 					<p>帳號:${bean2.user_account}</p>
 					<p>姓名:${bean2.user_name}</p>
-					<p>價格:${bean2.sellhouse_price}</p>
-					<p>格局:${bean2.sellhouse_patterns}</p>
-					<p>坪數:${bean2.sellhouse_size}</p>
-					<p>樓層:${bean2.sellhouse_floor}</p>
-					<p>屋齡:${bean2.sellhouse_age}</p>
-					<p>格局:${bean2.sellhouse_patterns}</p>
-					<p>車位:${bean2.sellhouse_car}</p>
-					<p>地址:${bean2.sellhouse_address}</p>
+					<p>價格:${bean2.renthouse_price}</p>
+					<p>格局:${bean2.renthouse_patterns}</p>
+					<p>坪數:${bean2.renthouse_size}</p>
+					<p>樓層:${bean2.renthouse_floor}</p>
+					<p>租金:${bean2.renthouse_price}</p>
+					<p>格局:${bean2.renthouse_patterns}</p>
+					<p>車位:${bean2.renthouse_car}</p>
+					<p>地址:${bean2.renthouse_address}</p>
 			</article>
 		</div>
 				<fieldset>
 					<legend>聯絡資訊</legend>
 					<div id="content">
 					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${bean2.sellhouse_phone}</label><br>
+					<label>${bean2.renthouse_phone}</label><br>
 					</div>
 					<br>
-					<label>e-mail:${bean2.sellhouse_email}</label>
+					<label>e-mail:${bean2.renthouse_email}</label>
 					<label><a href="">站內信</a></label>
 				</fieldset>
 				</form>
@@ -245,14 +245,14 @@
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
 				<fieldset>
 				<legend>其他資訊</legend>
-				<p>${bean2.sellhouse_describe}</p>
+				<p>${bean2.renthouse_describe}</p>
 				</fieldset>
 				<form>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="150px"></p>
 				<br>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
+			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${row.renthouse_id}" width="150px"></p>
 				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>															
+				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${row.renthouse_id}" width="150px"></p>															
 				
 		</tbody>
 	</c:if>

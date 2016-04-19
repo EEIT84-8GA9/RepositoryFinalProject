@@ -33,15 +33,15 @@
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
-						<li><a href="#">搜尋出售</a></li>
-                        <li><a href="#">刊登出售</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
+                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
                         <li><a href="#">查詢出售收藏</a></li>
 						</ul>
 						</li>
 						<li><a href="testimonials.html">刊登出租</a>
 						<ul>
-						<li><a href="#">搜尋出租</a></li>
-                        <li><a href="#">刊登出租</a></li>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
                         <li><a href="#">查詢出租收藏</a></li>
 						</ul>
 						</li>
@@ -75,7 +75,7 @@
 			</c:if>
 			<!--close header-->
 			<div style="padding-left:150px">
-		<form  action="<c:url value="/house/house.controller"/>"method="post" >
+		<form  action="<c:url value="/house/renthouse.controller"/>"method="post" >
 		<fieldset>
 		<legend>房屋查詢</legend>
 	<div style="padding-left:200px;width:50%;height:50%">
@@ -104,53 +104,53 @@
 <td><input type="hidden" name="user_name" value="${param.user_name}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
+<td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td>
 </tr>
 <tr>
 <td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td>
+<td><input type="hidden" name="renthouse_name" value="${param.renthouse_name}" ></td>
 </tr>
-<td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td>
+<td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td>
+<td><input type="hidden" name="renthouse_patterns" value="${param.renthouse_patterns}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td>
+<td><input type="hidden" name="renthouse_describe" value="${param.renthouse_describe}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td>
+<td><input type="hidden" name="renthouse_size" value="${param.renthouse_size}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td>
+<td><input type="hidden" name="renthouse_floor" value="${param.renthouse_floor}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td>
+<td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td>
+<td><input type="hidden" name="renthouse_type" value="${param.renthouse_type}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td>
+<td><input type="hidden" name="renthouse_message" value="${param.renthouse_message}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td>
+<td><input type="hidden" name="renthouse_date" value="${param.renthouse_date}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td>
+<td><input type="hidden" name="renthouse_car" value="${param.renthouse_car}" ></td>
 </tr>
 <tr>
-<td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
+<td><input type="hidden" name="renthouse_phone" value="${param.renthouse_phone}" ></td>
+</tr>
+<tr>
+<td><input type="hidden" name="renthouse_email" value="${param.renthouse_email}" ></td>
 </tr>
 </table>
 <table>                                                                 
 </form>
-<c:if test="${not empty select}">
+<c:if test="${not empty rent_select}">
 		<table border=1 cellpadding=20 >
 <!-- 			<thead> -->
 <!-- 				<th>標題</th> -->
@@ -166,37 +166,38 @@
 
 <!-- 			</thead> -->
 			<tbody>
-				<c:forEach var="row" items="${select}">
-					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
+				<c:forEach var="row" items="${rent_select}">
+					<c:url value="/_03_renthouse/RentHouseSingleView.jsp" var="path" scope="session">
 						<c:param name="user_name" value="${row.user_name}" />
 						<c:param name="user_account" value="${row.user_account}" />
-						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
-						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
-						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
-						<c:param name="sellhouse_patterns"
-							value="${row.sellhouse_patterns}" />
-						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
-						<c:param name="sellhouse_describe" value="${row.sellhouse_describe}" />
-						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
-						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
-						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
-						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
-						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
-						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
-						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
-						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
-						<c:param name="sellhouse_type" value="${row.sellhouse_type}" />
+						<c:param name="renthouse_id" value="${row.renthouse_id}" />
+						<c:param name="renthouse_name" value="${row.renthouse_name}" />
+						<c:param name="renthouse_price" value="${row.renthouse_price}" />
+						<c:param name="renthouse_patterns"
+							value="${row.renthouse_patterns}" />
+						<c:param name="renthouse_address" value="${row.renthouse_address}" />
+						<c:param name="renthouse_describe" value="${row.renthouse_describe}" />
+						<c:param name="renthouse_size" value="${row.renthouse_size}" />
+						<c:param name="renthouse_floor" value="${row.renthouse_floor}" />
+					
+						<c:param name="renthouse_message" value="${row.renthouse_message}" />
+						<c:param name="renthouse_date" value="${row.renthouse_date}" />
+						<c:param name="renthouse_car" value="${row.renthouse_car}" />
+						<c:param name="renthouse_phone" value="${row.renthouse_phone}" />
+						<c:param name="renthouse_email" value="${row.renthouse_email}" />
+						<c:param name="renthouse_type" value="${row.renthouse_type}" />
 					</c:url>
-						<c:if test="${row.sellhouse_type!='C'}">
+						<c:if test="${row.renthouse_type!='C'}">
 					<tr>	
-					<td colspan=2> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
+ 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td> 
+						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.renthouse_name}</a></h3>
+						<h3>${row.renthouse_id}</h5>
+						<h3>${row.renthouse_address}</h5>
+						<h3>${row.renthouse_patterns}</h3>
 						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
+						<td>${row.renthouse_price}</td>
+						<td>${row.renthouse_size}</td>
+						<td>${row.renthouse_date}</td>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>

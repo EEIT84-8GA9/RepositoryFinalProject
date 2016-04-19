@@ -28,7 +28,7 @@ public class SellHouseBean implements Serializable{
 	private	String	sellhouse_email;
 	private String  sellhouse_reportfrom;
 	private String sellhouse_reportreason;
-	
+	private String user_name;
 
 	
 	
@@ -52,6 +52,25 @@ public class SellHouseBean implements Serializable{
 				+ sellhouse_phone + ", sellhouse_email=" + sellhouse_email
 				+ "]";
 	}
+
+
+	
+	
+	
+	public String getUser_name() {
+		return user_name;
+	}
+
+
+
+
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
+
+
 
 
 	public int getSellhouse_id() {

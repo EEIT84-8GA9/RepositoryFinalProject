@@ -33,18 +33,17 @@
     cursor: pointer;
 }
 </style>
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/style2.css" />
+
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/default.css">
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
 <script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider();
-	});
 	
 	function toggle(source) {
 		  checkboxes = document.getElementsByName('sms_id');
@@ -54,10 +53,9 @@
 		}
 </script>
 </head>
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
  <!-- including css & jQuery Dialog UI here-->
 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/for_sms/dialog.js"></script>
 <body>
@@ -115,7 +113,6 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			
 	<article class="htmleaf-container">
 <font color="red">${error.deleteSms_idEmpty}</font>
 
@@ -139,7 +136,7 @@
 							</li>
 							</c:forEach>
 						</ul>
-						<input type="submit" name="type" value="刪除信件" >
+						<input type="submit" name="type" class="delete" value="刪除信件" >
 						<button type="button" class="re" value="" id="writebutton">寫信</button>
 			</tbody>
 		</table>
@@ -147,7 +144,7 @@
 	</article>
 	<!-- for MessageForMe form-->
 		<div class="dialog" title="站內信" id="MessageForMe">
-	          <form action="/Happyhouse/sms.controller" method="post" class="sms">
+	          <form action="/Happyhouse/sms.controller" method="post" id="sms">
 	            <label>收信人</label><br/>
 				<input type="text" id="user_account" name="user_account" value="" ><br/>
 	          	
@@ -160,14 +157,14 @@
 				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
 				
 				<input type="submit" id="messagesubmit" name="type"  value="送出" />
-				
+<!-- 				<button type="button" id="submit">送出</button> -->
 			  </form>
 		 </div>
 	<!-- end MessageForMe form -->
 	<script src="/Happyhouse/js/for_sms/script.js"></script>
-
-	</form>
+	
 		</div>
+		
 		<!--close site_content-->
 		<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台
@@ -177,6 +174,16 @@
 		<!--close footer-->
 	</div>
 	<!--close main-->
+	<script type="text/javascript">
+
+			$('#sms').submit(function() {
+    var c = confirm("Click OK to continue?");
+    
+    return c; 
+});
+		   
+
+		</script>
 </body>
 
 </html>

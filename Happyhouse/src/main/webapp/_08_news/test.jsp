@@ -13,11 +13,14 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript"
 	src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
 </script>
+
+<link rel="stylesheet" href="/Happyhouse/css/for_newcss/style.css">
 </head>
 
 <body>
@@ -61,13 +64,13 @@
 				<table>
 					<tr style="border: 1px solid black;">
 						<td>文章編號</td>
-						<td><input type="text" name="id" value="${param.id}">${error.id}
+						<td><input type="text" name="id" value="${param.new_id}">${error.id}
 							${error.updateid}</td>
 					</tr>
 
 					<tr style="border: 1px solid black;">
 						<td>標題</td>
-						<td><input type="text" name="title" value="">${error.title}</td>
+						<td><input type="text" name="title" value="${param.new_title}">${error.title}</td>
 					</tr>
 
 					<tr style="border: 1px solid black;">
@@ -97,26 +100,40 @@
 
 
 						<c:if test="${not empty update}">
-							<h3>修改資料成功惹</h3>
-							<table border="2">
-								<tr>
-									<td>文章編號為</td>
-									<td>${update.new_id}</td>
-								</tr>
+					 <h1>更新完成,更新資料如下</h1>
+					 <article class="htmleaf-container">
+		             <div id="container">
+	                 <ul class="faq">
+						
+					 
+	                 <li class="q"><img src="/Happyhouse/img/arrow.png">${update.new_title}</li>
+	                 <li class="a">${update.new_describe} 更新時間為:${update.new_date}</li>
+	                
+	        
+	                  </ul>			
+					  </div>
+					  </article>
+						
+<!-- 							<h3>修改資料成功惹</h3> -->
+<!-- 							<table border="2"> -->
+<!-- 								<tr> -->
+<!-- 									<td>文章編號為</td> -->
+<%-- 									<td>${update.new_id}</td> --%>
+<!-- 								</tr> -->
 
-								<tr>
-									<td>標題是:</td>
-									<td>${update.new_title}</td>
-								</tr>
-								<tr>
-									<td>內容為:</td>
-									<td>${update.new_describe}</td>
-								</tr>
-								<tr>
-									<td>新增時間為</td>
-									<td>${update.new_date}</td>
-								</tr>
-							</table>
+<!-- 								<tr> -->
+<!-- 									<td>標題是:</td> -->
+<!-- 									<td></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>內容為:</td> -->
+<!-- 									<td></td> -->
+<!-- 								</tr> -->
+<!-- 								<tr> -->
+<!-- 									<td>新增時間為</td> -->
+<!-- 									<td></td> -->
+<!-- 								</tr> -->
+<!-- 							</table> -->
 						</c:if>
 
 						<c:if test="${not empty insert}">
@@ -159,5 +176,9 @@
 		</div>
 		<!--close main-->
 	</div>
+		
+	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="/Happyhouse/js/jquery-2.1.1.min.js"><\/script>')</script>
+	<script src="/Happyhouse/js/script.js"></script>
 </body>
 </html>

@@ -40,7 +40,7 @@
                         <li><a href="#">封鎖會員</a></li>                   
 						</ul>
 						</li>
-						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>									
+						<li><a href="/Happyhouse/_08_news/selectpage.jsp">首頁更新</a></li>									
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
@@ -77,5 +77,6 @@
 		<!--close footer-->
 	</div>
 	<!--close main-->
+	
 </body>
 </html>

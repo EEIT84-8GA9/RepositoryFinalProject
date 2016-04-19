@@ -8,7 +8,6 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
@@ -132,6 +131,9 @@
 <body>
 	<div id="main">
 		<div id="site_content">
+<%-- 				<c:if test="${not empty LoginOK}"> --%>
+<!-- 				<h2 align="right"></h2> -->
+<%-- 				</c:if> --%>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
 				<h2>你刊登房屋的超棒選擇</h2>
@@ -150,8 +152,8 @@
 						</li>
 						<li><a href="testimonials.html">刊登出租</a>
 						<ul>
-						<li><a href="#">搜尋出租</a></li>
-                        <li><a href="#">刊登出租</a></li>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
                         <li><a href="#">查詢出租收藏</a></li>
 						</ul>
 						</li>
@@ -167,7 +169,7 @@
 						</c:if>
 						<c:if test="${not empty LoginOK}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						<li><a href="">個人管理頁面</a>
+						<li><a href="">${LoginOK.user_name}您好</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
@@ -183,9 +185,6 @@
                     </div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center">${LoginOK.user_name}你好</h1>
-			</c:if>
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
             </c:if>

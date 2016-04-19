@@ -34,7 +34,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 	private static final String UPDATE_TYPE="UPDATE sellhouse set sellhouse_type=? where sellhouse_id=?";
 	private static final String SELECT_BY_TYPE="SELECT * FROM sellhouse WHERE sellhouse_type=?";
 	private static final String UPDATE_REPORT="UPDATE sellhouse SET sellhouse_reportfrom=?,sellhouse_reportreason=?,sellhouse_type='B' WHERE sellhouse_id=?";
-	private static final String SELECT_ALL="select*from sellhouse";
+	private static final String SELECT_ALL="SELECT * FROM sellhouse as s join users as u on s.user_account=u.user_account";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM sellhouse Where user_account LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_NAME="Select * FROM sellhouse Where sellhouse_name LIKE ?";
 	private static final String SELECT_BY_SELLHOUSE_PRICE="Select * FROM sellhouse Where sellhouse_price LIKE ?";
@@ -82,6 +82,7 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 			result=new ArrayList<SellHouseBean>();
 			while(rset.next()){	
 				SellHouseBean bean=new SellHouseBean();
+				bean.setUser_name(rset.getString("user_name"));
 				bean.setSellhouse_id(rset.getInt("sellhouse_id"));
 				bean.setUser_account(rset.getString("user_account"));
 				bean.setSellhouse_name(rset.getString("sellhouse_name"));

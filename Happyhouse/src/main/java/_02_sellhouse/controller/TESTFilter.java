@@ -23,12 +23,12 @@ import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
 import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 @WebFilter(
-		urlPatterns = { "/_02_sellhouse/SellHouseSearch.jsp" }, 
+		urlPatterns = { "/_02_sellhouse/TEST2.jsp" }, 
 		initParams = { 
-	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/SellHouseSearch.jsp"), 			
+	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/TEST2.jsp"), 			
 		}
 		)
-public class SellHouseFilter implements Filter {
+public class TESTFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -77,9 +77,10 @@ public class SellHouseFilter implements Filter {
 			SellHouseDAO dao=new SellHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();
 			 List<SellHouseBean> result =dao.SELECT_ALL();
+			 System.out.println(result);
 			session.removeAttribute("bean2");
 			req.setAttribute("select", result);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
+			request.getRequestDispatcher("/_02_sellhouse/TEST2.jsp").forward(req, resp);
 		
 	}
 

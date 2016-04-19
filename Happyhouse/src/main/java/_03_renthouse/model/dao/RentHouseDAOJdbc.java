@@ -45,7 +45,7 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 	private static final String SELECT_BY_RENTHOUSE_NAME="Select * FROM renthouse Where renthouse_name LIKE ?";
 	private static final String SELECT_BY_RENTHOUSE_PRICE="Select * FROM renthouse Where renthouse_price LIKE ?";
 	private static final String SELECT_BY_RENTHOUSE_ADDRESS="Select * FROM renthouse Where renthouse_address LIKE ?";
-	private static final String INSERT = "INSERT INTO renthouse  values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?)";
+	private static final String INSERT = "INSERT INTO renthouse  values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?,NULL,NULL)";
 	private static final String SELECT_BY_RENTHOUSE_ID="Select * FROM renthouse Where renthouse_id=?";
 	private static final String UPDATE
 	="update renthouse set renthouse_name=?, renthouse_price=?,renthouse_deposit=?,renthouse_patterns=?,renthouse_address=?,renthouse_describe=?,renthouse_size=?,renthouse_floor=?,renthouse_rentdate=?,renthouse_photo1=?,renthouse_photo2=?,renthouse_photo3=?,renthouse_type=?,renthouse_message=?,renthouse_date=getdate(),renthouse_car=?,renthouse_phone=?,renthouse_email=? where renthouse_id=?";
@@ -575,7 +575,7 @@ public RentHouseBean insert(RentHouseBean bean,InputStream is1,long size1,InputS
 //			InputStream is3=new FileInputStream(image3);
 			pstmt.setString(15,bean.getRenthouse_photo3_name());
 			pstmt.setBinaryStream(16,is3,size3);
-			pstmt.setString(17,bean.getRenthouse_type());
+			pstmt.setString(17,"A");
 			pstmt.setString(18,bean.getRenthouse_message());
 			pstmt.setString(19,bean.getRenthouse_car());
 			pstmt.setString(20,bean.getRenthouse_phone());

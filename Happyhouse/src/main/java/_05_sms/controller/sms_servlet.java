@@ -37,6 +37,7 @@ public class sms_servlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String[] sms_id = request.getParameterValues("sms_id");
 		System.out.println(title);
+		System.out.println(type);
 		UsersBean bean = (UsersBean) session.getAttribute("LoginOK");
 		if (bean != null) {
 			List<SmsVO> result = service.select(bean.getUser_account());

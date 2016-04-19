@@ -5,7 +5,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/jquery-confirm.css" />
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
-      <link rel="stylesheet" href="http://libs.useso.com/js/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://libs.useso.com/js/bootstrap/3.2.0/css/bootstrap.min.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
@@ -15,22 +15,9 @@
 
 </head>
 <body>
-<div class="col-md-6">
                                 <button class="example2">example confirm</button>
                                 
-                                <div class="space10"></div>
-                                <pre class="prettyprint linenums"><code class="js">$.confirm({
-    title: 'Confirm!',
-    content: 'Simple confirm!',
-    confirm: function(){
-        $.alert('Confirmed!');
-    },
-    cancel: function(){
-        $.alert('Canceled!')
-    }
-});
-</code></pre>
-                            </div>
+                               
                             <script type="text/javascript">
 
 $('.example2').on('click', function () {
@@ -40,9 +27,9 @@ $('.example2').on('click', function () {
         confirm: function () {
             $.alert('Confirmed!');
         },
-        cancel: function () {
-            $.alert('Canceled!');
-        }
+//         cancel: function () {
+//             $.alert('Canceled!');
+//         }
     });
 });
 </script>

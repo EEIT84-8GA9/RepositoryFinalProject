@@ -13,11 +13,14 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript"
 	src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider();
-	});
-</script>
+<link rel="stylesheet" href="/Happyhouse/css/for_newcss/style.css">
+
+<!-- <!-- <script type="text/javascript"> --> 
+<!-- // 	$(window).load(function() { -->
+<!-- // 		$('#slider').nivoSlider(); -->
+<!-- // 	}); -->
+<!-- <!-- </script> --> 
+
 </head>
 
 <body>
@@ -58,49 +61,41 @@
 			</c:if>
 			<!--close header-->
 			<form action="<c:url value="/test.controller" />" method="post">
-				<c:if test="${not empty select}">
-					<table>
-						<thead>
-						<form>
-						
-						</form>
-							<tr>
-								<th>編號</th>
-								<th>標題</th>
-								<th>文章內容</th>
-								<th>新增時間</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="row" items="${select}">
-								<c:url value="/_08_news/test.jsp" var="path" scope="page">
-									<c:param name="id" value="${row.new_id}" />
-<%-- 									<c:param name="title" value="${row.new_title}" /> --%>
-<%-- 									<c:param name="describe" value="${row.new_describe}" /> --%>
-<%-- 									<c:param name="date" value="${row.new_date}" /> --%>
+
+<article class="htmleaf-container">
+		<div id="container">
+	      <ul class="faq">
+	      <c:forEach var="row" items="${select}">
+	      <c:url value="/_08_news/test.jsp" var="path" scope="page">
+	      	<c:param name="id" value="${row.new_id}" />
 								</c:url>
-								<tr>
-									<td><a href="${path}">${row.new_id}</a></td>
-									<td>${row.new_title}</td>
-									<td>${row.new_describe}</td>
-									<td>${row.new_date}</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</c:if>
+	        <li class="q"><img src="img/arrow.png"><a href="/Happyhouse/index.jsp">${row.new_title}</a></li>
+	        <li class="a">${row.new_describe}   更新日期為:${row.new_date}
+	        </li>
+	        
+	        </c:forEach>
+							
+							
+						      </ul>			
+								</div>
+<%-- 	<a href="${path}">${row.new_id}</a> --%>
+								
+						
+							
 
 
-		</div>
+
+		
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台
-				|</a> <a href="http://validator.w3.org/check?uri=referer">好宅網有限公司
-				版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
-
-			<!--close footer-->
+		<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
+			<!--close footer-->
 		<!--close main-->
 	</div>
+	
+	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="/Happyhouse/js/jquery-2.1.1.min.js"><\/script>')</script>
+	<script src="/Happyhouse/js/script.js"></script>
 </body>
 </html>

@@ -14,8 +14,11 @@ private	String	renthouse_describe;
 private	float	renthouse_size;
 private	String	renthouse_floor;
 private	String	renthouse_rentdate;
+private String renthouse_photo1_name;
 private	Blob	renthouse_photo1;
+private String renthouse_photo2_name;
 private	Blob	renthouse_photo2;
+private String renthouse_photo3_name;
 private	Blob	renthouse_photo3;
 private	String	renthouse_type;
 private	String	renthouse_message;
@@ -23,7 +26,9 @@ private	java.util.Date	renthouse_date;
 private	String	renthouse_car;
 private	String	renthouse_phone;
 private	String	renthouse_email;
-
+private String renthouse_reportfrom;
+private String renthouse_reportreason;
+private String user_name;
 @Override
 public String toString() {
 	return "RentHouseBean [renthouse_id=" + renthouse_id + ", user_account="
@@ -41,6 +46,21 @@ public String toString() {
 			+ ", renthouse_car=" + renthouse_car + ", renthouse_phone="
 			+ renthouse_phone + ", renthouse_email=" + renthouse_email + "]";
 }
+
+
+
+public String getUser_name() {
+	return user_name;
+}
+
+
+
+public void setUser_name(String user_name) {
+	this.user_name = user_name;
+}
+
+
+
 public int getRenthouse_id() {
 	return renthouse_id;
 }
@@ -161,7 +181,56 @@ public String getRenthouse_email() {
 public void setRenthouse_email(String renthouse_email) {
 	this.renthouse_email = renthouse_email;
 }
-	
+public String getRenthouse_reportfrom() {
+	return renthouse_reportfrom;
+}
+public void setRenthouse_reportfrom(String renthouse_reportfrom) {
+	this.renthouse_reportfrom = renthouse_reportfrom;
+}
+public String getRenthouse_reportreason() {
+	return renthouse_reportreason;
+}
+public void setRenthouse_reportreason(String renthouse_reportreason) {
+	this.renthouse_reportreason = renthouse_reportreason;
+}
+
+
+
+public String getRenthouse_photo1_name() {
+	return renthouse_photo1_name;
+}
+
+
+
+public void setRenthouse_photo1_name(String renthouse_photo1_name) {
+	this.renthouse_photo1_name = renthouse_photo1_name;
+}
+
+
+
+public String getRenthouse_photo2_name() {
+	return renthouse_photo2_name;
+}
+
+
+
+public void setRenthouse_photo2_name(String renthouse_photo2_name) {
+	this.renthouse_photo2_name = renthouse_photo2_name;
+}
+
+
+
+public String getRenthouse_photo3_name() {
+	return renthouse_photo3_name;
+}
+
+
+
+public void setRenthouse_photo3_name(String renthouse_photo3_name) {
+	this.renthouse_photo3_name = renthouse_photo3_name;
+}
+
+
 
 
 

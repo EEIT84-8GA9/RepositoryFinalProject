@@ -14,6 +14,10 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ 
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -25,6 +29,26 @@
 		    checkboxes[i].checked = source.checked;
 		  }
 		}
+	
+	$(function() {
+	    $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      show: {
+	        effect: "blind",
+	        duration: 1000
+	      },
+	      hide: {
+	        effect: "explode",
+	        duration: 1000
+	      }
+	    });
+	 
+	    $( "#opener" ).click(function() {
+	      $( "#dialog" ).dialog( "open" );
+	    });
+	  });
+	
+	
 </script>
 </head>
 <body>
@@ -152,6 +176,12 @@
 <tr>
 <td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
 </tr>
+<tr>
+<td><input type="hidden" name="sellhouse_reportfrom" value="${param.sellhouse_reportfrom}" ></td>
+</tr>
+<tr>
+<td><input type="hidden" name="sellhouse_reportreason" value="${param.sellhouse_reportreason}" ></td>
+</tr>
 </table>
 <table>                                                                 
 
@@ -190,7 +220,9 @@
 						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
 						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
 						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
-						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
+						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
+						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
 					</c:url>
 	
 					<!-- 修改用 -->
@@ -212,7 +244,9 @@
 						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
 						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
 						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
-						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
+						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
+						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
 					</c:url>
 					<!-- 修改用 -->
 					
@@ -228,12 +262,17 @@
 						<td>${row.sellhouse_size}</td>
 						<td>${row.sellhouse_date}</td>
 						<td>${row.sellhouse_type}</td>
+			
+							
+						<td><button id="opener" type="button">Open Dialog</button></td>
 						<td><select name="type" value="狀態">
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="C">C</option>
 						</select>
 					<input type="submit" value="修改" name="prodaction"/></td>
+					
+					
 <%-- 						<td><a href="${path2}">修改</a></td> --%>
 					
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
@@ -265,7 +304,9 @@
 						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
 						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
 						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
-						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
+						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
+						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
 					</c:url>
 	
 					<!-- 修改用 -->
@@ -302,6 +343,7 @@
 						<td>${row.sellhouse_size}</td>
 						<td>${row.sellhouse_date}</td>
 						<td>${row.sellhouse_type}</td>
+						
 						<td><select name="type" value="狀態">
 						<option value="A">A</option>
 						<option value="B">B</option>
@@ -326,14 +368,15 @@
 	</c:if>
 	</div>
 		</form>		
-			
 		<!--close site_content-->
-		<div id="footer">
+			<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->
-	</div>
-	<!--close main-->
+		<div id="dialog" title="檢舉原因">
+ 		<p>檢舉人:${row.sellhouse_reportfrom}</p>
+		</div>	
+		
 </body>
 </html>

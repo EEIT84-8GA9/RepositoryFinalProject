@@ -1,4 +1,4 @@
-package _02_sellhouse.controller;
+package _03_renthouse.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,13 +22,16 @@ import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
 import _02_sellhouse.model.dao.SellHouseDAOJdbc;
+import _03_renthouse.model.RentHouseBean;
+import _03_renthouse.model.RentHouseDAO;
+import _03_renthouse.model.dao.RentHouseDAOJdbc;
 @WebFilter(
-		urlPatterns = { "/_02_sellhouse/SellHouseSearch.jsp" }, 
+		urlPatterns = { "/_03_renthouse/RentHouseSearch.jsp" }, 
 		initParams = { 
-	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/SellHouseSearch.jsp"), 			
+	@WebInitParam(name ="renthouse", value ="/_03_renthouse/RentHouseSearch.jsp"), 			
 		}
 		)
-public class SellHouseFilter implements Filter {
+public class RentHouseFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -74,12 +77,12 @@ public class SellHouseFilter implements Filter {
 		requestURI  = req.getRequestURI();
 		
 			
-			SellHouseDAO dao=new SellHouseDAOJdbc();
+			RentHouseDAO dao=new RentHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();
-			 List<SellHouseBean> result =dao.SELECT_ALL();
+			 List<RentHouseBean> result =dao.SELECT_ALL();
 			session.removeAttribute("bean2");
-			req.setAttribute("select", result);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
+			req.setAttribute("rent_select", result);
+			request.getRequestDispatcher("/_03_renthouse/RentHouseSearch.jsp").forward(req, resp);
 		
 	}
 

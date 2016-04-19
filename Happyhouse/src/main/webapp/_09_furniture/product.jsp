@@ -83,6 +83,7 @@ $(window).load(function() {
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller">查詢所有刊登家具</a></li>	
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
@@ -91,7 +92,7 @@ $(window).load(function() {
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="">個人管理頁面</a>
 						<ul>
-						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li></li>
 						</ul>
@@ -148,6 +149,7 @@ $(window).load(function() {
 </table>
 
 </form>
+ <img src="/Happyhouse/images/pro.jpg" alt="" /> 
 
 <h3><span class="error">${error.action}</span></h3>
 <c:if test="${not empty delete}">

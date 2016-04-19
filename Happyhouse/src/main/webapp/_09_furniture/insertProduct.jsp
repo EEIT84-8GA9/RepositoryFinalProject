@@ -57,7 +57,7 @@
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="">個人管理頁面</a>
 						<ul>
-						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li></li>
 						</ul>
@@ -127,6 +127,7 @@
 	</form>
 	
 			</div>
+			 <img src="/Happyhouse/images/pro1.jpg" alt="" /> 
 			
 			
 		<!--close site_content-->

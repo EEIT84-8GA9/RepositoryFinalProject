@@ -48,7 +48,7 @@ $(document).ready(function() {
 	});
 	
 	$("table").DataTable({
-		"pageLength": 3,
+		"pageLength": 7,
 		"lengthMenu": [ 1, 3, 5, 7 ]
 	});
 });
@@ -94,8 +94,8 @@ $(document).ready(function() {
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="">個人管理頁面</a>
 						<ul>
-						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
-						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
+				 <li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li></li>
 						</ul>
 						</li>
@@ -162,7 +162,9 @@ $(document).ready(function() {
 <!-- </table> -->
 <!-- <script type="text/javascript">clearForm();</script> -->
 <%-- </c:if> --%>
+
 <h3 align="center"><a href="<c:url value="/_09_furniture/product.jsp" />">回二手家具首頁</a></h3>
+ <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
 <div id="photo"></div>
 <script type="text/javascript" src="../js/lightbox.min.js"></script>
 <div id="footer">

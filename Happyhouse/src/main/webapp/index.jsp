@@ -169,7 +169,7 @@
 						</c:if>
 						<c:if test="${not empty LoginOK}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						<li><a href="">${LoginOK.user_name}您好</a>
+						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>

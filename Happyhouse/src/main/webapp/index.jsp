@@ -153,8 +153,8 @@
 						</li>
 						<li><a href="testimonials.html">刊登出租</a>
 						<ul>
-						<li><a href="#">搜尋出租</a></li>
-                        <li><a href="#">刊登出租</a></li>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
                         <li><a href="#">查詢出租收藏</a></li>
 						</ul>
 						</li>

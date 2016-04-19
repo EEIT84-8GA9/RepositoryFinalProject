@@ -382,7 +382,7 @@ public class cartsDAO {
 	}
 	
 	
-	private static final String INSERT = "insert into carts (user_account,house_id,cart_date) values (?,?,getdate())";
+	private static final String INSERT = "insert into carts (user_account,sellhouse_id,cart_date) values (?,?,getdate())";
 
 	public cartsBean insert(cartsBean bean) {
 
@@ -397,12 +397,12 @@ public class cartsDAO {
 			// int con1 = bean.getCart_id();
 			String con2 = bean.getUser_account();
 			int con3 = bean.getSellhouse_id();
-			int con4 = bean.getRenthouse_id();
+			//int con4 = bean.getRenthouse_id();   //賣租屋要分開寫，因為一個有的畫另一個就要是NULL，分開寫比較簡單不然要寫判斷
 
 			// stm.setInt(1, con1);
 			stm.setString(1, con2);
 			stm.setInt(2, con3);
-			stm.setInt(3, con4);
+			//stm.setInt(3, con4);
 
 			stm.executeUpdate();
 		} catch (SQLException e) {

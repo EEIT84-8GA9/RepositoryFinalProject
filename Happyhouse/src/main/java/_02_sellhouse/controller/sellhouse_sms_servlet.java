@@ -68,7 +68,7 @@ public class sellhouse_sms_servlet extends HttpServlet {
 			List<SmsVO> result = service.select(bean.getUser_account());
 			session.setAttribute("list", result);
 	
-		String url = request.getHeader("referer");
+		String url = request.getHeader("referer");//抓取前一頁網址!!
 			response.sendRedirect(url);
 			return;
 		}

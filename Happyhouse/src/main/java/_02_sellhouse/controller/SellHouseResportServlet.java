@@ -38,8 +38,7 @@ public class SellHouseResportServlet extends HttpServlet {
 		//session.setAttribute("bean2", bean2);
 		SellHouseBean result = service.updatereport(bean);
 		if(result !=null){
-			String url = request.getHeader("referer");
-			
+			String url = request.getHeader("referer");//抓取前一頁網址!!
 			response.sendRedirect(url);
 //		session.removeAttribute("bean2");
 		return;

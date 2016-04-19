@@ -193,6 +193,7 @@
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				<button type="button" class="buttonCart" value="" >加入收藏</button>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
@@ -209,112 +210,10 @@
 	<!-- bean2 -->
 	
 	
-	<c:if test="${not empty bean2}">
-		<div id="content">
-			<article>
-				<h2>${bean2.sellhouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px">
-				</figure>
-					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/>
-					<input type="hidden" value="${bean2.user_account}" name="user_account"/>
-					<p>帳號:${bean2.user_account}</p>
-					<p>姓名:${bean2.user_name}</p>
-					<p>價格:${bean2.sellhouse_price}</p>
-					<p>格局:${bean2.sellhouse_patterns}</p>
-					<p>坪數:${bean2.sellhouse_size}</p>
-					<p>樓層:${bean2.sellhouse_floor}</p>
-					<p>屋齡:${bean2.sellhouse_age}</p>
-					<p>格局:${bean2.sellhouse_patterns}</p>
-					<p>車位:${bean2.sellhouse_car}</p>
-					<p>地址:${bean2.sellhouse_address}</p>
-			</article>
-		</div>
-				<fieldset>
-					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${bean2.sellhouse_phone}</label><br>
-					</div>
-					<br>
-					<label>e-mail:${bean2.sellhouse_email}</label>
-					<label><a href="">站內信</a></label>
-				</fieldset>
-				</form>
-				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
-				<button type="button" class="MessageButton" value="" >寄送站內信</button>
-				<fieldset>
-				<legend>其他資訊</legend>
-				<p>${bean2.sellhouse_describe}</p>
-				</fieldset>
-				<form>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
-				<br>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>
-				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>															
-				
-		</tbody>
-	</c:if>
-	
-	
 	
 </form>
 </div>
 <!-- param -->
-
-
-
-<%-- <c:if test="${not empty bean2}"> --%>
-<!-- 		<div id="content"> -->
-<!-- 			<article> -->
-<%-- 				<h2>${bean2.sellhouse_name}</h2> --%>
-<!-- 				<figure> -->
-<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"> --%>
-<!-- 				</figure> -->
-<%-- 					<input type="hidden" value="${bean2.sellhouse_id}" name="sellhouse_id"/> --%>
-<%-- 					<p>帳號:${bean2.user_account}</p> --%>
-<%-- 					<p>價格:${bean2.sellhouse_price}</p> --%>
-<%-- 					<p>格局:${bean2.sellhouse_patterns}</p> --%>
-<%-- 					<p>坪數:${bean2.sellhouse_size}</p> --%>
-<%-- 					<p>樓層:${bean2.sellhouse_floor}</p> --%>
-<%-- 					<p>屋齡:${bean2.sellhouse_age}</p> --%>
-<%-- 					<p>格局:${bean2.sellhouse_patterns}</p> --%>
-<%-- 					<p>車位:${bean2.sellhouse_car}</p> --%>
-<%-- 					<p>地址:${bean2.sellhouse_address}</p> --%>
-<!-- 			</article> -->
-<!-- 		</div> -->
-<!-- 				<fieldset> -->
-<!-- 					<legend>聯絡資訊</legend> -->
-<!-- 					<div id="content"> -->
-<!-- 					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px"> -->
-<%-- 					<label>${bean2.sellhouse_phone}</label><br> --%>
-<!-- 					</div> -->
-<!-- 					<br> -->
-<%-- 					<label>e-mail:${bean2.sellhouse_email}</label> --%>
-<!-- 					<label><a href="">站內信</a></label> -->
-<!-- 				</fieldset> -->
-<!-- 				</form> -->
-<%-- 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button> --%>
-<!-- 				<button type="button" class="MessageButton" value="" >寄送站內信</button> -->
-<!-- 				<fieldset> -->
-<!-- 				<legend>其他資訊</legend> -->
-<%-- 				<p>${bean2.sellhouse_describe}</p> --%>
-<!-- 				</fieldset> -->
-<!-- 				<form> -->
-<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p> --%>
-<!-- 				<br> -->
-<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p> --%>
-<!-- 				<br> -->
-<%-- 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${bean2.sellhouse_id}" width="150px"></p>															 --%>
-				
-<!-- 		</tbody> -->
-<%-- 	</c:if> --%>
-<!-- </form> -->
-<!-- </div> -->
-<!-- param -->
-
-
 
 <!--  -->
 
@@ -343,17 +242,23 @@
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title" ><br/>
-				
 				<label>訊息內容</label><br/>
-				
 				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
-				
 				<input type="submit" id="messagesubmit" name="type"  value="送出" />
-				
 			  </form>
 		 </div>
+<!-- 加入收藏 -->
  
-
+<div class="dialog" title="加入收藏" id="cartform">
+	          <form action="/Happyhouse/cartsinsert.controller" method="post">
+<%-- 	            <p>帳號:${param.user_account}</p> --%>
+				<input type="text" id="user_account" name="user_account3" value="${LoginOK.user_account}"><br/>
+				<input type="text" id="user_account" name="sellhouse_id3" value="${param.sellhouse_id}"><br/>
+	          
+	          	<label>確認加入收藏嗎?</label><br/>
+				<input type="submit" id="messagesubmit" name="type"  value="確認" />
+			  </form>
+		 </div>
 
 
 

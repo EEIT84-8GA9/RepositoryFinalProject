@@ -54,7 +54,36 @@ $(document).ready(function(){
 //	     TextArea1WordCount();
 //	    });
 	
+	$(function() {
+		$("#cartform").dialog({
+			autoOpen: false,
+			modal:true,
+			 show: {
+				 	direction:"down",
+			        effect: "drop",
+			        duration: 700
+			      },
+			      hide: {
+			    	  direction:"down",
+			          effect: "drop",
+			          duration: 700
+			        }
+			
+		});
+		$(".buttonCart").on("click", function() {
+			$("#cartform").dialog("open")
+//			,
+//			
+//			 $("#reportreason").keyup(function(){
+//			     TextArea1WordCount();
+//			    }
+//			 );
+		});
+	});
 	
+	
+	
+	//檢舉
 	$(function() {
 		$("#reportform").dialog({
 			autoOpen: false,
@@ -78,11 +107,12 @@ $(document).ready(function(){
 			    });
 		});
 	});
+	
 	$(".buttonReport").click(function() {
 		var idnum = $(this).val();
 		$('#idNumber').attr('value',idnum);
 	});
-	
+	//站內信
 	$(function() {
 		$("#MessageForMe").dialog({
 			autoOpen: false,

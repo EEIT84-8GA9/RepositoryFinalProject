@@ -350,6 +350,7 @@ $(document).ready(function(){
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">個人收藏頁面</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseUser.jsp">租屋管理</a></li>
 						<li></li>
 						</ul>
 						</li>
@@ -362,6 +363,7 @@ $(document).ready(function(){
 			</div>
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
+            <script type="text/javascript">clearForm();</script>
             </c:if>
        
 			<!--close header-->
@@ -422,7 +424,6 @@ $(document).ready(function(){
 		
 		
 		
-	
 		
 <!-- 		<div> -->
 		
@@ -467,6 +468,7 @@ $(document).ready(function(){
 
 
 
+
 			<div class="sidebar_container">
 				<div class="sidebar">
 					<div class="sidebar_item">
@@ -506,5 +508,9 @@ $(document).ready(function(){
 		<!--close footer-->
 	</div>
 	<!--close main-->
+	
+	
+
+	
 </body>
 </html>

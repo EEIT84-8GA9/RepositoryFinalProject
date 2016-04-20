@@ -83,7 +83,7 @@
 	</tr>
 	<tr>
 		<td>家具名稱 : </td>
-		<td><input type="text" name="insname" value="${param.furniture_neme}"></td>
+		<td><input type="text" name="insname" value="${param.furniture_name}"></td>
 		<td>${error.insname}</td>
 	</tr>
      <tr>
@@ -129,7 +129,7 @@
 			</div>
 			 <img src="/Happyhouse/images/pro1.jpg" alt="" /> 
 			
-			
+		
 		<!--close site_content-->
 		<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>

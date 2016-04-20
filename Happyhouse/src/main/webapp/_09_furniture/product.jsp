@@ -83,13 +83,12 @@ $(window).load(function() {
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
 						
-						
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="">個人管理頁面</a>
 						<ul>
 						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
@@ -113,14 +112,14 @@ $(window).load(function() {
 		<td><input type="text" name="furniture_id" value="" onblur="doBlur()" onfocus="clearForm()"></td>
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
-	<tr>
-		<td>您登入的帳號 : </td>
-		<td><input type="text" name="user_account" value="${LoginOK.user_account}"></td>
+<!-- 	<tr> -->
+<!-- 		<td>您登入的帳號 : </td> -->
+<%-- 		<td><input type="text" name="user_account" value="${LoginOK.user_account}"></td> --%>
 	
-	</tr>
+<!-- 	</tr> -->
 <!-- 	<tr> -->
 <!-- 		<td>進階商品名稱搜尋 : </td> -->
-<%-- 		<td><input type="text" name="insname" value="${param.furniture_neme}"></td> --%>
+<%-- 		<td><input type="text" name="insname" value="${param.furniture_name}"></td> --%>
 <%-- 		<td><span class="error">${error.price}</span></td> --%>
 <!-- 	</tr> -->
 	<tr>
@@ -149,7 +148,7 @@ $(window).load(function() {
 </table>
 
 </form>
- <img src="/Happyhouse/images/pro.jpg" alt="" /> 
+
 
 <h3><span class="error">${error.action}</span></h3>
 <c:if test="${not empty delete}">
@@ -162,7 +161,7 @@ $(window).load(function() {
 <h3>提示: 新增商品成功</h3>
 <table border="1">
 <h3>新增商品明細</h3>
-		<tr><td>家具名稱</td><td>${insert.furniture_neme}</td></tr>
+		<tr><td>家具名稱</td><td>${insert.furniture_name}</td></tr>
 		<tr><td>刊登價格</td><td>${insert.furniture_price}</td></tr>
 		<tr><td>新舊程度</td><td>${insert.furniture_status}</td></tr> 
 		<tr><td>使用年度 </td><td>${insert.furniture_time}</td></tr>
@@ -176,7 +175,7 @@ $(window).load(function() {
 <c:if test="${not empty update}">
 <h3>更新商品成功 </h3>
 <table border="1">
-		<tr><td>家具名稱</td><td>${update.furniture_neme}</td></tr>
+		<tr><td>家具名稱</td><td>${update.furniture_name}</td></tr>
 		<tr><td>刊登價格</td><td>${update.furniture_price}</td></tr>
 		<tr><td>新舊程度</td><td>${update.furniture_status}</td></tr> 
 		<tr><td>使用年度 </td><td>${update.furniture_time}</td></tr>
@@ -186,6 +185,7 @@ $(window).load(function() {
 </table>
 <script type="text/javascript">clearForm();</script>
 </c:if>
+ <img src="/Happyhouse/images/pro.jpg" alt="" /> 
 	<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

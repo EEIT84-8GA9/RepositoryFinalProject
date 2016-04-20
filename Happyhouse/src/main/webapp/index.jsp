@@ -371,7 +371,6 @@ $(document).ready(function(){
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
  						    <img src="/Happyhouse/images/house.jpg" alt="" /> 
-
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 
@@ -388,8 +387,9 @@ $(document).ready(function(){
 				</div>
 				<!--close content_item-->
 				<div class="content_image">
-					<a href="#"><img style="border: 10px solid #FFF;" alt="image"
-						src="/Happyhouse/images/11.jpg" /></a>
+<!-- 					<a href="#"><img style="border: 10px solid #FFF;" alt="image" -->
+<!-- 						src="/Happyhouse/images/11.jpg" /></a> -->
+				                            <img  src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.one.new_id}" width="150px">		
 				</div>
 				<!--close content_image-->
 				<div class="content_text">
@@ -415,7 +415,7 @@ $(document).ready(function(){
 <!-- 				</div> -->
 				<!--close content_text-->
 
-			</div>
+<!-- 			</div> -->
 			<!--close content-->
 
 
@@ -424,7 +424,47 @@ $(document).ready(function(){
 		
 		
 		
-	
+		
+<!-- 		<div> -->
+		
+		<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
+		
+        <div class="content_select_div">
+		<form action="<c:url value="/_10_chart.controller/chart.controller"/>"	method="get" name="form_name">
+		<!-- FORM NAME其實沒用到.... -->
+		<select id="cityend" name="currentprice_citymain">
+			<!--     和input box一樣 用name 傳值給SERVLET -->
+		</select>
+		<!--  城市 >> 台北市 .... -->
+
+		<select id="areaend" name="price_city">
+			<!-- <option value = document.getElementById(area)> -->
+		</select>
+		<!--  區域 >> 大安 松山...... -->
+
+	 
+		<select id="typetype" name="price_bdtype">
+			<!-- <option value = document.getElementById(area)> -->
+			<option value="">建物類型</option>
+			<option value="辦公商業大樓">辦公商業大樓</option>
+			<option value="住宅大樓">住宅大樓</option>
+			<option value="公寓">公寓(5樓以下)</option>
+			<option value="套房">套房</option>
+			<option value="店面">店面</option>
+			<option value="其它">其它</option>
+			<option value="透天厝">透天厝</option>
+			<option value="華廈">華廈(10樓以下)</option>
+		</select>
+		<!--  類型 >> -->
+</div>
+		<div id="columnchart_material" style="width: 300px; height: 250px; float:left"></div>
+		<div id="chart_div" style="width: 300px; height: 250px; float:left"></div>
+
+	</form>
+	</div>
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
+
+
 
 
 
@@ -470,44 +510,7 @@ $(document).ready(function(){
 	<!--close main-->
 	
 	
-		
-		<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
-		
-        <form action="<c:url value="/_10_chart.controller/chart.controller"/>"
-		method="get" name="form_name">
-		<div>
-		<!-- FORM NAME其實沒用到.... -->
-		<select id="cityend" name="currentprice_citymain"  >
-			<!--     和input box一樣 用name 傳值給SERVLET -->
-		</select>
-		<!--  城市 >> 台北市 .... -->
 
-		<select id="areaend" name="price_city">
-			<!-- <option value = document.getElementById(area)> -->
-		</select>
-		<!--  區域 >> 大安 松山...... -->
-
-	 
-		<select id="typetype" name="price_bdtype">
-			<!-- <option value = document.getElementById(area)> -->
-			<option value="">建物類型</option>
-			<option value="辦公商業大樓">辦公商業大樓</option>
-			<option value="住宅大樓">住宅大樓</option>
-			<option value="公寓">公寓(5樓以下)</option>
-			<option value="套房">套房</option>
-			<option value="店面">店面</option>
-			<option value="其它">其它</option>
-			<option value="透天厝">透天厝</option>
-			<option value="華廈">華廈(10樓以下)</option>
-		</select> 
-		
-    </div>
-	<div id="columnchart_material" style="width: 350px; height: 250px; float:Left"></div>
-	<div id="chart_div" style="width: 350px; height: 250px; float:Left"></div>
-
-	</form>
-  
-<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 	
 </body>
 </html>

@@ -30,23 +30,8 @@
 		  }
 		}
 	
-	$(function() {
-	    $( "#dialog" ).dialog({
-	      autoOpen: false,
-	      show: {
-	        effect: "blind",
-	        duration: 1000
-	      },
-	      hide: {
-	        effect: "explode",
-	        duration: 1000
-	      }
-	    });
-	 
-	    $( "#opener" ).click(function() {
-	      $( "#dialog" ).dialog( "open" );
-	    });
-	  });
+    
+
 	
 	
 </script>
@@ -108,58 +93,58 @@
 			<!--close header-->
 			<div style="padding-left:150px">
 		<form  action="<c:url value="/renthouse.GM.controller"/>"method="post" >
-<table>
-<tr>
-<td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_name" value="${param.renthouse_name}" ></td>
-</tr>
-<td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_patterns" value="${param.renthouse_patterns}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_describe" value="${param.renthouse_describe}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_size" value="${param.renthouse_size}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_floor" value="${param.renthouse_floor}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_rentdate" value="${param.renthouse_rentdate}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_type" value="${param.renthouse_type}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_message" value="${param.renthouse_message}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_date" value="${param.renthouse_date}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_car" value="${param.renthouse_car}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_phone" value="${param.renthouse_phone}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_email" value="${param.renthouse_email}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_reportfrom" value="${param.renthouse_reportfrom}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_reportreason" value="${param.renthouse_reportreason}" ></td>
-</tr>
-</table>
+<!-- <table> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_account" value="${param.user_account}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_name" value="${param.renthouse_name}" ></td> --%>
+<!-- </tr> -->
+<%-- <td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_patterns" value="${param.renthouse_patterns}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_describe" value="${param.renthouse_describe}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_size" value="${param.renthouse_size}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_floor" value="${param.renthouse_floor}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_rentdate" value="${param.renthouse_rentdate}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_type" value="${param.renthouse_type}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_message" value="${param.renthouse_message}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_date" value="${param.renthouse_date}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_car" value="${param.renthouse_car}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_phone" value="${param.renthouse_phone}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_email" value="${param.renthouse_email}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_reportfrom" value="${param.renthouse_reportfrom}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_reportreason" value="${param.renthouse_reportreason}" ></td> --%>
+<!-- </tr> -->
+<!-- </table> -->
 <table>                                                                 
 
 <c:if test="${not empty RentGMselect}">
@@ -199,7 +184,32 @@
 						<c:param name="renthouse_email" value="${row.renthouse_email}" />
 						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" />
 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			
-					</c:url>					
+					</c:url>
+	
+					<!-- 修改用 -->
+					
+<%-- 					<c:url value="/_03_renthouse/UpdaterentHouse.jsp" var="path2" scope="page"> --%>
+<%-- 						<c:param name="user_account" value="${row.user_account}" /> --%>
+<%-- 						<c:param name="renthouse_id" value="${row.renthouse_id}" /> --%>
+<%-- 						<c:param name="renthouse_name" value="${row.renthouse_name}" /> --%>
+<%-- 						<c:param name="renthouse_price" value="${row.renthouse_price}" /> --%>
+<%-- 						<c:param name="renthouse_patterns" value="${row.renthouse_patterns}" /> --%>
+<%-- 						<c:param name="renthouse_address" value="${row.renthouse_address}" /> --%>
+<%-- 						<c:param name="renthouse_deposit" value="${row.renthouse_deposit}" /> --%>
+<%-- 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" /> --%>
+<%-- 						<c:param name="renthouse_size" value="${row.renthouse_size}" /> --%>
+<%-- 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" /> --%>
+<%-- 						<c:param name="renthouse_rentdate" value="${row.renthouse_rentdate}" /> --%>
+<%-- 						<c:param name="renthouse_message" value="${row.renthouse_message}" /> --%>
+<%-- 						<c:param name="renthouse_date" value="${row.renthouse_date}" /> --%>
+<%-- 						<c:param name="renthouse_car" value="${row.renthouse_car}" /> --%>
+<%-- 						<c:param name="renthouse_phone" value="${row.renthouse_phone}" /> --%>
+<%-- 						<c:param name="renthouse_email" value="${row.renthouse_email}" /> --%>
+<%-- 						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" /> --%>
+<%-- 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			 --%>
+<%-- 					</c:url> --%>
+					<!-- 修改用 -->
+					
 					<tr>
 						<c:if test="${row.renthouse_type=='B'}">
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
@@ -212,16 +222,25 @@
 						<td>${row.renthouse_size}</td>
 						<td>${row.renthouse_date}</td>
 						<td>${row.renthouse_type}</td>	
-						<td><button id="opener" type="button">Open Dialog</button></td>
+						<td><button class="opener" type="button">Open Dialog</button></td>
 						<td><select name="type" value="狀態">
 						<option value="A">回復正常</option>
 						
 						<option value="C">封鎖</option>
 						</select>
 					<input type="submit" value="修改" name="prodaction"/></td>
+					
+					
+<%-- 						<td><a href="${path2}">修改</a></td> --%>
+					
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
 					</c:if>
 					</tr>
+					
 				</c:forEach>
+			
 			</tbody>
 			<tr><td>以封鎖</td></tr>
 			<tbody>
@@ -245,7 +264,28 @@
 						<c:param name="renthouse_email" value="${row.renthouse_email}" />
 						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" />
 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			
-					</c:url>		
+					</c:url>
+	
+					<!-- 修改用 -->
+<%-- 					<c:url value="/_03_renthouse/UpdateRentHouse.jsp" var="path2" scope="page"> --%>
+<%-- 						<c:param name="user_account" value="${row.user_account}" /> --%>
+<%-- 						<c:param name="renthouse_id" value="${row.renthouse_id}" /> --%>
+<%-- 						<c:param name="renthouse_name" value="${row.renthouse_name}" /> --%>
+<%-- 						<c:param name="renthouse_price" value="${row.renthouse_price}" /> --%>
+<%-- 						<c:param name="renthouse_patterns" value="${row.renthouse_patterns}" /> --%>
+<%-- 						<c:param name="renthouse_address" value="${row.renthouse_address}" /> --%>
+<%-- 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" /> --%>
+<%-- 						<c:param name="renthouse_size" value="${row.renthouse_size}" /> --%>
+<%-- 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" /> --%>
+<%-- 						<c:param name="renthouse_age" value="${row.renthouse_age}" /> --%>
+<%-- 						<c:param name="renthouse_message" value="${row.renthouse_message}" /> --%>
+<%-- 						<c:param name="renthouse_date" value="${row.renthouse_date}" /> --%>
+<%-- 						<c:param name="renthouse_car" value="${row.renthouse_car}" /> --%>
+<%-- 						<c:param name="renthouse_phone" value="${row.renthouse_phone}" /> --%>
+<%-- 						<c:param name="renthouse_email" value="${row.renthouse_email}" />			 --%>
+<%-- 					</c:url> --%>
+					<!-- 修改用 -->
+					
 					<tr>
 					<c:if test="${row.renthouse_type=='C'}">
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
@@ -258,13 +298,18 @@
 						<td>${row.renthouse_size}</td>
 						<td>${row.renthouse_date}</td>
 						<td>${row.renthouse_type}</td>
-						
+						<td><button id="opener" type="button">Open Dialog</button></td>
 						<td><select name="type" value="狀態">
 						<option value="A">回復正常</option>
 						<option value="B">解除封鎖</option>
 						
 						</select>
 					<input type="submit" value="修改" name="prodaction"/></td>
+<%-- 						<td><a href="${path2}">修改</a></td> --%>
+					
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
+<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
 					</c:if>
 					</tr>
 					
@@ -287,6 +332,23 @@
 		<div id="dialog" title="檢舉原因">
  		<p>檢舉人:${row.renthouse_reportfrom}</p>
 		</div>	
-		
+<script type="text/javascript">
+
+$( "#dialog" ).dialog({
+    autoOpen: false,
+    show: {
+      effect: "blind",
+      duration: 1000
+    },
+    hide: {
+      effect: "explode",
+      duration: 1000
+    }
+  });
+  $(".opener").on("click", function() {
+		$( "#dialog").dialog("open")
+  });
+
+</script>
 </body>
 </html>

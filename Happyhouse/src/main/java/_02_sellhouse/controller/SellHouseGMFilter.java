@@ -42,7 +42,7 @@ public class SellHouseGMFilter implements Filter {
 			String path = e.nextElement();
 			url.add(fConfig.getInitParameter(path));
 		}
-		System.out.println("AAAA"+url);			
+				
 	}
 	private boolean mustLogin(){
 		boolean login=false;
@@ -76,7 +76,7 @@ public class SellHouseGMFilter implements Filter {
 		requestURI  = req.getRequestURI();
 		SellHouseDAO dao=new SellHouseDAOJdbc();
 		List<SellHouseBean> result =dao.SELECT_ALL();
-		System.out.println("ddddd"+result);
+//		System.out.println("ddddd"+result);
 		req.setAttribute("GMselect", result);
 		request.getRequestDispatcher("/_02_sellhouse/SellHouseGM.jsp").forward(req, resp);
 		

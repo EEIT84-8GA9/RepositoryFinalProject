@@ -19,108 +19,7 @@
 
 
 
-<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以下偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
-<script type="text/javascript">
-//       google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
-      google.charts.load('current', {packages: ['bar','corechart', 'line']});      
-      google.charts.setOnLoadCallback(drawChart);
-      //下圖為 單一區 類型圖~
-      //24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入
-      function drawChart() {
-    	  <c:choose> 
-    	  <c:when test="${select.data_result3 != null}" >   
-    	  var data = google.visualization.arrayToDataTable([
-    	   ['區域','辦公大樓','住宅大樓', '公寓(5樓以下)','套房','店面','其它','透天厝','華廈(10樓以下)'],
-    	   ['大安區',<c:forEach var="hikari2" items="${select.data_result3}">
-    	   ${hikari2.avgoneprice_by_city_type},</c:forEach>],]);
-    	  </c:when>     
-    	  <c:when test="${Choose1 != null}">   
-    	  var data = google.visualization.arrayToDataTable([
-    	   ['區域','辦公大樓','住宅大樓', '公寓(5樓以下)','套房','店面','其它','透天厝','華廈(10樓以下)'],
-    	    ['"${param.price_city}"', <c:forEach var="hikari2" items="${Choose1}"> ${hikari2.avgoneprice_by_city_type},       
-    	    </c:forEach>],]);
-    	  </c:when> 
-    	  <c:otherwise>
-          No comment sir...
-          </c:otherwise>      
-    	  </c:choose>   
-    	  
-        //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
-        var options = {
-          chart: {
-            title: '房屋類型  Performance',
-            subtitle: '該區每種類型的平均一均價格',
-            
-          },
-        backgroundColor: '#f1f8e9'
-        };
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-        chart.draw(data, options);
-      }
-    </script>
 
-<!--    下圖為 單一區   單一類型    時間 坪價折線圖~ -->
-<%--    24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入 --%>
-<script type="text/javascript">
-//     google.charts.load('current2', {packages: ['corechart', 'line']});
-    google.charts.load('current2', {packages: ['bar2','corechart2', 'line2']});
-
-    google.charts.setOnLoadCallback(drawBackgroundColor);
-    
-    function drawBackgroundColor() {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string','X');
-          data.addColumn('number', '平均每坪價格');
-          
-          <c:choose> 
-    	  <c:when test="${select.data_result4 != null}" >   
-    	  data.addRows([
-                        <c:forEach var="hikari3" items="${select.data_result4}">
-                        ['${hikari3.currentprice_tradedate}',${hikari3.avgoneprice_by_tradedate}],
-                        </c:forEach>
-          ]);
-    	  </c:when>     
-    	  <c:when test="${Choose2 != null}"> 
-    	  
-    	  data.addRows([
-                        <c:forEach var="hikari3" items="${Choose2}">
-                        ['${hikari3.currentprice_tradedate}',${hikari3.avgoneprice_by_tradedate}],
-                        </c:forEach>
-          ]);
-    	  
-    	  </c:when> 
-    	  <c:otherwise>
-          No comment sir...
-          </c:otherwise>                                                 
-    	        	  
-    	  </c:choose>   
-          
-          console.log("字串1")
-          var options = {
-              title: '平均每坪價格X 時間變動圖',
-              subtitle: 'xxx',
-            hAxis: {
-              title: 'YearMonth(民國月份)'
-            },
-            vAxis: {
-              title: '坪價'
-            },
-            backgroundColor: '#f1f8e9'
-          };
-          console.log("字串2")
-          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-          console.log("字串4")
-          chart.draw(data, options);
-          console.log("字串5")
-        }
-          console.log("字串3")
-    </script>
-
-<script type="text/javascript">
-        window.onload = function () {
-        AddressSeleclList.Initialize('cityend', 'areaend');}
-        </script>
-<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -129,6 +28,273 @@
 </script>  
 </head>
 <body>
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以下偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
+<script>
+$(document).ready(function(){
+//   此為開啟首面直接 READY去叫預設值 畫圖~
+//   ajax就是去call function得到回傳資料, 並且局部更新網頁畫面,不用重新載入整個頁面
+//   以servlet原本的會重新導向的那個內容就不適用 ( 他不算資料)	  應該是要回傳你要畫圖的資料
+//   google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
+//   function test(Choose1){ 
+ google.charts.load('current', {packages: ['bar','corechart', 'line']});
+ //google.charts.load('current', {packages: ['bar','corechart', 'line']});  只會LOAD 一次!!!!!!!!!!!!
+  google.charts.setOnLoadCallback(drawChart1);
+  google.charts.setOnLoadCallback(drawBackgroundColor1);
+  //與二區圖  方法作為區別所以 句末加一
+ 
+  var price_city1 ="大安區";
+
+  function drawChart1() {
+	  
+		  $.ajax({
+           
+	    	  
+//	     	   async: false,
+	    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",//发送请求地址
+	    	   type:"get",//请求方式
+	    	   cache: false, 
+			   dataType: "JSON",
+	    	   data:{//发送给数据库的数据
+	    		   
+	    		   price_city : price_city1
+// 	    		   price_bdtype : price_bdtype1
+//	     		   price_city:$("#areaend").val(),
+//	     		   price_bdtype:$("#typetype").val()
+	    	   } 
+	    	   , 
+	    	   //请求成功后的回调函数有两个参数
+	     	   success: function(chartdata){ 
+// 	     		  alert("BAR圖"+chartdata);
+	     		 var chartobj =JSON.parse(chartdata);
+	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+	     	     //arrayToDataTablev 是吃json格式  
+  			  var data = google.visualization.arrayToDataTable(chartobj); 
+  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+
+  		    var options = {
+  		      chart: {
+  		        title: '房屋類型  Performance',
+  		        subtitle: '該區每種類型的平均一均價格',
+  		        
+  		      },
+  		    backgroundColor: '#f1f8e9'
+  		    };
+  		    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+  		    chart.draw(data, options);
+	     	   
+	     	 },
+  		 error:function(jqXHR,textStatus,errorThrown){
+  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+  		    }
+ 	   });
+  }
+      //上為function1 ending處  預設 BAR圖~
+        var price_city2 ="大安區";
+        var price_bdtype2 ="套房";
+	      function drawBackgroundColor1() {
+	          $.ajax({
+	               
+//	    	     	   async: false,
+	    	    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",//发送请求地址
+	    	    	   type:"get",//请求方式
+	    	    	   cache: false, 
+	    			   dataType: "JSON",
+	    	    	   data:{//发送给数据库的数据
+	    	    		   
+	    	    		   price_city : price_city2,
+	    	    		   price_bdtype : price_bdtype2
+//	    	     		   price_city:$("#areaend").val(),
+//	    	     		   price_bdtype:$("#typetype").val()
+	    	    	   } 
+	    	    	   , 
+	    	    	   //请求成功后的回调函数有两个参数
+	    	     	   success: function(chartdata){ 
+// 	    	     		   alert("折線圖"+chartdata);
+	    	     		 var chartobj2 =JSON.parse(chartdata);
+	    	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+	    	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+	    	     		 
+	    	     		 
+	    	     	var data =  new google.visualization.DataTable();	 
+	    	     		 
+	    	     		 
+	    	     	     //arrayToDataTablev 是吃json格式  
+// 	      			  var data2 = google.visualization.arrayToDataTable(chartobj2); 
+	      		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+                          data.addColumn('string','X');
+                          data.addColumn('number', '平均價格');
+                          data.addRows(chartobj2);
+                          
+	      		      var options = {
+        		  
+//         	         title: '平均每坪價格X 時間變動圖',
+//                      subtitle: 'xxx',
+                     hAxis: {
+                     title: 'YearMonth(民國月份)'
+                     },
+                     vAxis: {
+                     title: '坪價'
+                     },
+                      backgroundColor: '#f1f8e9'
+                     };
+	      		     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+	      		    chart.draw(data, options);
+	    	     	   
+	    	     	 },
+	      		 error:function(jqXHR,textStatus,errorThrown){
+	      		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+	      		    }
+	     	   });
+	          //上為function2 ending處 預設 折線圖
+	    		  
+	    		  
+	    	  }
+  
+//  此區為AJAX選單 變動圖   下圖為   BAR圖  後為 單一區   單一類型    時間 坪價折線圖~
+<%--    24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入 --%>
+ 
+ 
+    $("#areaend ,#typetype").change(function(){
+//       alert("The text has been changed.");
+      var name=$("#areaend").text();
+      var price_city = $("#areaend").val();
+      
+      var name2=$("#typetype").text();
+      var price_bdtype = $("#typetype").val(); 
+    
+     		  google.charts.setOnLoadCallback(drawChart);
+     		  //下圖為
+     		  //24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入
+     		  function drawChart() {
+     			  $.ajax({
+     				  
+     				  
+//     		     	   async: false,
+     		    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",//发送请求地址
+     		    	   type:"get",//请求方式
+     		    	   cache: false, 
+     				   dataType: "JSON",
+     		    	   data:{//发送给数据库的数据
+     		    		   
+     		    		   price_city : price_city 
+//     		     		   price_city:$("#areaend").val(),
+//     		     		   price_bdtype:$("#typetype").val()
+     		    	   } 
+     		    	   ,
+     		    	   //请求成功后的回调函数有两个参数
+     		     	   success: function(chartdata){ 
+     		     		  
+//      		     		 alert("改變後BAR圖"+chartdata);
+     		     		 var chartobj =JSON.parse(chartdata);
+     		     	   
+     	     			  var data = google.visualization.arrayToDataTable(chartobj); 
+     	     		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+
+     	     		    var options = {
+     	     		      chart: {
+     	     		        title: '房屋類型  Performance',
+     	     		        subtitle: '該區每種類型的平均一均價格',
+     	     		        
+     	     		      },
+     	     		    backgroundColor: '#f1f8e9'
+     	     		    };
+     	     		    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+     	     		    chart.draw(data, options);
+     		     	   
+     		     	 },
+     	     		 error:function(jqXHR,textStatus,errorThrown){
+     	     		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+     	     		    }
+     	    	   
+     	       	   });
+     	         
+     		  }
+     			  
+     		  
+     			  google.charts.setOnLoadCallback(drawBackgroundColor);
+        		  //下圖為 單一區 類型圖~
+        		  //24行,大安區是與 chartFilter.java 預設一樣寫死   下面的 "${param.price_city}" 則是自動取select中的區域填入
+        		  function drawBackgroundColor(){
+        			  $.ajax({
+       	               
+//   	    	     	   async: false,
+   	    	    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",//发送请求地址
+   	    	    	   type:"get",//请求方式
+   	    	    	   cache: false, 
+   	    			   dataType: "JSON",
+   	    	    	   data:{//发送给数据库的数据
+   	    	    		   
+   	    	    		   price_city : price_city,
+   	    	    		   price_bdtype : price_bdtype
+//   	    	     		   price_city:$("#areaend").val(),
+//   	    	     		   price_bdtype:$("#typetype").val()
+   	    	    	   } 
+   	    	    	   , 
+   	    	    	   //请求成功后的回调函数有两个参数
+   	    	     	   success: function(chartdata){ 
+//    	    	     		 alert("改變後折線圖"+chartdata);
+   	    	     		 var chartobj =JSON.parse(chartdata);
+   	    	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+   	    	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+   	    	     	     //arrayToDataTablev 是吃json格式  
+//    	      			  var data2 = google.visualization.arrayToDataTable(chartobj); 
+   	      		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+                       var data = new google.visualization.DataTable();
+                       data.addColumn('string','X');
+                       data.addColumn('number', '平均價格'); 
+   	      		    data.addRows(chartobj);
+
+   	      		    
+   	      		    
+   	      		   var options = {
+           		  
+//            	         title: '平均每坪價格X 時間變動圖',
+//                         subtitle: 'xxx',
+                        hAxis: {
+                        title: 'YearMonth(民國月份)'
+                        },
+                        vAxis: {
+                        title: '坪價'
+                        },
+                         backgroundColor: '#f1f8e9'
+                        };
+   	      		     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+   	      		    chart.draw(data, options);
+   	    	     	   
+   	    	     	 },
+   	      		 error:function(jqXHR,textStatus,errorThrown){
+   	      		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+   	      		    }
+   	     	   });
+   	          //上為function2 ending處 預設 折線圖
+   	    		  
+   	    		  
+   	    	  }
+     		  
+     
+         });
+  
+  
+});
+    
+    
+</script>
+
+<script type="text/javascript">
+        window.onload = function () {
+            //當頁面載完之後，用AddressSeleclList.Initialize()，
+            //傳入要綁定的縣市下拉選單ID及鄉鎮市區下拉選單ID
+            AddressSeleclList.Initialize('cityend', 'areaend');
+            //此區綁定 select 後的值!    select id="cityend"   即對應這邊的JS裡的選項
+
+//             //後面四個參數分別是兩個下拉選單的預設文字跟值
+//            AddressSeleclList.Initialize('縣市2', '鄉鎮市區2', 'Please Select City00', '00', 'Please Select Area11', '01');
+       }
+</script> 
+        
+<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
+
 	<div id="main">
 		<div id="site_content">
 <%-- 				<c:if test="${not empty LoginOK}"> --%>
@@ -156,6 +322,12 @@
                         <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
                         <li><a href="#">查詢出租收藏</a></li>
 						</ul>
+						</li>
+						<li><a href="testimonials.html">時價查詢</a>
+						<ul>
+						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
+                        <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
+                        </ul>
 						</li>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
 						<ul>
@@ -236,12 +408,27 @@
 				</div>
 				
 <!-- 				<div class="content_text_left"> -->
-<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
+
+<!-- 				</div> -->
+				<!--close content_text-->
+
+			</div>
+			<!--close content-->
+
+
+		<!--close site_content-->
 		
-           <div class="content_select_div">
-		<form action="<c:url value="/_10_chart.controller/chart.controller"/>"	method="get" name="form_name">
+		
+		
+		
+		
+		<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
+		
+        <form action="<c:url value="/_10_chart.controller/chart.controller"/>"
+		method="get" name="form_name">
+		<div>
 		<!-- FORM NAME其實沒用到.... -->
-		<select id="cityend" name="currentprice_citymain">
+		<select id="cityend" name="currentprice_citymain"  >
 			<!--     和input box一樣 用name 傳值給SERVLET -->
 		</select>
 		<!--  城市 >> 台北市 .... -->
@@ -263,25 +450,19 @@
 			<option value="其它">其它</option>
 			<option value="透天厝">透天厝</option>
 			<option value="華廈">華廈(10樓以下)</option>
-		</select>
-		<!--  類型 >> -->
-		<input type="submit" name="prodaction" value="Choose">
-		<td><span class="error">${error.currentprice_city}</span></td>
-</div>
-		<div id="columnchart_material" style="width: 300px; height: 250px; float:left"></div>
-		<div id="chart_div" style="width: 300px; height: 250px; float:left"></div>
+		</select> 
+		
+    </div>
+	<div id="columnchart_material" style="width: 350px; height: 250px; float:Left"></div>
+	<div id="chart_div" style="width: 350px; height: 250px; float:Left"></div>
 
 	</form>
-		
-		
-
-	    
+  </div>
 <!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
-<!-- 				</div> -->
-				<!--close content_text-->
 
-			</div>
-			<!--close content-->
+
+
+
 
 			<div class="sidebar_container">
 				<div class="sidebar">
@@ -315,7 +496,7 @@
 
 		</div>
 		
-		<!--close site_content-->
+		
 		<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>

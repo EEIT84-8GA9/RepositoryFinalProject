@@ -2,8 +2,7 @@ package _10_chart.controller;
 
 import java.io.IOException;
 
-
-
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,24 +16,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.plaf.synth.SynthScrollBarUI;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 import javax.swing.text.Document;
 
 import org.apache.taglibs.standard.lang.jstl.test.Bean1;
 
+import com.google.gson.Gson;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import _06_currentprice.model.CurrentPriceBean;
-import _08_news.model.newsBean;
-import _08_news.model.dao.newDAO;
+
 import _09_furniture.model.dao.FurnitureDAOJdbc;
 import _10_chart.model.ChartService;
 
+//@WebServlet("/_10_chart.controller/chart.controller")
 
-
-
-@WebServlet("/_10_chart.controller/chart.controller")
-
-
+@WebServlet(
+		
+		urlPatterns={"/_10_chart.controller/chart.controller"})
 
 // ★ ✰ ☆ ✩ ✫ ✬ ✭ ✮ ✡
 public class ChartServlet extends HttpServlet {
@@ -48,9 +47,13 @@ public class ChartServlet extends HttpServlet {
 	private ChartService chartService = new ChartService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse res) throws ServletException, IOException {
+		
+		
+		
 		String currentprice_city = null ;
 		String currentprice_bdtype = null;
 		// 接收HTML Form資料
+		System.out.println("i am chartServlet");
 		if (request.getParameter("price_city") != null){
 		 currentprice_city = request.getParameter("price_city");
 		}else 
@@ -69,7 +72,7 @@ public class ChartServlet extends HttpServlet {
 		String temp2 = request.getParameter("currentprice_tprice");
 		String prodaction = request.getParameter("prodaction");
 		System.out.println(currentprice_city);
-		System.out.println("fucccccc");
+		System.out.println("i get something");
 		 
 		
 		// 從cpweb得到 4種!~用以比對 value 為 哪一種圖型 之後...
@@ -128,6 +131,18 @@ public class ChartServlet extends HttpServlet {
 			}
 		
 		}
+		if("Scattermine".equals(prodaction) || "Scattermine".equals(prodaction)){
+			if(currentprice_city == null || currentprice_city.trim().length() == 0 
+					|| currentprice_bdtype == null || currentprice_bdtype.trim().length() == 0
+					|| currentprice_transes == null || currentprice_transes.trim().length() == 0)
+			{
+				error.put("currentprice_city", "請輸入city以便於執行" + prodaction);
+				error.put("currentprice_bdtype", "請輸入type以便於執行" + prodaction);
+				error.put("currentprice_transes", "請輸入樓層以便於執行" + prodaction);
+			}
+		
+		}
+		
 		if (error != null && !error.isEmpty()) {
 			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request,res);
 			System.out.println("出現NULL");
@@ -143,6 +158,9 @@ public class ChartServlet extends HttpServlet {
 		bean.setCurrentprice_tprice(currentprice_tprice);
 
 		System.out.println("此為塞BEAN"+bean);
+		System.out.println("currentprice_city="+currentprice_city);
+		System.out.println("currentprice_bdtype="+currentprice_bdtype);
+		System.out.println("prodaction="+prodaction);
 		// 根據Model執行結果顯示View
 		// 4種比對!! prodaction 為SELECT的話 使用productService.select 方法
 		//request.setAttribute("Scatter", result);   "Scatter" 作為EL 標千~ 可以在JSP中用EL呼叫值
@@ -207,49 +225,129 @@ public class ChartServlet extends HttpServlet {
 			} else {
 				request.setAttribute("Choose1",result1);
 				request.setAttribute("Choose2",result2);
-				
-				newDAO dao = new newDAO();
-				
-				newsBean bean1 = new newsBean();
-				newsBean bean2 = new newsBean();
-				newsBean bean3 = new newsBean();
-				newsBean bean4 = new newsBean();
-				newsBean bean5 = new newsBean();
-				newsBean bean6 = new newsBean();
-		
-				bean1 = dao.select(400);
-				bean2 = dao.select(401);
-				bean3 = dao.select(402);
-			    bean4 = dao.select(403);
-                bean5 = dao.select(404);
-                bean6 = dao.select(405);
-				
-				
-				
-                Map<String,Object> map = new HashMap<String, Object>();
-                map.put("one", bean1);
-                map.put("two", bean2);
-                map.put("three", bean3);
-                map.put("four", bean4);
-                map.put("five",bean5);
-                map.put("six", bean6);
-				
-                request.setAttribute("select", map);
-				
-				
-				
-				
-				
 			}
+		
 			System.out.println("T"+result1);
 			System.out.println("R"+result2);
 //			request.getRequestDispatcher("/_11_test/tabletry2.jsp").forward(request,res);
 //          上為TEST 首頁二題之JSP檔 同樣一組的filter為  _10_ 中的chartFilter.java 
 			System.out.println("SOS");
-			
-			
 			request.getRequestDispatcher("/index.jsp").forward(request,res);
-//			res.sendRedirect("/Happyhouse/index.jsp");
+//			res.sendRedirect("/index.jsp");
+//			return;
+		
+		}else if (prodaction == null && currentprice_city != null && currentprice_bdtype ==null) {
+			List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
+//			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result1 == null) {
+				error.put("action", "xxxx fail");
+			} else if(result1 != null ){
+				request.setAttribute("Choose1",result1);
+//				request.setAttribute("Choose2",result2);
+			}
+			System.out.println("T"+result1);
+//			System.out.println("R"+result2);
+			
+			System.out.println("SOS  result1  ~prodaction null's answer");
+//			ServletContext servletContext = getServletContext();
+		 
+		 
+		  //PrintWriter out = res.getWriter();  
+		  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+		  String getavgoneprice="";
+		  int r1 = 0;
+		  for(CurrentPriceBean element : result1) {
+			  
+			  if(r1>0)
+				  getavgoneprice = getavgoneprice + ",";
+			  getavgoneprice = getavgoneprice +element.getAvgoneprice_by_city_type();
+			  r1++;
+		    }
+		  //out.print();
+		  //out.print(result1);  
+		  res.setContentType("application/json");
+		  res.setCharacterEncoding("UTF-8");
+		  res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
+		}else if (prodaction == null && currentprice_bdtype != null && currentprice_bdtype.trim().length() != 0) {
+//			List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
+			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result2 == null) {
+				error.put("action", "xxxx fail");
+			}  else if(result2 != null ){
+//			request.setAttribute("Choose1",result1);
+			request.setAttribute("Choose2",result2);
+		}
+//		System.out.println("T"+result1);
+		System.out.println("R"+result2);
+		
+		System.out.println("SOS  result2  ~prodaction null's answer");
+//		ServletContext servletContext = getServletContext();
+	 
+	 
+	  //PrintWriter out = res.getWriter();  
+	  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+	 
+	  String getcurrentprice_tradedate="";
+	  String getavgoneprice_by_tradedate="";
+	  String getboth="";
+	  
+	  int r2 = 0;
+	  for(CurrentPriceBean element : result2) {
+		  
+		  if(r2>0){
+			  
+			  getboth = getboth +",";
+					  
+//				
+//		  getcurrentprice_tradedate = getcurrentprice_tradedate+",";
+//		  getavgoneprice_by_tradedate = getavgoneprice_by_tradedate + ",";
+//		  
+		  }
+		  
+		  
+		  
+//		  getcurrentprice_tradedate= getcurrentprice_tradedate+("\""+element.getCurrentprice_tradedate()+"\"");   變字串
+//		  getcurrentprice_tradedate= getcurrentprice_tradedate+element.getCurrentprice_tradedate();
+//		  getavgoneprice_by_tradedate = getavgoneprice_by_tradedate+element.getAvgoneprice_by_tradedate();
+		  getboth = getboth + "[\""+element.getCurrentprice_tradedate() +"\"," + element.getAvgoneprice_by_tradedate() + "]"; 
+		  
+		  r2++;
+		  
+//		  x = x +( "[\"" + 10.311 + "\"," + 93080.0 + "]");
+		  
+	    }
+	  //out.print();
+	  //out.print(result1);  
+	  res.setContentType("application/json");
+	  res.setCharacterEncoding("UTF-8");
+
+	  
+	  res.getWriter().write("["+getboth+"]");
+//	  res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");
+//	  res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
+		  
+		  
+		  //out.close();  
+		 
+//          return;
+			/*
+			
+			Map<String,Object> map = new HashMap<String, Object>();
+	            
+	         map.put("Choose1", result1);
+	         map.put("Choose2", result2);
+			String json = new Gson().toJson(map);
+
+			
+			
+			res.setContentType("application/json");
+			res.setCharacterEncoding("UTF-8");
+		    res.getWriter().write(json);
+		    return;
+		    */
+//			request.getRequestDispatcher("../_11_test/tabletry3ajax.jsp").forward(request,res);
+//			System.out.println("SOS OVER!~CLEAR");
+//			res.sendRedirect("/index.jsp");
 //			return;
 		
 		}else {

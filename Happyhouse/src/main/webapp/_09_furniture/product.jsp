@@ -141,7 +141,7 @@ $(window).load(function() {
 			
 		<td>
 			<input type="submit" name="prodaction" value="查詢所有刊登家具">
-			<input type="submit" name="prodaction" value="查詢您的刊登家具">
+<!-- 			<input type="submit" name="prodaction" value="查詢您的刊登家具"> -->
 <!-- 			<input type="button" value="Clear" onclick="clearForm()"> -->
 		</td>
 	</tr>

@@ -302,12 +302,13 @@ $(document).ready(function(){
 <%-- 				</c:if> --%>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>歡迎 會員  ${LoginOK.user_name}  </h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
 				<div id="menubar">
 					<ul id="menu">
+					
 						<li class="current"><a href="index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
@@ -333,6 +334,8 @@ $(document).ready(function(){
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
@@ -361,11 +364,8 @@ $(document).ready(function(){
                     </div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty ChangeOK}">
-            <h3 align="center">提示: 更改密碼成功</h3>
-            <script type="text/javascript">clearForm();</script>
-            </c:if>
-       
+
+			
 			<!--close header-->
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->

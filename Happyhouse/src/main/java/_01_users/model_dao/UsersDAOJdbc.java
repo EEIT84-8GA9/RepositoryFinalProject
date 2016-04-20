@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import _01_users.model.UsersBean;
 
 public class UsersDAOJdbc implements UserDAO {
-	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender) values(?,?,?,?,?,?,?)";
+	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender,user_type) values(?,?,?,?,?,?,?,'A')";
 	// private static final String URL =
 	// "jdbc:sqlserver://localhost:1433;database=HappyHouse";
 	// private static final String USERNAME = "sa";

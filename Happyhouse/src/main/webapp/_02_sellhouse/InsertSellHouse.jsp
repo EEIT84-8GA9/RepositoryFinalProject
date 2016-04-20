@@ -30,7 +30,7 @@
 			<fieldset>
 				<h2 class="fs-title">刊登您的房屋</h2>
 				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" name="user_account" placeholder="請輸入使用者帳號" value="Alex123" />
+				<input type="hidden" name="user_account" placeholder="請輸入使用者帳號" value="${LoginOK.user_account}" />
 				<input type="text" style="${style.sellhouse_name}" name="sellhouse_name" placeholder="請輸入標題" value="${right.sellhouse_name}" />
 				<input type="text" style="${style.sellhouse_address}" name="sellhouse_address" placeholder="請輸入地址" value="${right.sellhouse_address}"/>
 				<input type="text" style="${style.sellhouse_price}" name="sellhouse_price" placeholder="請輸入售價，必須是數字且不得為0" value="${right.sellhouse_price}" />

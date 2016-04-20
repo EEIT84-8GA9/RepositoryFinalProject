@@ -41,20 +41,18 @@
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
 			<!--close header-->
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 
 <h3 align="center">檢舉名單</h3>
 <div class="container">
-<form action="<c:url value="/GMmessage.controller" />" method="POST">
+<form action="<c:url value="/GMmessage.controller" />" method="POST" id="gm">
 
 			<table class="table table-hover table-expandable">
                 <thead>
@@ -112,5 +110,15 @@
 		<!--close site_content-->
 	</div>
 	<!--close main-->
+	<script type="text/javascript">
+
+			$('#gm').submit(function() {
+    var c = confirm("Click OK to continue?");
+    
+    return c; 
+});
+		   
+
+		</script>
 	</body>	
 </html>

@@ -3,6 +3,8 @@ package _03_renthouse.model;
 import java.io.InputStream;
 import java.util.List;
 
+import _02_sellhouse.model.SellHouseBean;
+
 public interface RentHouseDAO {
 
 	public abstract List<RentHouseBean> SELECT_ALL();
@@ -30,5 +32,7 @@ public interface RentHouseDAO {
 	public abstract RentHouseBean update(RentHouseBean bean);
 
 	public abstract boolean delete(int id);
+	
+	public abstract RentHouseBean updatereport(RentHouseBean bean);
 
 }

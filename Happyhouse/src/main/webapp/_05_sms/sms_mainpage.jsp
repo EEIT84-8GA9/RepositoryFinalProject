@@ -94,24 +94,24 @@
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${not empty LoginOK}">
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						<li><a href="">個人管理頁面</a>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
+						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 			<!--close header-->
 	<article class="htmleaf-container">
 <font color="red">${error.deleteSms_idEmpty}</font>

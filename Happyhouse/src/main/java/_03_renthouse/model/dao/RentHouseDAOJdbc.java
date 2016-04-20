@@ -21,12 +21,15 @@ import java.util.List;
 
 
 
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.naming.spi.DirStateFactory.Result;
 import javax.sql.DataSource;
 
+import _02_sellhouse.model.SellHouseBean;
 import _03_renthouse.model.RentHouseBean;
 import _03_renthouse.model.RentHouseDAO;
 
@@ -40,6 +43,7 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 	private static final String	username="sa";
 	private	static final String password="sa123456";
+	private static final String UPDATE_REPORT="UPDATE renthouse SET renthouse_reportfrom=?,renthouse_reportreason=?,renthouse_type='B' WHERE renthouse_id=?";
 	private static final String SELECT_ALL="SELECT * FROM renthouse as r join users as u on r.user_account=u.user_account";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM renthouse Where user_account LIKE ?";
 	private static final String SELECT_BY_RENTHOUSE_NAME="Select * FROM renthouse Where renthouse_name LIKE ?";
@@ -724,6 +728,53 @@ public boolean delete(int id){
 	return false;
 	
 }
+@Override
+public  RentHouseBean updatereport(RentHouseBean bean){
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	RentHouseBean result=null;
+	try {
+		conn=dataSource.getConnection();
+		pstmt=conn.prepareStatement(UPDATE_REPORT);
+		pstmt.setString(1,bean.getRenthouse_reportfrom());
+		pstmt.setString(2,bean.getRenthouse_reportreason());
+		pstmt.setInt(3,bean.getRenthouse_id());
+		int i=pstmt.executeUpdate();
+		if(i==1){
+			result=bean;
+		}
+	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	if (pstmt!=null) {
+		try {
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	if (conn !=null) {
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	return result;
+
+	
+	
+	
+};
+
+
+
 public static void main(String[] args){
 	RentHouseDAO dao=new RentHouseDAOJdbc();
 	List<RentHouseBean>beans=dao.select_renthouse_address("中山");

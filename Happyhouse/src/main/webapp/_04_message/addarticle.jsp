@@ -64,7 +64,7 @@
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>

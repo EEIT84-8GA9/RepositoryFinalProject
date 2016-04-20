@@ -101,6 +101,7 @@
 
 
 <h3><span class="error">${error.action}</span></h3>
+<img src="/Happyhouse/images/pro3.jpg" alt="" /> 
 <div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

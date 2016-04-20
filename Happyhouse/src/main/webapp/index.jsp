@@ -167,8 +167,10 @@
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${not empty LoginOK}">
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
@@ -178,7 +180,7 @@
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="_01_users/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 					

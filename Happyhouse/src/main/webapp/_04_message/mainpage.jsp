@@ -7,7 +7,7 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="../css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 <style type="text/css">
 tr:hover td {
@@ -15,10 +15,10 @@ tr:hover td {
 	color: #339;
 }
 </style>
-<script type="text/javascript" src="../js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="/cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="../js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript">
 // 	$(window).load(function() {
 // 		$('#slider').nivoSlider();
@@ -68,8 +68,11 @@ tr:hover td {
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${not empty LoginOK}">
+						
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
 						<li><a href="">個人管理頁面</a>
 						<ul>
 						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
@@ -77,7 +80,7 @@ tr:hover td {
 						<li></li>
 						</ul>
 						</li>
-						<li><a href="/Happyhouse/_04_message/logout.jsp">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>

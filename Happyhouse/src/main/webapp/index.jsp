@@ -370,7 +370,7 @@ $(document).ready(function(){
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
- 						    <img src="/Happyhouse/images/house.jpg" alt="" /> 
+ 						    <img src="/Happyhouse/images/house.jpg" alt="" />                             
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 
@@ -389,7 +389,7 @@ $(document).ready(function(){
 				<div class="content_image">
 <!-- 					<a href="#"><img style="border: 10px solid #FFF;" alt="image" -->
 <!-- 						src="/Happyhouse/images/11.jpg" /></a> -->
-				                            <img  src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.one.new_id}" width="150px">		
+				<img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.one.new_id}" width="150px">		
 				</div>
 				<!--close content_image-->
 				<div class="content_text">

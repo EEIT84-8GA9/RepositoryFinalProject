@@ -209,11 +209,11 @@
 </form>
 </div>
 <div class="dialog" title="檢舉原因" id="reportform">
-	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
+	          <form action="/Happyhouse/reportrenthouse.controller" method="post">
 	            <label>您的帳號</label><br/>
-				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
+				<input type="text" id="renthouse_reportfrom" name="renthouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="renthouse_id" name="renthouse_id" value="${param.renthouse_id}" readonly="readonly"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
@@ -224,10 +224,10 @@
 
 <!-- 站內信 -->
 <div class="dialog" title="站內信" id="MessageForMe">
-	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
+	          <form action="/Happyhouse/renthouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
 				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}"><br/>
-				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}"><br/>
+				<input type="hidden" id="user_account" name="renthouse_id2" value="${param.renthouse_id}"><br/>
 	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>

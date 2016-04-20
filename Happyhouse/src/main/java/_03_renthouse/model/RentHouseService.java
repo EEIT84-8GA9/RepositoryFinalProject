@@ -9,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseService;
 import _03_renthouse.model.dao.RentHouseDAOJdbc;
 
@@ -106,6 +107,13 @@ public class RentHouseService {
 		return result;
 		
 	}
+	public RentHouseBean updatereport(RentHouseBean bean){
+		RentHouseBean result=null;
+		result=dao.updatereport(bean);
+		return bean;	
+	}
+	
+	
 	//+上去
 	public static String adjustFileName(String fileName, int maxLength) {
 		  int length = fileName.length();

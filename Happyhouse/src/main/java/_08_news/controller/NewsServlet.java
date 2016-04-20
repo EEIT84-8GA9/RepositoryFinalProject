@@ -1,12 +1,15 @@
 package _08_news.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+import javax.servlet.http.Part;
+
+import _02_sellhouse.model.SellHouseBean;
 import _05_sms.model.SmsVO;
 import _05_sms.model.sms_service;
 import _08_news.model.NewsService;
@@ -21,7 +27,7 @@ import _08_news.model.newsBean;
 import _08_news.model.dao.newDAO;
 
 
-
+@MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet(urlPatterns = { "/test.controller" })
 public class NewsServlet extends HttpServlet {
 	private sms_service servicelogin = new sms_service();
@@ -61,6 +67,26 @@ public class NewsServlet extends HttpServlet {
 		System.out.println(temp3);
 		System.out.println(newsupdate);
 		
+		//圖片上傳
+				long sizeInBytes1 = 0;
+				long sizeInBytes2 = 0;
+				long sizeInBytes3 = 0;
+				String fldName1 = "";
+				String fldName2 = "";
+				String fldName3 = "";
+				String value1 = "";
+				String value2 = "";
+				String value3 = "";
+				String memberID = "";
+				String fileName1 = "";
+				InputStream is1 = null;
+				String fileName2 = "";
+				InputStream is2 = null;
+				String fileName3 = "";
+				InputStream is3 = null;
+				//接收圖片資料
+			Collection<Part> parts = request.getParts() ;
+			
 		// 轉換HTML的資料
 
 		int id = 0;
@@ -105,7 +131,49 @@ public class NewsServlet extends HttpServlet {
 		bean.setNew_title(temp1);
 		bean.setNew_describe(temp2);
 
-		System.out.println(bean);
+//		圖片上傳
+		if (parts != null) {
+			for (Part p : parts) {
+				if (p.getContentType() == null) {
+					if (fldName1.equals("text")) {
+						//memberID = value1;
+					}
+				} else {
+					if (is1 == null) {
+						is1 = p.getInputStream();
+						sizeInBytes1 = p.getSize();
+						fileName1 = NewsService.getFileName(p); // 此為圖片檔的檔名
+						fileName1 = NewsService.adjustFileName(fileName1,
+								NewsService.IMAGE_FILENAME_LENGTH);
+					} else if (is2 == null && is1 != null) {
+						is2 = p.getInputStream();
+						sizeInBytes2 = p.getSize();
+						fileName2 = NewsService.getFileName(p); // 此為圖片檔的檔名
+						fileName2 = NewsService.adjustFileName(fileName2,
+								NewsService.IMAGE_FILENAME_LENGTH);
+					} else if (is3 == null && is1 != null && is2 != null) {
+						is3 = p.getInputStream();
+						sizeInBytes3 = p.getSize();
+						fileName3 = NewsService.getFileName(p); // 此為圖片檔的檔名
+						fileName3 = NewsService.adjustFileName(fileName3,
+								NewsService.IMAGE_FILENAME_LENGTH);
+					}
+					if (fileName1 !=null && fileName1.trim().length() > 0) {
+						bean.setNew_photo1_name(fileName1);
+						bean.setNew_photo2_name(fileName2);
+						bean.setNew_photo3_name(fileName3);
+						System.out.println("fileName1=" + fileName1
+								+ "sizeInBytes1=" + sizeInBytes1);
+						System.out.println("fileName2=" + fileName2
+								+ "sizeInBytes2=" + sizeInBytes2);
+						//dao.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2,is3,sizeInBytes3);
+					}
+					
+				}
+				
+			}
+		
+		}
 
 		// 根據Model執行姐果顯示View
 
@@ -138,6 +206,10 @@ public class NewsServlet extends HttpServlet {
 			bean.setNew_date(b);
 			bean.setNew_id(a);
 
+
+			
+			
+			
 			request.setAttribute("insert", result);
 			System.out.println(result);
 			request.getRequestDispatcher("/_08_news/test.jsp")
@@ -146,7 +218,7 @@ public class NewsServlet extends HttpServlet {
 
 		(newsupdate != null && newsupdate.equals("更新首頁資訊")) {
 
-			newsBean result = service.update(bean);
+			newsBean result = service.update(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3, sizeInBytes3);
 			newsBean datebean = new newsBean();
 			datebean = dao.select(temp1);
 			Date b = datebean.getNew_date();
@@ -157,7 +229,7 @@ public class NewsServlet extends HttpServlet {
 //			session.setAttribute("update", result);
 			request.getRequestDispatcher("/_08_news/test.jsp")
 					.forward(request, response);
-			response.sendRedirect("/_08_news/test.jsp");
+//			response.sendRedirect("/_08_news/test.jsp");
 		} else if (newsupdate != null && newsupdate.equals("Delete")) {
 			boolean result = service.delete(bean);
 			if (!result) {

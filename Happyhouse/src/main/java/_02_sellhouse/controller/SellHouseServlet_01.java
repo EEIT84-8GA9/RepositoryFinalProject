@@ -44,8 +44,9 @@ import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 
 
 
-
+//加上去
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
+
 @WebServlet("/house/house1.controller")
 public class SellHouseServlet_01 extends HttpServlet {
 	private SellHouseService sellHouseService=new SellHouseService();

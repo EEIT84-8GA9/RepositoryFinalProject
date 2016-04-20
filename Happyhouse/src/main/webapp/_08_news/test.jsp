@@ -60,7 +60,7 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<form action="<c:url value="/test.controller" />" method="post">
+			<form  enctype="multipart/form-data" action="<c:url value="/test.controller" />" method="post">
 				<table>
 					<tr style="border: 1px solid black;">
 						<td>文章編號</td>
@@ -78,6 +78,13 @@
 						<td><textarea name="content" rows="20" cols="100px"></textarea>
 						<td>${error.updateerror}</td>
 					</tr>
+					
+					<tr style="border: 1px solid black;">
+				    <td><input type="file" name="sellhouse_photo1"></td>
+				    <td><input type="file" name="sellhouse_photo2"></td>
+				    <td><input type="file" name="sellhouse_photo3"></td>
+					</tr>
+					
 				</table>
 
 				<table>

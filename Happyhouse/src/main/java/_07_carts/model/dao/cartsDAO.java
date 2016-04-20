@@ -1,5 +1,6 @@
 package _07_carts.model.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -116,6 +117,115 @@ public class cartsDAO {
         //		dao.delete(401);
 
 	}
+	
+	private static final String SELECT_BY_INSERT_SELL_ID = "select * from carts where sellhouse_id = ?";
+	
+	public cartsBean selectsell(int sellhouse_id){
+		
+		cartsBean result = null;
+		Connection con = null;
+		PreparedStatement stm = null;
+		ResultSet rse = null;
+		
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			stm = con.prepareStatement(SELECT_BY_INSERT_SELL_ID);
+			stm.setInt(1, sellhouse_id);
+			rse = stm.executeQuery();
+			
+			if (rse.next()) {
+
+				result = new cartsBean();
+
+				result.setCart_id(rse.getInt("cart_id"));
+				result.setUser_account(rse.getString("user_account"));
+				result.setSellhouse_id(rse.getInt("sellhouse_id"));
+				result.setRenthouse_id(rse.getInt("renthouse_id"));
+				result.setCart_date(rse.getDate("cart_date"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}if(rse != null){
+			try {
+				rse.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}if(stm != null){
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}if(con != null){
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return result;
+	}
+	
+private static final String SELECT_BY_INSERT_RENT_ID = "select * from carts where sellhouse_id = ?";
+	
+	public cartsBean selectrent(int renthouse_id){
+		
+		cartsBean result = null;
+		Connection con = null;
+		PreparedStatement stm = null;
+		ResultSet rse = null;
+		
+		try {
+			con = dataSource.getConnection();
+			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			stm = con.prepareStatement(SELECT_BY_INSERT_RENT_ID);
+			stm.setInt(1, renthouse_id);
+			rse = stm.executeQuery();
+			
+			if (rse.next()) {
+
+				result = new cartsBean();
+
+				result.setCart_id(rse.getInt("cart_id"));
+				result.setUser_account(rse.getString("user_account"));
+				result.setSellhouse_id(rse.getInt("sellhouse_id"));
+				result.setRenthouse_id(rse.getInt("renthouse_id"));
+				result.setCart_date(rse.getDate("cart_date"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}if(rse != null){
+			try {
+				rse.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}if(stm != null){
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}if(con != null){
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return result;
+	}
+	
 
 	private static final String SELECT_BY_CARTSID = "select * from carts where cart_id = ?";
 
@@ -125,6 +235,8 @@ public class cartsDAO {
 		Connection con = null;
 		PreparedStatement stm = null;
 		ResultSet rse = null;
+		
+		
 
 		try {
 			con = dataSource.getConnection();
@@ -394,15 +506,31 @@ public class cartsDAO {
 			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			stm = con.prepareStatement(INSERT);
 
+			
+			
+			
 			// int con1 = bean.getCart_id();
 			String con2 = bean.getUser_account();
 			int con3 = bean.getSellhouse_id();
 			//int con4 = bean.getRenthouse_id();   //賣租屋要分開寫，因為一個有的畫另一個就要是NULL，分開寫比較簡單不然要寫判斷
 			// stm.setInt(1, con1);
+			
+			cartsDAO dao = new cartsDAO();
+			
+			List<cartssellBean> sellbean = dao.selectcartssell(con2);
+			
+			
+			
+			
 			stm.setString(1, con2);
 			stm.setInt(2, con3);
 			//stm.setInt(3, con4);
+			
 
+			
+			
+			
+									
 			stm.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -473,9 +601,56 @@ public class cartsDAO {
 	}
 	
 	
+	private static final String UPDATE = "update news set user_account=? ,sellhouse_id=? ,renthouse_id=?, cart_date=getdate() where cart_id=? ";
+	
+
+	public cartsBean update(String user_account, int sellhouse_id,int renthouse_id, int cart_id) {
+				
+	Connection con = null;
+	PreparedStatement stm = null;	
+		
 	
 	
+	cartsBean result = new cartsBean();
+		
+	try {
+		con = dataSource.getConnection();
+		// con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		stm = con.prepareStatement(UPDATE);
+		
+		stm.setString(1, user_account);
+		stm.setInt(2, sellhouse_id);
+		stm.setInt(3, renthouse_id);
+		stm.setInt(4, cart_id);
+		
+		int i = stm.executeUpdate();
+		if(i==1){
+			result = this.select(cart_id);
+		}
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		if (stm != null) {
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
+		
+		
+		return result;		
+	}
 	
 	private static final String DELETE = "delete from carts where cart_id=?";
 

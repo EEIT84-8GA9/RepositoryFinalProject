@@ -16,6 +16,7 @@ import _08_news.model.dao.newDAO;
 
 public class NewsService {
 
+	public static final int IMAGE_FILENAME_LENGTH = 20;
 	private newDAO dao = new newDAO();
 
 	private static void main(String[] args) {
@@ -59,13 +60,12 @@ public class NewsService {
 
 	}
 
-	public newsBean update(newsBean bean) {
+	public newsBean update(newsBean bean , InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3) {
 		newsBean result = null;
 		if (bean != null) {
 
-			result = dao.update(bean.getNew_title(), bean.getNew_describe(),
-					bean.getNew_photo1(), bean.getNew_photo2(),
-					bean.getNew_photo3(), bean.getNew_id());
+			result = dao.update(bean.getNew_title(), bean.getNew_describe(), bean.getNew_photo1_name(), bean.getNew_photo2_name(), bean.getNew_photo3_name() , is1, size1, is2, size2, is3, size3, bean.getNew_id());
+			
 
 		}
 		return result;

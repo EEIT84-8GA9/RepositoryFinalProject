@@ -1,5 +1,6 @@
 package _08_news.model.dao;
 
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -281,7 +282,7 @@ public class newDAO {
 
 	}
 
-	private static final String INSERT = "insert into news (new_title,new_describe,new_date,new_photo1,new_photo2,new_photo3) values (?,?,getdate(),?,?,?)";
+	private static final String INSERT = "insert into news (new_title,new_describe,new_date,new_photo1_name,new_photo1,new_photo2_name,new_photo2,new_photo3_name,new_photo3) values (?,?,getdate(),?,?,?,?,?,?)";
 
 	public newsBean insert(newsBean bean) {
 
@@ -329,12 +330,11 @@ public class newDAO {
 
 	}
 
-	private static final String UPDATE = "update news set new_title=? ,new_describe=? ,new_photo1 =? ,new_photo2 =?,new_photo3=? where new_id=? ";
+	private static final String UPDATE = "update news set new_title=? ,new_describe=? ,new_photo1_name =? ,new_photo1 =? ,new_photo2_name =?,new_photo2 =?, new_photo3_name =? ,new_photo3=?  where new_id=? ";
 
 
 
-	public newsBean update(String new_title, String new_describe,
-			Blob new_photo1, Blob new_photo2, Blob new_photo3, Integer new_id) {
+	public newsBean update(String new_title, String new_describe, String new_photo1_name ,  String new_photo2_name ,  String new_photo3_name ,  InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3, Integer new_id) {
 
 		Connection con = null;
 		PreparedStatement stm = null;
@@ -348,10 +348,16 @@ public class newDAO {
 
 			stm.setString(1, new_title);
 			stm.setString(2, new_describe);
-			stm.setBlob(3, new_photo1);
-			stm.setBlob(4, new_photo2);
-			stm.setBlob(5, new_photo3);
-			stm.setInt(6, new_id);
+            stm.setString(3, new_photo1_name);
+            stm.setBinaryStream(4,is1,size1);
+			stm.setString(5, new_photo2_name);
+            stm.setBinaryStream(6,is2,size2);
+            stm.setString(7,new_photo3_name);
+            stm.setBinaryStream(8, is3,size3);
+            stm.setInt(9, new_id);
+			
+			
+			
 
 			int i = stm.executeUpdate();
 			if(i==1){

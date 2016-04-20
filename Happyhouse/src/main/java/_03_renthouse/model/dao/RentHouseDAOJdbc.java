@@ -52,7 +52,7 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 	private static final String INSERT = "INSERT INTO renthouse  values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,getdate(),?,?,?,NULL,NULL)";
 	private static final String SELECT_BY_RENTHOUSE_ID="Select * FROM renthouse Where renthouse_id=?";
 	private static final String UPDATE
-	="update renthouse set renthouse_name=?, renthouse_price=?,renthouse_deposit=?,renthouse_patterns=?,renthouse_address=?,renthouse_describe=?,renthouse_size=?,renthouse_floor=?,renthouse_rentdate=?,renthouse_photo1=?,renthouse_photo2=?,renthouse_photo3=?,renthouse_type=?,renthouse_message=?,renthouse_date=getdate(),renthouse_car=?,renthouse_phone=?,renthouse_email=? where renthouse_id=?";
+	="update renthouse set renthouse_name=?, renthouse_price=?,renthouse_deposit=?,renthouse_patterns=?,renthouse_address=?,renthouse_describe=?,renthouse_size=?,renthouse_floor=?,renthouse_rentdate=?,renthouse_photo1_name=?,renthouse_photo1=?,renthouse_photo2_name=?,renthouse_photo2=?,renthouse_photo3_name=?,renthouse_photo3=?,renthouse_type=?,renthouse_message=?,renthouse_date=getdate(),renthouse_car=?,renthouse_phone=?,renthouse_email=? where renthouse_id=?";
 	private static final String DELETE = "delete from renthouse where renthouse_id=?";
 	private DataSource dataSource;
 
@@ -615,14 +615,14 @@ public RentHouseBean insert(RentHouseBean bean,InputStream is1,long size1,InputS
  * @see model.dao.RentHouseDAO#update(model.RentHouseBean)
  */
 @Override
-public RentHouseBean update(RentHouseBean bean){
+public RentHouseBean update(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	try {
 		//conn = DriverManager.getConnection(url,username,password);
 		conn=dataSource.getConnection();
 		pstmt = conn.prepareStatement(UPDATE);
-		pstmt.setInt(18,bean.getRenthouse_id());
+		pstmt.setInt(21,bean.getRenthouse_id());
 		pstmt.setString(1,bean.getRenthouse_name());
 		pstmt.setFloat(2,bean.getRenthouse_price());
 		pstmt.setString(3,bean.getRenthouse_deposit());
@@ -633,30 +633,31 @@ public RentHouseBean update(RentHouseBean bean){
 		pstmt.setString(8,bean.getRenthouse_floor());
 		pstmt.setString(9,bean.getRenthouse_rentdate());
 		//File image1=new File(bean.getSellhouse_photo1());
-		File image1=new File("C:/_JSP/image/1.jpg");
-		long size=image1.length();
-		InputStream is1=new FileInputStream(image1);
-		pstmt.setBlob(10,is1);
+//		File image1=new File("C:/_JSP/image/1.jpg");
+//		long size=image1.length();
+//		InputStream is1=new FileInputStream(image1);
+		pstmt.setString(10,bean.getRenthouse_photo1_name());
+		pstmt.setBinaryStream(11,is1,size1);
 		//File image2=new File(bean.getSellhouse_photo1());
-		File image2=new File("C:/_JSP/image/2.jpg");
-		long size2=image1.length();
-		InputStream is2=new FileInputStream(image2);
-		pstmt.setBlob(11,is2);
+//		File image2=new File("C:/_JSP/image/2.jpg");
+//		long size2=image1.length();
+//		InputStream is2=new FileInputStream(image2);
+		pstmt.setString(12,bean.getRenthouse_photo1_name());
+		pstmt.setBinaryStream(13,is2,size2);
 		//File image2=new File(bean.getSellhouse_photo1());
-		File image3=new File("C:/_JSP/image/2.jpg");
-		long size3=image1.length();
-		InputStream is3=new FileInputStream(image3);
-		pstmt.setBlob(12,is3);
-		pstmt.setString(13,bean.getRenthouse_type());
-		pstmt.setString(14,bean.getRenthouse_message());
-		pstmt.setString(15,bean.getRenthouse_car());
-		pstmt.setString(16,bean.getRenthouse_phone());
-		pstmt.setString(17,bean.getRenthouse_email());
+//		File image3=new File("C:/_JSP/image/2.jpg");
+//		long size3=image1.length();
+//		InputStream is3=new FileInputStream(image3);
+		pstmt.setString(14,bean.getRenthouse_photo1_name());
+		pstmt.setBinaryStream(15,is2,size2);
+		pstmt.setString(16,"A");
+		pstmt.setString(17,bean.getRenthouse_message());
+		pstmt.setString(18,bean.getRenthouse_car());
+		pstmt.setString(19,bean.getRenthouse_phone());
+		pstmt.setString(20,bean.getRenthouse_email());
 		int i=	pstmt.executeUpdate();	
 		System.out.println(i);
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
-	} catch (SQLException e) {
+	}  catch (SQLException e) {
 		e.printStackTrace();
 	}
 	finally{
@@ -776,11 +777,11 @@ public  RentHouseBean updatereport(RentHouseBean bean){
 
 
 public static void main(String[] args){
-	RentHouseDAO dao=new RentHouseDAOJdbc();
-	List<RentHouseBean>beans=dao.select_renthouse_address("中山");
-	List<RentHouseBean>beanss=dao.select_user_account("Cat777");
+//	RentHouseDAO dao=new RentHouseDAOJdbc();
+//	List<RentHouseBean>beans=dao.select_renthouse_address("中山");
+//	List<RentHouseBean>beanss=dao.select_user_account("Cat777");
 	//RentHouseBean bean=dao.select_renthouse_id(100);
-	RentHouseBean bean=dao.select_renthouse_id(110);
+//	RentHouseBean bean=dao.select_renthouse_id(110);
 	//bean.setUser_account("make7775");
 	//bean.setRenthouse_name("A雅房出租");
 	//bean.setRenthouse_price(5000);
@@ -794,11 +795,11 @@ public static void main(String[] args){
 	//bean.setRenthouse_type("A");
 	//bean.setRenthouse_message("AAAA");
 	//bean.setRenthouse_car("A無車位");
-	bean.setRenthouse_phone("65");
-	bean.setRenthouse_email("Axxx@ddd.ddd");
-	dao.update(bean);
-	dao.delete(110);
-	System.out.println(bean);
+//	bean.setRenthouse_phone("65");
+//	bean.setRenthouse_email("Axxx@ddd.ddd");
+//	
+//	dao.delete(110);
+//	System.out.println(bean);
 	
 }
 	

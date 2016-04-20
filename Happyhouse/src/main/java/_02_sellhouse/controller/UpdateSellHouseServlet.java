@@ -207,9 +207,7 @@ public class UpdateSellHouseServlet extends HttpServlet {
 				param.put("sellhouse_size", "");
 				style.put("sellhouse_size", "background-color:pink");
 			}
-		}
-		
-		
+		}				
 		if(sellhouse_size!=0.0){
 			param.put("sellhouse_size",""+sellhouse_size);
 			style.put("sellhouse_size", "");
@@ -366,7 +364,8 @@ public class UpdateSellHouseServlet extends HttpServlet {
 		 if(prodaction!=null&&"修改".equals(prodaction)){
 			 //parts = request.getParts();
 			System.out.println("修改");
-			bean.setSellhouse_id(sellhouse_id);
+
+
 			System.out.println("有無抓到ID"+bean.getSellhouse_id());
 			bean.setUser_account(user_account);
 			bean.setSellhouse_name(sellhouse_name);

@@ -37,7 +37,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.taglibs.standard.lang.jstl.test.PageContextImpl;
 
-
+import _02_sellhouse.model.SellHouseBean;
+import _02_sellhouse.model.SellHouseDAO;
+import _02_sellhouse.model.SellHouseService;
+import _02_sellhouse.model.dao.SellHouseDAOJdbc;
 import _03_renthouse.model.RentHouseBean;
 import _03_renthouse.model.RentHouseDAO;
 import _03_renthouse.model.RentHouseService;
@@ -46,9 +49,9 @@ import _03_renthouse.model.dao.RentHouseDAOJdbc;
 
 
 
-@MultipartConfig(location = "", fileSizeThreshold = 1034 * 1034, maxFileSize = 1034 * 1034 * 500, maxRequestSize = 1034 * 1034 * 500 * 5)
-@WebServlet("/house/renthouse1.controller")
-public class RentHouseServlet_01 extends HttpServlet {
+@MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
+@WebServlet("/house/house3.controller")
+public class UpdateRentHouseServlet extends HttpServlet {
 	private RentHouseService rentHouseService=new  RentHouseService();
 	private RentHouseDAO dao=new RentHouseDAOJdbc();
 	@Override
@@ -100,11 +103,11 @@ public class RentHouseServlet_01 extends HttpServlet {
 		String select=request.getParameter("choise");
 		// 轉換資料
 		Map<String, String> error = new HashMap<String, String>();
-		Map<String, String> right = new HashMap<String, String>();
+		Map<String, String> param = new HashMap<String, String>();
 		Map<String, String> style = new HashMap<String, String>();
 		request.setAttribute("style", style);
 		request.setAttribute("error", error);
-		request.setAttribute("right", right);
+		request.setAttribute("param", param);
 		
 		
 	
@@ -127,31 +130,31 @@ public class RentHouseServlet_01 extends HttpServlet {
 		//標題
 		if(renthouse_name==null||renthouse_name.trim().length()==0){
 			error.put("renthouse_name", "");
-			right.put("renthouse_name", "");
+			param.put("renthouse_name", "");
 			style.put("renthouse_name", "background-color:pink");
 		}
 		else if(renthouse_name!=null){
-			right.put("renthouse_name", renthouse_name);
+			param.put("renthouse_name", renthouse_name);
 			style.put("renthouse_name", "");
 		}
 		//價格
-		int renthouse_price = 0;
+		float renthouse_price = 0;
 		if (temp3 != null || temp3.trim().length() != 0) {
 			try {
-				renthouse_price = Integer.parseInt(temp3);
+				renthouse_price = (float) Double.parseDouble(temp3);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("renthouse_price", "");
-				right.put("renthouse_price", "");
+				param.put("renthouse_price", "");
 				style.put("renthouse_price", "background-color:pink");
 			}
 		}	
 		if(renthouse_price!=0.0){
-			right.put("renthouse_price",""+renthouse_price);
+			param.put("renthouse_price",""+renthouse_price);
 			style.put("renthouse_price", "");
 		}else if(renthouse_price==0.0){
 			error.put("renthouse_price", "");
-			right.put("renthouse_price", "");
+			param.put("renthouse_price", "");
 			style.put("renthouse_price", "background-color:pink");
 		}
 		
@@ -166,54 +169,54 @@ public class RentHouseServlet_01 extends HttpServlet {
 		//格局
 		if(renthouse_patterns==null||renthouse_patterns.trim().length()==0){
 			error.put("renthouse_patterns", "");
-			right.put("renthouse_patterns", "");
+			param.put("renthouse_patterns", "");
 			style.put("renthouse_patterns", "background-color:pink");
 		}
 		else if(renthouse_patterns!=null){
-			right.put("renthouse_patterns",renthouse_patterns);
+			param.put("renthouse_patterns",renthouse_patterns);
 			style.put("renthouse_patterns","");
 		}
 		//地址
 		if(renthouse_address==null||renthouse_address.trim().length()==0){
 			error.put("renthouse_address", "");
-			right.put("renthouse_address", "");
+			param.put("renthouse_address", "");
 			style.put("renthouse_address", "background-color:pink");
 		}
 		else if(renthouse_address!=null){
-			right.put("renthouse_address", renthouse_address);
+			param.put("renthouse_address", renthouse_address);
 			style.put("renthouse_address","");
 		}
 		//額外描述  可以為NULL
 		if(renthouse_describe==null||renthouse_describe.trim().length()==0){
 			error.put("renthouse_describe", "");
-			right.put("renthouse_describe", "");
+			param.put("renthouse_describe", "");
 			style.put("renthouse_describe", "background-color:pink");
 		}
 		else if(renthouse_describe !=null){
-			right.put("renthouse_describe", renthouse_describe);
+			param.put("renthouse_describe", renthouse_describe);
 			style.put("renthouse_describe","");
 		}
 		//坪數
-		int renthouse_size = 0;
+		float renthouse_size = 0;
 		System.out.println(temp7);
 		if (temp7 != null || temp7.trim().length() != 0) {
 			try {
-				renthouse_size = Integer.parseInt(temp7);
+				renthouse_size = (float) Double.parseDouble(temp7);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("renthouse_size", "");
-				right.put("renthouse_size", "");
+				param.put("renthouse_size", "");
 				style.put("renthouse_size", "background-color:pink");
 			}
 		}
 		
 		
 		if(renthouse_size!=0.0){
-			right.put("renthouse_size",""+renthouse_size);
+			param.put("renthouse_size",""+renthouse_size);
 			style.put("renthouse_size", "");
 		}else if(renthouse_size==0.0){
 			error.put("renthouse_size", "");
-			right.put("renthouse_size", "");
+			param.put("renthouse_size", "");
 			style.put("renthouse_size", "background-color:pink");
 		}
 //		else if(temp7==null||temp7.trim().length() ==0){
@@ -226,21 +229,21 @@ public class RentHouseServlet_01 extends HttpServlet {
 		//樓層
 		if(renthouse_floor==null||renthouse_floor.trim().length()==0){
 			error.put("renthouse_floor", "");
-			right.put("renthouse_floor", "");
+			param.put("renthouse_floor", "");
 			style.put("renthouse_floor", "background-color:pink");
 		}
 		else if(renthouse_floor!=null){
-			right.put("renthouse_floor", renthouse_floor);
+			param.put("renthouse_floor", renthouse_floor);
 			style.put("renthouse_floor", "");
 		}
 		
 		
 		if(renthouse_deposit==null||renthouse_deposit.trim().length()==0){
 			error.put("renthouse_deposit", "");
-			right.put("renthouse_deposit", "");
+			param.put("renthouse_deposit", "");
 			style.put("renthouse_deposit", "background-color:pink");
 		}else if(renthouse_deposit!=null){
-			right.put("renthouse_deposit", renthouse_deposit);
+			param.put("renthouse_deposit", renthouse_deposit);
 			style.put("renthouse_deposit", "");
 		}
 		
@@ -250,10 +253,10 @@ public class RentHouseServlet_01 extends HttpServlet {
 		
 		if(renthouse_rentdate==null||renthouse_rentdate.trim().length()==0){
 			error.put("renthouse_rentdate", "");
-			right.put("renthouse_rentdate", "");
+			param.put("renthouse_rentdate", "");
 			style.put("renthouse_rentdate", "background-color:pink");
 		}else if(renthouse_rentdate!=null){
-			right.put("renthouse_rentdate",renthouse_rentdate);
+			param.put("renthouse_rentdate",renthouse_rentdate);
 			style.put("renthouse_rentdate", "");
 		}
 		//屋齡 不需要?
@@ -289,31 +292,31 @@ public class RentHouseServlet_01 extends HttpServlet {
 		//車位
 		if(renthouse_car==null||renthouse_car.trim().length()==0){
 			error.put("renthouse_car", "");
-			right.put("renthouse_car", "");
+			param.put("renthouse_car", "");
 			style.put("renthouse_car", "background-color:pink");
 		}
 		else if(renthouse_car!=null){
-			right.put("renthouse_car", renthouse_car);
+			param.put("renthouse_car", renthouse_car);
 			style.put("renthouse_car", "");
 		}
 		//電話
 		if(renthouse_phone==null||renthouse_phone.trim().length()==0){
 			error.put("renthouse_phone", "");
-			right.put("renthouse_phone", "");
+			param.put("renthouse_phone", "");
 			style.put("renthouse_phone", "background-color:pink");
 		}
 		else if(renthouse_phone!=null){
-			right.put("renthouse_phone", renthouse_phone);
+			param.put("renthouse_phone", renthouse_phone);
 			style.put("renthouse_phone", "");
 		}
 		//電話
 		if(renthouse_email==null||renthouse_email.trim().length()==0){
 		error.put("renthouse_email", "");
-		right.put("renthouse_email", "");
+		param.put("renthouse_email", "");
 		style.put("renthouse_email", "background-color:pink");
 		}
 		else if(renthouse_email !=null){
-			right.put("renthouse_email", renthouse_email);
+			param.put("renthouse_email", renthouse_email);
 			style.put("renthouse_email", "");
 		}
 		//驗證HTML Form資料
@@ -326,7 +329,7 @@ public class RentHouseServlet_01 extends HttpServlet {
 		if(error!=null&&! error.isEmpty()){
 			System.out.println("errior");
 			request.getRequestDispatcher(
-					"/_03_renthouse/InsertRentHouse.jsp").forward(request, response);
+					"/_03_renthouse/UpdateRentHouse.jsp").forward(request, response);
 			return;
 		}
 		//判斷
@@ -384,9 +387,10 @@ public class RentHouseServlet_01 extends HttpServlet {
 //			}
 //	
 //		}	
-		 if(prodaction!=null&&"新增".equals(prodaction)){
+		 if(prodaction!=null&&"修改".equals(prodaction)){
 			 //parts = request.getParts();
 			System.out.println("新增");
+			bean.setRenthouse_id(renthouse_id);
 			bean.setUser_account(user_account);
 			bean.setRenthouse_name(renthouse_name);
 			bean.setRenthouse_price(renthouse_price);
@@ -444,10 +448,10 @@ public class RentHouseServlet_01 extends HttpServlet {
 				}
 			
 			}
-			RentHouseBean result=rentHouseService.insert(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
+			RentHouseBean result=rentHouseService.update(bean, is1, sizeInBytes1, is2, sizeInBytes2, is3,
 					sizeInBytes3);
 			System.out.println("在這");
-			response.sendRedirect("/Happyhouse/_03_renthouse/RentHouseSearch.jsp");
+			response.sendRedirect("/Happyhouse/_03_renthouse/RentHouseUser.jsp");
 //			request.getRequestDispatcher("/_03_renthouse/rentHouseSearch.jsp").forward(request, response);
 		}
 //		 else if(prodaction!=null&&"修改".equals(prodaction)){

@@ -25,7 +25,7 @@ import _01_users.model.UsersBean;
  */
 @WebFilter(urlPatterns = { "/*" }, initParams = {
 
-//		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
+		@WebInitParam(name = "url_1", value = "/_04_message/mainpage.jsp"),
 //		@WebInitParam(name = "url_2", value = "/sms.controller"),
 //		@WebInitParam(name = "url_3", value = "/_08_news/test.jsp"),
 		@WebInitParam(name = "url_4", value = "/_07_carts/gousejsp.jsp"), 

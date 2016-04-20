@@ -29,7 +29,7 @@ public interface RentHouseDAO {
 
 	public abstract RentHouseBean insert(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3);
 
-	public abstract RentHouseBean update(RentHouseBean bean);
+	public abstract RentHouseBean update(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3);
 
 	public abstract boolean delete(int id);
 	

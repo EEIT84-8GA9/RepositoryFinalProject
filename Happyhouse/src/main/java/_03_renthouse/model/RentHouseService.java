@@ -91,11 +91,11 @@ public class RentHouseService {
 		}
 		return result;		
 	}
-	public RentHouseBean update(RentHouseBean bean){
+	public RentHouseBean update(RentHouseBean bean,InputStream is1,long size1,InputStream is2,long size2,InputStream is3,long size3){
 		RentHouseBean result=null;
 		result=dao.select_renthouse_id(bean.getRenthouse_id());
 		if(result !=null){
-			result=dao.update(bean);
+			result=dao.update(bean,is1,size1,is2,size2,is3,size3);
 		}
 		return result;
 	}

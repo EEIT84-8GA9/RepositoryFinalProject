@@ -16,7 +16,7 @@ import _01_users.model.UsersBean;
 
 
 
-@WebFilter("/_01_users/*, /_09_furniture/*,/_08_news/*,/_07_carts/*")
+@WebFilter("/_01_users/*, /_09_furniture/*,/_08_news/*,/_07_carts/*,_04_message/mainpage.jsp")
 
 public class LoginFilter1 implements Filter {
 

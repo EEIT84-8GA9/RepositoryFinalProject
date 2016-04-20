@@ -94,12 +94,12 @@ public class ProductServlet extends HttpServlet {
 //呼叫Model
 		FurnitureBean bean = new FurnitureBean();
 //		bean.setFurniture_id(id);
-//		bean.setFurniture_neme(name);
+//		bean.setFurniture_name(name);
 //		bean.setFurniture_price(price);
 //	    bean.setFurniture_time(time);
 //		bean.setFurnitur_message(message);
 		bean.setUser_account(user_account);
-		bean.setFurniture_neme(insname);
+		bean.setFurniture_name(insname);
 		bean.setFurniture_status(insstatus);
 		bean.setFurniture_time(instime);
 		bean.setFurniture_address(insaddress);

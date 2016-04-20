@@ -126,7 +126,7 @@ $(document).ready(function() {
 	<c:forEach var="row" items="${select}">
 		<c:url value="/_09_furniture/product.jsp" var="path" scope="page">
 			<c:param name="furniture_id" value="${row.furniture_id}" />
-			<c:param name="name" value="${row.furniture_neme}" />
+			<c:param name="name" value="${row.furniture_name}" />
 			<c:param name="price" value="${row.furniture_price}" />
 			<c:param name="time" value="${row.furniture_time}" />
 			<c:param name="message" value="${row.furniture_message}" />
@@ -142,11 +142,11 @@ $(document).ready(function() {
 <!-- 		</td> -->
 		
 		<td>${row.furniture_id}</td>
-	    <td>${row.furniture_neme}</td>
+	    <td>${row.furniture_name}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" data-title="${row.furniture_neme}"><img src="../img/click.png"></a></td>
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
 	</tr>
 	</c:forEach>
 	</tbody>
@@ -156,7 +156,7 @@ $(document).ready(function() {
 <%-- <c:if test="${not empty update}"> --%>
 <!-- <h3>Update Product Table Success</h3> -->
 <!-- <table border="1"> -->
-<%-- 	<tr><td>Name</td><td>${update.furniture_neme}</td></tr> --%>
+<%-- 	<tr><td>Name</td><td>${update.furniture_name}</td></tr> --%>
 <%-- 	<tr><td>Price</td><td>${update.furniture_price}</td></tr> --%>
 <%-- 	<tr><td>Meaasge</td><td>${update.furniture_message}</td></tr> --%>
 <!-- </table> -->

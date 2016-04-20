@@ -361,6 +361,7 @@ $(document).ready(function(){
 			</div>
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
+            <script type="text/javascript">clearForm();</script>
             </c:if>
        
 			<!--close header-->

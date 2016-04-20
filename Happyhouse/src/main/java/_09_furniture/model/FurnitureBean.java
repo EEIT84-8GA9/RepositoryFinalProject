@@ -6,7 +6,7 @@ public class FurnitureBean {
 
 	private int furniture_id;
 	private String user_account;
-	private String furniture_neme;
+	private String furniture_name;
 	private double furniture_price;
 	private String furniture_status;
 	private String furniture_time;
@@ -32,12 +32,12 @@ public class FurnitureBean {
 		this.user_account = user_account;
 	}
 
-	public String getFurniture_neme() {
-		return furniture_neme;
+	public String getFurniture_name() {
+		return furniture_name;
 	}
 
-	public void setFurniture_neme(String furniture_neme) {
-		this.furniture_neme = furniture_neme;
+	public void setFurniture_name(String furniture_name) {
+		this.furniture_name = furniture_name;
 	}
 
 	public double getFurniture_price() {
@@ -111,8 +111,8 @@ public class FurnitureBean {
 	@Override
 	public String toString() {
 		return "FurnitureBean [furniture_id=" + furniture_id
-				+ ", user_account=" + user_account + ", furniture_neme="
-				+ furniture_neme + ", furniture_price=" + furniture_price
+				+ ", user_account=" + user_account + ", furniture_name="
+				+ furniture_name + ", furniture_price=" + furniture_price
 				+ ", furniture_status=" + furniture_status
 				+ ", furniture_time=" + furniture_time + ", furniture_address="
 				+ furniture_address + ", furniture_photo1="
@@ -121,6 +121,8 @@ public class FurnitureBean {
 				+ furniture_message + ", furniture_type=" + furniture_type
 				+ "]";
 	}
+
+
 
 	
 

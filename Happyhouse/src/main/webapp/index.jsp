@@ -413,7 +413,7 @@ $(document).ready(function(){
 <!-- 				</div> -->
 				<!--close content_text-->
 
-			</div>
+<!-- 			</div> -->
 			<!--close content-->
 
 
@@ -422,14 +422,16 @@ $(document).ready(function(){
 		
 		
 		
+	
+		
+<!-- 		<div> -->
 		
 		<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
 		
-        <form action="<c:url value="/_10_chart.controller/chart.controller"/>"
-		method="get" name="form_name">
-		<div>
+        <div class="content_select_div">
+		<form action="<c:url value="/_10_chart.controller/chart.controller"/>"	method="get" name="form_name">
 		<!-- FORM NAME其實沒用到.... -->
-		<select id="cityend" name="currentprice_citymain"  >
+		<select id="cityend" name="currentprice_citymain">
 			<!--     和input box一樣 用name 傳值給SERVLET -->
 		</select>
 		<!--  城市 >> 台北市 .... -->
@@ -451,14 +453,14 @@ $(document).ready(function(){
 			<option value="其它">其它</option>
 			<option value="透天厝">透天厝</option>
 			<option value="華廈">華廈(10樓以下)</option>
-		</select> 
-		
-    </div>
-	<div id="columnchart_material" style="width: 350px; height: 250px; float:Left"></div>
-	<div id="chart_div" style="width: 350px; height: 250px; float:Left"></div>
+		</select>
+		<!--  類型 >> -->
+</div>
+		<div id="columnchart_material" style="width: 300px; height: 250px; float:left"></div>
+		<div id="chart_div" style="width: 300px; height: 250px; float:left"></div>
 
 	</form>
-  </div>
+	</div>
 <!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ 以上偶的 ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻-->
 
 

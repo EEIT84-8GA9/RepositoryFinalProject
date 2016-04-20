@@ -149,19 +149,6 @@
 
 <c:if test="${not empty RentGMselect}">
 		<table border=1 cellpadding=20 >
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-
-<!-- 			</thead> -->
 <tr><td>遭檢舉</td></tr>
 			<tbody>
 				<c:forEach var="row" items="${RentGMselect}">
@@ -184,33 +171,8 @@
 						<c:param name="renthouse_email" value="${row.renthouse_email}" />
 						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" />
 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			
-					</c:url>
-	
-					<!-- 修改用 -->
-					
-<%-- 					<c:url value="/_03_renthouse/UpdaterentHouse.jsp" var="path2" scope="page"> --%>
-<%-- 						<c:param name="user_account" value="${row.user_account}" /> --%>
-<%-- 						<c:param name="renthouse_id" value="${row.renthouse_id}" /> --%>
-<%-- 						<c:param name="renthouse_name" value="${row.renthouse_name}" /> --%>
-<%-- 						<c:param name="renthouse_price" value="${row.renthouse_price}" /> --%>
-<%-- 						<c:param name="renthouse_patterns" value="${row.renthouse_patterns}" /> --%>
-<%-- 						<c:param name="renthouse_address" value="${row.renthouse_address}" /> --%>
-<%-- 						<c:param name="renthouse_deposit" value="${row.renthouse_deposit}" /> --%>
-<%-- 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" /> --%>
-<%-- 						<c:param name="renthouse_size" value="${row.renthouse_size}" /> --%>
-<%-- 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" /> --%>
-<%-- 						<c:param name="renthouse_rentdate" value="${row.renthouse_rentdate}" /> --%>
-<%-- 						<c:param name="renthouse_message" value="${row.renthouse_message}" /> --%>
-<%-- 						<c:param name="renthouse_date" value="${row.renthouse_date}" /> --%>
-<%-- 						<c:param name="renthouse_car" value="${row.renthouse_car}" /> --%>
-<%-- 						<c:param name="renthouse_phone" value="${row.renthouse_phone}" /> --%>
-<%-- 						<c:param name="renthouse_email" value="${row.renthouse_email}" /> --%>
-<%-- 						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" /> --%>
-<%-- 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			 --%>
-<%-- 					</c:url> --%>
-					<!-- 修改用 -->
-					
-					<tr>
+					</c:url>					
+				<tr>
 						<c:if test="${row.renthouse_type=='B'}">
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.renthouse_name}</a></h3>
@@ -222,103 +184,16 @@
 						<td>${row.renthouse_size}</td>
 						<td>${row.renthouse_date}</td>
 						<td>${row.renthouse_type}</td>	
-						<td><button class="opener" type="button">Open Dialog</button></td>
-						<td><select name="type" value="狀態">
-						<option value="A">回復正常</option>
-						
-						<option value="C">封鎖</option>
-						</select>
-					<input type="submit" value="修改" name="prodaction"/></td>
-					
-					
-<%-- 						<td><a href="${path2}">修改</a></td> --%>
-					
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
+						<td>		
+						<input  type="radio" name="type" value="A">正常
+						<input  type="radio" name="type" value="B">違規
+						<input  type="radio" name="type" value="C">封鎖										
+						<input type="submit" value="修改" name="prodaction"/></td>											
 					</c:if>
 					</tr>
-					
 				</c:forEach>
-			
-			</tbody>
-			<tr><td>以封鎖</td></tr>
-			<tbody>
-				<c:forEach var="row" items="${RentGMselect}">
-					<c:url value="/_03_renthouse/RentHouseSingleView.jsp" var="path" scope="page">
-						<c:param name="user_account" value="${row.user_account}" />
-						<c:param name="renthouse_id" value="${row.renthouse_id}" />
-						<c:param name="renthouse_name" value="${row.renthouse_name}" />
-						<c:param name="renthouse_price" value="${row.renthouse_price}" />
-						<c:param name="renthouse_patterns" value="${row.renthouse_patterns}" />
-						<c:param name="renthouse_address" value="${row.renthouse_address}" />
-						<c:param name="renthouse_deposit" value="${row.renthouse_deposit}" />
-						<c:param name="renthouse_describe" value="${row.renthouse_describe}" />
-						<c:param name="renthouse_size" value="${row.renthouse_size}" />
-						<c:param name="renthouse_floor" value="${row.renthouse_floor}" />
-						<c:param name="renthouse_rentdate" value="${row.renthouse_rentdate}" />
-						<c:param name="renthouse_message" value="${row.renthouse_message}" />
-						<c:param name="renthouse_date" value="${row.renthouse_date}" />
-						<c:param name="renthouse_car" value="${row.renthouse_car}" />
-						<c:param name="renthouse_phone" value="${row.renthouse_phone}" />
-						<c:param name="renthouse_email" value="${row.renthouse_email}" />
-						<c:param name="renthouse_reportfrom" value="${row.renthouse_reportfrom}" />
-						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			
-					</c:url>
-	
-					<!-- 修改用 -->
-<%-- 					<c:url value="/_03_renthouse/UpdateRentHouse.jsp" var="path2" scope="page"> --%>
-<%-- 						<c:param name="user_account" value="${row.user_account}" /> --%>
-<%-- 						<c:param name="renthouse_id" value="${row.renthouse_id}" /> --%>
-<%-- 						<c:param name="renthouse_name" value="${row.renthouse_name}" /> --%>
-<%-- 						<c:param name="renthouse_price" value="${row.renthouse_price}" /> --%>
-<%-- 						<c:param name="renthouse_patterns" value="${row.renthouse_patterns}" /> --%>
-<%-- 						<c:param name="renthouse_address" value="${row.renthouse_address}" /> --%>
-<%-- 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" /> --%>
-<%-- 						<c:param name="renthouse_size" value="${row.renthouse_size}" /> --%>
-<%-- 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" /> --%>
-<%-- 						<c:param name="renthouse_age" value="${row.renthouse_age}" /> --%>
-<%-- 						<c:param name="renthouse_message" value="${row.renthouse_message}" /> --%>
-<%-- 						<c:param name="renthouse_date" value="${row.renthouse_date}" /> --%>
-<%-- 						<c:param name="renthouse_car" value="${row.renthouse_car}" /> --%>
-<%-- 						<c:param name="renthouse_phone" value="${row.renthouse_phone}" /> --%>
-<%-- 						<c:param name="renthouse_email" value="${row.renthouse_email}" />			 --%>
-<%-- 					</c:url> --%>
-					<!-- 修改用 -->
-					
-					<tr>
-					<c:if test="${row.renthouse_type=='C'}">
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.renthouse_name}</a></h3>
-						<input type="hidden" name="id" value="${row.renthouse_id}">
-						<h3>${row.renthouse_address}</h5>
-						<h3>${row.renthouse_patterns}</h3>
-						</td>
-						<td>${row.renthouse_price}</td>
-						<td>${row.renthouse_size}</td>
-						<td>${row.renthouse_date}</td>
-						<td>${row.renthouse_type}</td>
-						<td><button id="opener" type="button">Open Dialog</button></td>
-						<td><select name="type" value="狀態">
-						<option value="A">回復正常</option>
-						<option value="B">解除封鎖</option>
-						
-						</select>
-					<input type="submit" value="修改" name="prodaction"/></td>
-<%-- 						<td><a href="${path2}">修改</a></td> --%>
-					
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
-					</c:if>
-					</tr>
-					
-				</c:forEach>
-			
-			</tbody>
-			
-			
-			
+
+			</tbody>				
 		</table>
 	</c:if>
 	</div>

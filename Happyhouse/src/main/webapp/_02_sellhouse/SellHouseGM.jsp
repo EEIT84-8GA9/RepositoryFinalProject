@@ -235,81 +235,16 @@
 						<td>${row.sellhouse_price}</td>
 						<td>${row.sellhouse_size}</td>
 						<td>${row.sellhouse_date}</td>
-						<td>${row.sellhouse_type}</td>
-						<td>
-						
+						<td>${row.sellhouse_type}</td>	
+						<td>		
 						<input  type="radio" name="type" value="A">正常
 						<input  type="radio" name="type" value="B">違規
-						<input  type="radio" name="type" value="C">封鎖
-						
-<!-- 						<select name="type" value="狀態"> -->
-<!-- 						<option value="A">A</option> -->
-<!-- 						<option value="B">B</option> -->
-<!-- 						<option value="C">C</option> -->
-<!-- 						</select> -->
-						
+						<input  type="radio" name="type" value="C">封鎖										
 						<input type="submit" value="修改" name="prodaction"/></td>					
 					</c:if>
-					</tr>
-					
+					</tr>	
 				</c:forEach>
-			
 			</tbody>
-			<tr><td>以封鎖</td></tr>
-			<tbody>
-				<c:forEach var="row" items="${GMselect}">
-				<c:if test="${row.sellhouse_type=='C'}">
-					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
-						<c:param name="user_account" value="${row.user_account}" />
-						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
-						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
-						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
-						<c:param name="sellhouse_patterns" value="${row.sellhouse_patterns}" />
-						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
-						<c:param name="sellhouse_describe" value="${row.sellhouse_describe}" />
-						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
-						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
-						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
-						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
-						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
-						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
-						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
-						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
-						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
-						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
-					</c:url>
-					<tr>
-					
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
-						<input type="text" name="id" value="${row.sellhouse_id}">
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
-						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
-						<td>${row.sellhouse_type}</td>
-						
-						<td>
-						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="B">違規
-						<input  type="radio" name="type" value="C">封鎖
-<!-- 						<select name="type" value="狀態"> -->
-<!-- 						<option value="A">A</option> -->
-<!-- 						<option value="B">B</option> -->
-<!-- 						<option value="C">C</option> -->
-<!-- 						</select> -->
-					<input type="submit" value="修改" name="prodaction"/></td>
-					</c:if>
-					</tr>
-					
-				</c:forEach>
-			
-			</tbody>
-			
-			
-			
 		</table>
 	</c:if>
 	</div>

@@ -73,7 +73,7 @@ tr:hover td {
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="">個人管理頁面</a>
+						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
@@ -86,9 +86,7 @@ tr:hover td {
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 			<!--close header-->
 			<div id="content">
 				<div class="content_item">

@@ -55,12 +55,16 @@
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${not empty LoginOK}">
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						<li><a href="">個人管理頁面</a>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
+						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
-						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
+<!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
+						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
 						<li></li>
 						</ul>
 						</li>
@@ -70,9 +74,7 @@
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 			<!--close header-->
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
@@ -100,7 +102,7 @@
 
 				<div class="content_text_left">
 
-					<form action="<c:url value='/addarticle.controller' />" method="post">
+					<form action="<c:url value='/addarticle.controller' />" method="post" id="add">
 						<table>
 
 							<tr>
@@ -176,5 +178,12 @@
 		<!--close footer-->
 	</div>
 	<!--close main-->
+	<script type="text/javascript">
+	$('#add').submit(function() {
+    var c = confirm("Click OK to continue?");
+    
+    return c; 
+});
+	</script>
 </body>
 </html>

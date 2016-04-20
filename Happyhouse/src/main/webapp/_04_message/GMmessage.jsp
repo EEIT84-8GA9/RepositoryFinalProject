@@ -48,13 +48,11 @@
 				<!--close menubar-->
 			</div>
 			<!--close header-->
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 
 <h3 align="center">檢舉名單</h3>
 <div class="container">
-<form action="<c:url value="/GMmessage.controller" />" method="POST">
+<form action="<c:url value="/GMmessage.controller" />" method="POST" id="gm">
 
 			<table class="table table-hover table-expandable">
                 <thead>
@@ -112,5 +110,15 @@
 		<!--close site_content-->
 	</div>
 	<!--close main-->
+	<script type="text/javascript">
+
+			$('#gm').submit(function() {
+    var c = confirm("Click OK to continue?");
+    
+    return c; 
+});
+		   
+
+		</script>
 	</body>	
 </html>

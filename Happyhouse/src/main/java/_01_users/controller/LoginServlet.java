@@ -66,9 +66,8 @@ public class LoginServlet extends HttpServlet {
 					String path = request.getContextPath();
 					response.sendRedirect(path + "/index.jsp");
 				} else {
-					String path = request.getContextPath();
 					session.removeAttribute("target");
-					response.sendRedirect(path+target);
+					response.sendRedirect(target);
 				}
 			}
 		}

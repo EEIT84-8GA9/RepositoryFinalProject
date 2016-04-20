@@ -1,4 +1,4 @@
-package _02_sellhouse.controller;
+package _03_renthouse.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,17 +18,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _01_users.model.UsersBean;
 import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
 import _02_sellhouse.model.dao.SellHouseDAOJdbc;
+import _03_renthouse.model.RentHouseBean;
+import _03_renthouse.model.RentHouseDAO;
+import _03_renthouse.model.dao.RentHouseDAOJdbc;
 @WebFilter(
-		urlPatterns = { "/_02_sellhouse/SellHouseSearch.jsp" }, 
+		urlPatterns = { "/_03_renthouse/RentHouseUser.jsp" }, 
 		initParams = { 
-	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/SellHouseSearch.jsp"), 			
+	@WebInitParam(name ="renthouse", value ="/_03_renthouse/RentHouseUser.jsp"), 			
 		}
 		)
-public class SellHouseFilter implements Filter {
+public class RentHouseUserFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -65,21 +69,22 @@ public class SellHouseFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding("UTF-8");
-
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		HttpSession session =req.getSession();
+		HttpSession session=req.getSession();
+		UsersBean userbean= (UsersBean) session.getAttribute("LoginOK");
+		String user=userbean.getUser_account();
 		servletPath = req.getServletPath();  
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
 		
 			
-			SellHouseDAO dao=new SellHouseDAOJdbc();
+			RentHouseDAO dao=new RentHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();
-			List<SellHouseBean> result =dao.SELECT_ALL();
-			session.removeAttribute("bean2");
-			req.setAttribute("select", result);
-			request.getRequestDispatcher("/_02_sellhouse/SellHouseSearch.jsp").forward(req, resp);
+			 List<RentHouseBean> result =dao.select_user_account(user);
+			System.out.println("ddddd"+result);
+			req.setAttribute("select1", result);
+			request.getRequestDispatcher("/_03_renthouse/RentHouseUser.jsp").forward(req, resp);
 		
 	}
 

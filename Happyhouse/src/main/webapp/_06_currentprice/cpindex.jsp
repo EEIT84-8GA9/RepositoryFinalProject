@@ -102,10 +102,62 @@
 <!-- 		rowContext:function(e, id, data, row){ -->
 <!-- 			alert("Row " + id + " Context Clicked!!!!") -->
 <!-- click效果 -->
-<h3>CP Table </h3>
+
 
 <section>
 	<header>Simple Table</header>
+
+
+
+<form action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
+<!-- 以各區分別     currentprice_city -->
+<!-- 以類別區分     currentprice_bdtype  -->
+<!-- 賣的樓層       currentprice_transes   -->
+<!-- 總坪數         currentprice_housearea -->
+<!-- 總價元         currentprice_tprice -->
+<table>
+
+<!--用"currentprice_city"  將 value="${param.currentprice_city}" 輸入的值  放到Servlet中   -->
+<!-- String currentprice_city = request.getParameter("currentprice_city"); -->
+<!-- 再轉換成字串使用 -->
+	<tr>
+		
+		<td>
+		<select id="cityend" >
+			<!-- <option value = document.getElementById(area)> -->
+			<option value="">城市</option>
+			<option value="台北市">台北市</option>
+			<option value="台北縣">台北縣</option>
+			<option value="桃園市">桃園市</option>
+			<option value="新竹市">新竹市</option>
+			<option value="高雄市">高雄市</option>
+			<option value="花蓮市">花蓮市</option>
+			<option value="台東市">台東市</option>
+			<option value="南投市">南投市</option>
+		</select> 
+		</td>
+		<td>(區域)時價查詢:請輸入..[EX:大安區安和路一段]</td>
+		<td><input type="text" name="currentprice_address" value="${param.currentprice_address}" onblur="doBlur()" onfocus="clearForm()"></td>
+		<td><span class="error">${error.currentprice_address}</span><img src="../images/ajax-loader.gif" style="display:none"/></td>
+	    
+		<td>
+			<input type="submit" name="prodaction" value="Pick">
+			<input type="button" value="Clear" onclick="clearForm()">
+		</td>
+        <td>
+        <h3><span class="error">${error.action}</span></h3>	
+	    </td>
+	
+	</tr>
+	
+	
+	
+	
+</table>
+</form>
+
+
+
 
 <div id="currentprice_table"></div>
 <script type="text/javascript">
@@ -178,84 +230,56 @@
 
 
 
-<form action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
-<!-- 以各區分別     currentprice_city -->
-<!-- 以類別區分     currentprice_bdtype  -->
-<!-- 賣的樓層       currentprice_transes   -->
-<!-- 總坪數         currentprice_housearea -->
-<!-- 總價元         currentprice_tprice -->
-<table>
 
-<!--用"currentprice_city"  將 value="${param.currentprice_city}" 輸入的值  放到Servlet中   -->
-<!-- String currentprice_city = request.getParameter("currentprice_city"); -->
-<!-- 再轉換成字串使用 -->
-	<tr>
-		<td>currentprice_address(區域)時價查詢:請輸入..[EX:台北市大安區安和路一段]</td>
-		<td><input type="text" name="currentprice_address" value="${param.currentprice_address}" onblur="doBlur()" onfocus="clearForm()"></td>
-		<td><span class="error">${error.currentprice_address}</span><img src="../images/ajax-loader.gif" style="display:none"/></td>
-	</tr>
-	
-	<tr>
-		<td>
-			<input type="submit" name="prodaction" value="Pick">
-			<input type="button" value="Clear" onclick="clearForm()">
-		</td>
-        <td>
-        <h3><span class="error">${error.action}</span></h3>	
-	    </td>
-	
-	</tr>
-</table>
-</form>
 <BR>
 
-
+<!-- 以下為顯示表~最原始版 -->
 <!-- <link rel="stylesheet" type="text/css" href="../css/table.css" /> -->
 
 
-<h3>Select CurrentPrice Table Result : XXX row(s) selected</h3>
+<!-- <h3>Select CurrentPrice Table Result : XXX row(s) selected</h3> -->
 
-<c:if test="${not empty Pick}">
-<table>
-	<thead>
-<!-- currentprice address,currentprice_bdtype, currentprice_trades , currentprice_transes,currentprice_rooms,currentprice_livinroom,currentprice_toilet, -->
-<!-- currentprice_enddate,currentprice_tradedate,currentprice_housearea,currentprice_oneprice -->
-	<tr>
-		<th>建物地址</th>
-		<th>建物類型</th>
-		<th>筆棟數</th>
-		<th>樓層</th>
-		<th>房</th>
-		<th>廳</th>
-		<th>衛</th>
-		<th>建物完成年月</th>
-		<th>交易完成年月</th>
-		<th>總坪數</th>
-		<th>一坪價格</th>
+<%-- <c:if test="${not empty Pick}"> --%>
+<!-- <table> -->
+<!-- 	<thead> -->
+<!-- <!-- currentprice address,currentprice_bdtype, currentprice_trades , currentprice_transes,currentprice_rooms,currentprice_livinroom,currentprice_toilet, --> 
+<!-- <!-- currentprice_enddate,currentprice_tradedate,currentprice_housearea,currentprice_oneprice --> 
+<!-- 	<tr> -->
+<!-- 		<th>建物地址</th> -->
+<!-- 		<th>建物類型</th> -->
+<!-- 		<th>筆棟數</th> -->
+<!-- 		<th>樓層</th> -->
+<!-- 		<th>房</th> -->
+<!-- 		<th>廳</th> -->
+<!-- 		<th>衛</th> -->
+<!-- 		<th>建物完成年月</th> -->
+<!-- 		<th>交易完成年月</th> -->
+<!-- 		<th>總坪數</th> -->
+<!-- 		<th>一坪價格</th> -->
 		
-	</tr>
-	</thead>
+<!-- 	</tr> -->
+<!-- 	</thead> -->
 	
-	<tbody>
-	<c:forEach var="row" items="${Pick}">
+<!-- 	<tbody> -->
+<%-- 	<c:forEach var="row" items="${Pick}"> --%>
 
-	<tr>
-	    <td>${row.currentprice_address}</td>
-		<td>${row.currentprice_bdtype}</td>
-		<td>${row.currentprice_trades}</td>
-		<td>${row.currentprice_transes}</td>
-		<td>${row.currentprice_rooms}</td>
-		<td>${row.currentprice_livinroom}</td>
-		<td>${row.currentprice_toilet}</td>
-		<td>${row.currentprice_enddate}</td>
-		<td>${row.currentprice_tradedate}</td>
-		<td>${row.currentprice_housearea}</td>
-		<td>${row.currentprice_oneprice}</td>
-	</tr>
-	</c:forEach>
-	</tbody>
-</table>
-</c:if>
+<!-- 	<tr> -->
+<%-- 	    <td>${row.currentprice_address}</td> --%>
+<%-- 		<td>${row.currentprice_bdtype}</td> --%>
+<%-- 		<td>${row.currentprice_trades}</td> --%>
+<%-- 		<td>${row.currentprice_transes}</td> --%>
+<%-- 		<td>${row.currentprice_rooms}</td> --%>
+<%-- 		<td>${row.currentprice_livinroom}</td> --%>
+<%-- 		<td>${row.currentprice_toilet}</td> --%>
+<%-- 		<td>${row.currentprice_enddate}</td> --%>
+<%-- 		<td>${row.currentprice_tradedate}</td> --%>
+<%-- 		<td>${row.currentprice_housearea}</td> --%>
+<%-- 		<td>${row.currentprice_oneprice}</td> --%>
+<!-- 	</tr> -->
+<%-- 	</c:forEach> --%>
+<!-- 	</tbody> -->
+<!-- </table> -->
+<%-- </c:if> --%>
 
 <h3><a href="<c:url value="/index.jsp" />">index</a></h3>
 </body>

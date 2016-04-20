@@ -547,9 +547,10 @@ public class CurrentPriceDAOJdbc implements CurrentPriceDAO {
 	
 	
 	
-	private static final String SELECT_AVGONEPRICE_BY_CITY_TYPE 
-	= " select currentprice_bdtype ,CEILING(AVG(Currentprice_oneprice)) as avg_oneprice from currentprice "
-			+ "where  currentprice_city =? AND currentprice_bdtype<>'倉庫' "
+
+	
+	private static final String SELECT_AVGONEPRICE_BY_CITY_TYPE = " select currentprice_bdtype ,CEILING(AVG(Currentprice_oneprice)) as avg_oneprice from currentprice "
+			+ "where  currentprice_city =? AND currentprice_bdtype<>'倉庫' AND currentprice_bdtype<>'農舍' AND currentprice_bdtype<>'工廠'  AND currentprice_bdtype<>'廠辦' "
 			+ "GROUP BY currentprice_bdtype";
 	
 	

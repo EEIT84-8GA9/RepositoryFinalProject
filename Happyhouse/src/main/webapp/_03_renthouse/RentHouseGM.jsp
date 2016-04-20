@@ -92,7 +92,7 @@
 			</c:if>
 			<!--close header-->
 			<div style="padding-left:150px">
-		<form  action="<c:url value="/renthouse.GM.controller"/>"method="post" >
+	
 <!-- <table> -->
 <!-- <tr> -->
 <%-- <td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td> --%>
@@ -152,6 +152,7 @@
 <tr><td>遭檢舉</td></tr>
 			<tbody>
 				<c:forEach var="row" items="${RentGMselect}">
+				<c:if test="${row.renthouse_type=='B'}">
 					<c:url value="/_03_renthouse/RentHouseSingleView.jsp" var="path" scope="page">
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="renthouse_id" value="${row.renthouse_id}" />
@@ -173,10 +174,11 @@
 						<c:param name="renthouse_reportreason" value="${row.renthouse_reportreason}" />			
 					</c:url>					
 				<tr>
-						<c:if test="${row.renthouse_type=='B'}">
+					<form  action="<c:url value="/renthouse.GM.controller"/>"method="post" >
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
 						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.renthouse_name}</a></h3>
-						<input type="hidden" name="id" value="${row.renthouse_id}">
+						
+						<h3>${row.renthouse_id}</h5>
 						<h3>${row.renthouse_address}</h5>
 						<h3>${row.renthouse_patterns}</h3>
 						</td>
@@ -185,14 +187,13 @@
 						<td>${row.renthouse_date}</td>
 						<td>${row.renthouse_type}</td>	
 						<td>		
+						<input type="text" name="id" value="${row.renthouse_id}">
 						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="B">違規
-						<input  type="radio" name="type" value="C">封鎖										
+						<input  type="radio" name="type" value="C">${row.renthouse_id}									
 						<input type="submit" value="修改" name="prodaction"/></td>											
 					</c:if>
 					</tr>
 				</c:forEach>
-
 			</tbody>				
 		</table>
 	</c:if>

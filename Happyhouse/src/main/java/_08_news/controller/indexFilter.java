@@ -130,6 +130,7 @@ public class indexFilter implements Filter {
 							int temp4 = 403;
 							int temp5 = 404;
 							int temp6 = 405;
+							int temp7 = 406;
 					//
 //							System.out.println(temp1);
 //							// 直接Select四個
@@ -140,6 +141,7 @@ public class indexFilter implements Filter {
 							newsBean bean4 = new newsBean();
 							newsBean bean5 = new newsBean();
 							newsBean bean6 = new newsBean();
+							newsBean bean7 = new newsBean();
 					//
 							bean1 = dao.select(temp1);
 							bean2 = dao.select(temp2);
@@ -147,6 +149,7 @@ public class indexFilter implements Filter {
 						    bean4 = dao.select(temp4);
 		                    bean5 = dao.select(temp5);
                             bean6 = dao.select(temp6);
+                            bean7 = dao.select(temp7);
 		                    
 					
 //					List<newsBean> bean = dao.select();
@@ -170,6 +173,7 @@ public class indexFilter implements Filter {
             map.put("four", bean4);
             map.put("five",bean5);
             map.put("six", bean6);
+            map.put("indeximg", bean7);
 
 		
             // 將資料傳送回去

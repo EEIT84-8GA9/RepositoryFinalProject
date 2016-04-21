@@ -533,7 +533,7 @@
 		<table >
 			<tr >
 				<td ><textarea name="content" wrap="physical"
-						style="width: 650px; height: 120px;">${param.content}</textarea></td>
+						style="width: 650px; height: 120px;" WRAP="physical">${param.content}</textarea></td>
 			</tr>
 			<tr>
 				<td align='right'><input type="submit" name="type" value="回覆">

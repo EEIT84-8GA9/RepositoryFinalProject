@@ -76,11 +76,14 @@ public class RentHouseFilter implements Filter {
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
 		
+		
 			
 			RentHouseDAO dao=new RentHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();
 			 List<RentHouseBean> result =dao.SELECT_ALL();
-			session.removeAttribute("bean2");
+			 System.err.println("rentreaserch");
+			 System.out.println(result);
+			//session.removeAttribute("bean2");
 			req.setAttribute("rent_select", result);
 			request.getRequestDispatcher("/_03_renthouse/RentHouseSearch.jsp").forward(req, resp);
 		

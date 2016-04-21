@@ -86,6 +86,8 @@ $(document).ready(function() {
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+												<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
@@ -126,7 +128,7 @@ $(document).ready(function() {
 	<c:forEach var="row" items="${select}">
 		<c:url value="/_09_furniture/product.jsp" var="path" scope="page">
 			<c:param name="furniture_id" value="${row.furniture_id}" />
-			<c:param name="name" value="${row.furniture_neme}" />
+			<c:param name="name" value="${row.furniture_name}" />
 			<c:param name="price" value="${row.furniture_price}" />
 			<c:param name="time" value="${row.furniture_time}" />
 			<c:param name="message" value="${row.furniture_message}" />
@@ -142,11 +144,11 @@ $(document).ready(function() {
 <!-- 		</td> -->
 		
 		<td>${row.furniture_id}</td>
-	    <td>${row.furniture_neme}</td>
+	    <td>${row.furniture_name}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" data-title="${row.furniture_neme}"><img src="../img/click.png"></a></td>
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
 	</tr>
 	</c:forEach>
 	</tbody>
@@ -156,7 +158,7 @@ $(document).ready(function() {
 <%-- <c:if test="${not empty update}"> --%>
 <!-- <h3>Update Product Table Success</h3> -->
 <!-- <table border="1"> -->
-<%-- 	<tr><td>Name</td><td>${update.furniture_neme}</td></tr> --%>
+<%-- 	<tr><td>Name</td><td>${update.furniture_name}</td></tr> --%>
 <%-- 	<tr><td>Price</td><td>${update.furniture_price}</td></tr> --%>
 <%-- 	<tr><td>Meaasge</td><td>${update.furniture_message}</td></tr> --%>
 <!-- </table> -->

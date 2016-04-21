@@ -23,6 +23,8 @@ import java.util.List;
 
 
 
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -43,6 +45,7 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 	private static final String url="jdbc:sqlserver://localhost:1433;database=HappyHouse";
 	private static final String	username="sa";
 	private	static final String password="sa123456";
+	private static final String UPDATE_TYPE="UPDATE renthouse set renthouse_type=? where renthouse_id=?";
 	private static final String UPDATE_REPORT="UPDATE renthouse SET renthouse_reportfrom=?,renthouse_reportreason=?,renthouse_type='B' WHERE renthouse_id=?";
 	private static final String SELECT_ALL="SELECT * FROM renthouse as r join users as u on r.user_account=u.user_account";
 	private static final String SELECT_BY_USER_ACCOUNT="Select * FROM renthouse Where user_account LIKE ?";
@@ -105,6 +108,8 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 				bean.setRenthouse_car(rset.getString("renthouse_car"));
 				bean.setRenthouse_phone(rset.getString("renthouse_phone"));
 				bean.setRenthouse_email(rset.getString("renthouse_email"));	
+				bean.setRenthouse_reportfrom(rset.getString("renthouse_reportfrom"));
+				bean.setRenthouse_reportreason(rset.getString("renthouse_reportreason"));
 				result.add(bean);
 			}
 		} catch (SQLException e) {
@@ -773,6 +778,46 @@ public  RentHouseBean updatereport(RentHouseBean bean){
 	
 	
 };
+
+
+@Override
+public RentHouseBean GMupdate(RentHouseBean bean){
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	try {
+		//conn=DriverManager.getConnection(url,username,password);
+		conn=dataSource.getConnection();
+		pstmt = conn.prepareStatement(UPDATE_TYPE);
+		pstmt.setString(1,bean.getRenthouse_type());
+		pstmt.setInt(2,bean.getRenthouse_id());
+		int i=	pstmt.executeUpdate();	
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	finally{
+		
+		if (pstmt !=null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (conn !=null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	return null;
+}
 
 
 

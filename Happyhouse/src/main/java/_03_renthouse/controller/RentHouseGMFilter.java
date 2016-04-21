@@ -1,4 +1,4 @@
-package _02_sellhouse.controller;
+package _03_renthouse.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,13 +23,16 @@ import _02_sellhouse.model.SellHouseBean;
 import _02_sellhouse.model.SellHouseDAO;
 import _02_sellhouse.model.SellHouseService;
 import _02_sellhouse.model.dao.SellHouseDAOJdbc;
+import _03_renthouse.model.RentHouseBean;
+import _03_renthouse.model.RentHouseDAO;
+import _03_renthouse.model.dao.RentHouseDAOJdbc;
 @WebFilter(
-		urlPatterns = { "/_02_sellhouse/SellHouseGM.jsp" }, 
+		urlPatterns = { "/_03_renthouse/RentHouseGM.jsp" }, 
 		initParams = { 
-	@WebInitParam(name ="sellhouse", value ="/_02_sellhouse/SellHouseGM.jsp"), 			
+	@WebInitParam(name ="sellhouse", value ="/_03_renthouse/RentHouseGM.jsp"), 			
 		}
 		)
-public class SellHouseGMFilter implements Filter {
+public class RentHouseGMFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -42,7 +45,7 @@ public class SellHouseGMFilter implements Filter {
 			String path = e.nextElement();
 			url.add(fConfig.getInitParameter(path));
 		}
-				
+		System.out.println("AAAA"+url);			
 	}
 	private boolean mustLogin(){
 		boolean login=false;
@@ -74,11 +77,11 @@ public class SellHouseGMFilter implements Filter {
 		servletPath = req.getServletPath();  
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
-		SellHouseDAO dao=new SellHouseDAOJdbc();
-		List<SellHouseBean> result =dao.SELECT_ALL();
-//		System.out.println("ddddd"+result);
-		req.setAttribute("GMselect", result);
-		request.getRequestDispatcher("/_02_sellhouse/SellHouseGM.jsp").forward(req, resp);
+		RentHouseDAO dao=new RentHouseDAOJdbc();
+		List<RentHouseBean> result =dao.SELECT_ALL();
+		System.err.println("GMFilter");
+		req.setAttribute("RentGMselect", result);
+		request.getRequestDispatcher("/_03_renthouse/RentHouseGM.jsp").forward(req, resp);
 		
 	}
 

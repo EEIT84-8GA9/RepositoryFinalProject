@@ -96,8 +96,9 @@ public class RegistServlet extends HttpServlet {
 				String path = request.getContextPath();
 				response.sendRedirect(path + "/index.jsp");
 			} else {
-				session.removeAttribute("target");
-				response.sendRedirect(target);
+			request.setAttribute("Regist", bean);
+			request.getRequestDispatcher("/_01_users/login.jsp")
+			.forward(request, response);
 			}
 		}
 

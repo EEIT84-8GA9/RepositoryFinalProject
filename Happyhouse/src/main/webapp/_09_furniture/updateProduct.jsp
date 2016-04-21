@@ -50,6 +50,8 @@
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
@@ -74,18 +76,17 @@
 <form action="<c:url value="/pages/product.controller" />" method="get">
 	<table>
 	<tr>
-		<td>帳號: </td>
-		<td><input type="text" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()"></td>
+		<td><input type="hidden" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()"></td>
 		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 	</tr>
 	<tr>
 		<td>產品編號 : </td>
-		<td><input type="text" name="furniture_id" value="${param.furniture_id}"></td>
+		<td><input type="text" name="furniture_id" value="${param.furniture_id}" readonly="readonly"></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>家具名稱 : </td>
-		<td><input type="text" name="insname" value="${param.furniture_neme}"></td>
+		<td><input type="text" name="insname" value="${param.furniture_name}"></td>
 		<td></td>
 	</tr>
      <tr>
@@ -128,6 +129,7 @@
 	</tr>
 	</table>
 	</form>
+	 <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
 	<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>

@@ -6,6 +6,7 @@ public class cartsrentBean {
 	
 	private Integer cart_id;
 	private String user_account;
+	private Integer renthouse_id;
 	private	String renthouse_name;
 	private	float renthouse_price;
 	private String renthouse_patterns;
@@ -13,33 +14,30 @@ public class cartsrentBean {
 	private	String renthouse_describe;
 	private	float renthouse_size;
 	private	String renthouse_floor;
+	private String renthouse_photo1_name;
 	private	Blob	renthouse_photo1;
+	private String renthouse_photo2_name;
 	private	Blob	renthouse_photo2;
+	private String renthouse_photo3_name;
 	private	Blob	renthouse_photo3;
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "cartsrentBean [cart_id=" + cart_id + ", user_account="
-				+ user_account + ", renthouse_name=" + renthouse_name
-				+ ", renthouse_price=" + renthouse_price
-				+ ", renthouse_patterns=" + renthouse_patterns
-				+ ", renthouse_address=" + renthouse_address
-				+ ", renthouse_describe=" + renthouse_describe
-				+ ", renthouse_size=" + renthouse_size + ", renthouse_floor="
-				+ renthouse_floor + ", renthouse_photo1=" + renthouse_photo1
+				+ user_account + ", renthouse_id=" + renthouse_id
+				+ ", renthouse_name=" + renthouse_name + ", renthouse_price="
+				+ renthouse_price + ", renthouse_patterns="
+				+ renthouse_patterns + ", renthouse_address="
+				+ renthouse_address + ", renthouse_describe="
+				+ renthouse_describe + ", renthouse_size=" + renthouse_size
+				+ ", renthouse_floor=" + renthouse_floor
+				+ ", renthouse_photo1_name=" + renthouse_photo1_name
+				+ ", renthouse_photo1=" + renthouse_photo1
+				+ ", renthouse_photo2_name=" + renthouse_photo2_name
 				+ ", renthouse_photo2=" + renthouse_photo2
+				+ ", renthouse_photo3_name=" + renthouse_photo3_name
 				+ ", renthouse_photo3=" + renthouse_photo3 + "]";
 	}
 	/**
@@ -65,6 +63,18 @@ public class cartsrentBean {
 	 */
 	public void setUser_account(String user_account) {
 		this.user_account = user_account;
+	}
+	/**
+	 * @return the renthouse_id
+	 */
+	public Integer getRenthouse_id() {
+		return renthouse_id;
+	}
+	/**
+	 * @param renthouse_id the renthouse_id to set
+	 */
+	public void setRenthouse_id(Integer renthouse_id) {
+		this.renthouse_id = renthouse_id;
 	}
 	/**
 	 * @return the renthouse_name
@@ -151,6 +161,18 @@ public class cartsrentBean {
 		this.renthouse_floor = renthouse_floor;
 	}
 	/**
+	 * @return the renthouse_photo1_name
+	 */
+	public String getRenthouse_photo1_name() {
+		return renthouse_photo1_name;
+	}
+	/**
+	 * @param renthouse_photo1_name the renthouse_photo1_name to set
+	 */
+	public void setRenthouse_photo1_name(String renthouse_photo1_name) {
+		this.renthouse_photo1_name = renthouse_photo1_name;
+	}
+	/**
 	 * @return the renthouse_photo1
 	 */
 	public Blob getRenthouse_photo1() {
@@ -161,6 +183,18 @@ public class cartsrentBean {
 	 */
 	public void setRenthouse_photo1(Blob renthouse_photo1) {
 		this.renthouse_photo1 = renthouse_photo1;
+	}
+	/**
+	 * @return the renthouse_photo2_name
+	 */
+	public String getRenthouse_photo2_name() {
+		return renthouse_photo2_name;
+	}
+	/**
+	 * @param renthouse_photo2_name the renthouse_photo2_name to set
+	 */
+	public void setRenthouse_photo2_name(String renthouse_photo2_name) {
+		this.renthouse_photo2_name = renthouse_photo2_name;
 	}
 	/**
 	 * @return the renthouse_photo2
@@ -175,6 +209,18 @@ public class cartsrentBean {
 		this.renthouse_photo2 = renthouse_photo2;
 	}
 	/**
+	 * @return the renthouse_photo3_name
+	 */
+	public String getRenthouse_photo3_name() {
+		return renthouse_photo3_name;
+	}
+	/**
+	 * @param renthouse_photo3_name the renthouse_photo3_name to set
+	 */
+	public void setRenthouse_photo3_name(String renthouse_photo3_name) {
+		this.renthouse_photo3_name = renthouse_photo3_name;
+	}
+	/**
 	 * @return the renthouse_photo3
 	 */
 	public Blob getRenthouse_photo3() {
@@ -185,21 +231,21 @@ public class cartsrentBean {
 	 */
 	public void setRenthouse_photo3(Blob renthouse_photo3) {
 		this.renthouse_photo3 = renthouse_photo3;
-	}	
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    
 	
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+}	

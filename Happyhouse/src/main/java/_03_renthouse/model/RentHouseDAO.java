@@ -35,4 +35,6 @@ public interface RentHouseDAO {
 	
 	public abstract RentHouseBean updatereport(RentHouseBean bean);
 
+	public abstract  RentHouseBean GMupdate(RentHouseBean bean);
+
 }

@@ -14,6 +14,10 @@ tr:hover td {
 	background: #DDDDDD;
 	color: #339;
 }
+#title{
+	padding:10px;
+	font-size: 15px;
+}
 </style>
 <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="/cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
@@ -131,7 +135,7 @@ tr:hover td {
 				</c:url>
 				<c:if test="${messageVO.message_actiontype=='add' && messageVO.message_type!='C'}">
 				<tr>
-					<td width='500' height='20'><a href='${path}'>${messageVO.message_title}</a></td>
+					<td width='500' height='20' id="title"  ><a href='${path}'>${messageVO.message_title}</a></td>
 					<td align='center'>${messageVO.message_id}</td>
 					<td align='center'>${messageVO.user_account}</td>
 					<td align='center'>${messageVO.message_date}</td>

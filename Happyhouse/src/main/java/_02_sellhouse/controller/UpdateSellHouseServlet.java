@@ -80,6 +80,7 @@ public class UpdateSellHouseServlet extends HttpServlet {
 		
 		String keyword=request.getParameter("keyword");
 		String temp1 = request.getParameter("sellhouse_id");
+		System.out.println("temp1="+temp1);
 		String user_account = request.getParameter("user_account");
 		String sellhouse_name = request.getParameter("sellhouse_name");
 		String temp3 = request.getParameter("sellhouse_price");
@@ -106,15 +107,13 @@ public class UpdateSellHouseServlet extends HttpServlet {
 		request.setAttribute("style", style);
 		request.setAttribute("error", error);
 		request.setAttribute("param", param);
-		
-		
-	
 		//判斷
 		int sellhouse_id=0;
 		//ID
 		if(temp1 !=null&&temp1.trim().length()!=0){
 			try {
 				sellhouse_id = Integer.parseInt(temp1);
+				System.out.println(sellhouse_id);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 				error.put("sellhouse_id", "id必須是數字");
@@ -245,9 +244,6 @@ public class UpdateSellHouseServlet extends HttpServlet {
 //				style.put("sellhouse_age", "background-color:pink");
 			}
 		}
-
-		
-		
 		if(sellhouse_age!=0.0){
 			param.put("sellhouse_age",""+sellhouse_age);
 			style.put("sellhouse_age", "");
@@ -362,11 +358,10 @@ public class UpdateSellHouseServlet extends HttpServlet {
 //	
 //		}	
 		 if(prodaction!=null&&"修改".equals(prodaction)){
-			 //parts = request.getParts();
+			//parts = request.getParts();
 			System.out.println("修改");
-
-
-			System.out.println("有無抓到ID"+bean.getSellhouse_id());
+			
+			bean.setSellhouse_id(sellhouse_id);
 			bean.setUser_account(user_account);
 			bean.setSellhouse_name(sellhouse_name);
 			bean.setSellhouse_price(sellhouse_price);
@@ -381,6 +376,7 @@ public class UpdateSellHouseServlet extends HttpServlet {
 			bean.setSellhouse_car(sellhouse_car);
 			bean.setSellhouse_phone(sellhouse_phone);
 			bean.setSellhouse_email(sellhouse_email);
+			System.out.println("有無抓到ID"+bean.getSellhouse_id());
 			//圖片上傳部分		
 			if (parts != null) {
 				for (Part p : parts) {

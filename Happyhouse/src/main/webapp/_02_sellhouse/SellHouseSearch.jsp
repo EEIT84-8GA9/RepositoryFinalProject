@@ -150,10 +150,11 @@
 <td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
 </tr>
 </table>
-<table>                                                                 
+<!-- <table>                                                                  -->
 </form>
 <c:if test="${not empty select}">
-		<table border=1 cellpadding=20 >
+<!-- 	<table border=1 cellpadding=20 > -->
+		<table>
 <!-- 			<thead> -->
 <!-- 				<th>標題</th> -->
 <!-- 				<th>價格</th> -->
@@ -165,7 +166,6 @@
 <!-- 				<th>屋齡</th> -->
 <!-- 				<th>刊登日期</th> -->
 <!-- 				<th>車位</th> -->
-
 <!-- 			</thead> -->
 			<tbody>
 				<c:forEach var="row" items="${select}">
@@ -191,17 +191,20 @@
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
-					<td colspan=2> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
+					<td style="font-size:500px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
+						<td><h3 style="font-style:normal;color:RED"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
+						<h5 style="font-style:normal">地址:${row.sellhouse_address}</h5>
+						<h5 style="font-style:normal">格局:${row.sellhouse_patterns}</h5>
+						<h5 style="font-style:normal">樓層:${row.sellhouse_floor}</h5>
 						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
-<%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
+						<td style="padding:50px">${row.sellhouse_price}萬元</td>
+						<td style="padding:50px">${row.sellhouse_size}坪</td>
+					</tr>
+					<tr>
+					<td></td>
+					</tr>
+						<tr>
+					<td></td>
 					</tr>
 					</c:if>
 				</c:forEach>

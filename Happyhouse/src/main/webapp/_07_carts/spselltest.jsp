@@ -53,14 +53,18 @@
 			
 			<div class="cd-products-wrapper">
 				<ul class="cd-products-columns">
-					<form action="<c:url value="/gousejsp.controller" />" method="post">
+
 					<c:forEach var="row" items="${sell}">
 					
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
-							<img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px" width="150px" alt="product image">
-							<h3>${row.sellhouse_photo1_name}</h3>
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+<!-- 							<img src="/Happyhouse/img/product.png" alt="product image"> -->
+						<img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" alt="product image">
+							</form>
+
+						<h3>圖片</h3>
 						</div> <!-- .top-info -->
 
 						<ul class="cd-features-list">
@@ -77,7 +81,7 @@
 					</li> <!-- .product -->
 				
 						</c:forEach>
-						</form>
+
 <!-- 				<li class="product"> -->
 <!-- 						<div class="top-info"> -->
 <!-- 							<div class="check"></div>　 -->

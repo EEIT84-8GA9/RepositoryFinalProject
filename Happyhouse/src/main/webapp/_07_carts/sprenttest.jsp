@@ -29,7 +29,6 @@
             <br>
             <br>
             <a href="/Happyhouse/index.jsp"><img style="border: 10px solid #FFF;" alt="image"src="/Happyhouse/images/houseindex.jpg" /></a>
-            <a href="" class="reset">回首頁</a>
 			<div class="actions">
 				<a href="#0" class="reset">回到預設值</a>
 				<a href="#0" class="filter">只對打勾做選擇</a>
@@ -58,7 +57,10 @@
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
-							<img src="/Happyhouse/img/product.png" alt="product image">
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+<!-- 						<img src="/Happyhouse/img/product.png" alt="product image"> -->
+                           	<img src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" alt="product image">                           
+							</form>
 							<h3>一號</h3>
 						</div> <!-- .top-info -->
 

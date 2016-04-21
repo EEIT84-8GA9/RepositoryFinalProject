@@ -92,7 +92,7 @@ public class sms_servlet extends HttpServlet {
 				}
 			}
 			SmsVO vo = new SmsVO();
-			vo.setSms_describe(sms_describe);
+			vo.setSms_describe(sms_describe.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 			vo.setSms_mailers(bean.getUser_account());
 			vo.setUser_account(user_account);
 			vo.setSms_title(sms_title);
@@ -111,7 +111,7 @@ public class sms_servlet extends HttpServlet {
 			// }
 		} else if ("回覆".equals(type)) {
 			SmsVO vo = new SmsVO();
-			vo.setSms_describe(sms_describe);
+			vo.setSms_describe(sms_describe.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 			vo.setUser_account(user_account);
 			vo.setSms_title(sms_title);
 			session.setAttribute("resp", vo);
@@ -130,7 +130,7 @@ public class sms_servlet extends HttpServlet {
 
 		}else if ("傳送".equals(type)){
 			SmsVO vo = new SmsVO();
-			vo.setSms_describe(sms_describe);
+			vo.setSms_describe(sms_describe.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 			vo.setSms_mailers(bean.getUser_account());
 			vo.setUser_account(user_account);
 			vo.setSms_title(sms_title);
@@ -151,7 +151,7 @@ public class sms_servlet extends HttpServlet {
 				
 			
 			SmsVO vo = new SmsVO();
-			vo.setSms_describe(sms_describe);
+			vo.setSms_describe(sms_describe.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 			vo.setSms_mailers(bean.getUser_account());
 			vo.setUser_account(user_account);
 			vo.setSms_title(sms_title);

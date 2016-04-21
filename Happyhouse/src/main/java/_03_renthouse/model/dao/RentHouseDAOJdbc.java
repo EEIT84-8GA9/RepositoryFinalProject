@@ -108,6 +108,8 @@ public class RentHouseDAOJdbc implements RentHouseDAO {
 				bean.setRenthouse_car(rset.getString("renthouse_car"));
 				bean.setRenthouse_phone(rset.getString("renthouse_phone"));
 				bean.setRenthouse_email(rset.getString("renthouse_email"));	
+				bean.setRenthouse_reportfrom(rset.getString("renthouse_reportfrom"));
+				bean.setRenthouse_reportreason(rset.getString("renthouse_reportreason"));
 				result.add(bean);
 			}
 		} catch (SQLException e) {

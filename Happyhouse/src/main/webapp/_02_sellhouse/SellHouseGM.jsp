@@ -9,15 +9,27 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script> -->
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
  
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">  -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>  -->
+<!-- <link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css"> -->
+<!-- <script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">              
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css">
+<script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script>
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -52,85 +64,41 @@
 </script>
 </head>
 <body>
-		<div id="main">
+	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">檢舉管理</a>
 						<ul>
-						<li><a href="#">搜尋出售</a></li>
-                        <li><a href="#">刊登出售</a></li>
-                        <li><a href="#">查詢出售收藏</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseGM.jsp">出售區檢舉</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/RentHouseGM.jsp">出租區檢舉</a></li>
+                        <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>
+                        <li><a href="#">信件檢舉</a></li>                        
+                        <li><a href="#">封鎖會員</a></li>                   
 						</ul>
 						</li>
-						<li><a href="testimonials.html">刊登出租</a>
-						<ul>
-						<li><a href="#">搜尋出租</a></li>
-                        <li><a href="#">刊登出租</a></li>
-                        <li><a href="#">查詢出租收藏</a></li>
-						</ul>
-						</li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
-						<ul>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">刊登二手家具</a></li>	
-						</ul>
-						</li>
-						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
+						<li><a href="/Happyhouse/_08_news/test.jsp">首頁更新</a></li>									
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						<li><a href="">個人管理頁面</a>
-						<ul>
-						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
-						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
-						<li></li>
-						</ul>
-						</li>
 						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+<!-- 			<div style="padding-left:150px"> -->
 		<form  action="<c:url value="/sellhouse.GM.controller"/>"method="post" >
-<!-- 		<fieldset> -->
-<!-- 		<legend>房屋查詢</legend> -->
-<!-- 	<div style="padding-left:200px;width:50%;height:50%"> -->
-<!-- 	<label>選擇搜尋方式</label> -->
-	
-<!-- 	<select name="choise" value="標題"> -->
-<!-- 	<option value="address">地址</option> -->
-<!-- 	<option value="name">標題</option> -->
-<!-- 	<option value="price">價格</option> -->
-<!-- 	</select> -->
-<!-- 	<input  style="height:50%" type="hidden" name="sellhouse_address"> -->
-<!-- 	<input  style="height:50%" type="hidden" name="null"> -->
-<!-- 	<input  style="height:50%" type="text" name="keyword"> -->
-<!-- 	<input type="submit" value="搜尋" name="prodaction"/> -->
-<!-- 	</div> -->
-<!-- 	</fieldset> -->
-<!-- <table> -->
-<!-- <tr> -->
-<!-- <td>請輸入地址</td> -->
-<%-- <td ><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td> --%>
-<!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
-<!-- </tr> -->
-<!-- </table> -->
+		<div class="container">
 <table>
 <tr>
 <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
@@ -186,22 +154,15 @@
 <table>                                                                 
 
 <c:if test="${not empty GMselect}">
-		<table border=1 cellpadding=20 >
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-
-<!-- 			</thead> -->
-<tr><td>遭檢舉</td></tr>
-			<tbody>
+<!-- 	<table border=1 cellpadding=20 > -->
+		<table class="table table-hover table-expandable" >
+			<thead>
+			<tr>
+				<th>標題</th>
+				<th>使用者帳號</th>
+				<th>目前狀態</th>
+				</tr>
+			</thead>
 				<c:forEach var="row" items="${GMselect}">
 				<c:if test="${row.sellhouse_type=='B'}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
@@ -224,27 +185,32 @@
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
 						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
 						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
-					</c:url>				
+					</c:url>
+					<tbody>				
 					<tr>
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3><a href="${path}">${row.sellhouse_name}</a></h3>
-						<input type="text" name="id1" value="${row.sellhouse_id}">
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
+					<td><a href="${path}">${row.sellhouse_name}</a></td>
+					<td>${row.user_account}</td>	
+					<td>		
+					<input  type="radio" name="type" value="A">正常
+					<input  type="radio" name="type" value="C">封鎖										
+					<button type="submit" value="${row.sellhouse_id}" name="id"/>修改</td>					
+<%-- 					</c:if> --%>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<h4>檢舉人</h4>
+							<ul>
+								<li>${row.sellhouse_reportfrom}</li>
+							</ul>
+							<h4>檢舉原因</h4>
+							<ul>
+								<li>${row.sellhouse_reportreason}</li>
+							</ul>
 						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
-						<td>${row.sellhouse_type}</td>	
-						<td>		
-						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="B">違規
-						<input  type="radio" name="type" value="C">封鎖										
-						<input type="submit" value="修改" name="prodaction"/></td>					
+					</tr>
 					</c:if>
-					</tr>	
-				</c:forEach>
-			</tbody>
+					</tbody>	
+			</c:forEach>			
 		</table>
 	</c:if>
 	</div>
@@ -255,9 +221,9 @@
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->
-		<div id="dialog" title="檢舉原因">
- 		<p>檢舉人:${row.sellhouse_reportfrom}</p>
-		</div>	
+<!-- 		<div id="dialog" title="檢舉原因"> -->
+<%--  		<p>檢舉人:${row.sellhouse_reportfrom}</p> --%>
+<!-- 		</div>	 -->
 		
 </body>
 </html>

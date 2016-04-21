@@ -10,17 +10,24 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <!-- <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script> -->
-<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script> -->
 
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
  
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">  -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>  -->
+<!-- <link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css"> -->
+<!-- <script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">              
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css">
 <script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script>
 
@@ -111,31 +118,9 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+<!-- 			<div style="padding-left:150px"> -->
 		<form  action="<c:url value="/sellhouse.GM.controller"/>"method="post" >
-<!-- 		<fieldset> -->
-<!-- 		<legend>房屋查詢</legend> -->
-<!-- 	<div style="padding-left:200px;width:50%;height:50%"> -->
-<!-- 	<label>選擇搜尋方式</label> -->
-	
-<!-- 	<select name="choise" value="標題"> -->
-<!-- 	<option value="address">地址</option> -->
-<!-- 	<option value="name">標題</option> -->
-<!-- 	<option value="price">價格</option> -->
-<!-- 	</select> -->
-<!-- 	<input  style="height:50%" type="hidden" name="sellhouse_address"> -->
-<!-- 	<input  style="height:50%" type="hidden" name="null"> -->
-<!-- 	<input  style="height:50%" type="text" name="keyword"> -->
-<!-- 	<input type="submit" value="搜尋" name="prodaction"/> -->
-<!-- 	</div> -->
-<!-- 	</fieldset> -->
-<!-- <table> -->
-<!-- <tr> -->
-<!-- <td>請輸入地址</td> -->
-<%-- <td ><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td> --%>
-<!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
-<!-- </tr> -->
-<!-- </table> -->
+		<div class="container">
 <table>
 <tr>
 <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
@@ -195,10 +180,10 @@
 		<table class="table table-hover table-expandable" >
 			<thead>
 			<tr>
-				<th>    </th>
 				<th>標題</th>
 				<th>使用者帳號</th>
-				<tr>
+				<th>目前狀態</th>
+				</tr>
 			</thead>
 	
 				<c:forEach var="row" items="${GMselect}">
@@ -226,14 +211,13 @@
 					</c:url>
 					<tbody>				
 					<tr>
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3><a href="${path}">${row.sellhouse_name}</a></h3></td>
-						<td>${row.user_account}</td>	
-						<td>		
-						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="C">封鎖										
-						<button type="submit" value="${row.sellhouse_id}" name="id"/>修改</td>					
-					</c:if>
+					<td><a href="${path}">${row.sellhouse_name}</a></td>
+					<td>${row.user_account}</td>	
+					<td>		
+					<input  type="radio" name="type" value="A">正常
+					<input  type="radio" name="type" value="C">封鎖										
+					<button type="submit" value="${row.sellhouse_id}" name="id"/>修改</td>					
+<%-- 					</c:if> --%>
 					</tr>
 					<tr>
 						<td colspan="5">
@@ -247,12 +231,12 @@
 							</ul>
 						</td>
 					</tr>
+					</c:if>
 					</tbody>	
-				</c:forEach>
-			
+			</c:forEach>			
 		</table>
 	</c:if>
-<!-- 	</div> -->
+	</div>
 		</form>		
 		<!--close site_content-->
 			<div id="footer">
@@ -260,9 +244,9 @@
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->
-		<div id="dialog" title="檢舉原因">
- 		<p>檢舉人:${row.sellhouse_reportfrom}</p>
-		</div>	
+<!-- 		<div id="dialog" title="檢舉原因"> -->
+<%--  		<p>檢舉人:${row.sellhouse_reportfrom}</p> --%>
+<!-- 		</div>	 -->
 		
 </body>
 </html>

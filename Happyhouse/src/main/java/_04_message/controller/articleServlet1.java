@@ -35,11 +35,9 @@ public class articleServlet1 extends HttpServlet {
 				Map<String, String> error = new HashMap<String, String>();
 				// 將 errorMsgMap 放入 request 置物櫃內，識別字串為 "ErrorMsgKey"
 				request.setAttribute("error", error);
-				
 				String title = request.getParameter("title");
 				String content = request.getParameter("content");
 				String type = request.getParameter("type");
-				
 				System.out.println("主題:"+title);
 				session.removeAttribute("resp");
 //				System.out.println("41行刪session-resp");
@@ -56,7 +54,7 @@ public class articleServlet1 extends HttpServlet {
 				MessageVO vo =new MessageVO();
 				if(content!=null){
 				vo.setMessage_title(title);
-				vo.setMessage_describe(content);
+				vo.setMessage_describe(content.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 				UsersBean bean=(UsersBean) session.getAttribute("LoginOK");
 				vo.setUser_account(bean.getUser_account());
 				vo.setUser_name(bean.getUser_name());

@@ -53,14 +53,14 @@
 			
 			<div class="cd-products-wrapper">
 				<ul class="cd-products-columns">
-					
+					<form action="<c:url value="/gousejsp.controller" />" method="post">
 					<c:forEach var="row" items="${sell}">
 					
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
-							<img src="/Happyhouse/img/product.png" alt="product image">
-							<h3>一號</h3>
+							<img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px" width="150px" alt="product image">
+							<h3>${row.sellhouse_photo1_name}</h3>
 						</div> <!-- .top-info -->
 
 						<ul class="cd-features-list">
@@ -72,10 +72,12 @@
 							<li>${row.sellhouse_size}</li>
 							<li>${row.sellhouse_floor}</li>
 							<li>${row.sellhouse_age}</li>
+							<li><input type="submit" name="deletecart" value="刪除此筆收藏"></li>
 						</ul>
 					</li> <!-- .product -->
 				
 						</c:forEach>
+						</form>
 <!-- 				<li class="product"> -->
 <!-- 						<div class="top-info"> -->
 <!-- 							<div class="check"></div>　 -->
@@ -141,7 +143,6 @@
 				</ul> <!-- .cd-products-columns -->
 			</div> <!-- .cd-products-wrapper -->
 			
-		    <h2><a href="/Happyhouse/index.jsp" class="reset">回首頁</a></h2>
 
 			
 			<ul class="cd-table-navigation">

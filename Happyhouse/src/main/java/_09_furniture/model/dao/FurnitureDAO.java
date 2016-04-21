@@ -1,5 +1,6 @@
 package _09_furniture.model.dao;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface FurnitureDAO {
 
 	public FurnitureBean select(int id);
 	
-	public FurnitureBean insert(FurnitureBean bean);
+	public FurnitureBean insert(FurnitureBean bean,InputStream is1,long size1,InputStream is2,long size2);
 
 	public FurnitureBean update(FurnitureBean bean);
 

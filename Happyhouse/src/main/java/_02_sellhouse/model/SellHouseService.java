@@ -164,7 +164,7 @@ public class SellHouseService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//+上去到此為止
+
 }
 	
 	

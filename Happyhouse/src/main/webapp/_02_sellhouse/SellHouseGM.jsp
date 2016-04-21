@@ -185,7 +185,6 @@
 				<th>目前狀態</th>
 				</tr>
 			</thead>
-	
 				<c:forEach var="row" items="${GMselect}">
 				<c:if test="${row.sellhouse_type=='B'}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">

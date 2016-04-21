@@ -9,15 +9,20 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script> -->
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css">
+<script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script>
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -186,22 +191,16 @@
 <table>                                                                 
 
 <c:if test="${not empty GMselect}">
-		<table border=1 cellpadding=20 >
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-
-<!-- 			</thead> -->
-<tr><td>遭檢舉</td></tr>
-			<tbody>
+<!-- 	<table border=1 cellpadding=20 > -->
+		<table class="table table-hover table-expandable" >
+			<thead>
+			<tr>
+				<th>    </th>
+				<th>標題</th>
+				<th>使用者帳號</th>
+				<tr>
+			</thead>
+	
 				<c:forEach var="row" items="${GMselect}">
 				<c:if test="${row.sellhouse_type=='B'}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="page">
@@ -224,30 +223,36 @@
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
 						<c:param name="sellhouse_reportfrom" value="${row.sellhouse_reportfrom}" />
 						<c:param name="sellhouse_reportreason" value="${row.sellhouse_reportreason}" />			
-					</c:url>				
+					</c:url>
+					<tbody>				
 					<tr>
 					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3><a href="${path}">${row.sellhouse_name}</a></h3>
-						<input type="text" name="id1" value="${row.sellhouse_id}">
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
-						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
-						<td>${row.sellhouse_type}</td>	
+						<td><h3><a href="${path}">${row.sellhouse_name}</a></h3></td>
+						<td>${row.user_account}</td>	
 						<td>		
 						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="B">違規
 						<input  type="radio" name="type" value="C">封鎖										
-						<input type="submit" value="修改" name="prodaction"/></td>					
+						<button type="submit" value="${row.sellhouse_id}" name="id"/>修改</td>					
 					</c:if>
-					</tr>	
+					</tr>
+					<tr>
+						<td colspan="5">
+							<h4>檢舉人</h4>
+							<ul>
+								<li>${row.sellhouse_reportfrom}</li>
+							</ul>
+							<h4>檢舉原因</h4>
+							<ul>
+								<li>${row.sellhouse_reportreason}</li>
+							</ul>
+						</td>
+					</tr>
+					</tbody>	
 				</c:forEach>
-			</tbody>
+			
 		</table>
 	</c:if>
-	</div>
+<!-- 	</div> -->
 		</form>		
 		<!--close site_content-->
 			<div id="footer">

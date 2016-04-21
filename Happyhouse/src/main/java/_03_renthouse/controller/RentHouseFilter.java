@@ -76,6 +76,7 @@ public class RentHouseFilter implements Filter {
 		contextPath = req.getContextPath();
 		requestURI  = req.getRequestURI();
 		
+		
 			
 			RentHouseDAO dao=new RentHouseDAOJdbc();
 			//SellHouseBean bean=new SellHouseBean();

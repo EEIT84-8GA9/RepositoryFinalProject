@@ -32,6 +32,7 @@ public class RentHouseGMServlet extends HttpServlet {
 		bean.setRenthouse_type(renthouse_type);
 		RentHouseDAO dao=new RentHouseDAOJdbc();
 		dao.GMupdate(bean);
+		System.err.println("gmservlet");
 		response.sendRedirect("/Happyhouse/_03_renthouse/RentHouseGM.jsp");
 	
 	}

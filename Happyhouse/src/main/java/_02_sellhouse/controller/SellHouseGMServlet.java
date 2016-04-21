@@ -23,7 +23,7 @@ public class SellHouseGMServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sellhouse_type=request.getParameter("type");
-		String temp=request.getParameter("id1");
+		String temp=request.getParameter("id");
 		int sellhouse_id=Integer.parseInt(temp);
 		System.out.println(sellhouse_id);
 		System.out.println(sellhouse_type);

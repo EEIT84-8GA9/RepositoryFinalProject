@@ -102,6 +102,8 @@ public class SellHouseDAOJdbc implements SellHouseDAO {
 				bean.setSellhouse_car(rset.getString("sellhouse_car"));
 				bean.setSellhouse_phone(rset.getString("sellhouse_phone"));
 				bean.setSellhouse_email(rset.getString("sellhouse_email"));
+				bean.setSellhouse_reportfrom(rset.getString("sellhouse_reportfrom"));
+				bean.setSellhouse_reportreason(rset.getString("sellhouse_reportreason"));
 				result.add(bean);
 			}
 		} catch (SQLException e) {

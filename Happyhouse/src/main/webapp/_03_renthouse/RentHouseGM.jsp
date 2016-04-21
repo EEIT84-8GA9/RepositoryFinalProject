@@ -187,10 +187,9 @@
 						<td>${row.renthouse_date}</td>
 						<td>${row.renthouse_type}</td>	
 						<td>		
-						<input type="text" name="id" value="${row.renthouse_id}">
 						<input  type="radio" name="type" value="A">正常
-						<input  type="radio" name="type" value="C">${row.renthouse_id}									
-						<input type="submit" value="修改" name="prodaction"/></td>											
+						<input  type="radio" name="type" value="C">封鎖									
+						<button type="submit" value="${row.renthouse_id}" name="id"/>修改</td>											
 					</c:if>
 					</tr>
 				</c:forEach>

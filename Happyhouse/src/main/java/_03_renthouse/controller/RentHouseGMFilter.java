@@ -32,7 +32,7 @@ import _03_renthouse.model.dao.RentHouseDAOJdbc;
 	@WebInitParam(name ="sellhouse", value ="/_03_renthouse/RentHouseGM.jsp"), 			
 		}
 		)
-public class SellHouseGMFilter implements Filter {
+public class RentHouseGMFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
 	String servletPath;
 	String contextPath;
@@ -79,7 +79,7 @@ public class SellHouseGMFilter implements Filter {
 		requestURI  = req.getRequestURI();
 		RentHouseDAO dao=new RentHouseDAOJdbc();
 		List<RentHouseBean> result =dao.SELECT_ALL();
-		System.out.println("ddddd"+result);
+		System.err.println("GMFilter");
 		req.setAttribute("RentGMselect", result);
 		request.getRequestDispatcher("/_03_renthouse/RentHouseGM.jsp").forward(req, resp);
 		

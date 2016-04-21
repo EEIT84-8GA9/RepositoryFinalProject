@@ -7,48 +7,100 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CurrentPrice Page</title>
 </head>
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="../js/tabulator.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/normalize.css" /> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/htmleaf-demo.css"> -->
+<!-- 	<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css"> -->
+<!-- <script src="/Happyhouse/js/main.js"></script> -->
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" />
+		<script src="/Happyhouse/rinocss/modernizr.custom.63321.js"></script>
+<!-- 上為選單效果 -->
+		<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/normalize.css" />
+	    <link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/search-form.css">
+
+
 
 <body>
-<style type="text/css">
-	body{
-		padding:20px 40px;
-		font-family: 'Montserrat', sans-serif !important;
-	}
-	.tabulator{
-	}
-	header{
-		font-weight: bold;
-		font-size: 30px;
-	}
-	header span{
-		vertical-align: middle;
-		font-size: .5em;
-		color: #999;
-	}
-	header span a{
-		font-size: .9em;
-	}
-	section:first-of-type header{
-		font-size: 50px;
-	}
-	section{
-		margin-bottom:30px;
-	}
-	ul>li{
-		margin-bottom:2px;
-	}
-	button, select{
-		margin-right:20px;
-	}
-	input{
-		font-family: 'Montserrat', sans-serif !important;
-	}
-	</style>
+
+
+<div id="main">
+		<div id="site_content">
+<%-- 				<c:if test="${not empty LoginOK}"> --%>
+<!-- 				<h2 align="right"></h2> -->
+<%-- 				</c:if> --%>
+			<div id="site_heading">
+				<h1>好宅房屋網</h1>
+				<h2>你刊登房屋的超棒選擇</h2>
+			</div>
+			<BR>
+			<!--close site_heading-->
+			<div id="header">			
+				<div id="menubar">
+					<ul id="menu">
+						<li class="current"><a href="index.jsp">首頁</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<ul>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
+                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
+                        <li><a href="#">查詢出售收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="testimonials.html">刊登出租</a>
+						<ul>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
+                        <li><a href="#">查詢出租收藏</a></li>
+						</ul>
+						</li>
+						<li><a href="testimonials.html">時價查詢</a>
+						<ul>
+						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
+                        <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
+                        </ul>
+						</li>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
+						<ul>
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
+						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
+						<c:if test="${empty LoginOK}">
+						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
+						</c:if>
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						</c:if>
+						<c:if test="${not empty LoginOK}">
+						<li><a href="">${LoginOK.user_name}個人專區</a>
+						<ul>
+<!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
+						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
+						<li></li>
+						</ul>
+						</li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
+						</c:if>
+					</ul>
+					
+                    </div>
+				<!--close menubar-->
+			</div>
+			<c:if test="${not empty ChangeOK}">
+            <h3 align="center">提示: 更改密碼成功</h3>
+            </c:if>
+
+
 <script type="text/javascript">
 // var path = "${pageContext.request.contextPath}";
 // function doBlur() {
@@ -104,11 +156,12 @@
 <!-- click效果 -->
 
 
-<section>
-	<header>Simple Table</header>
 
 
 
+<BR>
+<BR>
+<BR>
 <form action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
 <!-- 以各區分別     currentprice_city -->
 <!-- 以類別區分     currentprice_bdtype  -->
@@ -138,7 +191,7 @@
 		</td>
 		<td>(區域)時價查詢:請輸入..[EX:大安區安和路一段]</td>
 		<td><input type="text" name="currentprice_address" value="${param.currentprice_address}" onblur="doBlur()" onfocus="clearForm()"></td>
-		<td><span class="error">${error.currentprice_address}</span><img src="../images/ajax-loader.gif" style="display:none"/></td>
+		<td><span class="error">${error.currentprice_address}</span></td>
 	    
 		<td>
 			<input type="submit" name="prodaction" value="Pick">
@@ -170,20 +223,20 @@
 		rowBackgroundColor:"#666",
 		rowAltBackgroundColor:"#444",
 		rowTextColor:"#fff",
-		fitColumns:true,
+// 		fitColumns:true,
 		columns:[
-		{title:"Id", field:"id", width:40},
-		{title:"建物地址", field:"address", width:320},
-		{title:"建物類型", field:"bdtype", width:220},
-		{title:"筆棟數", field:"trades", width:130},
-		{title:"樓層", field:"transes", width:130},
-		{title:"房", field:"rooms"},
-		{title:"廳", field:"livinroom"},
-		{title:"衛", field:"toilet"},
-		{title:"建物完成年月", field:"enddate"},
-		{title:"交易完成年月", field:"tradedate"},
-		{title:"總坪數", field:"housearea", width:130},
-		{title:"一坪價格", field:"oneprice", width:130},
+		{title:"Id", field:"id", width:25},
+		{title:"建物地址", field:"address", width:280},
+		{title:"建物類型", field:"bdtype", width:100},
+		{title:"筆棟數", field:"trades", width:120},
+		{title:"樓層", field:"transes", width:50},
+		{title:"房", field:"rooms", width:25},
+		{title:"廳", field:"livinroom", width:25},
+		{title:"衛", field:"toilet", width:25},
+		{title:"完工", field:"enddate", width:70},
+		{title:"交易", field:"tradedate", width:60},
+		{title:"總坪數", field:"housearea", width:70},
+		{title:"一坪價格", field:"oneprice", width:90},
 		
 		
 		],
@@ -226,12 +279,206 @@
 
 
 
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以下為3PIE圖@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+//   此為開啟首面直接 READY去叫預設值 畫圖~
+//   ajax就是去call function得到回傳資料, 並且局部更新網頁畫面,不用重新載入整個頁面
+//   以servlet原本的會重新導向的那個內容就不適用 ( 他不算資料)	  應該是要回傳你要畫圖的資料
+//   google.charts.load('current', {'packages':['bar']});    兩張不同圖的解法?   LINE加入~! 下一張 頭 一樣! 但有些要加 2
+//   function test(Choose1){ 
+ google.charts.load("current", {packages:["corechart"]});
+ //google.charts.load('current', {packages: ['bar','corechart', 'line']});  只會LOAD 一次!!!!!!!!!!!!
+   google.charts.setOnLoadCallback(drawChart);
+   google.charts.setOnLoadCallback(drawChart2);
+   google.charts.setOnLoadCallback(drawChart3);
+  //與二區圖  方法作為區別所以 句末加一
+ 
+  var price_city1 ="大安區";
+
+  function drawChart() {
+	  
+		  $.ajax({
+           
+	    	  
+//	     	   async: false,   
+	    	   url:"${pageContext.request.contextPath}/_06_currentprice.controller/cpweb.controller",      //发送请求地址
+	    	   type:"get",//请求方式
+	    	   cache: false, 
+			   dataType: "JSON",
+	    	   data:{//发送给数据库的数据
+	    		   
+	    		   price_city : price_city1
+// 	    		   price_bdtype : price_bdtype1
+//	     		   price_city:$("#areaend").val(),
+//	     		   price_bdtype:$("#typetype").val()
+	    	   }, 
+	    	   //请求成功后的回调函数有两个参数
+	    	   
+	     	   success: function(chartdata){ 	     		 
+// 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+// 	     		alert(chartobj); 
+	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+	     	     //arrayToDataTablev 是吃json格式  
+  			  var data = google.visualization.arrayToDataTable(chartdata); 
+  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+//         alert(chartobj); 
+  		     var options = {
+             title: '區域 VS 房屋類型',
+             pieHole: 0.4,
+             is3D: true,
+           };
+//   		   alert(chartobj);             
+  		   alert("圓餅一圖"+chartdata);
+  		   var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+  	        chart.draw(data, options);
+	     	   
+	     	 },
+  		 error:function(jqXHR,textStatus,errorThrown){
+  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+  		    }
+ 	   });
+  }
+      //上為function1 ending處  預設 BAR圖~
+       
+      
+     
+//        *********************以下餅二圖**********************
+       var price_city1 ="大安區";
+       var price_bdtype1 ="套房";
+      
+  function drawChart2() {
+	  
+		  $.ajax({
+           
+	    	  
+//	     	   async: false,   
+	    	   url:"${pageContext.request.contextPath}/_06_currentprice.controller/cpweb.controller",      //发送请求地址
+	    	   type:"get",//请求方式
+	    	   cache: false, 
+			   dataType: "JSON",
+	    	   data:{//发送给数据库的数据
+	    		   
+	    		   price_city : price_city1,
+	    		   price_bdtype : price_bdtype1
+//	     		   price_city:$("#areaend").val(),
+//	     		   price_bdtype:$("#typetype").val()
+	    	   }, 
+	    	   //请求成功后的回调函数有两个参数
+	    	   
+	     	   success: function(chartdata){ 	     		 
+// 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+// 	     		alert(chartobj); 
+	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+	     	     //arrayToDataTablev 是吃json格式  
+  			  var data = google.visualization.arrayToDataTable(chartdata); 
+  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+//         alert(chartobj); 
+  		     var options = {
+          title: '區域 VS 平均坪數 [ex:10=10~20坪]',
+          is3D: true,
+        };
+//   		   alert(chartobj);             
+  		   alert("圓餅二圖"+chartdata);
+  		 var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+         chart.draw(data, options);
+	     	   
+	     	 },
+  		 error:function(jqXHR,textStatus,errorThrown){
+  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+  		    }
+ 	   });
+  }
+      
+//  *********************以上餅二圖**********************
+      
+      
+      
+      
+//   *********************以下餅三圖**********************
+
+var price_city1 ="大安區";
+var price_bdtype1 ="套房";
+var price_transes1 ="一樓";
+
+  function drawChart3() {
+	  
+		  $.ajax({
+           
+	    	  
+//	     	   async: false,   
+	    	   url:"${pageContext.request.contextPath}/_06_currentprice.controller/cpweb.controller",      //发送请求地址
+	    	   type:"get",//请求方式
+	    	   cache: false, 
+			   dataType: "JSON",
+	    	   data:{//发送给数据库的数据
+	    		   
+	    		   price_city : price_city1,
+	    		   price_bdtype : price_bdtype1,
+	    		   price_transes : price_transes1
+//	     		   price_city:$("#areaend").val(),
+//	     		   price_bdtype:$("#typetype").val()
+	    	   }, 
+	    	   //请求成功后的回调函数有两个参数
+	    	   
+	     	   success: function(chartdata){ 	     		 
+// 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+// 	     		alert(chartobj); 
+	     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+	     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+	     	     //arrayToDataTablev 是吃json格式  
+  			  var data = google.visualization.arrayToDataTable(chartdata); 
+  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+//         alert(chartobj); 
+  		     
+        var options = {
+                title: '區域 VS 樓層分佈',
+                legend: 'none',
+                pieSliceText: 'label',
+                slices: {  0: {offset:0.2},
+                          1: {offset: 0.15},
+                          2: {offset: 0.1},
+                          3: {offset: 0.05},
+                
+                },
+        };
+//   		   alert(chartobj);             
+  		   alert("圓餅三圖"+chartdata);
+  		 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+         chart.draw(data, options);
+	     	   
+	     	 },
+  		 error:function(jqXHR,textStatus,errorThrown){
+  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+  		    }
+ 	   });
+  }
 
 
 
 
 
-<BR>
+
+
+
+//   *********************以上餅三圖**********************
+});
+</script>	      
+
+
+
+
+
+
+
+
+	      
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上為3PIE圖@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
 
 <!-- 以下為顯示表~最原始版 -->
 <!-- <link rel="stylesheet" type="text/css" href="../css/table.css" /> -->
@@ -280,7 +527,131 @@
 <!-- 	</tbody> -->
 <!-- </table> -->
 <%-- </c:if> --%>
+<h3>PIC~</h3>
+<!-- <div id="donutchart" style="width: 900px; height: 500px;"></div> -->
+<!-- <div id="piechart_3d" style="width: 900px; height: 500px;"></div> -->
+<!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
+
+
+
+
+
+<div class="container">	
+			<header class="clearfix">
+				<h1>Simple Multi-Item Slider <span>Category slider with CSS animations</span></h1>
+			</header>
+			<BR>
+			<BR>
+			<BR>
+			<div class="main">
+				<div id="mi-slider" class="mi-slider">
+					<ul>
+						<li><a href="#"><div id="donutchart" style="width: 630px; height: 350px;"></div><h4>Boots</h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
+						<li><a href="#"><img src="images/4.jpg" alt="img04"><h4>Sneakers</h4></a></li>
+					</ul>
+					<ul>
+						<li><a href="#"><div id="piechart_3d" style="width:630px; height: 350px;"><h4>Belts</h4></a></li>
+						<li><a href="#"><img src="images/6.jpg" alt="img06"><h4>Hats &amp; Caps</h4></a></li>
+						<li><a href="#"><img src="images/7.jpg" alt="img07"><h4>Sunglasses</h4></a></li>
+						<li><a href="#"><img src="images/8.jpg" alt="img08"><h4>Scarves</h4></a></li>
+					</ul>
+					<ul>
+						<li><a href="#"><div id="piechart" style="width: 630px; height: 350px;"></div><h4>Casual</h4></a></li>
+						<li><a href="#"><img src="images/10.jpg" alt="img10"><h4>Luxury</h4></a></li>
+						<li><a href="#"><img src="images/11.jpg" alt="img11"><h4>Sport</h4></a></li>
+					</ul>
+					<ul>
+						<li><a href="#"><img src="images/12.jpg" alt="img12"><h4>Carry-Ons</h4></a></li>
+						<li><a href="#"><img src="images/13.jpg" alt="img13"><h4>Duffel Bags</h4></a></li>
+						<li><a href="#"><img src="images/14.jpg" alt="img14"><h4>Laptop Bags</h4></a></li>
+						<li><a href="#"><img src="images/15.jpg" alt="img15"><h4>Briefcases</h4></a></li>
+					</ul>
+					<nav>
+						<a href="#">House Type Percentage X</a>
+						<a href="#">House Area Percentage X</a>
+						<a href="#">House Floors Percentage X</a>
+						<a href="#">Bags</a>
+					</nav>
+					
+				</div>
+			</div>
+		</div><!-- /container -->
+		<script src="/Happyhouse/rinocss/jquery.catslider.js"></script>
+		<script>
+			$(function() {
+
+				$( '#mi-slider' ).catslider();
+
+			});
+		</script>
+
+
+<!-- ********************** -->
+
+	<section class="htmleaf-container">
+		<form onsubmit="submitFn(this, event);" action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" name="currentprice_address" value="${param.currentprice_address}" class="search-input" placeholder="Type to search" />
+                    <button class="search-icon" type="submit" name="prodaction" value="Pick" onclick="searchToggle(this, event);"><span></span></button>
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+                <div class="result-container">
+
+                </div>
+            </div>
+        </form>
+	</section>
+	
+	
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript">
+        function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+
+            if(!container.hasClass('active')){
+                  container.addClass('active');
+                  evt.preventDefault();
+            }
+            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                  container.removeClass('active');
+                  // clear input
+                  container.find('.search-input').val('');
+                  // clear and hide result container when we press close
+                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+            }
+        }
+
+        function submitFn(obj, evt){
+            value = $(obj).find('.search-input').val().trim();
+
+            _html = "Yup yup! Your search text sounds like this: ";
+            if(!value.length){
+                _html = "Yup yup! Add some text friend :D";
+            }
+            else{
+                _html += "<b>" + value + "</b>";
+            }
+
+            $(obj).find('.result-container').html('<span>' + _html + '</span>');
+            $(obj).find('.result-container').fadeIn(100);
+
+            evt.preventDefault();
+        }
+    </script>
+
 
 <h3><a href="<c:url value="/index.jsp" />">index</a></h3>
+
+
+       	
+		<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
+		<!--close footer-->
+	</div>
+
 </body>
 </html>

@@ -173,7 +173,7 @@
 			<tbody>
 			<input type="checkbox" onClick="toggle(this)" />&nbsp全選
 				<c:forEach var="row" items="${select1}">
-					<c:url value="/_03_renthouse/UpdateRentHouse.jsp" var="path" scope="page">
+					<c:url value="/_03_renthouse/RentHouseSingleView.jsp" var="path" scope="page">
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="renthouse_id" value="${row.renthouse_id}" />
 						<c:param name="renthouse_name" value="${row.renthouse_name}" />
@@ -198,6 +198,7 @@
 						<c:param name="renthouse_id" value="${row.renthouse_id}" />
 						<c:param name="renthouse_name" value="${row.renthouse_name}" />
 						<c:param name="renthouse_price" value="${row.renthouse_price}" />
+						<c:param name="renthouse_deposit" value="${row.renthouse_deposit}" />
 						<c:param name="renthouse_patterns"
 							value="${row.renthouse_patterns}" />
 						<c:param name="renthouse_address" value="${row.renthouse_address}" />

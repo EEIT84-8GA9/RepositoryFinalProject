@@ -2,6 +2,7 @@ package _10_chart.controller;
 
 import java.io.IOException;
 
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +53,9 @@ public class ChartServlet extends HttpServlet {
 		
 		String currentprice_city = null ;
 		String currentprice_bdtype = null;
+		String currentprice_transes = null;
+		String currentprice_floors = null;
+
 		// 接收HTML Form資料
 		System.out.println("i am chartServlet");
 		if (request.getParameter("price_city") != null){
@@ -67,7 +71,25 @@ public class ChartServlet extends HttpServlet {
 			 currentprice_bdtype = request.getParameter("currentprice_bdtype");
 		System.out.println("剛GET的currentprice_bdtype"+currentprice_bdtype);		
 		
-		String currentprice_transes = request.getParameter("currentprice_transes");
+		
+		if (request.getParameter("price_transes") != null){
+			currentprice_transes = request.getParameter("price_transes");
+			}else 
+			 currentprice_transes = request.getParameter("currentprice_transes");
+				
+			System.out.println("剛GET的currentprice_transes"+currentprice_transes);
+			
+					
+		if (request.getParameter("price_floors") != null){
+				currentprice_floors = request.getParameter("price_floors");
+				}else 
+				 currentprice_floors = request.getParameter("currentprice_floors ");
+					
+				System.out.println("剛GET的currentprice_floors "+currentprice_floors );	
+			
+			
+			
+			
 		String temp1 = request.getParameter("currentprice_housearea");
 		String temp2 = request.getParameter("currentprice_tprice");
 		String prodaction = request.getParameter("prodaction");
@@ -155,11 +177,15 @@ public class ChartServlet extends HttpServlet {
 		bean.setCurrentprice_bdtype(currentprice_bdtype);
 		bean.setCurrentprice_transes(currentprice_transes);
 		bean.setCurrentprice_housearea(currentprice_housearea);
+		bean.setCurrentprice_floors(currentprice_floors);
 		bean.setCurrentprice_tprice(currentprice_tprice);
 
 		System.out.println("此為塞BEAN"+bean);
 		System.out.println("currentprice_city="+currentprice_city);
 		System.out.println("currentprice_bdtype="+currentprice_bdtype);
+		System.out.println("currentprice_transes="+currentprice_transes);
+		System.out.println("currentprice_floors="+currentprice_floors);
+		
 		System.out.println("prodaction="+prodaction);
 		// 根據Model執行結果顯示View
 		// 4種比對!! prodaction 為SELECT的話 使用productService.select 方法
@@ -268,7 +294,8 @@ public class ChartServlet extends HttpServlet {
 		  res.setContentType("application/json");
 		  res.setCharacterEncoding("UTF-8");
 		  res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
-		}else if (prodaction == null && currentprice_bdtype != null && currentprice_bdtype.trim().length() != 0) {
+		}else if (prodaction == null && currentprice_bdtype != null && currentprice_bdtype.trim().length() != 0 
+				&& currentprice_transes == null && currentprice_floors == null ) {
 //			List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
 			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
 			if (result2 == null) {
@@ -278,7 +305,7 @@ public class ChartServlet extends HttpServlet {
 			request.setAttribute("Choose2",result2);
 		}
 //		System.out.println("T"+result1);
-		System.out.println("R"+result2);
+		System.out.println("R- AVG坪數與年月 以區域和類型求"+result2);
 		
 		System.out.println("SOS  result2  ~prodaction null's answer");
 //		ServletContext servletContext = getServletContext();
@@ -318,6 +345,7 @@ public class ChartServlet extends HttpServlet {
 	    }
 	  //out.print();
 	  //out.print(result1);  
+	  System.out.println("getboth-時價INDEX ~AVG坪數與年月 以區域和類型"+getboth);
 	  res.setContentType("application/json");
 	  res.setCharacterEncoding("UTF-8");
 	  
@@ -349,7 +377,174 @@ public class ChartServlet extends HttpServlet {
 //			res.sendRedirect("/index.jsp");
 //			return;
 		
-		}else {
+		}else if (prodaction == null && currentprice_bdtype != null && currentprice_bdtype.trim().length() != 0
+				         && currentprice_transes != null && currentprice_floors == null) {
+//			List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
+			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result2 == null) {
+				error.put("action", "xxxx fail");
+			}  else if(result2 != null ){
+//			request.setAttribute("Choose1",result1);
+			request.setAttribute("Choose2",result2);
+		}
+//		System.out.println("T"+result1);
+		System.out.println("長條圖-用在SELL HOUSE! AVG坪數與年月 以區域和類型求"+result2);
+		
+		
+//		ServletContext servletContext = getServletContext();
+	 
+	 
+	  //PrintWriter out = res.getWriter();  
+	  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+	 
+	  String getcurrentprice_tradedate="";
+	  String getavgoneprice_by_tradedate="";
+	  String getboth="";
+	  
+	  int r2 = 0;
+	  for(CurrentPriceBean element : result2) {
+		  
+		  if(r2>0){
+			  
+			  getboth = getboth +",";
+					  
+//				
+//		  getcurrentprice_tradedate = getcurrentprice_tradedate+",";
+//		  getavgoneprice_by_tradedate = getavgoneprice_by_tradedate + ",";
+//		  
+		  }
+		  
+		  
+		  
+//		  getcurrentprice_tradedate= getcurrentprice_tradedate+("\""+element.getCurrentprice_tradedate()+"\"");   變字串
+//		  getcurrentprice_tradedate= getcurrentprice_tradedate+element.getCurrentprice_tradedate();
+//		  getavgoneprice_by_tradedate = getavgoneprice_by_tradedate+element.getAvgoneprice_by_tradedate();
+		  getboth = getboth + "[\""+element.getCurrentprice_tradedate() +"\"," + element.getAvgoneprice_by_tradedate() + "]"; 
+		  
+		  r2++;
+		  
+//		  x = x +( "[\"" + 10.311 + "\"," + 93080.0 + "]");
+		  
+	    }
+	  //out.print();
+	  //out.print(result1);  
+	  System.out.println("getboth-長條圖~!AVG坪數與年月 以區域和類型"+getboth);
+	  res.setContentType("application/json");
+	  res.setCharacterEncoding("UTF-8");
+	  
+	  res.getWriter().write("[[\"Date\", \"avgprice\"],"+getboth+"]");
+//	  res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");
+//	  res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
+		  
+		  
+		  //out.close();  
+		 
+//          return;
+			/*
+			
+			Map<String,Object> map = new HashMap<String, Object>();
+	            
+	         map.put("Choose1", result1);
+	         map.put("Choose2", result2);
+			String json = new Gson().toJson(map);
+
+			
+			
+			res.setContentType("application/json");
+			res.setCharacterEncoding("UTF-8");
+		    res.getWriter().write(json);
+		    return;
+		    */
+//			request.getRequestDispatcher("../_11_test/tabletry3ajax.jsp").forward(request,res);
+//			System.out.println("SOS OVER!~CLEAR");
+//			res.sendRedirect("/index.jsp");
+//			return;
+		
+		}else if (prodaction == null && currentprice_bdtype != null && currentprice_bdtype.trim().length() != 0
+		         && currentprice_floors != null ) {
+//	List<CurrentPriceBean> result1 = chartService.select_avg_type(bean);
+    System.out.println("散佈層 進入 if else!!!");
+			List<CurrentPriceBean> result4 = chartService.select_all_84_by_city_type(bean);
+	if (result4 == null) {
+		error.put("action", "xxxx fail");
+	}  else if(result4 != null ){
+//	request.setAttribute("Choose1",result1);
+	request.setAttribute("Choose4",result4);
+}
+//System.out.println("T"+result1);
+System.out.println("散佈圖-總價 與 坪數 以區域和類型求"+result4);
+
+System.out.println("SOS  用在SELL HOUSE  !result2  ~prodaction null's answer");
+//ServletContext servletContext = getServletContext();
+
+
+//PrintWriter out = res.getWriter();  
+//out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+
+String getcurrentprice_tradedate="";
+String getavgoneprice_by_tradedate="";
+String getboth="";
+
+int r3 = 0;
+for(CurrentPriceBean element : result4) {
+ 
+ if(r3>0){
+	  
+	  getboth = getboth +",";
+			  
+//		
+// getcurrentprice_tradedate = getcurrentprice_tradedate+",";
+// getavgoneprice_by_tradedate = getavgoneprice_by_tradedate + ",";
+// 
+ }
+ 
+ 
+ 
+// getcurrentprice_tradedate= getcurrentprice_tradedate+("\""+element.getCurrentprice_tradedate()+"\"");   變字串
+// getcurrentprice_tradedate= getcurrentprice_tradedate+element.getCurrentprice_tradedate();
+// getavgoneprice_by_tradedate = getavgoneprice_by_tradedate+element.getAvgoneprice_by_tradedate();
+ getboth = getboth + "["+element.getCurrentprice_housearea() +"," + element.getCurrentprice_tprice() + "]"; 
+ 
+ r3++;
+ 
+// x = x +( "[\"" + 10.311 + "\"," + 93080.0 + "]");
+ 
+}
+//out.print();
+//out.print(result1);  
+System.out.println("getboth-散佈圖-!總價 與 坪數 以區域和類型求"+getboth);
+res.setContentType("application/json");
+res.setCharacterEncoding("UTF-8");
+
+res.getWriter().write("[[\"area\", \"price\"],"+getboth+"]");
+//res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");
+//res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
+ 
+ 
+ //out.close();  
+
+// return;
+	/*
+	
+	Map<String,Object> map = new HashMap<String, Object>();
+       
+    map.put("Choose1", result1);
+    map.put("Choose2", result2);
+	String json = new Gson().toJson(map);
+
+	
+	
+	res.setContentType("application/json");
+	res.setCharacterEncoding("UTF-8");
+   res.getWriter().write(json);
+   return;
+   */
+//	request.getRequestDispatcher("../_11_test/tabletry3ajax.jsp").forward(request,res);
+//	System.out.println("SOS OVER!~CLEAR");
+//	res.sendRedirect("/index.jsp");
+//	return;
+
+}else {
 			error.put("action", "Unknown Action:" + prodaction);
 			request.getRequestDispatcher("/_06_currentprice/cpweb.jsp").forward(request, res);
 		}

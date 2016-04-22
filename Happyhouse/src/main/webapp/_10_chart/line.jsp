@@ -20,7 +20,7 @@
           </c:forEach>
           
         ]);
-
+  
         var options = {
           title: 'The decline of \'The 39 Steps\'',
           vAxis: {title: 'Accumulated Rating'},
@@ -28,7 +28,7 @@
         };
 
         var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
-
+        alert(data);
         chart.draw(data, options);
       }
     </script>

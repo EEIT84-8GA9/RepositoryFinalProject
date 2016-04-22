@@ -5,7 +5,7 @@ body {padding: 0px; margin:0px; background:url(../img/image.jpg) ; background-po
     position: absolute;
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
-    transform: translate(640%, 310%);
+    transform: translate(180%, 310%);
     top:0%;
     left:0%;
     z-index:1;

@@ -19,12 +19,20 @@
           </c:forEach>
         ]);
 
+        
+        
+        
           var options = {
           title: '區域 VS 房屋類型',
           pieHole: 0.4,
           is3D: true,
         };
-
+          alert("圓餅1圖"+[
+                        ['type', 'percentage'],
+                        <c:forEach var="hikari5" items="${Pie1}">
+                        ['${hikari5.currentprice_bdtype}',${hikari5.count_by_city_type}],
+                        </c:forEach>
+                      ]);
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
       }
@@ -45,7 +53,12 @@
           title: '區域 VS 平均坪數 [ex:10=10~20坪]',
           is3D: true,
         };
-
+        alert("圓餅2圖"+[
+                      ['Area', 'percentage'],
+                      <c:forEach var="hikari6" items="${Pie2}">
+                      ['${hikari6.housearea_range}',${hikari6.housearea_count}],
+                      </c:forEach>
+                    ]);
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
         chart.draw(data, options);
       }

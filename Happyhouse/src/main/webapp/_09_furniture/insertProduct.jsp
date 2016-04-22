@@ -75,7 +75,7 @@
 			
 			<!--close header-->
 			<div style="padding-left:150px">
-	<form action="<c:url value="/pages/product.controller" />" method="get">
+	<form  enctype="multipart/form-data" action="<c:url value="/pages/product.controller" />" method="POST">
 	
 <table>
      <tr>
@@ -118,7 +118,10 @@
 		<td><input type="text" name="instype" value="${param.furniture_type}"></td>
 		<td>${error.insname}</td>
 	</tr>
-
+	<tr>
+	<td><input type="file" name="Furnitur_photo1"></td>
+	<input type="file" name="Furnitur_photo2"></td>
+	</tr>
 	<tr>
 		<td>
 			<input type="submit" name="prodaction" value="新增刊登">

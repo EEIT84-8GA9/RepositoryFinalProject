@@ -434,6 +434,8 @@ $(document).ready(function(){
 		
 <!-- 		<div> -->
 		
+
+
 		<!-- ☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻以下偶的☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻ -->
 		
         <div class="content_select_div">
@@ -476,6 +478,7 @@ $(document).ready(function(){
 
 
 
+
 			<div class="sidebar_container">
 				<div class="sidebar">
 					<div class="sidebar_item">
@@ -509,7 +512,22 @@ $(document).ready(function(){
 		</div>
 		
 		
-		<div id="menu">
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

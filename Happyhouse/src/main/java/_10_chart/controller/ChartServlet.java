@@ -320,7 +320,6 @@ public class ChartServlet extends HttpServlet {
 	  //out.print(result1);  
 	  res.setContentType("application/json");
 	  res.setCharacterEncoding("UTF-8");
-
 	  
 	  res.getWriter().write("["+getboth+"]");
 //	  res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");

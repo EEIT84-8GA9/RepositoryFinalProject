@@ -3,6 +3,7 @@ package _06_currentprice.controller;
 import java.io.IOException;
 
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import _06_currentprice.model.CurrentPriceBean;
 import _06_currentprice.model.CurrentPriceService;
+import _10_chart.model.ChartService;
 
 
 
@@ -32,6 +34,7 @@ public class CurrentPriceServlet extends HttpServlet {
 
 	private SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private CurrentPriceService currentpriceService = new CurrentPriceService();
+	private ChartService chartService = new ChartService();
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -41,6 +44,29 @@ public class CurrentPriceServlet extends HttpServlet {
 		String currentprice_city = request.getParameter("currentprice_city");
 		String currentprice_bdtype = request.getParameter("currentprice_bdtype");
 		String currentprice_transes = request.getParameter("currentprice_transes");
+		
+		System.out.println("i am currentpriceServlet");
+		if (request.getParameter("price_city") != null){
+		 currentprice_city = request.getParameter("price_city");
+		}else 
+		 currentprice_city = request.getParameter("currentprice_city");
+			
+		System.out.println("剛GET的currentprice_city"+currentprice_city);
+		
+		if (request.getParameter("price_bdtype") != null){
+			 currentprice_bdtype = request.getParameter("price_bdtype");
+			}else 
+			 currentprice_bdtype = request.getParameter("currentprice_bdtype");
+		System.out.println("剛GET的currentprice_bdtype"+currentprice_bdtype);
+		
+		if (request.getParameter("price_transes") != null){
+			currentprice_transes = request.getParameter("price_transes");
+			}else 
+			 currentprice_transes = request.getParameter("currentprice_transes");
+				
+			System.out.println("剛GET的currentprice_transes"+currentprice_transes);
+		
+		
 		String temp1 = request.getParameter("currentprice_housearea");
 		String temp2 = request.getParameter("currentprice_tprice");
 		String prodaction = request.getParameter("prodaction");
@@ -112,6 +138,13 @@ public class CurrentPriceServlet extends HttpServlet {
 		bean.setCurrentprice_tprice(currentprice_tprice);
         bean.setCurrentprice_address(currentprice_address);
 		
+        
+        
+        System.out.println("此為塞BEAN"+bean);
+		System.out.println("currentprice_city="+currentprice_city);
+		System.out.println("currentprice_bdtype="+currentprice_bdtype);
+		System.out.println("currentprice_address="+currentprice_address);
+		System.out.println("prodaction="+prodaction);
 //第二個驗證!!!  如果click的按鈕-prodaction為SELECT的話 使用productService.select 方法..
 //在Service中判斷其為選擇全部 或是 條件選擇
 //若為空則導回 前頁面..但回傳剛剛輸入的值 回填~~!		
@@ -130,7 +163,133 @@ public class CurrentPriceServlet extends HttpServlet {
 			request.setAttribute("Pick", result);
 			request.getRequestDispatcher(
 					"/_06_currentprice/cpindex.jsp").forward(request, response);
-	    }else  {
+	    }else if (prodaction == null && currentprice_city != null && currentprice_bdtype ==null && currentprice_transes == null) {
+			System.out.println("餅一圖!!! 以CITY 導向!類型 樓層 空值");
+	    	List<CurrentPriceBean> result1 = chartService.select_pei_by_three_type(bean);
+//			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result1 == null) {
+				error.put("action", "xxxx fail");
+			} else if(result1 != null ){
+				request.setAttribute("Choose1",result1);
+//				request.setAttribute("Choose2",result2);
+			}
+			System.out.println("FIRST"+result1);
+//			System.out.println("R"+result2);
+			
+			System.out.println("SOS  result1  ~prodaction null's answer");
+//			ServletContext servletContext = getServletContext();
+		 
+		 
+		  //PrintWriter out = res.getWriter();  
+		  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+//		  String getcurrentprice_tradedate="";
+//		  String getavgoneprice_by_tradedate="";
+		  String getboth="";
+		  int r1 = 0;
+		  for(CurrentPriceBean element : result1) {
+			  
+			  if(r1>0){
+				  getboth = getboth +",";
+			  
+		    }
+		  
+		  getboth = getboth + "[\""+element.getCurrentprice_bdtype() +"\","+ element.getCount_by_city_type()+"]"; 
+		  r1++;
+	    }
+		  System.out.println("getboth"+getboth);
+		  //out.print();
+		  //out.print(result1);  
+		  response.setContentType("application/json");
+		  response.setCharacterEncoding("UTF-8");
+		  response.getWriter().write("[[\"type\", \"percentage\"],"+getboth+"]");
+		  System.out.println("[[\"type\", \"percentage\"],"+getboth+"]");
+		  
+		}else if (prodaction == null && currentprice_city != null && currentprice_bdtype !=null && currentprice_transes == null) {
+			System.out.println("餅二圖!!! 以CITY 類型 導向! 樓層 空值");
+//			List<CurrentPriceBean> result1 = chartService.select_pei_by_three_type(bean);
+			List<CurrentPriceBean> result1 = chartService.select_pei_by_three_area(bean);
+//			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			
+			if (result1 == null) {
+				error.put("action", "xxxx fail");
+			} else if(result1 != null ){
+				request.setAttribute("Choose1",result1);
+//				request.setAttribute("Choose2",result2);
+			}
+			System.out.println("SECOND"+result1);
+//			System.out.println("R"+result2);
+			
+			System.out.println("SOS  result1  ~prodaction null's answer");
+//			ServletContext servletContext = getServletContext();
+		 
+		 
+		  //PrintWriter out = res.getWriter();  
+		  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+//		  String getcurrentprice_tradedate="";
+//		  String getavgoneprice_by_tradedate="";
+		  String getboth="";
+		  int r1 = 0;
+		  for(CurrentPriceBean element : result1) {
+			  
+			  if(r1>0){
+				  getboth = getboth +",";
+			  
+		    }
+		  
+		  getboth = getboth + "[\""+element.getHousearea_range() +"\","+ element.getHousearea_count()+"]"; 
+		  r1++;
+	    }
+		  System.out.println("getboth"+getboth);
+		  //out.print();
+		  //out.print(result1);  
+		  response.setContentType("application/json");
+		  response.setCharacterEncoding("UTF-8");
+		  response.getWriter().write("[[\"Area\", \"percentage\"],"+getboth+"]");
+		  System.out.println("[[\"Area\", \"percentage\"],"+getboth+"]");
+		  
+		}else if (prodaction == null && currentprice_city != null && currentprice_bdtype !=null && currentprice_transes != null) {
+			System.out.println("餅三圖!!! 以CITY 類型 樓層  導向! ");
+//			List<CurrentPriceBean> result1 = chartService.select_pei_by_three_type(bean);
+			List<CurrentPriceBean> result1 = chartService.select_pei_by_three_transes(bean);
+//			List<CurrentPriceBean> result2 = chartService.select_avg_month(bean);
+			if (result1 == null) {
+				error.put("action", "xxxx fail");
+			} else if(result1 != null ){
+				request.setAttribute("Choose1",result1);
+//				request.setAttribute("Choose2",result2);
+			}
+			System.out.println("THIRD"+result1);
+//			System.out.println("R"+result2);
+			
+			System.out.println("SOS  result1  ~prodaction null's answer");
+//			ServletContext servletContext = getServletContext();
+		 
+		 
+		  //PrintWriter out = res.getWriter();  
+		  //out.print("{\"Choose1\":"+new Gson().toJson(result1)+",\"Choose2\":"+new Gson().toJson(result2)+"}");  
+//		  String getcurrentprice_tradedate="";
+//		  String getavgoneprice_by_tradedate="";
+		  String getboth="";
+		  int r1 = 0;
+		  for(CurrentPriceBean element : result1) {
+			  
+			  if(r1>0){
+				  getboth = getboth +",";
+			  
+		    }
+		  
+		  getboth = getboth + "[\""+element.getCurrentprice_transes() +"\","+ element.getTranses_count()+"]"; 
+		  r1++;
+	    }
+		  System.out.println("getboth"+getboth);
+		  //out.print();
+		  //out.print(result1);  
+		  response.setContentType("application/json");
+		  response.setCharacterEncoding("UTF-8");
+		  response.getWriter().write("[[\"FLOORS\", \"percentage\"],"+getboth+"]");
+		  System.out.println("[[\"FLOORS\", \"percentage\"],"+getboth+"]");
+		  
+		}else  {
 			error.put("action", "Unknown Action:"+prodaction);
 			request.getRequestDispatcher(
 					"/_06_currentprice/cpweb.jsp").forward(request, response);

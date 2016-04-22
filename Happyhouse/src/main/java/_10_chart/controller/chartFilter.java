@@ -32,9 +32,9 @@ import _06_currentprice.model.dao.CurrentPriceDAOJdbc;
 
 @WebFilter(
 	
-		urlPatterns = {"/*"},
+//		urlPatterns = {"/*"},
 		initParams = {
-		      @WebInitParam(name = "sendValueForChart",value = "/_11_test/*"),
+//		      @WebInitParam(name = "sendValueForChart",value = "/_11_test/*"),
 //		      @WebInitParam(name = "sendValueForChart",value = ""),
 //
 //		      @WebInitParam(name = "mustLoginCP",value = "/chart/*")

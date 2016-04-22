@@ -246,8 +246,7 @@
 				<h2>${param.sellhouse_name}</h2>
 				<figure style="padding-RIGHT:150px">
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
-				</figure>
-					
+				</figure>					
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<br>

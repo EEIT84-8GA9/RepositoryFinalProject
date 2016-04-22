@@ -95,6 +95,10 @@
 							<li>${row.renthouse_describe}</li>
 							<li>${row.renthouse_size}</li>
 							<li>${row.renthouse_floor}</li>
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<li><button name="deletecartrent" value="${row.cart_id}">刪除這個收藏</button></li>
+							<li><input type="hidden" name="deleterent" value="deleterent"><li>
+ 							</form>
 						</ul>
 					</li> <!-- .product -->
 				

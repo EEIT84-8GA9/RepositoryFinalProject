@@ -62,8 +62,7 @@
 <h1>您已經登出完成<P/></h1>
 <h1><a href="<c:url value='../index.jsp' /> ">回首頁</a></h1>
  <img src="/Happyhouse/images/pro5.jpg" alt="" /> 
-<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 </body>

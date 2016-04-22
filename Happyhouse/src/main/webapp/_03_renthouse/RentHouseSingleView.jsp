@@ -254,5 +254,9 @@
 			  </form>
 		 </div>
 <!--  -->
+
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
 </body>
 </html>

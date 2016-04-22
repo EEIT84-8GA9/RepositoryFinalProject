@@ -515,8 +515,7 @@ $(document).ready(function(){
 		
 		
 		
-		
-		
+
 		
 		
 		

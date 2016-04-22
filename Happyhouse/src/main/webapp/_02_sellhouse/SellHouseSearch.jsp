@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,13 +9,12 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
+
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-
-
 	
 	$(document).ready(function() {
 		$('#datatable').DataTable({
@@ -87,7 +86,7 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/house.controller"/>"method="post" >
 <!-- 		<fieldset> -->
 <!-- 		<legend>房屋查詢</legend> -->
@@ -105,60 +104,60 @@
 <!-- 	<input type="submit" value="搜尋" name="prodaction"/> -->
 <!-- 	</div> -->
 <!-- 	</fieldset> -->
-<table>
-<tr>
-<td><input type="hidden" name="user_name" value="${param.user_name}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td>
-</tr>
-<td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
-</tr>
-</table>
+<!-- <table> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_name" value="${param.user_name}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_account" value="${param.user_account}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td> --%>
+<!-- </tr> -->
+<%-- <td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td> --%>
+<!-- </tr> -->
+<!-- </table> -->
 <!-- <table>                                                                  -->
 </form>
 <c:if test="${not empty select}">
 <!-- 	<table border=1 cellpadding=20 > -->
-		<table id="datatable" >
+		<table id="datatable"  width="900" >
 			<thead>
 			<tr>
 				<th>圖片</th>
@@ -191,16 +190,16 @@
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
-					<td style="width:200px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td><h3 style="font-style:normal;color:RED;width:200px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
+					<td style="width:200px;border-bottom-style:solid;border-bottom-width:1px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
+						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
 						<h5 style="font-style:normal">地址:${row.sellhouse_address}</h5>
 						<h5 style="font-style:normal">格局:${row.sellhouse_patterns}</h5>
 						<h5 style="font-style:normal">樓層:${row.sellhouse_floor}</h5>
 						</td>
-						<td style="padding:50px;width:200px" align="center" >${row.sellhouse_price}萬元</td>
-						<td style="padding:50px;width:100px" align="center" >${row.sellhouse_size}坪</td>
+						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_price}萬元</td>
+						<td style="padding:75px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_size}坪</td>		
 					</tr>
-
+					
 					</c:if>
 				</c:forEach>
 			</tbody>

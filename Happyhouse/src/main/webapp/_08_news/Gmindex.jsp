@@ -65,7 +65,6 @@
 <!-- 			</div> -->
 			<!--close banner_image-->
 					<div>
-					<h4>更新專區~測試中 敬請期待</h4>
 					</div>
 		<div id="footer">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>

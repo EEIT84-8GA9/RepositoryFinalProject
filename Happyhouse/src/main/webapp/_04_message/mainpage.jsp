@@ -148,7 +148,7 @@ tr:hover td {
 	</table>
 	
 	
-		<a href="addarticle.jsp">發表文章</a></p>
+		<a href="addarticle.jsp"><button>發表文章</button></a></p>
 					
 				</div>
 				<!--close content_text-->

@@ -13,10 +13,24 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
+	
+	$(document).ready(function() {
+		$("table").DataTable(
+// 				{
+// 			"pageLength": 7,
+// 			"lengthMenu": [ 1, 3, 5, 7 ]
+// 		}
+		);
+	});
+	
+	
+	
 </script>
 </head>
 <body>
@@ -179,7 +193,6 @@
 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" />
 						<c:param name="renthouse_size" value="${row.renthouse_size}" />
 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" />
-					
 						<c:param name="renthouse_message" value="${row.renthouse_message}" />
 						<c:param name="renthouse_date" value="${row.renthouse_date}" />
 						<c:param name="renthouse_car" value="${row.renthouse_car}" />

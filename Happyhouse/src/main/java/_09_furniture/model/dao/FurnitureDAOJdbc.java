@@ -84,15 +84,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while(rs.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rs.getInt("Furniture_id"));
-				fib.setUser_account(rs.getString("user_account") + ",");
-				fib.setFurniture_name(rs.getString("furniture_name") + ",");
+				fib.setUser_account(rs.getString("user_account"));
+				fib.setFurniture_name(rs.getString("furniture_name"));
 				fib.setFurniture_price(rs.getDouble("Furniture_price"));
-				fib.setFurniture_status(rs.getString("Furniture_status") + ",");
-				fib.setFurniture_time(rs.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rs.getString("Furnitur_address") + ",");
+				fib.setFurniture_status(rs.getString("Furniture_status"));
+				fib.setFurniture_time(rs.getString("Furniture_time") );
+				fib.setFurniture_address(rs.getString("Furnitur_address"));
 //				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
 //				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rs.getString("Furnitur_message") + ",");
+				fib.setFurniture_message(rs.getString("Furnitur_message"));
 				fib.setFurniture_type(rs.getString("Furniture_type") + "\n");
 				fibs.add(fib);
 			}
@@ -109,7 +109,7 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 
 	/* (non-Javadoc)
 	 * @see model.dao.FurnitureDAO#selectKeyWord(java.lang.String)
-	 */
+	*/
 	@Override
 	public List<FurnitureBean> selectKeyWord(String furniture_name) {
 		List<FurnitureBean> fbs = new ArrayList<FurnitureBean>();
@@ -122,15 +122,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while (rs.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rs.getInt("Furniture_id"));
-				fib.setUser_account(rs.getString("user_account") + ",");
-				fib.setFurniture_name(rs.getString("furniture_name") + ",");
+				fib.setUser_account(rs.getString("user_account"));
+				fib.setFurniture_name(rs.getString("furniture_name"));
 				fib.setFurniture_price(rs.getDouble("Furniture_price"));
-				fib.setFurniture_status(rs.getString("Furniture_status") + ",");
+				fib.setFurniture_status(rs.getString("Furniture_status"));
 				fib.setFurniture_time(rs.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rs.getString("Furnitur_address") + ",");
+				fib.setFurniture_address(rs.getString("Furnitur_address"));
 //				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
 //				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rs.getString("Furnitur_message") + ",");
+				fib.setFurniture_message(rs.getString("Furnitur_message"));
 				fib.setFurniture_type(rs.getString("Furniture_type") + "\n");
 				fbs.add(fib);
 //				fb.setFurniture_id(rs.getInt("Furniture_id"));
@@ -199,15 +199,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while(rset.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rset.getInt("Furniture_id"));
-				fib.setUser_account(rset.getString("user_account") + ",");
-				fib.setFurniture_name(rset.getString("furniture_name") + ",");
+				fib.setUser_account(rset.getString("user_account"));
+				fib.setFurniture_name(rset.getString("furniture_name") );
 				fib.setFurniture_price(rset.getDouble("Furniture_price"));
-				fib.setFurniture_status(rset.getString("Furniture_status") + ",");
-				fib.setFurniture_time(rset.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rset.getString("Furnitur_address") + ",");
+				fib.setFurniture_status(rset.getString("Furniture_status"));
+				fib.setFurniture_time(rset.getString("Furniture_time"));
+				fib.setFurniture_address(rset.getString("Furnitur_address"));
 //				fib.setFurniture_photo1(rset.getBytes("Furnitur_photo1"));
 //				fib.setFurniture_photo2(rset.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rset.getString("Furnitur_message") + ",");
+				fib.setFurniture_message(rset.getString("Furnitur_message"));
 				fib.setFurniture_type(rset.getString("Furniture_type") + "\n");
 				fibs.add(fib);
 			

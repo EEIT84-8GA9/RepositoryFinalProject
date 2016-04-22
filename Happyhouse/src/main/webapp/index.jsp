@@ -40,7 +40,7 @@ $(document).ready(function(){
  //google.charts.load('current', {packages: ['bar','corechart', 'line']});  只會LOAD 一次!!!!!!!!!!!!
   google.charts.setOnLoadCallback(drawChart1);
   google.charts.setOnLoadCallback(drawBackgroundColor1);
-  //與二區圖  方法作為區別所以 句末加一
+  //與二區圖  方法作為區別所以 句末加一 喔喔喔喔喔
  
   var price_city1 ="大安區";
 

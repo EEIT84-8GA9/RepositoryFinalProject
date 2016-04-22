@@ -266,8 +266,10 @@
 	          	<label>確認加入收藏嗎?</label><br/>
 				<input type="submit" id="messagesubmit" name="type"  value="確認" />
 			  </form>
+			  
+			  </div>
 		 </div>
-
+</div>
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>

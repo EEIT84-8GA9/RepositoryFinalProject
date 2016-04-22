@@ -166,7 +166,7 @@
 				<figure style="padding-RIGHT:150px">
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
 				</figure>
-					<div>
+					
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<br>
@@ -181,8 +181,8 @@
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>車位:${param.sellhouse_car}</p>
 					<p>地址:${param.sellhouse_address}</p>
-					</div>
 			</article>
+			</div>
 				<fieldset style="width:700px">
 					<legend>聯絡資訊</legend>
 					<div>
@@ -206,7 +206,7 @@
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
-				<form>
+			
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
@@ -215,15 +215,10 @@
 				
 		</tbody>
 	</c:if>
-	<!-- bean2 -->
-	
-	
-	
-</form>
-</div>
-<!-- param -->
+	</form>
+	</div>	
 
-<!--  -->
+
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
@@ -268,11 +263,12 @@
 			  </form>
 		 </div>
 
-	<div id="menu">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
-		</div>
+	
+<!-- 	<div id="menu"> -->
+<!-- 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a> -->
+<!-- 		</div> -->
 
 
-<!--  -->
+
 </body>
 </html>

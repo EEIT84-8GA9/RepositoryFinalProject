@@ -24,11 +24,10 @@ public class SellHouseResportServlet extends HttpServlet {
 		SellHouseDAO dao=new SellHouseDAOJdbc();
 		SellHouseBean bean=new SellHouseBean();
 		HttpSession session = request.getSession();
-		
 		String reportreason=request.getParameter("reportreason");
 		String sellhouse_id=request.getParameter("sellhouse_id");
 		String sellhouse_reportfrom=request.getParameter("sellhouse_reportfrom");
-		System.out.println(sellhouse_id);
+		System.out.println("sellhouse_id"+sellhouse_id);
 		int id=Integer.parseInt(sellhouse_id);
 		bean.setSellhouse_id(id);
 		bean.setSellhouse_reportfrom(sellhouse_reportfrom);

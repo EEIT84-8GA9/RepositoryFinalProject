@@ -163,11 +163,14 @@
 		<div id="content">
 			<article>
 				<h2>${param.sellhouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
+				<figure style="padding-RIGHT:150px">
+				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
 				</figure>
+					<div>
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
+					<br>
+					<br>
 					<p>帳號:${param.user_account}</p>
 					<p>姓名:${param.user_name}</p>
 					<p>價格:${param.sellhouse_price}</p>
@@ -178,17 +181,22 @@
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>車位:${param.sellhouse_car}</p>
 					<p>地址:${param.sellhouse_address}</p>
-			</article>
-		</div>
-				<fieldset>
-					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.sellhouse_phone}</label><br>
 					</div>
-					<br>
-					<label>e-mail:${param.sellhouse_email}</label>
-					<label><a href="">站內信</a></label>
+			</article>
+				<fieldset style="width:700px">
+					<legend>聯絡資訊</legend>
+					<div>
+						<table>
+						<tr>
+						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td>
+						<h3>姓名:${param.user_name}</h3>
+						<h3>電話:${param.sellhouse_phone}</h3>
+						<h3>E-mail:${param.sellhouse_email}</h3>
+						</td>
+						</tr>
+						</table>		
+					</div>
 				</fieldset>
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>

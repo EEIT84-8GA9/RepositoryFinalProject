@@ -580,12 +580,10 @@ private static final String SELECT_BY_INSERT_RENT_ID = "select * from carts wher
 	}
 	
 	private static final String INSERT2 = "insert into carts (user_account,renthouse_id,cart_date) values (?,?,getdate())";
-
 	public cartsBean insert2(cartsBean bean) {
 
 		Connection con = null;
 		PreparedStatement stm = null;
-
 		try {
 			con = dataSource.getConnection();
 			//con = DriverManager.getConnection(URL, USERNAME, PASSWORD);

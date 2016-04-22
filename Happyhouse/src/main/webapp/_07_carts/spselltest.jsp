@@ -56,7 +56,7 @@
 
 					<c:forEach var="row" items="${sell}">
 					
-<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
+                        <c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
 						<c:param name="user_name" value="${row.user_name}" />
 						<c:param name="user_account" value="${row.user_account}" />
 						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />

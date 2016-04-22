@@ -16,6 +16,7 @@
 
 
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
@@ -30,8 +31,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 	
-	
-	
+	<script type="text/javascript">
+
+	</script>
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
@@ -50,15 +52,25 @@
 		 google.charts.load("current", {packages:["corechart"]});
 
 		   google.charts.setOnLoadCallback(drawChart1);
-//		    google.charts.setOnLoadCallback(drawChart2);
+		    google.charts.setOnLoadCallback(drawChart2);
 		    
 		  
-		  var price_city1 ="文山區";
-		  var price_bdtype1 = "店面";
+// 		  var price_city1 ="文山區";
+// 		  var price_bdtype1 = "店面";
 		  var price_floors1 = "TEST層" ;
+		  var price_city0 = "${param.sellhouse_address}";
+		  var price_bdtype0 = "${param.sellhouse_patterns}";
+		  var price_city1 = price_city0.substring(3,6);
+		  var price_bdtype1 = price_bdtype0.substring(0,2);
+		  
+		  
+		  
 		  
 		  function drawChart1() {
-			      alert("hello");
+// 			      alert("hello");
+// 			      alert("${param.sellhouse_address}");
+// 			      alert("price_city1="+price_city1);
+// 			      alert("price_bdtype1="+price_bdtype1);
 				  $.ajax({
 		           
 			   	  
@@ -85,7 +97,9 @@
 			     	     //arrayToDataTablev 是吃json格式  
 		  			  var data = google.visualization.arrayToDataTable(chartdata); 
 		  		
-		  			  data.addRows([[50,10000000]]);
+// 		  			  data.addRows([[50,10000000,"point { size: 18; shape-type: star; fill-color: #a52714; }"]]);
+		  			 data.addRows([[50,10000000]]);
+		  			  
 //		         alert(chartobj); 
 		  		        var options = {
 		          title: 'Area x Price 散佈圖 ',
@@ -96,7 +110,7 @@
 		          legend: 'none'
 		        };
 //		   		   alert(chartobj);             
-		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
+// 		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
 		  		 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
 		  	        chart.draw(data, options);
 			     	   
@@ -109,8 +123,68 @@
 		  
 		  
 		  
+// 		  var price_city1 ="大安區";
+// 		  var price_bdtype1 = "套房";
+		  var price_city0 = "${param.sellhouse_address}";
+		  var price_bdtype0 = "${param.sellhouse_patterns}";
+		  var price_city1 = price_city0.substring(3,6);
+		  var price_bdtype1 = price_bdtype0.substring(0,2);
+		  var price_transes1 = "一樓";
+
+		  function drawChart2() {
+			  
+				  $.ajax({
+		           
+			    	  
+//			     	   async: false,   
+			    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",      //发送请求地址
+			    	   type:"get",//请求方式
+			    	   cache: false, 
+					   dataType: "JSON",
+			    	   data:{//发送给数据库的数据
+			    		   
+			    		   price_city : price_city1,
+			    		   price_bdtype : price_bdtype1,
+			    		   price_transes : price_transes1
+//			     		   price_city:$("#areaend").val(),
+//			     		   price_bdtype:$("#typetype").val()
+			    	   }, 
+			    	   //请求成功后的回调函数有两个参数
+			    	   
+			     	   success: function(chartdata){ 
+// 			     		  alert("BAR時間圖1>>>"+chartdata); 
+			     	   
+//		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+//		 	     		alert(chartobj); 
+			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+			     	     //arrayToDataTablev 是吃json格式  
+//		 	     	         alert("BAR時間圖2>>>"+chartobj); 
+		  			  var data = google.visualization.arrayToDataTable(chartdata); 
+		  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+		             
+		             var options = {
+		                     title: 'The decline of BAR時間圖',
+		                     vAxis: {title: 'Accumulated Rating'},
+		                     isStacked: true
+		                   };
+		             
+		             var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+				    chart.draw(data, options);
+		    	   
+		    	 },
+				 error:function(jqXHR,textStatus,errorThrown){
+				    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+				    }
+		   });
+
+		  }
 		  
 		  
+		  
+		  
+		  
+// 		  @@!
 		})
 	
 	/*站內*/
@@ -293,10 +367,25 @@
 				<br>
 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															
 				
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以下 -->
+				
+			<div id="chart_div2" style="width: 900px; height:500px;"></div>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+				
+				
+			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上 -->	
+				
+				
+				
+				
 		</tbody>
 	</c:if>
 	</form>
 	</div>	
+	
+	
+	
+	
 
 <!--  -->
 
@@ -355,11 +444,17 @@
 		 </div>
 </div>
 	
+	
+	<BR>
+	<BR>
+	<BR>
+	<BR>
+	
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
-<div id="chart_div2" style="width: 540px; height:300px;"></div>
-<div id="chart_div" style="width:540px; height: 300px;"></div>
+
+
 
 
 </body>

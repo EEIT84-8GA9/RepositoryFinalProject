@@ -56,6 +56,29 @@
 
 					<c:forEach var="row" items="${sell}">
 					
+                        <c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
+						<c:param name="user_name" value="${row.user_name}" />
+						<c:param name="user_account" value="${row.user_account}" />
+						<c:param name="sellhouse_id" value="${row.sellhouse_id}" />
+						<c:param name="sellhouse_name" value="${row.sellhouse_name}" />
+						<c:param name="sellhouse_price" value="${row.sellhouse_price}" />
+						<c:param name="sellhouse_patterns"
+							value="${row.sellhouse_patterns}" />
+						<c:param name="sellhouse_address" value="${row.sellhouse_address}" />
+						<c:param name="sellhouse_describe" value="${row.sellhouse_describe}" />
+						<c:param name="sellhouse_size" value="${row.sellhouse_size}" />
+						<c:param name="sellhouse_floor" value="${row.sellhouse_floor}" />
+						<c:param name="sellhouse_age" value="${row.sellhouse_age}" />
+						<c:param name="sellhouse_message" value="${row.sellhouse_message}" />
+						<c:param name="sellhouse_date" value="${row.sellhouse_date}" />
+						<c:param name="sellhouse_car" value="${row.sellhouse_car}" />
+						<c:param name="sellhouse_phone" value="${row.sellhouse_phone}" />
+						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />
+						<c:param name="sellhouse_type" value="${row.sellhouse_type}" />
+					</c:url>
+					
+					
+					
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
@@ -68,7 +91,7 @@
 						</div> <!-- .top-info -->
 
 						<ul class="cd-features-list">
-							<li>${row.sellhouse_name}</li>
+							<li><a href="${path}">${row.sellhouse_name}</a></li>
 							<li>${row.sellhouse_price}</li>
 							<li>${row.sellhouse_patterns}</li>
 							<li>${row.sellhouse_address}</li>
@@ -76,7 +99,10 @@
 							<li>${row.sellhouse_size}</li>
 							<li>${row.sellhouse_floor}</li>
 							<li>${row.sellhouse_age}</li>
-							<li><input type="submit" name="deletecart" value="刪除此筆收藏"></li>
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<li><button name="deletecartsell" value="${row.cart_id}">刪除這個收藏</button></li>
+							<li><input type="hidden" name="deletesell" value="deletesell"><li>
+ 							</form>
 						</ul>
 					</li> <!-- .product -->
 				

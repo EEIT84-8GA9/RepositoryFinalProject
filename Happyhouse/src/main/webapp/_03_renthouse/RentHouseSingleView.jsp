@@ -193,6 +193,7 @@
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				<button type="button" class="buttonCart" value="" >加入收藏</button>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
@@ -241,12 +242,21 @@
 				
 			  </form>
 		 </div>
+ <!-- 加入收藏 -->
  
-
-
-
-
-
+<div class="dialog" title="加入收藏" id="cartform">
+	          <form action="/Happyhouse/rentcartsinsert.controller" method="post">
+<%-- 	            <p>帳號:${param.user_account}</p> --%>
+				<input type="text" id="user_account" name="user_account3" value="${LoginOK.user_account}"><br/>
+				<input type="text" id="user_account" name="renthouse_id3" value="${param.renthouse_id}"><br/>
+	          	<label>確認加入收藏嗎?</label><br/>
+				<input type="submit" id="messagesubmit" name="type"  value="確認" />
+			  </form>
+		 </div>
 <!--  -->
+
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
 </body>
 </html>

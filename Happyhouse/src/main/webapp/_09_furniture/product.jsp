@@ -81,10 +81,10 @@ $(window).load(function() {
 						</li>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
 						<ul>
+											<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
+	                    <li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
@@ -130,10 +130,10 @@ $(window).load(function() {
 <%-- 			<input type="button"  value="Insert"  onclick="location.href= --%>
 <%-- 		'<c:url value="/_09_furniture/insertProduct.jsp" />'"> > --%>
 <!-- 			<input type="submit" name="prodaction" value="Update"> -->
-	<td>
-	<input type="button" value="刊登二手家具" onclick="location.href=
-		'<c:url value="/_09_furniture/insertProduct.jsp" />'">
-		</td>
+<!-- 	<td> -->
+<%-- 	<input type="button" value="刊登二手家具" onclick="location.href= --%>
+<%-- 		'<c:url value="/_09_furniture/insertProduct.jsp" />'"> --%>
+<!-- 		</td> -->
 			
 		
 <!-- 		<td> -->
@@ -186,8 +186,8 @@ $(window).load(function() {
 <script type="text/javascript">clearForm();</script>
 </c:if>
  <img src="/Happyhouse/images/pro.jpg" alt="" /> 
-	<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+		
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 </body>

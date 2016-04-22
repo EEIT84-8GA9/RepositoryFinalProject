@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,15 +8,25 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider();
+	
+	$(document).ready(function() {
+		$('#datatable').DataTable({
+			"pageLength": 5,
+			"bFilter": true,
+			"bLengthChange": false,
+// 			"lengthMenu": [ 1, 3, 5, 7 ]
+		});
 	});
+	
+	
+	
 </script>
 </head>
 <body>
@@ -76,97 +86,86 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/house.controller"/>"method="post" >
-		<fieldset>
-		<legend>房屋查詢</legend>
-	<div style="padding-left:200px;width:50%;height:50%">
-	<label>選擇搜尋方式</label>
+<!-- 		<fieldset> -->
+<!-- 		<legend>房屋查詢</legend> -->
+<!-- 	<div style="padding-left:200px;width:50%;height:50%"> -->
+<!-- 	<label>選擇搜尋方式</label> -->
 	
-	<select name="choise" value="標題">
-	<option value="address">地址</option>
-	<option value="name">標題</option>
-	<option value="price">價格</option>
-	</select>
-	<input  style="height:50%" type="hidden" name="sellhouse_address">
-	<input  style="height:50%" type="hidden" name="null">
-	<input  style="height:50%" type="text" name="keyword">
-	<input type="submit" value="搜尋" name="prodaction"/>
-	</div>
-	</fieldset>
+<!-- 	<select name="choise" value="標題"> -->
+<!-- 	<option value="address">地址</option> -->
+<!-- 	<option value="name">標題</option> -->
+<!-- 	<option value="price">價格</option> -->
+<!-- 	</select> -->
+<!-- 	<input  style="height:50%" type="hidden" name="sellhouse_address"> -->
+<!-- 	<input  style="height:50%" type="hidden" name="null"> -->
+<!-- 	<input  style="height:50%" type="text" name="keyword"> -->
+<!-- 	<input type="submit" value="搜尋" name="prodaction"/> -->
+<!-- 	</div> -->
+<!-- 	</fieldset> -->
 <!-- <table> -->
 <!-- <tr> -->
-<!-- <td>請輸入地址</td> -->
-<%-- <td ><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td> --%>
-<!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
+<%-- <td><input type="hidden" name="user_name" value="${param.user_name}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_account" value="${param.user_account}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td> --%>
+<!-- </tr> -->
+<%-- <td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td> --%>
 <!-- </tr> -->
 <!-- </table> -->
-<table>
-<tr>
-<td><input type="hidden" name="user_name" value="${param.user_name}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td>
-</tr>
-<td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
-</tr>
-</table>
 <!-- <table>                                                                  -->
 </form>
 <c:if test="${not empty select}">
 <!-- 	<table border=1 cellpadding=20 > -->
-		<table>
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-<!-- 			</thead> -->
+		<table id="datatable"  width="900" >
+			<thead>
+			<tr>
+				<th>圖片</th>
+				<th>標題</th>
+				<th>價格</th>			
+				<th>坪數</th>
+				</tr>
+			</thead>
 			<tbody>
 				<c:forEach var="row" items="${select}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
@@ -191,21 +190,16 @@
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
-					<td style="font-size:500px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td><h3 style="font-style:normal;color:RED"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
+					<td style="width:200px;border-bottom-style:solid;border-bottom-width:1px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
+						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
 						<h5 style="font-style:normal">地址:${row.sellhouse_address}</h5>
 						<h5 style="font-style:normal">格局:${row.sellhouse_patterns}</h5>
 						<h5 style="font-style:normal">樓層:${row.sellhouse_floor}</h5>
 						</td>
-						<td style="padding:50px">${row.sellhouse_price}萬元</td>
-						<td style="padding:50px">${row.sellhouse_size}坪</td>
+						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_price}萬元</td>
+						<td style="padding:75px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_size}坪</td>		
 					</tr>
-					<tr>
-					<td></td>
-					</tr>
-						<tr>
-					<td></td>
-					</tr>
+					
 					</c:if>
 				</c:forEach>
 			</tbody>
@@ -215,8 +209,7 @@
 			
 			
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

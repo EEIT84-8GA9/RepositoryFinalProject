@@ -163,11 +163,14 @@
 		<div id="content">
 			<article>
 				<h2>${param.sellhouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
+				<figure style="padding-RIGHT:150px">
+				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
 				</figure>
+					<div>
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
+					<br>
+					<br>
 					<p>帳號:${param.user_account}</p>
 					<p>姓名:${param.user_name}</p>
 					<p>價格:${param.sellhouse_price}</p>
@@ -178,17 +181,22 @@
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>車位:${param.sellhouse_car}</p>
 					<p>地址:${param.sellhouse_address}</p>
-			</article>
-		</div>
-				<fieldset>
-					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.sellhouse_phone}</label><br>
 					</div>
-					<br>
-					<label>e-mail:${param.sellhouse_email}</label>
-					<label><a href="">站內信</a></label>
+			</article>
+				<fieldset style="width:700px">
+					<legend>聯絡資訊</legend>
+					<div>
+						<table>
+						<tr>
+						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td>
+						<h3>姓名:${param.user_name}</h3>
+						<h3>電話:${param.sellhouse_phone}</h3>
+						<h3>E-mail:${param.sellhouse_email}</h3>
+						</td>
+						</tr>
+						</table>		
+					</div>
 				</fieldset>
 				</form>
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
@@ -222,7 +230,7 @@
 	            <label>您的帳號</label><br/>
 				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}${bean2.sellhouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
@@ -236,9 +244,9 @@
 	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}${bean2.user_account}"><br/>
-				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}${bean2.sellhouse_id}"><br/>
-	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}${bean2.user_account}" readonly="readonly"><br/>	 
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}"><br/>
+				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}"><br/>
+	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title" ><br/>
@@ -260,7 +268,9 @@
 			  </form>
 		 </div>
 
-
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
 
 
 <!--  -->

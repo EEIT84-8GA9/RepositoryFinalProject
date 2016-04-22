@@ -8,10 +8,17 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<!-- <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" /> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script> -->
+
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -23,6 +30,15 @@
 		    checkboxes[i].checked = source.checked;
 		  }
 		}
+	
+	$(document).ready(function() {
+		$('#datatable').DataTable({
+			"pageLength": 5,
+			"bFilter": true,
+			"bLengthChange": false,
+// 			"lengthMenu": [ 1, 3, 5, 7 ]
+		});
+	});
 </script>
 </head>
 <body>
@@ -82,7 +98,8 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+			
+			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/renthouseuser.controller"/>"method="post" >
 <!-- 		<fieldset> -->
 <!-- 		<legend>房屋查詢</legend> -->
@@ -107,69 +124,66 @@
 <!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
 <!-- </tr> -->
 <!-- </table> -->
-<table>
-<tr>
-<td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_name" value="${param.renthouse_name}" ></td>
-</tr>
-<td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_patterns" value="${param.renthouse_patterns}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_describe" value="${param.renthouse_describe}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_size" value="${param.renthouse_size}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_floor" value="${param.renthouse_floor}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_deposit" value="${param.renthouse_deposit}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_type" value="${param.renthouse_type}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_message" value="${param.renthouse_message}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_date" value="${param.renthouse_date}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_car" value="${param.renthouse_car}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_phone" value="${param.renthouse_phone}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="renthouse_email" value="${param.renthouse_email}" ></td>
-</tr>
-</table>
-<table>                                                                 
+<!-- <table> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_id" value="${param.renthouse_id}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_account" value="${param.user_account}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_name" value="${param.renthouse_name}" ></td> --%>
+<!-- </tr> -->
+<%-- <td><input type="hidden" name="renthouse_price" value="${param.renthouse_price}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_patterns" value="${param.renthouse_patterns}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_describe" value="${param.renthouse_describe}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_size" value="${param.renthouse_size}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_floor" value="${param.renthouse_floor}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_deposit" value="${param.renthouse_deposit}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_type" value="${param.renthouse_type}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_message" value="${param.renthouse_message}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_date" value="${param.renthouse_date}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_car" value="${param.renthouse_car}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_phone" value="${param.renthouse_phone}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="renthouse_email" value="${param.renthouse_email}" ></td> --%>
+<!-- </tr> -->
+<!-- </table> -->
+<!-- <table>                                                                  -->
 
 <c:if test="${not empty select1}">
-		<table border=1 cellpadding=20 >
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-
-<!-- 			</thead> -->
+		<table id="datatable"  width="900" >
+			<thead>
+			<tr>
+				<th>勾選</th>
+				<th>圖片</th>
+				<th>標題</th>
+				<th>價格</th>
+				<th>刊登日期</th>
+				<th>修改</th>
+			</tr>
+			</thead>
 			<tbody>
 			<input type="checkbox" onClick="toggle(this)" />&nbsp全選
 				<c:forEach var="row" items="${select1}">
@@ -216,16 +230,13 @@
 					<!-- 修改用 -->
 					
 					<tr>
-					<td><input type="checkbox" value="${row.renthouse_id}" name="delete_renthouse_id"/></td>	
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.renthouse_name}</a></h3>
-						<h3>${row.renthouse_address}</h5>
-						<h3>${row.renthouse_patterns}</h3>
+					<td align="center"><input type="checkbox" value="${row.renthouse_id}" name="delete_renthouse_id"/></td>	
+					<td style="width:100px;border-bottom-style:solid;border-bottom-width:1px"> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="75px"></td>
+						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.renthouse_name}</font></a></h3>
 						</td>
-						<td>${row.renthouse_price}</td>
-						<td>${row.renthouse_size}</td>
-						<td>${row.renthouse_date}</td>
-						<td><a href="${path2}">修改</a></td>
+						<td style="padding:20px;width:100px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.renthouse_price}</td>
+						<td style="padding:20px;width:100px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.renthouse_date}</td>
+						<td style="padding:20px;width:50px;border-bottom-style:solid;border-bottom-width:1px" align="center"><a href="${path2}">修改</a></td>
 					
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?renthouse_id=${row.renthouse_id}" width="150px"></td> --%>
@@ -243,12 +254,12 @@
 		</form>		
 			
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->
 	</div>
 	<!--close main-->
+	
 </body>
 </html>

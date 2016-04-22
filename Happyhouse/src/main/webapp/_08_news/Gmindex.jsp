@@ -67,8 +67,7 @@
 					<div>
 					<h4>更新專區~測試中 敬請期待</h4>
 					</div>
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

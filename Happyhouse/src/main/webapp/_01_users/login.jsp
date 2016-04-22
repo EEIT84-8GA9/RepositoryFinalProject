@@ -71,6 +71,7 @@
 		<td>請輸入帳號 : </td>
 		<td><input type="text" name="username" value="${param.user_account}"></td>
 		<td>${error.username}</td>
+		<td>${error.type}</td>
 	</tr>
 	<tr>
 		<td>請輸入密碼 : </td>
@@ -86,12 +87,11 @@
 		'<c:url value="/_01_users/regist.jsp" />'"></td>
 		
 	</tr>
-	
+   
 </table>
 </form>
- <img src="/Happyhouse/images/pro0.jpg" alt="" /> 
-<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+ <img src="/Happyhouse/images/pro.jpg" alt="" /> 
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 </body>

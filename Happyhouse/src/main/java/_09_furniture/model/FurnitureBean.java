@@ -1,5 +1,6 @@
 package _09_furniture.model;
 
+import java.sql.Blob;
 import java.util.Arrays;
 
 public class FurnitureBean {
@@ -11,11 +12,12 @@ public class FurnitureBean {
 	private String furniture_status;
 	private String furniture_time;
 	private String furniture_address;
-	private byte[] furniture_photo1;
-	private byte[] furniture_photo2;
 	private String furniture_message;
 	private String furniture_type;
-
+	private String Furnitur_photo1_name;
+	private String Furnitur_photo2_name;
+	private	Blob   Furnitur_photo1;
+	private	Blob   Furnitur_photo2;
 	public int getFurniture_id() {
 		return furniture_id;
 	}
@@ -76,21 +78,7 @@ public class FurnitureBean {
 
 
 
-	public byte[] getFurniture_photo1() {
-		return furniture_photo1;
-	}
-
-	public void setFurniture_photo1(byte[] furniture_photo1) {
-		this.furniture_photo1 = furniture_photo1;
-	}
-
-	public byte[] getFurniture_photo2() {
-		return furniture_photo2;
-	}
-
-	public void setFurniture_photo2(byte[] furniture_photo2) {
-		this.furniture_photo2 = furniture_photo2;
-	}
+	
 
 	public String getFurniture_message() {
 		return furniture_message;
@@ -107,20 +95,44 @@ public class FurnitureBean {
 	public void setFurniture_type(String furniture_type) {
 		this.furniture_type = furniture_type;
 	}
-
-	@Override
-	public String toString() {
-		return "FurnitureBean [furniture_id=" + furniture_id
-				+ ", user_account=" + user_account + ", furniture_name="
-				+ furniture_name + ", furniture_price=" + furniture_price
-				+ ", furniture_status=" + furniture_status
-				+ ", furniture_time=" + furniture_time + ", furniture_address="
-				+ furniture_address + ", furniture_photo1="
-				+ Arrays.toString(furniture_photo1) + ", furniture_photo2="
-				+ Arrays.toString(furniture_photo2) + ", furniture_message="
-				+ furniture_message + ", furniture_type=" + furniture_type
-				+ "]";
+	
+	
+	
+	
+	public String getFurnitur_photo1_name() {
+		return Furnitur_photo1_name;
 	}
+
+	public void setFurnitur_photo1_name(String furnitur_photo1_name) {
+		Furnitur_photo1_name = furnitur_photo1_name;
+	}
+
+	public String getFurnitur_photo2_name() {
+		return Furnitur_photo2_name;
+	}
+
+	public void setFurnitur_photo2_name(String furnitur_photo2_name) {
+		Furnitur_photo2_name = furnitur_photo2_name;
+	}
+
+	public Blob getFurnitur_photo1() {
+		return Furnitur_photo1;
+	}
+
+	public void setFurnitur_photo1(Blob furnitur_photo1) {
+		Furnitur_photo1 = furnitur_photo1;
+	}
+
+	public Blob getFurnitur_photo2() {
+		return Furnitur_photo2;
+	}
+
+	public void setFurnitur_photo2(Blob furnitur_photo2) {
+		Furnitur_photo2 = furnitur_photo2;
+	}
+
+
+
 
 
 

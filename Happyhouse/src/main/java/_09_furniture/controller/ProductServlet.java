@@ -1,24 +1,28 @@
 package _09_furniture.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import _09_furniture.model.FurnitureBean;
 import _09_furniture.model.FurnitureService;
 
 
-
+@MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 @WebServlet(
 		urlPatterns={"/pages/product.controller"}
 )
@@ -45,6 +49,24 @@ public class ProductServlet extends HttpServlet {
 		String insaddress = request.getParameter("insaddress");
 		String insmessage = request.getParameter("insmessage");
 		String instype = request.getParameter("instype");
+	//圖片上傳用
+	
+		long sizeInBytes1 = 0;
+		long sizeInBytes2 = 0;
+		long sizeInBytes3 = 0;
+		String fldName1 = "";
+		String fldName2 = "";
+		String fldName3 = "";
+		String value1 = "";
+		String value2 = "";
+		String value3 = "";
+		String memberID = "";
+		String fileName1 = "";
+		InputStream is1 = null;
+		String fileName2 = "";
+		InputStream is2 = null;
+		String fileName3 = "";
+		InputStream is3 = null;
 		
 
 	
@@ -107,7 +129,14 @@ public class ProductServlet extends HttpServlet {
 		bean.setFurniture_message(insmessage);
 		bean.setFurniture_type(instype);
 		bean.setFurniture_id(id);
+		//圖片上傳用
 	
+		
+		
+		
+		
+		
+		
 //根據Model執行結果顯示View
 	
 		if("查詢所有刊登家具".equals(prodaction)) { 
@@ -125,7 +154,45 @@ public class ProductServlet extends HttpServlet {
 					"/_09_furniture/display1.jsp").forward(request, response);
 		}
 		else if(prodaction!=null && prodaction.equals("新增刊登")) {
-			FurnitureBean result = productService.insert(bean);
+			Collection<Part> parts = request.getParts() ;
+			if (parts != null) {
+				for (Part p : parts) {
+					if (p.getContentType() == null) {
+						if (fldName1.equals("text")) {
+							//memberID = value1;
+						}
+					} else {
+						if (is1 == null) {
+							is1 = p.getInputStream();
+							sizeInBytes1 = p.getSize();
+							fileName1 = productService.getFileName(p); // 此為圖片檔的檔名
+							fileName1 = productService.adjustFileName(fileName1,
+									productService.IMAGE_FILENAME_LENGTH);
+						} else if (is2 == null && is1 != null) {
+							is2 = p.getInputStream();
+							sizeInBytes2 = p.getSize();
+							fileName2 = productService.getFileName(p); // 此為圖片檔的檔名
+							fileName2 = productService.adjustFileName(fileName2,
+									productService.IMAGE_FILENAME_LENGTH);
+						} 
+						if (fileName1 !=null && fileName1.trim().length() > 0) {
+							bean.setFurnitur_photo1_name(fileName1);
+							bean.setFurnitur_photo1_name(fileName2);
+						}
+						
+					}
+					
+				}
+			
+				}
+			
+			
+			
+			
+			
+			
+			
+			FurnitureBean result = productService.insert(bean,is1,sizeInBytes1,is2,sizeInBytes2);
 			System.out.print(result);
 			if(result==null) {
 				error.put("action", "Insert 失敗");

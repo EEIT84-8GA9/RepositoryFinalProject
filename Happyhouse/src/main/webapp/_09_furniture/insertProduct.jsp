@@ -71,11 +71,11 @@
 				<!--close menubar-->
 			</div>
 			
-			<h1 align="center"><font color=blue>王小明您好</font></h1>
+			<h1 align="center"><font color=blue> ${LoginOK.user_name}您好</font></h1>
 			
 			<!--close header-->
 			<div style="padding-left:150px">
-	<form action="<c:url value="/pages/product.controller" />" method="get">
+	<form  enctype="multipart/form-data" action="<c:url value="/pages/product.controller" />" method="POST">
 	
 <table>
      <tr>
@@ -118,7 +118,10 @@
 		<td><input type="text" name="instype" value="${param.furniture_type}"></td>
 		<td>${error.insname}</td>
 	</tr>
-
+	<tr>
+	<td><input type="file" name="Furnitur_photo1"></td>
+	<input type="file" name="Furnitur_photo2"></td>
+	</tr>
 	<tr>
 		<td>
 			<input type="submit" name="prodaction" value="新增刊登">
@@ -133,8 +136,8 @@
 			
 		
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+		
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

@@ -1,5 +1,6 @@
 package _09_furniture.model.dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -83,15 +84,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while(rs.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rs.getInt("Furniture_id"));
-				fib.setUser_account(rs.getString("user_account") + ",");
-				fib.setFurniture_name(rs.getString("furniture_name") + ",");
+				fib.setUser_account(rs.getString("user_account"));
+				fib.setFurniture_name(rs.getString("furniture_name"));
 				fib.setFurniture_price(rs.getDouble("Furniture_price"));
-				fib.setFurniture_status(rs.getString("Furniture_status") + ",");
-				fib.setFurniture_time(rs.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rs.getString("Furnitur_address") + ",");
-				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
-				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rs.getString("Furnitur_message") + ",");
+				fib.setFurniture_status(rs.getString("Furniture_status"));
+				fib.setFurniture_time(rs.getString("Furniture_time") );
+				fib.setFurniture_address(rs.getString("Furnitur_address"));
+//				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
+//				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
+				fib.setFurniture_message(rs.getString("Furnitur_message"));
 				fib.setFurniture_type(rs.getString("Furniture_type") + "\n");
 				fibs.add(fib);
 			}
@@ -108,7 +109,7 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 
 	/* (non-Javadoc)
 	 * @see model.dao.FurnitureDAO#selectKeyWord(java.lang.String)
-	 */
+	*/
 	@Override
 	public List<FurnitureBean> selectKeyWord(String furniture_name) {
 		List<FurnitureBean> fbs = new ArrayList<FurnitureBean>();
@@ -121,15 +122,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while (rs.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rs.getInt("Furniture_id"));
-				fib.setUser_account(rs.getString("user_account") + ",");
-				fib.setFurniture_name(rs.getString("furniture_name") + ",");
+				fib.setUser_account(rs.getString("user_account"));
+				fib.setFurniture_name(rs.getString("furniture_name"));
 				fib.setFurniture_price(rs.getDouble("Furniture_price"));
-				fib.setFurniture_status(rs.getString("Furniture_status") + ",");
+				fib.setFurniture_status(rs.getString("Furniture_status"));
 				fib.setFurniture_time(rs.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rs.getString("Furnitur_address") + ",");
-				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
-				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rs.getString("Furnitur_message") + ",");
+				fib.setFurniture_address(rs.getString("Furnitur_address"));
+//				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
+//				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
+				fib.setFurniture_message(rs.getString("Furnitur_message"));
 				fib.setFurniture_type(rs.getString("Furniture_type") + "\n");
 				fbs.add(fib);
 //				fb.setFurniture_id(rs.getInt("Furniture_id"));
@@ -198,15 +199,15 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 			while(rset.next()) {
 				FurnitureBean fib = new FurnitureBean();
 				fib.setFurniture_id(rset.getInt("Furniture_id"));
-				fib.setUser_account(rset.getString("user_account") + ",");
-				fib.setFurniture_name(rset.getString("furniture_name") + ",");
+				fib.setUser_account(rset.getString("user_account"));
+				fib.setFurniture_name(rset.getString("furniture_name") );
 				fib.setFurniture_price(rset.getDouble("Furniture_price"));
-				fib.setFurniture_status(rset.getString("Furniture_status") + ",");
-				fib.setFurniture_time(rset.getString("Furniture_time") + ",");
-				fib.setFurniture_address(rset.getString("Furnitur_address") + ",");
-				fib.setFurniture_photo1(rset.getBytes("Furnitur_photo1"));
-				fib.setFurniture_photo2(rset.getBytes("Furnitur_photo2"));
-				fib.setFurniture_message(rset.getString("Furnitur_message") + ",");
+				fib.setFurniture_status(rset.getString("Furniture_status"));
+				fib.setFurniture_time(rset.getString("Furniture_time"));
+				fib.setFurniture_address(rset.getString("Furnitur_address"));
+//				fib.setFurniture_photo1(rset.getBytes("Furnitur_photo1"));
+//				fib.setFurniture_photo2(rset.getBytes("Furnitur_photo2"));
+				fib.setFurniture_message(rset.getString("Furnitur_message"));
 				fib.setFurniture_type(rset.getString("Furniture_type") + "\n");
 				fibs.add(fib);
 			
@@ -231,12 +232,13 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 //			+"values ((SELECT f.user_account FROM Furniture f, users u"
 //				+"	WHERE  f.user_account=u.user_account"
 //				+"	and f.Furniture_id=?),?,?,?,?,?,?,'A')";
-	private static final String INSERT = "insert into  Furniture (user_account,furniture_name,"
-	+ "Furniture_price,Furniture_status"
-	+",Furniture_time,Furnitur_address,Furnitur_message,Furniture_type)"
-	+"values (?,?,?,?,?,?,?,?)";
+//	private static final String INSERT = "insert into  Furniture (user_account,furniture_name,"
+//	+ "Furniture_price,Furniture_status"
+//	+",Furniture_time,Furnitur_address,Furnitur_message,Furniture_type)"
+//	+"values (?,?,?,?,?,?,?,?,?,?)";
+	private static final String INSERT ="insert into Furniture values (?,?,?,?,?,?,?,?,?,?,NULL,'A')";
 	@Override
-	public FurnitureBean insert(FurnitureBean bean) {
+	public FurnitureBean insert(FurnitureBean bean,InputStream is1,long size1,InputStream is2,long size2) {
 		FurnitureBean result = null;
 		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 //			Connection conn = dataSource.getConnection();
@@ -248,9 +250,10 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 				pstmt.setString(4, bean.getFurniture_status());
 				pstmt.setString(5, bean.getFurniture_time());
 				pstmt.setString(6, bean.getFurniture_address());
-				pstmt.setString(7, bean.getFurniture_message());
-				pstmt.setString(8, bean.getFurniture_type());
-				
+				pstmt.setString(7,bean.getFurnitur_photo1_name());
+				pstmt.setBinaryStream(8,is1,size1);
+				pstmt.setString(9,bean.getFurnitur_photo2_name());
+				pstmt.setBinaryStream(10,is2,size2);	
 				int i = pstmt.executeUpdate();
 				if(i==1) {
 					result = bean;

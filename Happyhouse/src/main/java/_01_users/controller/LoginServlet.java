@@ -53,12 +53,22 @@ public class LoginServlet extends HttpServlet {
 		// 根據Model執行結果顯示View
 		if (log != null && "登入".equals(log)) {
 			bean = userService.login(username, password);
+			
 			if (bean == null) {
-				System.out.println("5555");
-				error.put("password", "登入失敗，請再次輸入ID/PWD");
+         
+                 error.put("password", "登入失敗，請再次輸入ID/PWD");
 				request.getRequestDispatcher("/_01_users/login.jsp").forward(
 						request, response);
-			} else {
+			}
+			if("D".equals(bean.getUser_type())){
+				error.put("type", "此帳號已被封鎖");
+				HttpSession session = request.getSession();
+				session.removeAttribute("LoginOK");
+			    request.getRequestDispatcher("/_01_users/login.jsp").forward(
+						request, response);
+			}
+			else {
+			
 				HttpSession session = request.getSession();
 				session.setAttribute("LoginOK", bean);
 				String target = (String) session.getAttribute("target");

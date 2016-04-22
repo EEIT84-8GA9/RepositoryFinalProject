@@ -52,6 +52,18 @@ public List<cartsBean> select(cartsBean bean){
 		 return  result;
 	}	
 	
+
+		
+	public boolean delete(int id) {
+		boolean result = false;
+	
+			result = dao.delete(id);
+		
+		return result;
+	}	
+	
+	
+	
 	
 	
 

@@ -99,7 +99,10 @@
 							<li>${row.sellhouse_size}</li>
 							<li>${row.sellhouse_floor}</li>
 							<li>${row.sellhouse_age}</li>
-							<li><input type="submit" name="deletecart" value="刪除此筆收藏"></li>
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<li><button name="deletecartsell" value="${row.cart_id}">刪除這個收藏</button></li>
+							<li><input type="hidden" name="deletesell" value="deletesell"><li>
+ 							</form>
 						</ul>
 					</li> <!-- .product -->
 				

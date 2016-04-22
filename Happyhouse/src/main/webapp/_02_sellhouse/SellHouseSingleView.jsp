@@ -12,6 +12,9 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
+
+
+<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
@@ -25,6 +28,9 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
+	
+	
+	
 <script type="text/javascript">
 	$(window).load(function() {
 		$('#slider').nivoSlider();
@@ -39,7 +45,72 @@
 	        $("#form").slideToggle("slow");
 	    });
 	});
-	
+	$(document).ready(function(){
+		 google.charts.load("current", {packages:["corechart"]});
+
+		   google.charts.setOnLoadCallback(drawChart1);
+//		    google.charts.setOnLoadCallback(drawChart2);
+		    
+		  
+		  var price_city1 ="文山區";
+		  var price_bdtype1 = "店面";
+		  var price_floors1 = "TEST層" ;
+		  
+		  function drawChart1() {
+			      alert("hello");
+				  $.ajax({
+		           
+			   	  
+		 
+			    	   url:"${pageContext.servletContext.contextPath}/_10_chart.controller/chart.controller",      //发送请求地址
+			    	   type:"get",//请求方式
+			    	   cache: false, 
+					   dataType: "JSON",
+			    	   data:{
+			    		   
+			    		   price_city : price_city1,
+			    		   price_bdtype : price_bdtype1,
+			    		   price_floors : price_floors1
+//			     		   price_city:$("#areaend").val(),
+//			     		   price_bdtype:$("#typetype").val()
+			    	   }, 
+			    	   //请求成功后的回调函数有两个参数
+			    	   
+			     	   success: function(chartdata){ 	     		 
+//		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+//		 	     		alert(chartobj); 
+			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+			     	     //arrayToDataTablev 是吃json格式  
+		  			  var data = google.visualization.arrayToDataTable(chartdata); 
+		  		
+		  			  data.addRows([[50,10000000]]);
+//		         alert(chartobj); 
+		  		        var options = {
+		          title: 'Area x Price 散佈圖 ',
+		          hAxis: {title: 'Area-總坪數', minValue: 0, maxValue: 15},
+		          vAxis: {title: 'Price-總價', minValue: 0, maxValue: 15},
+		          pointSize: 10,
+		          pointShape: { type: 'star', sides: 6 },
+		          legend: 'none'
+		        };
+//		   		   alert(chartobj);             
+		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
+		  		 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
+		  	        chart.draw(data, options);
+			     	   
+			     	 },
+		  		 error:function(jqXHR,textStatus,errorThrown){
+		  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+		  		    }
+		 	   });
+		  }
+		  
+		  
+		  
+		  
+		  
+		})
 	
 	/*站內*/
 // 	  $(function() {
@@ -101,6 +172,15 @@
 		}
 </style>
 <body>
+
+<!--  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥以下偶的  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  -->
+
+
+<!-- <script type="text/javascript"> -->
+
+<!-- </script> -->
+<!--  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥以上偶的  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  -->
+
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
@@ -222,8 +302,17 @@
 </form>
 </div>
 <!-- param -->
-
 <!--  -->
+
+
+
+
+
+
+
+
+
+
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
@@ -271,7 +360,8 @@
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
-
+<div id="chart_div2" style="width: 540px; height:300px;"></div>
+<div id="chart_div" style="width:540px; height: 300px;"></div>
 
 <!--  -->
 </body>

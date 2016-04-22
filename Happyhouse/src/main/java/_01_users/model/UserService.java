@@ -1,6 +1,8 @@
 package _01_users.model;
 import java.sql.SQLException;
 
+import javax.servlet.http.Part;
+
 import _01_users.model_dao.UserDAO;
 import _01_users.model_dao.UsersDAOJdbc;
 
@@ -68,5 +70,13 @@ public class UserService {
 		}
 		return 0;
 	}
-
+	public static String getFileName(final Part part) {
+		for (String content : part.getHeader("content-disposition").split(";")) {
+			if (content.trim().startsWith("filename")) {
+				return content.substring(content.indexOf('=') + 1).trim()
+						.replace("\"", "");
+			}
+		}
+		return null;
+	}
 }

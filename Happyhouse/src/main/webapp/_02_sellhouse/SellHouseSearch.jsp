@@ -8,15 +8,26 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider();
+
+
+	
+	$(document).ready(function() {
+		$('#datatable').DataTable({
+			"pageLength": 5,
+			"bFilter": true,
+			"bLengthChange": false,
+// 			"lengthMenu": [ 1, 3, 5, 7 ]
+		});
 	});
+	
+	
+	
 </script>
 </head>
 <body>
@@ -78,29 +89,22 @@
 			<!--close header-->
 			<div style="padding-left:150px">
 		<form  action="<c:url value="/house/house.controller"/>"method="post" >
-		<fieldset>
-		<legend>房屋查詢</legend>
-	<div style="padding-left:200px;width:50%;height:50%">
-	<label>選擇搜尋方式</label>
+<!-- 		<fieldset> -->
+<!-- 		<legend>房屋查詢</legend> -->
+<!-- 	<div style="padding-left:200px;width:50%;height:50%"> -->
+<!-- 	<label>選擇搜尋方式</label> -->
 	
-	<select name="choise" value="標題">
-	<option value="address">地址</option>
-	<option value="name">標題</option>
-	<option value="price">價格</option>
-	</select>
-	<input  style="height:50%" type="hidden" name="sellhouse_address">
-	<input  style="height:50%" type="hidden" name="null">
-	<input  style="height:50%" type="text" name="keyword">
-	<input type="submit" value="搜尋" name="prodaction"/>
-	</div>
-	</fieldset>
-<!-- <table> -->
-<!-- <tr> -->
-<!-- <td>請輸入地址</td> -->
-<%-- <td ><input type="text" name="sellhouse_address" value="${param.sellhouse_address}" ></td> --%>
-<!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
-<!-- </tr> -->
-<!-- </table> -->
+<!-- 	<select name="choise" value="標題"> -->
+<!-- 	<option value="address">地址</option> -->
+<!-- 	<option value="name">標題</option> -->
+<!-- 	<option value="price">價格</option> -->
+<!-- 	</select> -->
+<!-- 	<input  style="height:50%" type="hidden" name="sellhouse_address"> -->
+<!-- 	<input  style="height:50%" type="hidden" name="null"> -->
+<!-- 	<input  style="height:50%" type="text" name="keyword"> -->
+<!-- 	<input type="submit" value="搜尋" name="prodaction"/> -->
+<!-- 	</div> -->
+<!-- 	</fieldset> -->
 <table>
 <tr>
 <td><input type="hidden" name="user_name" value="${param.user_name}" ></td>
@@ -154,19 +158,15 @@
 </form>
 <c:if test="${not empty select}">
 <!-- 	<table border=1 cellpadding=20 > -->
-		<table>
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-<!-- 			</thead> -->
+		<table id="datatable" >
+			<thead>
+			<tr>
+				<th>圖片</th>
+				<th>標題</th>
+				<th>價格</th>			
+				<th>坪數</th>
+				</tr>
+			</thead>
 			<tbody>
 				<c:forEach var="row" items="${select}">
 					<c:url value="/_02_sellhouse/SellHouseSingleView.jsp" var="path" scope="session">
@@ -191,21 +191,16 @@
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
 					<tr>	
-					<td style="font-size:500px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td><h3 style="font-style:normal;color:RED"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
+					<td style="width:200px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
+						<td><h3 style="font-style:normal;color:RED;width:200px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
 						<h5 style="font-style:normal">地址:${row.sellhouse_address}</h5>
 						<h5 style="font-style:normal">格局:${row.sellhouse_patterns}</h5>
 						<h5 style="font-style:normal">樓層:${row.sellhouse_floor}</h5>
 						</td>
-						<td style="padding:50px">${row.sellhouse_price}萬元</td>
-						<td style="padding:50px">${row.sellhouse_size}坪</td>
+						<td style="padding:50px;width:200px" align="center" >${row.sellhouse_price}萬元</td>
+						<td style="padding:50px;width:100px" align="center" >${row.sellhouse_size}坪</td>
 					</tr>
-					<tr>
-					<td></td>
-					</tr>
-						<tr>
-					<td></td>
-					</tr>
+
 					</c:if>
 				</c:forEach>
 			</tbody>

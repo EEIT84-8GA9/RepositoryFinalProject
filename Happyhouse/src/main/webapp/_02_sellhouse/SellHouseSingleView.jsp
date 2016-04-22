@@ -222,7 +222,7 @@
 	            <label>您的帳號</label><br/>
 				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}${bean2.sellhouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
 				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
@@ -236,9 +236,9 @@
 	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}${bean2.user_account}"><br/>
-				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}${bean2.sellhouse_id}"><br/>
-	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}${bean2.user_account}" readonly="readonly"><br/>	 
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}"><br/>
+				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}"><br/>
+	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
 				<input type="text" id="sms_title" name="sms_title" ><br/>

@@ -191,7 +191,7 @@
 					<label><a href="">站內信</a></label>
 				</fieldset>
 				</form>
-				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
+				<button class="buttonReport" value="" >我要檢舉</button>
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
 				<button type="button" class="buttonCart" value="" >加入收藏</button>
 				<fieldset>

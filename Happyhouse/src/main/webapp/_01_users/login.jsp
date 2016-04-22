@@ -71,6 +71,7 @@
 		<td>請輸入帳號 : </td>
 		<td><input type="text" name="username" value="${param.user_account}"></td>
 		<td>${error.username}</td>
+		<td>${error.type}</td>
 	</tr>
 	<tr>
 		<td>請輸入密碼 : </td>

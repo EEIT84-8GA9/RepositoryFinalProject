@@ -40,7 +40,7 @@ $(document).ready(function(){
  //google.charts.load('current', {packages: ['bar','corechart', 'line']});  只會LOAD 一次!!!!!!!!!!!!
   google.charts.setOnLoadCallback(drawChart1);
   google.charts.setOnLoadCallback(drawBackgroundColor1);
-  //與二區圖  方法作為區別所以 句末加一
+  //與二區圖  方法作為區別所以 句末加一 喔喔喔喔喔
  
   var price_city1 ="大安區";
 
@@ -302,7 +302,7 @@ $(document).ready(function(){
 <%-- 				</c:if> --%>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>歡迎 會員  ${LoginOK.user_name}  </h2>
+				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -330,13 +330,20 @@ $(document).ready(function(){
                         <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
                         </ul>
 						</li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
+						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>
 						<ul>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
+					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
+						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						</ul>	
+						<c:if test="${not empty LoginOK}">	
+						<ul>
+					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
+					    </c:if>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
 						<c:if test="${empty LoginOK}">
@@ -370,8 +377,7 @@ $(document).ready(function(){
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
-<!--  						    <img src="/Happyhouse/images/house.jpg" alt="" />    -->
- 						    <img src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.indeximg.new_id}"/>                             
+ 						    <img src="/Happyhouse/images/house.jpg" alt="" />                             
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 

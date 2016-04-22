@@ -24,6 +24,8 @@ public interface CurrentPriceDAO {
 	List<CurrentPriceBean> select_count_by_city_housearea(String currentprice_city);
 
 	List<CurrentPriceBean> select_all_by_address(String currentprice_address);
+
+	List<CurrentPriceBean> select_all_84_by_city_type(String currentprice_city, String currentprice_bdtype);
 	
 	
 

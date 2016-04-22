@@ -1,6 +1,8 @@
 package _06_currentprice.controller;
 
+
 import java.io.IOException;
+
 
 
 
@@ -173,7 +175,7 @@ public class CurrentPriceServlet extends HttpServlet {
 				request.setAttribute("Choose1",result1);
 //				request.setAttribute("Choose2",result2);
 			}
-			System.out.println("FIRST"+result1);
+			System.out.println("FIRST~"+result1);
 //			System.out.println("R"+result2);
 			
 			System.out.println("SOS  result1  ~prodaction null's answer");

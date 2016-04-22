@@ -61,8 +61,7 @@
 						<c:if test="${not empty LoginOK}">
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
-<!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
-						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
 						<li></li>

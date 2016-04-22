@@ -82,6 +82,83 @@ public class CurrentPriceDAOJdbc implements CurrentPriceDAO {
 
 	
 	
+	
+	// 第八個方法
+			// SELECT TOP 84 PERCENT * FROM currentprice WHERE currentprice_city ='大安區'
+			// AND currentprice_bdtype LIKE '%套房%' AND currentprice_transes LIKE '三層%'   <<層數拔掉
+			// order by currentprice_tprice
+
+			private static final String SELECT_ALL_84_BY_CITY_TYPE = "SELECT TOP 84 PERCENT * FROM currentprice WHERE currentprice_city = ? AND  currentprice_bdtype  LIKE ? "
+					+ "order by currentprice_tprice";
+
+			// 模糊查詢 下面要加 "%"+currentprice_bdtype+"%" >>>>
+			// pstmt.setString(1,"%"+currentprice_bdtype+"%");
+			// 此處為了 as 新增的欄位 CEILING(AVG(Currentprice_oneprice)) 在BEAN新增
+			// avg_oneprice_tradedate GET SET方法
+			// 此為將"avg_oneprice" DB中AS欄位 匯入上行中新建之 bean~元件 !
+			// bean.setAvgoneprice_by_city_type(rset.getFloat("avg_oneprice"));
+			@Override			
+			public List<CurrentPriceBean> select_all_84_by_city_type(String currentprice_city, String currentprice_bdtype) {
+				List<CurrentPriceBean> result = null;
+				Connection conn = null;
+				PreparedStatement stmt = null;
+				ResultSet rset = null;
+				try {
+//					conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+					 conn = dataSource.getConnection();
+					stmt = conn.prepareStatement(SELECT_ALL_84_BY_CITY_TYPE);
+					stmt.setString(1, currentprice_city);
+					stmt.setString(2, "%" + currentprice_bdtype + "%");
+					rset = stmt.executeQuery();
+
+					result = new ArrayList<CurrentPriceBean>();
+					while (rset.next()) {
+						CurrentPriceBean bean = new CurrentPriceBean();
+						bean.setCurrentprice_housearea(rset.getFloat("currentprice_housearea"));
+						bean.setCurrentprice_tprice(rset.getFloat("currentprice_tprice"));
+
+						result.add(bean);
+
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+
+					if (rset != null) {
+						try {
+							rset.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				return result;
+			}
+	
+	
+	
+	
+	
+	
+	
+	
 //  第七個方法 select 全部 BY 地址!!  currentprice address
 //  private static final String SELECT_BY_CP_CITY = "select currentprice_housearea,currentprice_tprice from currentprice where currentprice_city =?";
 // currentprice address,currentprice_bdtype, currentprice_trades , currentprice_transes,currentprice_rooms,currentprice_livinroom,

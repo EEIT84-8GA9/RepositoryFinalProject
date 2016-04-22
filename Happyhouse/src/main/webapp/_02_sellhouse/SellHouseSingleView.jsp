@@ -8,7 +8,8 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" type="text/css" href=
+"/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
@@ -262,11 +263,12 @@
 				<input type="submit" id="messagesubmit" name="type"  value="確認" />
 			  </form>
 		 </div>
-
+		 </div>
+</div>
 	
-<!-- 	<div id="menu"> -->
-<!-- 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a> -->
-<!-- 		</div> -->
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
 
 
 

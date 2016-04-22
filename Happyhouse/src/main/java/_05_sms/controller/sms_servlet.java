@@ -145,11 +145,8 @@ public class sms_servlet extends HttpServlet {
 			session.setAttribute("report", report);
 			response.sendRedirect("_04_message/pagecontent.jsp");
 			return;
-			
 			//個人信件區
 		}else if ("送出".equals(type)){
-				
-			
 			SmsVO vo = new SmsVO();
 			vo.setSms_describe(sms_describe.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
 			vo.setSms_mailers(bean.getUser_account());

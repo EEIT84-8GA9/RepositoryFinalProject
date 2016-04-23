@@ -13,9 +13,10 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
-
-
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap"
+        async defer></script>
+
 
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
@@ -31,10 +32,14 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 	
-	<script type="text/javascript">
 
-	</script>
+	
 <script type="text/javascript">
+
+
+
+
+
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
@@ -206,6 +211,37 @@
 // 		    });
 // 		  });
 	
+// 		$('.map').tinyMap({
+// 		    'center': '台北市信義區台北101',
+// 		    'zoom'  : 14
+// 		});
+	
+		var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 20
+  });
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, map);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.sellhouse_address}";
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+	
 </script>
  
  
@@ -213,6 +249,12 @@
 <title>Insert title here</title>
 </head>
 <style>
+     #map {
+        height: 350px;
+        width:350px
+      }
+
+
 	fieldset {
 			width:500px;
 			margin:15px;
@@ -375,7 +417,8 @@
 				
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上 -->	
 				
-				
+		<!-- 估狗 -->		
+				<div id="map"></div>
 				
 				
 		</tbody>

@@ -220,7 +220,7 @@
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
-    zoom: 20
+    zoom: 16
   });
   var geocoder = new google.maps.Geocoder();
   geocodeAddress(geocoder, map);
@@ -412,7 +412,7 @@ function geocodeAddress(geocoder, resultsMap) {
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以下 -->
 				
 			<div id="chart_div2" style="width: 900px; height:500px;"></div>
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
+			<div id="chart_div" style="width: 900px; height: 500px;"></div>
 				
 				
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上 -->	

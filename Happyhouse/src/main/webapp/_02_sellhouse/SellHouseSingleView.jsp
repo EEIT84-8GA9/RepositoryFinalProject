@@ -427,14 +427,14 @@ $(function(){
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<br>
 					<br>
-					<p>價格:${param.sellhouse_price}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>坪數:${param.sellhouse_size}</p>
-					<p>樓層:${param.sellhouse_floor}</p>
-					<p>屋齡:${param.sellhouse_age}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>車位:${param.sellhouse_car}</p>
-					<p>地址:${param.sellhouse_address}</p>
+					<p><font color="#7B7B7B">價格:</font><font style="color:#FF8000;font-size:18px;font-weight:bolder" >${param.sellhouse_price}萬元</font></p>
+					<p><font color="#7B7B7B">格局:</font>${param.sellhouse_patterns}</p>
+					<p><font color="#7B7B7B">坪數:</font>${param.sellhouse_size}坪</p>
+					<p><font color="#7B7B7B">樓層:</font>${param.sellhouse_floor}</p>
+					<p><font color="#7B7B7B">屋齡:</font>${param.sellhouse_age}年</p>
+					<p><font color="#7B7B7B">格局:</font>${param.sellhouse_patterns}</p>
+					<p><font color="#7B7B7B">車位:</font>${param.sellhouse_car}</p>
+					<p><font color="#7B7B7B">地址:</font>${param.sellhouse_address}</p>
 					</div>
 			</article>
 			</div>
@@ -454,9 +454,15 @@ $(function(){
 					</div>
 				</fieldset>
 				</form>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button type="button" class="buttonCart" value="" >加入收藏</button>
+				</c:if>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
@@ -599,9 +605,8 @@ $(function(){
 <div class="dialog" title="加入收藏" id="cartform">
 	          <form action="/Happyhouse/cartsinsert.controller" method="post">
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="text" id="user_account" name="user_account3" value="${LoginOK.user_account}"><br/>
-				<input type="text" id="user_account" name="sellhouse_id3" value="${param.sellhouse_id}"><br/>
-	          
+				<input type="hidden" id="user_account" name="user_account3" value="${LoginOK.user_account}">
+				<input type="hidden" id="user_account" name="sellhouse_id3" value="${param.sellhouse_id}">
 	          	<label>確認加入收藏嗎?</label><br/>
 				<input type="submit" id="messagesubmit" name="type"  value="確認" />
 			  </form>

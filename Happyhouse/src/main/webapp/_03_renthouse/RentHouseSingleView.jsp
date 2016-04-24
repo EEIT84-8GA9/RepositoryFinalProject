@@ -246,16 +246,16 @@
 	<div style="padding-left:500px">
 					<input type="hidden" value="${param.renthouse_id}" name="renthouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
-					<p>價格:${param.renthouse_price}</p>
-					<p>格局:${param.renthouse_patterns}</p>
-					<p>坪數:${param.renthouse_size}</p>
-					<p>樓層:${param.renthouse_floor}</p>
-					<p>租金:${param.renthouse_price}</p>
-					<p>押金:${param.renthouse_deposit}</p>
-					<p>最短租期:${param.renthouse_rentdate}</p>
-					<p>格局:${param.renthouse_patterns}</p>
-					<p>車位:${param.renthouse_car}</p>
-					<p>地址:${param.renthouse_address}</p>
+					<p><font color="#7B7B7B">價格:</font><font style="color:#FF8000;font-size:18px;font-weight:bolder" >${param.renthouse_price}元/月</font></p>
+					<p><font color="#7B7B7B">格局:</font>${param.renthouse_patterns}</p>
+					<p><font color="#7B7B7B">坪數:</font>${param.renthouse_size}坪</p>
+					<p><font color="#7B7B7B">樓層:</font>${param.renthouse_floor}</p>
+					<p><font color="#7B7B7B">租金:</font>${param.renthouse_price}</p>
+					<p><font color="#7B7B7B">押金:</font>${param.renthouse_deposit}</p>
+					<p><font color="#7B7B7B">最短租期:</font>${param.renthouse_rentdate}</p>
+					<p><font color="#7B7B7B">格局:</font>${param.renthouse_patterns}</p>
+					<p><font color="#7B7B7B">車位:</font>${param.renthouse_car}</p>
+					<p><font color="#7B7B7B">地址:</font>${param.renthouse_address}</p>
 					</div>
 			</article>
 		</div>
@@ -275,9 +275,15 @@
 					</div>
 				</fieldset>
 				</form>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button class="buttonReport" value="" >我要檢舉</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
 				<button type="button" class="buttonCart" value="" >加入收藏</button>
+				</c:if>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
@@ -331,8 +337,8 @@
 <div class="dialog" title="加入收藏" id="cartform">
 	          <form action="/Happyhouse/rentcartsinsert.controller" method="post">
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="text" id="user_account" name="user_account3" value="${LoginOK.user_account}"><br/>
-				<input type="text" id="user_account" name="renthouse_id3" value="${param.renthouse_id}"><br/>
+				<input type="hidden" id="user_account" name="user_account3" value="${LoginOK.user_account}">
+				<input type="hidden" id="user_account" name="renthouse_id3" value="${param.renthouse_id}">
 	          	<label>確認加入收藏嗎?</label><br/>
 				<input type="submit" id="messagesubmit" name="type"  value="確認" />
 			  </form>

@@ -14,8 +14,12 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap"
-        async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
+
+
+
+<link rel="stylesheet" href="/Happyhouse/rinocss/sellnormalize.css">
+<link rel="stylesheet" href="/Happyhouse/rinocss/sellstyle.css" media="screen" type="text/css" />
 
 
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
@@ -216,7 +220,7 @@
 // 		    'zoom'  : 14
 // 		});
 	
-		var map;
+var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
@@ -249,10 +253,12 @@ function geocodeAddress(geocoder, resultsMap) {
 <title>Insert title here</title>
 </head>
 <style>
-     #map {
-        height: 350px;
-        width:350px
-      }
+    #map { 
+    height:350px; 
+    overflow: hidden; 
+    width:350px 
+     } 
+
 
 
 	fieldset {
@@ -360,7 +366,7 @@ function geocodeAddress(geocoder, resultsMap) {
 		<div id="content">
 			<article>
 				<h2>${param.sellhouse_name}</h2>
-				<figure style="padding-RIGHT:150px">
+				<figure style="padding-RIGHT:455px">
 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
 				</figure>					
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
@@ -403,22 +409,85 @@ function geocodeAddress(geocoder, resultsMap) {
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
 			
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
-				<br>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
-				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															
+			
+<!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<div class="wrapper">
+<div style="text-align:center;clear:both;">
+<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script> -->
+<!-- <script src="/follow.js" type="text/javascript"></script> -->
+</div>
+<section class="tabs-section">
+<nav class="tabs-wrapper">
+<input type="radio" name="tab" id="tab1" checked="checked"/><label for="tab1"><span>Example Tab</span></label>
+<input type="radio" name="tab" id="tab2"/><label for="tab2"><span>Tab Two</span></label>
+<input type="radio" name="tab" id="tab3"/><label for="tab3"><span>Tab Three</span></label>
+<input type="radio" name="tab" id="tab4"/><label for="tab4"><span>Another Tab</span></label>
+<div class="tabs-content">
+
+<section>
+<h1>Hi There!</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem repudiandae magni reprehenderit quibusdam, molestias sequi, voluptate quam id porro eaque placeat laboriosam quis quo. Repellat culpa veritatis quae non impedit.</p>
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px">
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px">
+</section>
+
+
+<section>
+<h2>Oh hi! I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+<h6>this is awkward :s</h6>
+			<div id="chart_div2" style="width: 450px; height:250px;"></div>
+			<div id="chart_div" style="width: 450px; height: 250px;"></div>
+
+
+
+<h2>I'm the best tab</h2>
+<h3>Because reasons</h3>
+</section>
+
+<section>
+<h2>Oh hi! I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+<div id="map"></div>	
+</section>
+
+<section>
+<h2>444444444.I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+</section>
+
+</nav>
+</section>
+</div>
+			
+
+<!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+			
+			
+			
+			
+			
+			
+			
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															 --%>
 				
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以下 -->
 				
-			<div id="chart_div2" style="width: 900px; height:500px;"></div>
-			<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<!-- 			<div id="chart_div2" style="width: 900px; height:500px;"></div> -->
+<!-- 			<div id="chart_div" style="width: 900px; height: 500px;"></div> -->
 				
 				
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上 -->	
 				
 		<!-- 估狗 -->		
-				<div id="map"></div>
+<!-- 				<div id="map"></div> -->
+				
 				
 				
 		</tbody>
@@ -427,7 +496,7 @@ function geocodeAddress(geocoder, resultsMap) {
 	</div>	
 	
 	
-	
+
 	
 
 <!--  -->
@@ -495,9 +564,9 @@ function geocodeAddress(geocoder, resultsMap) {
 	
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
-		</div>
+	</div>
 
-
+	
 
 
 </body>

@@ -19,7 +19,7 @@
 <!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 <!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
  
  	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -41,6 +41,45 @@
 	});
 	
 	
+	var map;
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: -34.397, lng: 150.644},
+	    zoom: 16
+	  });
+	  var geocoder = new google.maps.Geocoder();
+	  geocodeAddress(geocoder, map);
+	}
+
+	function geocodeAddress(geocoder, resultsMap) {
+		var address = "${param.renthouse_address}";
+	//   var address = document.getElementById('address').value;
+	  geocoder.geocode({'address': address}, function(results, status) {
+	    if (status === google.maps.GeocoderStatus.OK) {
+	      resultsMap.setCenter(results[0].geometry.location);
+	      var marker = new google.maps.Marker({
+	        map: resultsMap,
+	        position: results[0].geometry.location
+	      });
+	    } else {
+	      alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+	}
+	
+	$(function(){
+		// 用來顯示大圖片用
+		var $showImage = $('#show-image');
+	 
+		// 當滑鼠移到 .abgne-block-20120106 中的某一個超連結時
+		$('.abgne-block-20120106 a').mouseover(function(){
+			// 把 #show-image 的 src 改成被移到的超連結的位置
+			$showImage.attr('src', $(this).attr('href'));
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+			return false;
+		});
+	});
 	/*站內*/
 // 	  $(function() {
 // 		    $( "#dialog" ).dialog({
@@ -67,6 +106,12 @@
 <title>Insert title here</title>
 </head>
 <style>
+    #map { 
+    height:450px; 
+
+    width:450px 
+     } 
+
 	fieldset {
 			width:500px;
 			margin:15px;
@@ -99,6 +144,29 @@
 		#img1{
 		width:300px;
 		}
+		.showbox {
+	width: 455px;
+	height: 450px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+	float:left;
+	
+}
+.abgne-block-20120106 {
+	margin-top: 10px;
+	width: 680px;
+	overflow: hidden;
+	float:left;
+}
+.abgne-block-20120106 a {
+	margin-right: 10px;
+}
+.abgne-block-20120106 a img {
+	width: 140px;
+	height: 92px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+}
 </style>
 <body>
 	<div id="main">
@@ -163,32 +231,48 @@
 		<div id="content">
 			<article>
 				<h2>${param.renthouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px">
-				</figure>
+				<div class="showbox" >
+				<img id="show-image" src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" style="height:450px;width:450px"/></div>
+				<p></p>
+					<div class="abgne-block-20120106">
+		<a href="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" title="" /></a>
+	</div>
+				
+<!-- 				<figure style="padding-RIGHT:150px"> -->
+<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" style="height:450px;width:450px"> --%>
+<!-- 				</figure> -->
+	<div style="padding-left:500px">
 					<input type="hidden" value="${param.renthouse_id}" name="renthouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
-					<p>帳號:${param.user_account}</p>
-					<p>姓名:${param.user_name}</p>
 					<p>價格:${param.renthouse_price}</p>
 					<p>格局:${param.renthouse_patterns}</p>
 					<p>坪數:${param.renthouse_size}</p>
 					<p>樓層:${param.renthouse_floor}</p>
 					<p>租金:${param.renthouse_price}</p>
+					<p>押金:${param.renthouse_deposit}</p>
+					<p>最短租期:${param.renthouse_rentdate}</p>
 					<p>格局:${param.renthouse_patterns}</p>
 					<p>車位:${param.renthouse_car}</p>
 					<p>地址:${param.renthouse_address}</p>
+					</div>
 			</article>
 		</div>
-				<fieldset>
+				<fieldset style="width:700px">
 					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.renthouse_phone}</label><br>
+					<div>
+						<table>
+						<tr>
+						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td>
+						<h3>姓名:${param.user_name}</h3>
+						<h3>電話:${param.renthouse_phone}</h3>
+						<h3>E-mail:${param.renthouse_email}</h3>
+						</td>
+						</tr>
+						</table>		
 					</div>
-					<br>
-					<label>e-mail:${param.renthouse_email}</label>
-					<label><a href="">站內信</a></label>
 				</fieldset>
 				</form>
 				<button class="buttonReport" value="" >我要檢舉</button>
@@ -204,7 +288,7 @@
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" width="150px"></p>															
-				
+				<div id="map"></div>
 		</tbody>
 	</c:if>		
 </form>

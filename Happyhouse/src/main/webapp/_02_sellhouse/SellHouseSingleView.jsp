@@ -246,6 +246,25 @@ function geocodeAddress(geocoder, resultsMap) {
   });
 }
 	
+	
+	
+$(function(){
+	// 用來顯示大圖片用
+	var $showImage = $('#show-image');
+ 
+	// 當滑鼠移到 .abgne-block-20120106 中的某一個超連結時
+	$('.abgne-block-20120106 a').mouseover(function(){
+		// 把 #show-image 的 src 改成被移到的超連結的位置
+		$showImage.attr('src', $(this).attr('href'));
+	}).click(function(){
+		// 如果超連結被點擊時, 取消連結動作
+		return false;
+	});
+});
+	
+	
+	
+	
 </script>
  
  
@@ -254,9 +273,9 @@ function geocodeAddress(geocoder, resultsMap) {
 </head>
 <style>
     #map { 
-    height:350px; 
+    height:450px; 
     overflow: hidden; 
-    width:350px 
+    width:450px 
      } 
 
 
@@ -293,6 +312,33 @@ function geocodeAddress(geocoder, resultsMap) {
 		#img1{
 		width:300px;
 		}
+		
+		.showbox {
+	width: 455px;
+	height: 450px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+	float:left;
+	
+}
+.abgne-block-20120106 {
+	margin-top: 10px;
+	width: 680px;
+	overflow: hidden;
+	float:left;
+}
+.abgne-block-20120106 a {
+	margin-right: 10px;
+}
+.abgne-block-20120106 a img {
+	width: 140px;
+	height: 92px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+}
+		
+		
+		
 </style>
 <body>
 
@@ -366,15 +412,21 @@ function geocodeAddress(geocoder, resultsMap) {
 		<div id="content">
 			<article>
 				<h2>${param.sellhouse_name}</h2>
-				<figure style="padding-RIGHT:455px">
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px">
-				</figure>					
+				<div class="showbox" >
+				<img id="show-image" src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"/></div>
+				<p></p>
+					<div class="abgne-block-20120106">
+		<a href="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+	</div>
+<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"> --%>
+<!-- 				</div>					 -->
+<div style="padding-left:500px">
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<br>
 					<br>
-					<p>帳號:${param.user_account}</p>
-					<p>姓名:${param.user_name}</p>
 					<p>價格:${param.sellhouse_price}</p>
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>坪數:${param.sellhouse_size}</p>
@@ -383,6 +435,7 @@ function geocodeAddress(geocoder, resultsMap) {
 					<p>格局:${param.sellhouse_patterns}</p>
 					<p>車位:${param.sellhouse_car}</p>
 					<p>地址:${param.sellhouse_address}</p>
+					</div>
 			</article>
 			</div>
 				<fieldset style="width:700px">

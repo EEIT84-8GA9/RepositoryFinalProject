@@ -26,6 +26,15 @@ $(document).ready(function() {
 	
 	
 </script>
+<style type="text/css">
+tr:hover td
+{
+background-color:#ECFFFF;
+overflow:hidden;
+}
+
+
+</style>
 </head>
 <body>
 		<div id="main">
@@ -180,10 +189,11 @@ $(document).ready(function() {
 							value="${row.renthouse_patterns}" />
 						<c:param name="renthouse_address" value="${row.renthouse_address}" />
 						<c:param name="renthouse_describe" value="${row.renthouse_describe}" />
+						<c:param name="renthouse_deposit" value="${row.renthouse_deposit}" />
 						<c:param name="renthouse_size" value="${row.renthouse_size}" />
 						<c:param name="renthouse_floor" value="${row.renthouse_floor}" />
 						<c:param name="renthouse_message" value="${row.renthouse_message}" />
-						<c:param name="renthouse_date" value="${row.renthouse_date}" />
+						<c:param name="renthouse_rentdate" value="${row.renthouse_rentdate}" />
 						<c:param name="renthouse_car" value="${row.renthouse_car}" />
 						<c:param name="renthouse_phone" value="${row.renthouse_phone}" />
 						<c:param name="renthouse_email" value="${row.renthouse_email}" />
@@ -192,12 +202,15 @@ $(document).ready(function() {
 						<c:if test="${row.renthouse_type!='C'}">
 					<tr>	
  					<td style="width:200px;border-bottom-style:solid;border-bottom-width:1px"> <img  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${row.renthouse_id}" width="150px"></td> 
-						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.renthouse_name}</font></a></h3>
+						<td style="border-bottom-style:solid;border-bottom-width:1px">
+						<a href="${path}" style="display:block">
+						<h3 style="font-style:normal;color:RED;width:300px"><font color="blue">${row.renthouse_name}</font></h3>
 						<h5 style="font-style:normal">${row.renthouse_address}</h5>
 						<h5 style="font-style:normal">${row.renthouse_patterns}</h5>
 						<h5 style="font-style:normal">${row.renthouse_floor}</h5>
+						</a>
 						</td>
-						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.renthouse_price}元</td>
+						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" ><font color="#FF8000">${row.renthouse_price}元</font></td>
 						<td style="padding:75px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.renthouse_size}坪</td>
 					</tr>
 					</c:if>

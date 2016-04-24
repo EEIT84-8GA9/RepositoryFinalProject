@@ -28,6 +28,17 @@
 	
 	
 </script>
+<style type="text/css">
+tr:hover td
+{
+background-color:#ECFFFF;
+overflow:hidden;
+}
+
+
+</style>
+
+
 </head>
 <body>
 		<div id="main">
@@ -189,15 +200,19 @@
 						<c:param name="sellhouse_type" value="${row.sellhouse_type}" />
 					</c:url>
 						<c:if test="${row.sellhouse_type!='C'}">
-					<tr>	
+			<tr>		
 					<td style="width:200px;border-bottom-style:solid;border-bottom-width:1px"> <img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td>
-						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
+						<td style="border-bottom-style:solid;border-bottom-width:1px;overflow:hidden">
+						<a href="${path}" style="display:block">
+						<h3 style="font-style:normal;color:RED;width:300px"><font color="blue">${row.sellhouse_name}</font></h3>
 						<h5 style="font-style:normal">地址:${row.sellhouse_address}</h5>
 						<h5 style="font-style:normal">格局:${row.sellhouse_patterns}</h5>
 						<h5 style="font-style:normal">樓層:${row.sellhouse_floor}</h5>
+						</a>				
 						</td>
-						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_price}萬元</td>
-						<td style="padding:75px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_size}坪</td>		
+						<td style="padding:50px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center"><font color="#FF8000">${row.sellhouse_price}萬元</font></td>
+						<td style="padding:75px;width:200px;border-bottom-style:solid;border-bottom-width:1px" align="center"align="center" >${row.sellhouse_size}坪</td>		
+					
 					</tr>
 					
 					</c:if>

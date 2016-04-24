@@ -167,6 +167,39 @@
 	border: 2px solid #d0d0d0;
 	vertical-align: middle;
 }
+
+button {
+   border-top: 1px solid #f7f7f7;
+   background: #ededed;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fafdff), to(#ededed));
+   background: -webkit-linear-gradient(top, #fafdff, #ededed);
+   background: -moz-linear-gradient(top, #fafdff, #ededed);
+   background: -ms-linear-gradient(top, #fafdff, #ededed);
+   background: -o-linear-gradient(top, #fafdff, #ededed);
+   padding: 4.5px 9px;
+   -webkit-border-radius: 9px;
+   -moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 8px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #e1edf2;
+   background: #e1edf2;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #f7f7f7;
+   background: #f7f7f7;
+   }
+
+
 </style>
 <body>
 	<div id="main">
@@ -256,9 +289,12 @@
 					<p><font color="#7B7B7B">格局:</font>${param.renthouse_patterns}</p>
 					<p><font color="#7B7B7B">車位:</font>${param.renthouse_car}</p>
 					<p><font color="#7B7B7B">地址:</font>${param.renthouse_address}</p>
+					
 					</div>
 			</article>
+		
 		</div>
+			
 				<fieldset style="width:700px">
 					<legend>聯絡資訊</legend>
 					<div>
@@ -268,46 +304,54 @@
 						<td>
 						<h3>姓名:${param.user_name}</h3>
 						<h3>電話:${param.renthouse_phone}</h3>
-						<h3>E-mail:${param.renthouse_email}</h3>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+					<button type="button" class="buttonCart" value="" >加入收藏</button>
+				</c:if>
 						</td>
 						</tr>
 						</table>		
 					</div>
 				</fieldset>
 				</form>
-				<c:if test="${LoginOK.user_account!=param.user_account}">
-				<button class="buttonReport" value="" >我要檢舉</button>
-				</c:if>
-				<c:if test="${LoginOK.user_account!=param.user_account}">
-				<button type="button" class="MessageButton" value="" >寄送站內信</button>
-				</c:if>
-				<c:if test="${LoginOK.user_account!=param.user_account}">
-				<button type="button" class="buttonCart" value="" >加入收藏</button>
-				</c:if>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button class="buttonReport" value="" >我要檢舉</button> -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="MessageButton" value="" >寄送站內信</button> -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
+<%-- 				</c:if> --%>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
 				</fieldset>
-				<form>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" width="150px"></p>															
 				<div id="map"></div>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button class="buttonReport" value="" >我要檢舉</button>
+				</c:if>
 		</tbody>
 	</c:if>		
 </form>
 </div>
+
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportrenthouse.controller" method="post">
 	            <label>您的帳號</label><br/>
-				<input type="text" id="renthouse_reportfrom" name="renthouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
+				<input type="text" id="renthouse_reportfrom" name="renthouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly" style="color:black"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="renthouse_id" name="renthouse_id" value="${param.renthouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="renthouse_id" name="renthouse_id" value="${param.renthouse_id}" readonly="readonly" style="color:black"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
-				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" style="color:black"></textarea>
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
@@ -317,16 +361,17 @@
 <div class="dialog" title="站內信" id="MessageForMe">
 	          <form action="/Happyhouse/renthouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
-				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}"><br/>
-				<input type="hidden" id="user_account" name="renthouse_id2" value="${param.renthouse_id}"><br/>
-	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly"><br/>	 
+	            <input type="text" id="user_account" name="user_account1" value="${param.user_name}" style="color:black" readonly="readonly"><br/>
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}">
+				<input type="hidden" id="user_account" name="renthouse_id2" value="${param.renthouse_id}">
+	          	<input type="hidden" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly">
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
-				<input type="text" id="sms_title" name="sms_title" ><br/>
+				<input type="text" id="sms_title" name="sms_title" style="color:black"><br/>
 				
 				<label>訊息內容</label><br/>
 				
-				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
+				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" style="color:black"></textarea>
 				
 				<input type="submit" id="messagesubmit" name="type"  value="送出" />
 				

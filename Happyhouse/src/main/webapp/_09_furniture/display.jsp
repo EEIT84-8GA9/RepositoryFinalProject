@@ -53,6 +53,11 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$('#slider').nivoSlider();
+	});
+</script>
 </head>
 <body>
 
@@ -86,7 +91,7 @@ $(document).ready(function() {
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-												<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+												<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
@@ -142,13 +147,17 @@ $(document).ready(function() {
 <%-- 	<input type="button" value=":${row.furniture_id}" onclick="location.href= --%>
 <%-- 		'<c:url value="/_09_furniture/updateProduct.jsp" />'"> --%>
 <!-- 		</td> -->
-		
-		<td>${row.furniture_id}</td>
+	<tr>	
+	<td><a href=""> ${row.furniture_id}</a></td>
+<%-- 		<td>${row.furniture_id}</td> --%>
 	    <td>${row.furniture_name}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
+		<td><a href="${url}" ><img src="../img/click.png"></a></td>
+	
+	
+	
 	</tr>
 	</c:forEach>
 	</tbody>

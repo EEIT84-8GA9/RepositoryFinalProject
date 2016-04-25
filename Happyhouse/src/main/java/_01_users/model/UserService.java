@@ -28,7 +28,7 @@ public class UserService {
 		// System.out.print(service.changePassword("Alex123", "sa123",
 		// "sa1234"));
 
-		System.out.print(service.changeUserType("Tank87", "D"));
+//		System.out.print(service.changeUserType("Tank87", "D"));
 
 	}
 

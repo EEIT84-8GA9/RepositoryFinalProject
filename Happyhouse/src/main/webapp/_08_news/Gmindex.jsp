@@ -45,7 +45,7 @@
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="/Happyhouse/_01_users/logout.jsps">登出</a></li>
+						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -64,6 +64,19 @@
 <!-- <!-- 				close slider_wrapper --> 
 <!-- 			</div> -->
 			<!--close banner_image-->
+<form>
+<table>	
+<tr>			
+<td>會員狀態：<td>
+<SELECT NAME="STYLE">
+     <OPTION>A
+     <OPTION>B
+     <OPTION>C
+     <OPTION>D
+</SELECT>
+</tr>
+</table>	
+</form>
 					<div>
 					<h4>更新專區~測試中 敬請期待</h4>
 					</div>

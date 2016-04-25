@@ -139,9 +139,10 @@ public class ProductServlet extends HttpServlet {
 		
 //根據Model執行結果顯示View
 	
-		if("查詢所有刊登家具".equals(prodaction)) { 
+		if("查詢刊登家具".equals(prodaction)) { 
 //			System.out.println(bean);
 			List<FurnitureBean> result = productService.select(bean);
+			
 		
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
@@ -177,7 +178,7 @@ public class ProductServlet extends HttpServlet {
 						} 
 						if (fileName1 !=null && fileName1.trim().length() > 0) {
 							bean.setFurnitur_photo1_name(fileName1);
-							bean.setFurnitur_photo1_name(fileName2);
+							bean.setFurnitur_photo2_name(fileName2);
 						}
 						
 					}

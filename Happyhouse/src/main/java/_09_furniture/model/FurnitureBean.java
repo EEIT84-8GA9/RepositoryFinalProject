@@ -131,11 +131,19 @@ public class FurnitureBean {
 		Furnitur_photo2 = furnitur_photo2;
 	}
 
-
-
-
-
-
-	
+	@Override
+	public String toString() {
+		return "FurnitureBean [furniture_id=" + furniture_id
+				+ ", user_account=" + user_account + ", furniture_name="
+				+ furniture_name + ", furniture_price=" + furniture_price
+				+ ", furniture_status=" + furniture_status
+				+ ", furniture_time=" + furniture_time + ", furniture_address="
+				+ furniture_address + ", furniture_message="
+				+ furniture_message + ", furniture_type=" + furniture_type
+				+ ", Furnitur_photo1_name=" + Furnitur_photo1_name
+				+ ", Furnitur_photo2_name=" + Furnitur_photo2_name
+				+ ", Furnitur_photo1=" + Furnitur_photo1 + ", Furnitur_photo2="
+				+ Furnitur_photo2 + "]";
+	}
 
 }

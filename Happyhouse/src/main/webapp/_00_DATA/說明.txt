@@ -1,0 +1,5 @@
+歡迎光臨 好HOUSE網~~~~~~
+
+SQL最新版格式更新後
+
+請將 CPFINAL 放到e:/   >> 直接RUN currentpriceTable.java即可

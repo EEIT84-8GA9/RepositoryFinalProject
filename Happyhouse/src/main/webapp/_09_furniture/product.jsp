@@ -81,7 +81,7 @@ $(window).load(function() {
 						</li>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>	
 						<ul>
-											<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+											<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 	                    <li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
@@ -140,7 +140,7 @@ $(window).load(function() {
 <!-- 			<input type="submit" name="prodaction" value="Delete"> -->
 			
 		<td>
-			<input type="submit" name="prodaction" value="查詢所有刊登家具">
+			<input type="submit" name="prodaction" value="查詢刊登家具">
 <!-- 			<input type="submit" name="prodaction" value="查詢您的刊登家具"> -->
 <!-- 			<input type="button" value="Clear" onclick="clearForm()"> -->
 		</td>

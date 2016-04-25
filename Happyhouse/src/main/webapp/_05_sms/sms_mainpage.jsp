@@ -114,7 +114,7 @@
 	<article class="htmleaf-container">
 <font color="red">${error.deleteSms_idEmpty}</font>
 
-	<form action="/Happyhouse/sms.controller" method="post">
+	<form action="/Happyhouse/sms.controller" method="post" id="delete">
 
 		<table class="BH-table ML-tb1">
 			<tbody>
@@ -172,12 +172,16 @@
 	<!--close main-->
 	<script type="text/javascript">
 
-			$('#sms').submit(function() {
+			$('#delete').submit(function() {
     var c = confirm("Click OK to continue?");
     
     return c; 
 });
-		   
+			$('#sms').submit(function() {
+			    var c = confirm("Click OK to continue?");
+			    
+			    return c; 
+			});
 
 		</script>
 </body>

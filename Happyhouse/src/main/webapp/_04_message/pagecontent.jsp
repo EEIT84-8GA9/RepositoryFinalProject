@@ -87,9 +87,9 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 	 <!-- including css & jQuery Dialog UI here-->
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {

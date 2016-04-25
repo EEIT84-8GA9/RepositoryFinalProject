@@ -347,6 +347,7 @@ $(document).ready(function(){
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
+						
 						</ul>
 					    </c:if>
 						</li>
@@ -383,7 +384,9 @@ $(document).ready(function(){
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
- 						    <img src="/Happyhouse/images/house.jpg" alt="" />                             
+<!--  						 <img src="/Happyhouse/images/house.jpg" alt="" />   -->
+<%--  						    <img src="${select.indeximg.new_photo1}" alt="" />         --%>
+ 						    <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.indeximg.new_id}">                      
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 

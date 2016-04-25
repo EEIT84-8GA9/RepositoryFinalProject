@@ -4,10 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>刊登家具</title>
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
@@ -18,8 +17,10 @@
 		$('#slider').nivoSlider();
 	});
 </script>
+<title>Insert title here</title>
 </head>
 <body>
+
 		<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
@@ -71,78 +72,56 @@
 				<!--close menubar-->
 			</div>
 			
-			<h1 align="center"><font color=blue> ${LoginOK.user_name}您好</font></h1>
-			
-			<!--close header-->
-			<div style="padding-left:150px">
-	<form  enctype="multipart/form-data" action="<c:url value="/pages/product.controller" />" method="POST">
-	
-<table>
-     <tr>
-		<td>帳號: </td>
-		<td><input type="hidden" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()" ></td>
-		<td><span class="error"></span><img src="../img/ajax-loader.gif" style="display:none"/></td>
+<h3>${LoginOK.user_name} 歡迎來到刪除刊登二手家具 </h3>
+<form action="<c:url value="/pages/product.controller" />" method="get">
+	<table>
+	<tr>
+		<td><input type="hidden" name="user_account" value="${LoginOK.user_account}" onblur="doBlur()" onfocus="clearForm()"></td>
+		<td><span class="error">${error.id}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
+	</tr>
+	<tr>
+		<td>產品編號 : </td>
+		<td><input type="text" name="furniture_id" value="${param.furniture_id}" readonly="readonly"></td>
+		<td></td>
 	</tr>
 	<tr>
 		<td>家具名稱 : </td>
-		<td><input type="text" name="insname" value="${param.furniture_name}" ></td>
-		<td>${error.insname}</td>
+		<td><input type="text" name="insname" value="${param.name}" readonly="readonly"></td>
+		<td></td>
 	</tr>
      <tr>
 		<td>刊登價格 : </td>
-		<td><input type="text" name="insprice" value="${param.furniture_price}"></td>
-		<td>${error.dubleprice}</td>
+		<td><input type="text" name="insprice" value="${param.price}" readonly="readonly"></td>
+		<td></td>
 	</tr>
-	<tr>
-		<td>新舊程度 : </td>
-		<td><input type="text" name="insstatus" value="${param.furniture_status}"></td>
-		<td>${error.insstatus}</td>
-	</tr>
+	
 	<tr>
 		<td>使用年度 : </td>
-		<td><input type="text" name="instime" value="${param.furniture_time}"></td>
-		<td>${error.instime}</td>
+		<td><input type="text" name="instime" value="${param.time}" readonly="readonly"></td>
+		<td></td>
 	</tr>
-	<tr>
-		<td>商品地址 : </td>
-		<td><input type="text" name="insaddress" value="${param.furniture_address}"></td>
-		<td>${error.insaddress}</td>
-	</tr>
+	
 	<tr>
 		<td>商品介紹 : </td>
-		<td><input type="text" name="insmessage" value="${param.furniture_message}"></td>
-		<td>${error.insmessage}</td>
+		<td><input type="text" name="insmessage" value="${param.message}" readonly="readonly"></td>
+		<td></td>
 	</tr>
-	<tr>
-		<td>商品種類 : </td>
-		<td><input type="text" name="instype" value="${param.furniture_type}"></td>
-		<td>${error.insname}</td>
-	</tr>
-	<tr>
-	<td><input type="file" name="Furnitur_photo1"></td>
-<!-- 	<input type="file" name="Furnitur_photo2"></td> -->
-	</tr>
+	
+
 	<tr>
 		<td>
-			<input type="submit" name="prodaction" value="新增刊登">
-			<input type="button" value="取消刊登" onclick="location.href=
-		'<c:url value="/_09_furniture/product.jsp" />'"></td>
+			<input type="submit" name="prodaction" value="Delete">
+			<input type="button" value="取消刪除" onclick="location.href=
+		'<c:url value="/_09_furniture/product.jsp" />'">
+		
+		</td>
 	</tr>
 	</table>
 	</form>
-	
-			</div>
-			 <img src="/Happyhouse/images/pro1.jpg" alt="" /> 
-			
-		
-		<!--close site_content-->
-		
-	<div id="menu">
+	 <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
+	<div id="footer">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
-		<!--close footer-->
-	</div>
-	<!--close main-->
-	
 </body>
 </html>

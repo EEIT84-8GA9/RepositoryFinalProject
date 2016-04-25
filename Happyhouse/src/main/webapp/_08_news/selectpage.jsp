@@ -80,7 +80,9 @@
 	        <li class="q"><img src="/Happyhouse/img/arrow.png"><a href="${path}">${row.new_title}</a></li>
 	        <li class="a">${row.new_describe}
 	        <br>
-	        <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${row.new_id}" width="150px">	
+	        <c:if test="${row.new_photo1!=null}" >
+	        <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${row.new_id}" width="150px">
+	        </c:if>	
 	        </li>
 	        
 	        </c:forEach>

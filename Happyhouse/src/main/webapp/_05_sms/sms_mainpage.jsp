@@ -9,7 +9,6 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
-
 #re{
 
     width: 30%;
@@ -62,6 +61,8 @@
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
+			<h1>好宅房屋網</h1>
+			<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">

@@ -14,24 +14,15 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/AddressSelectList.js"></script>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
 <script type="text/javascript">
-function codeAddress(){
-	var add = document.getElementById("address");
-	var Longitude = document.getElementById("Longitude");
-	var Latitude = document.getElementById("Latitude");
-	var lnglat = document.getElementById("lnglat");
-	var geocoder = new google.maps.Geocoder();
-	geocoder.geocode( { address: add.value}, function(results, status) {
-	if (status == google.maps.GeocoderStatus.OK) {
-	Longitude.value = results[0].geometry.location.lng();
-	Latitude.value = results[0].geometry.location.lat();
-	} else {
-	alert("請輸入正確的地址");
-	}
-	});
-	}
-</script>
+
+
 
 
 
@@ -533,18 +524,11 @@ $(document).ready(function(){
 		
 		
 		
-<tr><td id="title">● 任務地址:</td></tr>
-<tr><td><input type="text" id="address" name="address" size="50%" onblur="codeAddress()" value="${param.address}" /><br>
-<font color='red' size='-1'>${ErrMsg.errAddress}</font></td></tr> 
-<tr><td id="title">● 緯經度:</td></tr>
-<tr><td><input name="Latitude" type="text" id="Latitude" size="22%" readonly="readonly"/>
-<input name="Longitude" type="text" id="Longitude" size="23%" readonly="readonly"/><br></td></tr>
 		
+
 		
-		
-		
-		
-		
+</script>	
+	
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>

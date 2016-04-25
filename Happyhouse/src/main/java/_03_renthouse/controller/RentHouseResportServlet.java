@@ -31,6 +31,7 @@ public class RentHouseResportServlet extends HttpServlet {
 		
 		String reportreason=request.getParameter("reportreason");
 		String sellhouse_id=request.getParameter("renthouse_id");
+	
 		String sellhouse_reportfrom=request.getParameter("renthouse_reportfrom");
 		System.out.println("sellhouseid="+sellhouse_id+"reportreason="+reportreason+"reportreason="+sellhouse_reportfrom);
 		int id=Integer.parseInt(sellhouse_id);

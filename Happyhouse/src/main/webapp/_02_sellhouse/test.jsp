@@ -2,138 +2,66 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap"
+        async defer></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- 	<meta charset="UTF-8"> -->
-<!-- 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-	<title>分步式用户注册表单UI界面设计|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
-	<link rel='stylesheet prefetch' href='/Happyhouse/css/Insert/reset.css'>
-	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
-	<link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
-	<!--[if IE]>
-		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-<!-- 	<header class="htmleaf-header"> -->
-<!-- 		<h1>分步式用户注册表单UI界面设计 <span>A Step By Step User Register Form </span></h1> -->
-<!-- 		<div class="htmleaf-links"> -->
-<!-- 			<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a> -->
-<!-- 			<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/css3/ui-design/201509062532.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a> -->
-<!-- 		</div> -->
-<!-- 	</header> -->
-<form enctype="multipart/form-data" action="<c:url value="/house/house1.controller"/>"method="post" id="msform">
-	<article class="htmleaf-content">  
-		<!-- multistep form -->
-			<!-- progressbar -->
-			<ul id="progressbar">
-				<li class="active">账号设置</li>
-				<li>社交账号</li>
-				<li>个人详细信息</li>
-			</ul>
-			<!-- fieldsets -->
-			<fieldset>
-				<h2 class="fs-title">刊登您的房屋</h2>
-				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" name="user_account" placeholder="請輸入使用者帳號"  />
-				<input type="text" name="sellhouse_name" placeholder="請輸入標題"  />
-				<input type="text" name="sellhouse_address" placeholder="請輸入地址" />
-				<input type="text" name="sellhouse_price" placeholder="請輸入售價" />
-				<input type="text" name="sellhouse_patterns" placeholder="請輸入格局" />
-				<input type="text" name="sellhouse_patterns" placeholder="請輸入格局" />
-				<input type="text" name="sellhouse_size" placeholder="請輸入坪數" />
-				<input type="text" name="sellhouse_floor" placeholder="請輸入樓層" />
-				<input type="button" name="next" class="next action-button" value="Next" />
-			</fieldset>
-			<fieldset>
-				<h2 class="fs-title">刊登您的房屋</h2>
-				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" name="sellhouse_age" placeholder="請填寫屋齡" />
-				<input type="text" name="sellhouse_car" placeholder="請填寫有無車位" />
-				<input type="text" name="sellhouse_phone" placeholder="請填寫連絡電話" />
-				<input type="text" name="sellhouse_email" placeholder="請填寫連絡EMAIL" />	
-				<textarea name="sellhouse_describe" placeholder="請填寫額外描述"></textarea>
-				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="button" name="next" class="next action-button" value="Next" />
-			</fieldset>
-			<fieldset>
-				<h2 class="fs-title">刊登您的房屋</h2>
-				<h3 class="fs-subtitle">請上傳三張圖片</h3>
-				<input type="file" name="sellhouse_photo1">
-				<input type="file" name="sellhouse_photo2">
-				<input type="file" name="sellhouse_photo3">
-				<input type="button" name="previous" class="previous action-button" value="Previous" />
-				<input type="submit" name="prodaction" class="submit action-button" value="新增" />
-			</fieldset>
-	</article>
-	</form>
-	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script>window.jQuery || document.write('<script src="/Happyhouse/js/test/jquery-2.1.1.min.js"><\/script>')</script>
-	<script src="/Happyhouse/js/test/jquery.easing.min.js" type="text/javascript"></script>
-	<script>
-	var current_fs, next_fs, previous_fs;
-	var left, opacity, scale;
-	var animating;
-	$('.next').click(function () {
-	    if (animating)
-	        return false;
-	    animating = true;
-	    current_fs = $(this).parent();
-	    next_fs = $(this).parent().next();
-	    $('#progressbar li').eq($('fieldset').index(next_fs)).addClass('active');
-	    next_fs.show();
-	    current_fs.animate({ opacity: 0 }, {
-	        step: function (now, mx) {
-	            scale = 1 - (1 - now) * 0.2;
-	            left = now * 50 + '%';
-	            opacity = 1 - now;
-	            current_fs.css({ 'transform': 'scale(' + scale + ')' });
-	            next_fs.css({
-	                'left': left,
-	                'opacity': opacity
-	            });
-	        },
-	        duration: 800,
-	        complete: function () {
-	            current_fs.hide();
-	            animating = false;
-	        },
-	        easing: 'easeInOutBack'
-	    });
-	});
-	$('.previous').click(function () {
-	    if (animating)
-	        return false;
-	    animating = true;
-	    current_fs = $(this).parent();
-	    previous_fs = $(this).parent().prev();
-	    $('#progressbar li').eq($('fieldset').index(current_fs)).removeClass('active');
-	    previous_fs.show();
-	    current_fs.animate({ opacity: 0 }, {
-	        step: function (now, mx) {
-	            scale = 0.8 + (1 - now) * 0.2;
-	            left = (1 - now) * 50 + '%';
-	            opacity = 1 - now;
-	            current_fs.css({ 'left': left });
-	            previous_fs.css({
-	                'transform': 'scale(' + scale + ')',
-	                'opacity': opacity
-	            });
-	        },
-	        duration: 800,
-	        complete: function () {
-	            current_fs.hide();
-	            animating = false;
-	        },
-	        easing: 'easeInOutBack'
-	    });
-	});
-	$('.submit').click(function () {
-	    return false;
-	});
-	</script>
-</body>
+ <style>
+
+      #map {
+        height: 350px;
+        width:350px
+      }
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+    </style>
+  </head>
+  <body>
+
+    <div id="map"></div>
+    <script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: {lat: -34.397, lng: 150.644}
+  });
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, map);
+//   document.getElementById('submit').addEventListener('click', function() {
+//     geocodeAddress(geocoder, map);
+//   });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "台灣";
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+    </script>
+
+  </body>
 </html>

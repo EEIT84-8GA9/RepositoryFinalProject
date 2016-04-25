@@ -81,7 +81,7 @@ public class ChartService {
 		}
 	
 	
-	//!!  第四個方法  選區域 求 AVG坪數與類型
+	//!!  第四個方法  選區域 求 AVG坪數與年月
 	public List<CurrentPriceBean> select_avg_month(CurrentPriceBean bean){
 		List<CurrentPriceBean> result = null;
 		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
@@ -167,6 +167,25 @@ public class ChartService {
 			
 		} 
 		return result3;
+		
+		}
+	
+	
+	
+	
+	public List<CurrentPriceBean> select_all_84_by_city_type(CurrentPriceBean bean){
+		List<CurrentPriceBean> result4 = null;
+		if(bean.getCurrentprice_city() != null && bean.getCurrentprice_city().length()!=0 
+								
+				){
+//							System.out.println(bean.getCurrentprice_city());
+//	       if(temp!=null){
+//	    	   result = new ArrayList<CurrentPriceBean>();
+//	    	   result.add(temp);
+			result4 = currentPriceDao.select_all_84_by_city_type(bean.getCurrentprice_city(),bean.getCurrentprice_bdtype());
+			
+		} 
+		return result4;
 		
 		}
 	

@@ -55,7 +55,7 @@ tr:hover td {
                         <li><a href="#">查詢出售收藏</a></li>
 						</ul>
 						</li>
-						<li><a href="testimonials.html">刊登出租</a>
+						<li><a href="#">刊登出租</a>
 						<ul>
 						<li><a href="#">搜尋出租</a></li>
                         <li><a href="#">刊登出租</a></li>
@@ -148,7 +148,7 @@ tr:hover td {
 	</table>
 	
 	
-		<a href="addarticle.jsp">發表文章</a></p>
+		<a href="addarticle.jsp"><button>發表文章</button></a></p>
 					
 				</div>
 				<!--close content_text-->
@@ -160,8 +160,7 @@ tr:hover td {
 
 		</div>
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

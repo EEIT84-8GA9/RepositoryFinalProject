@@ -54,6 +54,29 @@
 					
 					<c:forEach var="row" items="${rent}">
 					
+					<c:url value="/_03_renthouse/RentHouseSingleView.jsp" var="path" scope="session">
+						<c:param name="user_name" value="${row.user_name}" />
+						<c:param name="user_account" value="${row.user_account}" />
+						<c:param name="renthouse_id" value="${row.renthouse_id}" />
+						<c:param name="renthouse_name" value="${row.renthouse_name}" />
+						<c:param name="renthouse_price" value="${row.renthouse_price}" />
+						<c:param name="renthouse_patterns"
+							value="${row.renthouse_patterns}" />
+						<c:param name="renthouse_address" value="${row.renthouse_address}" />
+						<c:param name="renthouse_describe" value="${row.renthouse_describe}" />
+						<c:param name="renthouse_size" value="${row.renthouse_size}" />
+						<c:param name="renthouse_floor" value="${row.renthouse_floor}" />
+					
+						<c:param name="renthouse_message" value="${row.renthouse_message}" />
+						<c:param name="renthouse_date" value="${row.renthouse_date}" />
+						<c:param name="renthouse_car" value="${row.renthouse_car}" />
+						<c:param name="renthouse_phone" value="${row.renthouse_phone}" />
+						<c:param name="renthouse_email" value="${row.renthouse_email}" />
+						<c:param name="renthouse_type" value="${row.renthouse_type}" />
+					</c:url>
+					
+
+					
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
@@ -65,13 +88,17 @@
 						</div> <!-- .top-info -->
 
 						<ul class="cd-features-list">
-							<li>${row.renthouse_name}</li>
+							<li><a href="${path}">${row.renthouse_name}</a></li>
 							<li>${row.renthouse_price}</li>
 							<li>${row.renthouse_patterns}</li>
 							<li>${row.renthouse_address}</li>
 							<li>${row.renthouse_describe}</li>
 							<li>${row.renthouse_size}</li>
 							<li>${row.renthouse_floor}</li>
+							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<li><button name="deletecartrent" value="${row.cart_id}">刪除這個收藏</button></li>
+							<li><input type="hidden" name="deleterent" value="deleterent"><li>
+ 							</form>
 						</ul>
 					</li> <!-- .product -->
 				

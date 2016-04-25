@@ -30,8 +30,10 @@ import _01_users.model.UsersBean;
 //		@WebInitParam(name = "url_3", value = "/_08_news/test.jsp"),
 		@WebInitParam(name = "url_4", value = "/_07_carts/gousejsp.jsp"), 
 		@WebInitParam(name = "url_5", value = "/_09_furniture/"),
-		@WebInitParam(name = "url_6", value = "/_01_users/chasgePw.jsp")
-		
+		@WebInitParam(name = "url_6", value = "/_01_users/chasgePw.jsp"),
+		@WebInitParam(name = "url_7", value = "/_02_sellhouse/"),
+		@WebInitParam(name = "url_8", value = "/_03_renthouse/"),
+		@WebInitParam(name = "url_9", value = "/_06_currentprice/")
 		})
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();

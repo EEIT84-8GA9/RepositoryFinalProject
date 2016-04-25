@@ -178,8 +178,8 @@ $(document).ready(function() {
  <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
 <div id="photo"></div>
 <script type="text/javascript" src="../js/lightbox.min.js"></script>
-<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+		
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 </body>

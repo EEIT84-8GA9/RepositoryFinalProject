@@ -8,10 +8,17 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+
+<!-- <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" /> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script> -->
+<!-- <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script> -->
+
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
 	$(window).load(function() {
@@ -23,6 +30,16 @@
 		    checkboxes[i].checked = source.checked;
 		  }
 		}
+	
+	
+	$(document).ready(function() {
+		$('#datatable').DataTable({
+			"pageLength": 5,
+			"bFilter": true,
+			"bLengthChange": false,
+// 			"lengthMenu": [ 1, 3, 5, 7 ]
+		});
+	});
 </script>
 </head>
 <body>
@@ -82,7 +99,7 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-			<div style="padding-left:150px">
+			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/sellhouseuser.controller"/>"method="post" >
 <!-- 		<fieldset> -->
 <!-- 		<legend>房屋查詢</legend> -->
@@ -107,69 +124,66 @@
 <!-- <td><input type="submit" value="搜尋" name="prodaction"/></td> -->
 <!-- </tr> -->
 <!-- </table> -->
-<table>
-<tr>
-<td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="user_account" value="${param.user_account}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td>
-</tr>
-<td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td>
-</tr>
-<tr>
-<td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td>
-</tr>
-</table>
-<table>                                                                 
+<!-- <table> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_id" value="${param.sellhouse_id}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="user_account" value="${param.user_account}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_name" value="${param.sellhouse_name}" ></td> --%>
+<!-- </tr> -->
+<%-- <td><input type="hidden" name="sellhouse_price" value="${param.sellhouse_price}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_patterns" value="${param.sellhouse_patterns}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_describe" value="${param.sellhouse_describe}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_size" value="${param.sellhouse_size}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_floor" value="${param.sellhouse_floor}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_age" value="${param.sellhouse_age}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_type" value="${param.sellhouse_type}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_message" value="${param.sellhouse_message}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_date" value="${param.sellhouse_date}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_car" value="${param.sellhouse_car}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_phone" value="${param.sellhouse_phone}" ></td> --%>
+<!-- </tr> -->
+<!-- <tr> -->
+<%-- <td><input type="hidden" name="sellhouse_email" value="${param.sellhouse_email}" ></td> --%>
+<!-- </tr> -->
+<!-- </table> -->
+<!-- <table>                                                                  -->
 
 <c:if test="${not empty select}">
-		<table border=1 cellpadding=20 >
-<!-- 			<thead> -->
-<!-- 				<th>標題</th> -->
-<!-- 				<th>價格</th> -->
-<!-- 				<th>格局</th> -->
-<!-- 				<th>地址</th> -->
-<!-- 				<th>描述</th> -->
-<!-- 				<th>坪數</th> -->
-<!-- 				<th>樓層</th> -->
-<!-- 				<th>屋齡</th> -->
-<!-- 				<th>刊登日期</th> -->
-<!-- 				<th>車位</th> -->
-
-<!-- 			</thead> -->
+		<table id="datatable"  width="900" >
+			<thead>
+			<tr>
+				<th>勾選</th>
+				<th>圖片</th>
+				<th>標題</th>
+				<th>價格</th>
+				<th>刊登日期</th>
+				<th>修改</th>
+			</tr>
+			</thead>
 			<tbody>
 			<input type="checkbox" onClick="toggle(this)" />&nbsp全選
 				<c:forEach var="row" items="${select}">
@@ -214,18 +228,14 @@
 						<c:param name="sellhouse_email" value="${row.sellhouse_email}" />			
 					</c:url>
 					<!-- 修改用 -->
-					
 					<tr>
-					<td><input type="checkbox" value="${row.sellhouse_id}" name="delete_sellhouse_id"/></td>	
-					<td colspan=2> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
-						<td><h3 style="color:RED";font-style: italic"><a href="${path}">${row.sellhouse_name}</a></h3>
-						<h3>${row.sellhouse_address}</h5>
-						<h3>${row.sellhouse_patterns}</h3>
+					<td align="center"><input type="checkbox" value="${row.sellhouse_id}" name="delete_sellhouse_id"/></td>	
+					<td style="width:100px;border-bottom-style:solid;border-bottom-width:1px"> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="75px"></td>
+						<td style="border-bottom-style:solid;border-bottom-width:1px"><h3 style="font-style:normal;color:RED;width:300px"><a href="${path}"><font color="blue">${row.sellhouse_name}</font></a></h3>
 						</td>
-						<td>${row.sellhouse_price}</td>
-						<td>${row.sellhouse_size}</td>
-						<td>${row.sellhouse_date}</td>
-						<td><a href="${path2}">修改</a></td>
+						<td style="padding:20px;width:100px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_price}</td>
+						<td style="padding:20px;width:100px;border-bottom-style:solid;border-bottom-width:1px" align="center" >${row.sellhouse_date}</td>
+						<td style="padding:20px;width:50px;border-bottom-style:solid;border-bottom-width:1px" align="center"><a href="${path2}">修改</a></td>
 					
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
 <%-- 						<td> <img  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${row.sellhouse_id}" width="150px"></td> --%>
@@ -243,8 +253,7 @@
 		</form>		
 			
 		<!--close site_content-->
-		<div id="footer">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
+	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->

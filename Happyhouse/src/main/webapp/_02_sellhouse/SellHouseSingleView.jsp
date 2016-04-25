@@ -8,10 +8,20 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" type="text/css" href=
+"/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
+<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
+
+
+
+<link rel="stylesheet" href="/Happyhouse/rinocss/sellnormalize.css">
+<link rel="stylesheet" href="/Happyhouse/rinocss/sellstyle.css" media="screen" type="text/css" />
+
+
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
 <!-- 檢舉彈跳視窗 -->
 <!-- <script type="text/javascript" src="/Happyhouse/js/dialog.js"></script> -->
@@ -25,7 +35,15 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
+	
+
+	
 <script type="text/javascript">
+
+
+
+
+
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
@@ -39,7 +57,144 @@
 	        $("#form").slideToggle("slow");
 	    });
 	});
-	
+	$(document).ready(function(){
+		 google.charts.load("current", {packages:["corechart"]});
+
+		   google.charts.setOnLoadCallback(drawChart1);
+		    google.charts.setOnLoadCallback(drawChart2);
+		    
+		  
+// 		  var price_city1 ="文山區";
+// 		  var price_bdtype1 = "店面";
+		  var price_floors1 = "TEST層" ;
+		  var price_city0 = "${param.sellhouse_address}";
+		  var price_bdtype0 = "${param.sellhouse_patterns}";
+		  var price_city1 = price_city0.substring(3,6);
+		  var price_bdtype1 = price_bdtype0.substring(0,2);
+		  
+		  
+		  
+		  
+		  function drawChart1() {
+// 			      alert("hello");
+// 			      alert("${param.sellhouse_address}");
+// 			      alert("price_city1="+price_city1);
+// 			      alert("price_bdtype1="+price_bdtype1);
+				  $.ajax({
+		           
+			   	  
+		 
+			    	   url:"${pageContext.servletContext.contextPath}/_10_chart.controller/chart.controller",      //发送请求地址
+			    	   type:"get",//请求方式
+			    	   cache: false, 
+					   dataType: "JSON",
+			    	   data:{
+			    		   
+			    		   price_city : price_city1,
+			    		   price_bdtype : price_bdtype1,
+			    		   price_floors : price_floors1
+//			     		   price_city:$("#areaend").val(),
+//			     		   price_bdtype:$("#typetype").val()
+			    	   }, 
+			    	   //请求成功后的回调函数有两个参数
+			    	   
+			     	   success: function(chartdata){ 	     		 
+//		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+//		 	     		alert(chartobj); 
+			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+			     	     //arrayToDataTablev 是吃json格式  
+		  			  var data = google.visualization.arrayToDataTable(chartdata); 
+		  		
+// 		  			  data.addRows([[50,10000000,"point { size: 18; shape-type: star; fill-color: #a52714; }"]]);
+		  			 data.addRows([[50,10000000]]);
+		  			  
+//		         alert(chartobj); 
+		  		        var options = {
+		          title: 'Area x Price 散佈圖 ',
+		          hAxis: {title: 'Area-總坪數', minValue: 0, maxValue: 15},
+		          vAxis: {title: 'Price-總價', minValue: 0, maxValue: 15},
+		          pointSize: 10,
+		          pointShape: { type: 'star', sides: 6 },
+		          legend: 'none'
+		        };
+//		   		   alert(chartobj);             
+// 		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
+		  		 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
+		  	        chart.draw(data, options);
+			     	   
+			     	 },
+		  		 error:function(jqXHR,textStatus,errorThrown){
+		  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+		  		    }
+		 	   });
+		  }
+		  
+		  
+		  
+// 		  var price_city1 ="大安區";
+// 		  var price_bdtype1 = "套房";
+		  var price_city0 = "${param.sellhouse_address}";
+		  var price_bdtype0 = "${param.sellhouse_patterns}";
+		  var price_city1 = price_city0.substring(3,6);
+		  var price_bdtype1 = price_bdtype0.substring(0,2);
+		  var price_transes1 = "一樓";
+
+		  function drawChart2() {
+			  
+				  $.ajax({
+		           
+			    	  
+//			     	   async: false,   
+			    	   url:"${pageContext.request.contextPath}/_10_chart.controller/chart.controller",      //发送请求地址
+			    	   type:"get",//请求方式
+			    	   cache: false, 
+					   dataType: "JSON",
+			    	   data:{//发送给数据库的数据
+			    		   
+			    		   price_city : price_city1,
+			    		   price_bdtype : price_bdtype1,
+			    		   price_transes : price_transes1
+//			     		   price_city:$("#areaend").val(),
+//			     		   price_bdtype:$("#typetype").val()
+			    	   }, 
+			    	   //请求成功后的回调函数有两个参数
+			    	   
+			     	   success: function(chartdata){ 
+// 			     		  alert("BAR時間圖1>>>"+chartdata); 
+			     	   
+//		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
+//		 	     		alert(chartobj); 
+			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
+			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
+			     	     //arrayToDataTablev 是吃json格式  
+//		 	     	         alert("BAR時間圖2>>>"+chartobj); 
+		  			  var data = google.visualization.arrayToDataTable(chartdata); 
+		  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
+		             
+		             var options = {
+		                     title: 'The decline of BAR時間圖',
+		                     vAxis: {title: 'Accumulated Rating'},
+		                     isStacked: true
+		                   };
+		             
+		             var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+				    chart.draw(data, options);
+		    	   
+		    	 },
+				 error:function(jqXHR,textStatus,errorThrown){
+				    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
+				    }
+		   });
+
+		  }
+		  
+		  
+		  
+		  
+		  
+// 		  @@!
+		})
 	
 	/*站內*/
 // 	  $(function() {
@@ -60,6 +215,56 @@
 // 		    });
 // 		  });
 	
+// 		$('.map').tinyMap({
+// 		    'center': '台北市信義區台北101',
+// 		    'zoom'  : 14
+// 		});
+	
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+  });
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, map);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.sellhouse_address}";
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+	
+	
+	
+$(function(){
+	// 用來顯示大圖片用
+	var $showImage = $('#show-image');
+ 
+	// 當滑鼠移到 .abgne-block-20120106 中的某一個超連結時
+	$('.abgne-block-20120106 a').mouseover(function(){
+		// 把 #show-image 的 src 改成被移到的超連結的位置
+		$showImage.attr('src', $(this).attr('href'));
+	}).click(function(){
+		// 如果超連結被點擊時, 取消連結動作
+		return false;
+	});
+});
+	
+	
+	
+	
 </script>
  
  
@@ -67,6 +272,14 @@
 <title>Insert title here</title>
 </head>
 <style>
+    #map { 
+    height:450px; 
+    overflow: hidden; 
+    width:450px 
+     } 
+
+
+
 	fieldset {
 			width:500px;
 			margin:15px;
@@ -99,8 +312,81 @@
 		#img1{
 		width:300px;
 		}
+		
+		.showbox {
+	width: 455px;
+	height: 450px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+	float:left;
+	
+}
+.abgne-block-20120106 {
+	margin-top: 10px;
+	width: 680px;
+	overflow: hidden;
+	float:left;
+}
+.abgne-block-20120106 a {
+	margin-right: 10px;
+}
+.abgne-block-20120106 a img {
+	width: 140px;
+	height: 92px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+}
+		
+		
+
+
+button {
+   border-top: 1px solid #f7f7f7;
+   background: #ededed;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fafdff), to(#ededed));
+   background: -webkit-linear-gradient(top, #fafdff, #ededed);
+   background: -moz-linear-gradient(top, #fafdff, #ededed);
+   background: -ms-linear-gradient(top, #fafdff, #ededed);
+   background: -o-linear-gradient(top, #fafdff, #ededed);
+   padding: 4.5px 9px;
+   -webkit-border-radius: 9px;
+   -moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 8px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #e1edf2;
+   background: #e1edf2;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #f7f7f7;
+   background: #f7f7f7;
+   }
+		
+		
+		
+		
+		
+		
 </style>
 <body>
+
+<!--  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥以下偶的  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  -->
+
+
+<!-- <script type="text/javascript"> -->
+
+<!-- </script> -->
+<!--  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥以上偶的  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  ❥  -->
+
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
@@ -163,69 +449,181 @@
 		<div id="content">
 			<article>
 				<h2>${param.sellhouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
-				</figure>
+				<div class="showbox" >
+				<img id="show-image" src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"/></div>
+				<p></p>
+					<div class="abgne-block-20120106">
+		<a href="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" title="" /></a>
+	</div>
+<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"> --%>
+<!-- 				</div>					 -->
+<div style="padding-left:500px">
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
-					<p>帳號:${param.user_account}</p>
-					<p>姓名:${param.user_name}</p>
-					<p>價格:${param.sellhouse_price}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>坪數:${param.sellhouse_size}</p>
-					<p>樓層:${param.sellhouse_floor}</p>
-					<p>屋齡:${param.sellhouse_age}</p>
-					<p>格局:${param.sellhouse_patterns}</p>
-					<p>車位:${param.sellhouse_car}</p>
-					<p>地址:${param.sellhouse_address}</p>
-			</article>
-		</div>
-				<fieldset>
-					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.sellhouse_phone}</label><br>
-					</div>
 					<br>
-					<label>e-mail:${param.sellhouse_email}</label>
-					<label><a href="">站內信</a></label>
+					<br>
+					<p><font color="#7B7B7B">價格:</font><font style="color:#FF8000;font-size:18px;font-weight:bolder" >${param.sellhouse_price}萬元</font></p>
+					<p><font color="#7B7B7B">格局:</font>${param.sellhouse_patterns}</p>
+					<p><font color="#7B7B7B">坪數:</font>${param.sellhouse_size}坪</p>
+					<p><font color="#7B7B7B">樓層:</font>${param.sellhouse_floor}</p>
+					<p><font color="#7B7B7B">屋齡:</font>${param.sellhouse_age}年</p>
+					<p><font color="#7B7B7B">車位:</font>${param.sellhouse_car}</p>
+					<p><font color="#7B7B7B">地址:</font>${param.sellhouse_address}</p>
+					
+					</div>
+			</article>
+			</div>
+				<fieldset style="width:700px">
+					<legend>聯絡資訊</legend>
+					<div>
+						<table>
+						<tr>
+						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td>
+						<h3><font style="color:	#000000">姓名:${param.user_name}</font></h3>
+						<h3><font style="color:	#000000">電話:${param.sellhouse_phone}</font></h3>
+							<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button type="button" class="buttonCart" value="" >加入收藏</button>
+				</c:if>
+						
+						</td>
+						</tr>
+						</table>		
+					</div>
 				</fieldset>
 				</form>
-				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
-				<button type="button" class="MessageButton" value="" >寄送站內信</button>
-				<button type="button" class="buttonCart" value="" >加入收藏</button>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<%-- 				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button> --%>
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="MessageButton" value="" >寄送站內信</button> -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
+<%-- 				</c:if> --%>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
-				<form>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
-				<br>
-			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p>
-				<br>
-				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															
+			
+			
+<!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+
+<div class="wrapper">
+<div style="text-align:center;clear:both;">
+<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script> -->
+<!-- <script src="/follow.js" type="text/javascript"></script> -->
+</div>
+<section class="tabs-section">
+<nav class="tabs-wrapper">
+<input type="radio" name="tab" id="tab1" checked="checked"/><label for="tab1"><span>Example Tab</span></label>
+<input type="radio" name="tab" id="tab2"/><label for="tab2"><span>Tab Two</span></label>
+<input type="radio" name="tab" id="tab3"/><label for="tab3"><span>Tab Three</span></label>
+<input type="radio" name="tab" id="tab4"/><label for="tab4"><span>Another Tab</span></label>
+<div class="tabs-content">
+
+<section>
+<h1>Hi There!</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem repudiandae magni reprehenderit quibusdam, molestias sequi, voluptate quam id porro eaque placeat laboriosam quis quo. Repellat culpa veritatis quae non impedit.</p>
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px">
+<img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px">
+</section>
+
+
+<section>
+<h2>Oh hi! I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+<h6>this is awkward :s</h6>
+			<div id="chart_div2" style="width: 450px; height:250px;"></div>
+			<div id="chart_div" style="width: 450px; height: 250px;"></div>
+
+
+
+<h2>I'm the best tab</h2>
+<h3>Because reasons</h3>
+</section>
+
+<section>
+<h2>Oh hi! I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+<div id="map"></div>	
+</section>
+
+<section>
+<h2>444444444.I'm the second tab</h2>
+<h3>... aaaaaand</h3>
+</section>
+
+</nav>
+</section>
+</div>
+			
+
+<!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+			
+			
+			
+			
+			
+			
+			
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px"></p> --%>
+<!-- 				<br> -->
+<%-- 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px"></p>															 --%>
+				
+<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以下 -->
+				
+<!-- 			<div id="chart_div2" style="width: 900px; height:500px;"></div> -->
+<!-- 			<div id="chart_div" style="width: 900px; height: 500px;"></div> -->
+				
+				
+			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@以上 -->	
+				
+		<!-- 估狗 -->		
+<!-- 				<div id="map"></div> -->
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button class="buttonReport" value="${messageVO.message_id}" >檢舉不實廣告</button>
+				</c:if>
+				
 				
 		</tbody>
 	</c:if>
-	<!-- bean2 -->
+	</form>
+	</div>	
 	
 	
+
 	
-</form>
-</div>
-<!-- param -->
 
 <!--  -->
+
+
+
+
+
+
+
+
+
+
 
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportsellhouse.controller" method="post">
 	            <label>您的帳號</label><br/>
-				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
+				<input type="text" id="sellhouse_reportfrom" name="sellhouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly" style="color:black"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}${bean2.sellhouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="sellhouse_id" name="sellhouse_id" value="${param.sellhouse_id}" readonly="readonly" style="color:black"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
-				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" style="color:black"></textarea>
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
@@ -236,14 +634,15 @@
 	          <form action="/Happyhouse/sellhouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}${bean2.user_account}"><br/>
-				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}${bean2.sellhouse_id}"><br/>
-	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}${bean2.user_account}" readonly="readonly"><br/>	 
+	<input type="text" id="user_account" name="user_account1" value="${param.user_name}" style="color:black" readonly="readonly">
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}">
+				<input type="hidden" id="user_account" name="sellhouse_id2" value="${param.sellhouse_id}">
+	          	<input type="hidden" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly" style="color:black"><br/>	 
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
-				<input type="text" id="sms_title" name="sms_title" ><br/>
+				<input type="text" id="sms_title" name="sms_title" style="color:black"><br/>
 				<label>訊息內容</label><br/>
-				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
+				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" style="color:black"></textarea>
 				<input type="submit" id="messagesubmit" name="type"  value="送出" />
 			  </form>
 		 </div>
@@ -252,17 +651,27 @@
 <div class="dialog" title="加入收藏" id="cartform">
 	          <form action="/Happyhouse/cartsinsert.controller" method="post">
 <%-- 	            <p>帳號:${param.user_account}</p> --%>
-				<input type="text" id="user_account" name="user_account3" value="${LoginOK.user_account}"><br/>
-				<input type="text" id="user_account" name="sellhouse_id3" value="${param.sellhouse_id}"><br/>
-	          
+				<input type="hidden" id="user_account" name="user_account3" value="${LoginOK.user_account}">
+				<input type="hidden" id="user_account" name="sellhouse_id3" value="${param.sellhouse_id}">
 	          	<label>確認加入收藏嗎?</label><br/>
 				<input type="submit" id="messagesubmit" name="type"  value="確認" />
 			  </form>
 		 </div>
+		 </div>
+</div>
+	
+	
+	<BR>
+	<BR>
+	<BR>
+	<BR>
+	
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+	</div>
+
+	
 
 
-
-
-<!--  -->
 </body>
 </html>

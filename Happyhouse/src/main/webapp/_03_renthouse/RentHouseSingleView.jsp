@@ -19,7 +19,7 @@
 <!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
 <!--  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
  
  	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -41,6 +41,45 @@
 	});
 	
 	
+	var map;
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: -34.397, lng: 150.644},
+	    zoom: 16
+	  });
+	  var geocoder = new google.maps.Geocoder();
+	  geocodeAddress(geocoder, map);
+	}
+
+	function geocodeAddress(geocoder, resultsMap) {
+		var address = "${param.renthouse_address}";
+	//   var address = document.getElementById('address').value;
+	  geocoder.geocode({'address': address}, function(results, status) {
+	    if (status === google.maps.GeocoderStatus.OK) {
+	      resultsMap.setCenter(results[0].geometry.location);
+	      var marker = new google.maps.Marker({
+	        map: resultsMap,
+	        position: results[0].geometry.location
+	      });
+	    } else {
+	      alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+	}
+	
+	$(function(){
+		// 用來顯示大圖片用
+		var $showImage = $('#show-image');
+	 
+		// 當滑鼠移到 .abgne-block-20120106 中的某一個超連結時
+		$('.abgne-block-20120106 a').mouseover(function(){
+			// 把 #show-image 的 src 改成被移到的超連結的位置
+			$showImage.attr('src', $(this).attr('href'));
+		}).click(function(){
+			// 如果超連結被點擊時, 取消連結動作
+			return false;
+		});
+	});
 	/*站內*/
 // 	  $(function() {
 // 		    $( "#dialog" ).dialog({
@@ -67,6 +106,12 @@
 <title>Insert title here</title>
 </head>
 <style>
+    #map { 
+    height:450px; 
+
+    width:450px 
+     } 
+
 	fieldset {
 			width:500px;
 			margin:15px;
@@ -99,6 +144,62 @@
 		#img1{
 		width:300px;
 		}
+		.showbox {
+	width: 455px;
+	height: 450px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+	float:left;
+	
+}
+.abgne-block-20120106 {
+	margin-top: 10px;
+	width: 680px;
+	overflow: hidden;
+	float:left;
+}
+.abgne-block-20120106 a {
+	margin-right: 10px;
+}
+.abgne-block-20120106 a img {
+	width: 140px;
+	height: 92px;
+	border: 2px solid #d0d0d0;
+	vertical-align: middle;
+}
+
+button {
+   border-top: 1px solid #f7f7f7;
+   background: #ededed;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fafdff), to(#ededed));
+   background: -webkit-linear-gradient(top, #fafdff, #ededed);
+   background: -moz-linear-gradient(top, #fafdff, #ededed);
+   background: -ms-linear-gradient(top, #fafdff, #ededed);
+   background: -o-linear-gradient(top, #fafdff, #ededed);
+   padding: 4.5px 9px;
+   -webkit-border-radius: 9px;
+   -moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 8px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #e1edf2;
+   background: #e1edf2;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #f7f7f7;
+   background: #f7f7f7;
+   }
+
+
 </style>
 <body>
 	<div id="main">
@@ -163,60 +264,94 @@
 		<div id="content">
 			<article>
 				<h2>${param.renthouse_name}</h2>
-				<figure>
-				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px">
-				</figure>
+				<div class="showbox" >
+				<img id="show-image" src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" style="height:450px;width:450px"/></div>
+				<p></p>
+					<div class="abgne-block-20120106">
+		<a href="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" title="" /></a>
+		<a href="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}"><img src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" title="" /></a>
+	</div>
+				
+<!-- 				<figure style="padding-RIGHT:150px"> -->
+<%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" style="height:450px;width:450px"> --%>
+<!-- 				</figure> -->
+	<div style="padding-left:500px">
 					<input type="hidden" value="${param.renthouse_id}" name="renthouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
-					<p>帳號:${param.user_account}</p>
-					<p>姓名:${param.user_name}</p>
-					<p>價格:${param.renthouse_price}</p>
-					<p>格局:${param.renthouse_patterns}</p>
-					<p>坪數:${param.renthouse_size}</p>
-					<p>樓層:${param.renthouse_floor}</p>
-					<p>租金:${param.renthouse_price}</p>
-					<p>格局:${param.renthouse_patterns}</p>
-					<p>車位:${param.renthouse_car}</p>
-					<p>地址:${param.renthouse_address}</p>
-			</article>
-		</div>
-				<fieldset>
-					<legend>聯絡資訊</legend>
-					<div id="content">
-					<img src="/ProjectX/images/phone.jpg" width="50px" padding-bottom="10px">
-					<label>${param.renthouse_phone}</label><br>
+					<p><font color="#7B7B7B">價格:</font><font style="color:#FF8000;font-size:18px;font-weight:bolder" >${param.renthouse_price}元/月</font></p>
+					<p><font color="#7B7B7B">格局:</font>${param.renthouse_patterns}</p>
+					<p><font color="#7B7B7B">坪數:</font>${param.renthouse_size}坪</p>
+					<p><font color="#7B7B7B">樓層:</font>${param.renthouse_floor}</p>
+					<p><font color="#7B7B7B">租金:</font>${param.renthouse_price}</p>
+					<p><font color="#7B7B7B">押金:</font>${param.renthouse_deposit}</p>
+					<p><font color="#7B7B7B">最短租期:</font>${param.renthouse_rentdate}</p>
+					<p><font color="#7B7B7B">格局:</font>${param.renthouse_patterns}</p>
+					<p><font color="#7B7B7B">車位:</font>${param.renthouse_car}</p>
+					<p><font color="#7B7B7B">地址:</font>${param.renthouse_address}</p>
+					
 					</div>
-					<br>
-					<label>e-mail:${param.renthouse_email}</label>
-					<label><a href="">站內信</a></label>
+			</article>
+		
+		</div>
+			
+				<fieldset style="width:700px">
+					<legend>聯絡資訊</legend>
+					<div>
+						<table>
+						<tr>
+						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td>
+						<h3>姓名:${param.user_name}</h3>
+						<h3>電話:${param.renthouse_phone}</h3>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+				</c:if>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+					<button type="button" class="buttonCart" value="" >加入收藏</button>
+				</c:if>
+						</td>
+						</tr>
+						</table>		
+					</div>
 				</fieldset>
 				</form>
-				<button class="buttonReport" value="${messageVO.message_id}" >我要檢舉</button>
-				<button type="button" class="MessageButton" value="" >寄送站內信</button>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button class="buttonReport" value="" >我要檢舉</button> -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="MessageButton" value="" >寄送站內信</button> -->
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
+<!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
+<%-- 				</c:if> --%>
 				<fieldset>
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
 				</fieldset>
-				<form>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage1?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
 			<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage2?renthouse_id=${param.renthouse_id}" width="150px"></p>
 				<br>
 				<p><img id="img1"  src="${pageContext.servletContext.contextPath}/rentimage3?renthouse_id=${param.renthouse_id}" width="150px"></p>															
-				
+				<div id="map"></div>
+				<c:if test="${LoginOK.user_account!=param.user_account}">
+				<button class="buttonReport" value="" >我要檢舉</button>
+				</c:if>
 		</tbody>
 	</c:if>		
 </form>
 </div>
+
 <div class="dialog" title="檢舉原因" id="reportform">
 	          <form action="/Happyhouse/reportrenthouse.controller" method="post">
 	            <label>您的帳號</label><br/>
-				<input type="text" id="renthouse_reportfrom" name="renthouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly"><br/>
+				<input type="text" id="renthouse_reportfrom" name="renthouse_reportfrom" value="${LoginOK.user_account}" readonly="readonly" style="color:black"><br/>
 	            <label>文章編號</label><br/>
-				<input type="text" id="renthouse_id" name="renthouse_id" value="${param.renthouse_id}" readonly="readonly"><br/>	
+				<input type="text" id="renthouse_id" name="renthouse_id" value="${param.renthouse_id}" readonly="readonly" style="color:black"><br/>	
 				<label>說明原因</label><br/>
 				<label>限制50字以內，目前字數:</label><div id="lblWordCountNow" style="font-size:larger;">0</div>
-				<textarea rows="10" cols="40" name="reportreason" id="reportreason" ></textarea>
+				<textarea rows="10" cols="40" name="reportreason" id="reportreason" style="color:black"></textarea>
 				<input type="submit" id="reportsubmit" value="Submit" />
 			  </form>
 		  </div>
@@ -226,27 +361,37 @@
 <div class="dialog" title="站內信" id="MessageForMe">
 	          <form action="/Happyhouse/renthouse.sms.controller" method="post" class="sms">
 	            <label>收信人</label><br/>
-				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}"><br/>
-				<input type="hidden" id="user_account" name="renthouse_id2" value="${param.renthouse_id}"><br/>
-	          	<input type="text" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly"><br/>	 
+	            <input type="text" id="user_account" name="user_account1" value="${param.user_name}" style="color:black" readonly="readonly"><br/>
+				<input type="hidden" id="user_account" name="user_account1" value="${param.user_account}">
+				<input type="hidden" id="user_account" name="renthouse_id2" value="${param.renthouse_id}">
+	          	<input type="hidden" id="user_account" name="user_account2" value="${param.user_account}" readonly="readonly">
 	          	<label>標題</label><br/>
 	          	<label>25字以內，目前字數:</label><div id="2blWordCountNow" style="font-size:larger;">0</div>
-				<input type="text" id="sms_title" name="sms_title" ><br/>
+				<input type="text" id="sms_title" name="sms_title" style="color:black"><br/>
 				
 				<label>訊息內容</label><br/>
 				
-				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" ></textarea>
+				<textarea rows="8" cols="30" name="sms_describe" id="sms_describe" style="color:black"></textarea>
 				
 				<input type="submit" id="messagesubmit" name="type"  value="送出" />
 				
 			  </form>
 		 </div>
+ <!-- 加入收藏 -->
  
-
-
-
-
-
+<div class="dialog" title="加入收藏" id="cartform">
+	          <form action="/Happyhouse/rentcartsinsert.controller" method="post">
+<%-- 	            <p>帳號:${param.user_account}</p> --%>
+				<input type="hidden" id="user_account" name="user_account3" value="${LoginOK.user_account}">
+				<input type="hidden" id="user_account" name="renthouse_id3" value="${param.renthouse_id}">
+	          	<label>確認加入收藏嗎?</label><br/>
+				<input type="submit" id="messagesubmit" name="type"  value="確認" />
+			  </form>
+		 </div>
 <!--  -->
+
+	<div id="menu">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+		</div>
 </body>
 </html>

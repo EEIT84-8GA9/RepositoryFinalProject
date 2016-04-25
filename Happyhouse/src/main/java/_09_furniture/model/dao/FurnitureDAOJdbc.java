@@ -109,7 +109,7 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 
 	/* (non-Javadoc)
 	 * @see model.dao.FurnitureDAO#selectKeyWord(java.lang.String)
-	 */
+	*/
 	@Override
 	public List<FurnitureBean> selectKeyWord(String furniture_name) {
 		List<FurnitureBean> fbs = new ArrayList<FurnitureBean>();

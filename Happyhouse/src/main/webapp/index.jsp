@@ -17,6 +17,13 @@
 
 
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
+<script type="text/javascript">
+
+
+
 
 
 
@@ -314,14 +321,12 @@ $(document).ready(function(){
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
                         <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
-                        <li><a href="#">查詢出售收藏</a></li>
 						</ul>
 						</li>
-						<li><a href="testimonials.html">刊登出租</a>
+						<li><a href="">出租專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
                         <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
-                        <li><a href="#">查詢出租收藏</a></li>
 						</ul>
 						</li>
 						<li><a href="testimonials.html">時價查詢</a>
@@ -515,18 +520,15 @@ $(document).ready(function(){
 		
 		
 		
-		
+
 		
 		
 		
 		
 
 		
-		
-		
-		
-		
-		
+</script>	
+	
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>

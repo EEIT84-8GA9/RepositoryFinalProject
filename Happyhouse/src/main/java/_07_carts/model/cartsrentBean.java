@@ -20,6 +20,15 @@ public class cartsrentBean {
 	private	Blob	renthouse_photo2;
 	private String renthouse_photo3_name;
 	private	Blob	renthouse_photo3;
+	
+	
+	private String user_name;
+	private	String	renthouse_message;
+	private	java.util.Date	renthouse_date;
+	private	String	renthouse_car;
+	private	String	renthouse_phone;
+	private	String	renthouse_email;
+	private	String	renthouse_type;
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -38,7 +47,12 @@ public class cartsrentBean {
 				+ ", renthouse_photo2_name=" + renthouse_photo2_name
 				+ ", renthouse_photo2=" + renthouse_photo2
 				+ ", renthouse_photo3_name=" + renthouse_photo3_name
-				+ ", renthouse_photo3=" + renthouse_photo3 + "]";
+				+ ", renthouse_photo3=" + renthouse_photo3 + ", user_name="
+				+ user_name + ", renthouse_type=" + renthouse_type
+				+ ", renthouse_message=" + renthouse_message
+				+ ", renthouse_date=" + renthouse_date + ", renthouse_car="
+				+ renthouse_car + ", renthouse_phone=" + renthouse_phone
+				+ ", renthouse_email=" + renthouse_email + "]";
 	}
 	/**
 	 * @return the cart_id
@@ -232,20 +246,100 @@ public class cartsrentBean {
 	public void setRenthouse_photo3(Blob renthouse_photo3) {
 		this.renthouse_photo3 = renthouse_photo3;
 	}
+	/**
+	 * @return the user_name
+	 */
+	public String getUser_name() {
+		return user_name;
+	}
+	/**
+	 * @param user_name the user_name to set
+	 */
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+	/**
+	 * @return the renthouse_type
+	 */
+	public String getRenthouse_type() {
+		return renthouse_type;
+	}
+	/**
+	 * @param renthouse_type the renthouse_type to set
+	 */
+	public void setRenthouse_type(String renthouse_type) {
+		this.renthouse_type = renthouse_type;
+	}
+	/**
+	 * @return the renthouse_message
+	 */
+	public String getRenthouse_message() {
+		return renthouse_message;
+	}
+	/**
+	 * @param renthouse_message the renthouse_message to set
+	 */
+	public void setRenthouse_message(String renthouse_message) {
+		this.renthouse_message = renthouse_message;
+	}
+	/**
+	 * @return the renthouse_date
+	 */
+	public java.util.Date getRenthouse_date() {
+		return renthouse_date;
+	}
+	/**
+	 * @param renthouse_date the renthouse_date to set
+	 */
+	public void setRenthouse_date(java.util.Date renthouse_date) {
+		this.renthouse_date = renthouse_date;
+	}
+	/**
+	 * @return the renthouse_car
+	 */
+	public String getRenthouse_car() {
+		return renthouse_car;
+	}
+	/**
+	 * @param renthouse_car the renthouse_car to set
+	 */
+	public void setRenthouse_car(String renthouse_car) {
+		this.renthouse_car = renthouse_car;
+	}
+	/**
+	 * @return the renthouse_phone
+	 */
+	public String getRenthouse_phone() {
+		return renthouse_phone;
+	}
+	/**
+	 * @param renthouse_phone the renthouse_phone to set
+	 */
+	public void setRenthouse_phone(String renthouse_phone) {
+		this.renthouse_phone = renthouse_phone;
+	}
+	/**
+	 * @return the renthouse_email
+	 */
+	public String getRenthouse_email() {
+		return renthouse_email;
+	}
+	/**
+	 * @param renthouse_email the renthouse_email to set
+	 */
+	public void setRenthouse_email(String renthouse_email) {
+		this.renthouse_email = renthouse_email;
+	}
 	
-    
 	
 
-
-
-
-
-
-
-
-
-
-
-
-
-}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

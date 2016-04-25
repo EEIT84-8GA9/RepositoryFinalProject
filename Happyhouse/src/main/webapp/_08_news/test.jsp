@@ -8,6 +8,7 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
@@ -21,6 +22,8 @@
 </script>
 
 <link rel="stylesheet" href="/Happyhouse/css/for_newcss/style.css">
+<link rel="stylesheet" href="/Happyhouse/css/for_newcss/styletest.css">
+
 </head>
 
 <body>
@@ -62,27 +65,26 @@
 			<!--close header-->
 			<form  enctype="multipart/form-data" action="<c:url value="/test.controller" />" method="post">
 				<table>
-					<tr style="border: 1px solid black;">
-						<td>文章編號</td>
-						<td><input type="text" name="id" value="${param.new_id}">${error.id}
+					<tr>
+						<td><input type="hidden" name="id" value="${param.new_id}">${error.id}
 							${error.updateid}</td>
 					</tr>
 
-					<tr style="border: 1px solid black;">
+					<tr>
 						<td>標題</td>
 						<td><input type="text" name="title" value="${param.new_title}">${error.title}</td>
 					</tr>
 
-					<tr style="border: 1px solid black;">
-						<td style="border: 1px solid black;">文章內容</td>
+					<tr>
+						<td>文章內容</td>
 						<td><textarea name="content" rows="20" cols="100px"></textarea>
 						<td>${error.updateerror}</td>
 					</tr>
 					
-					<tr style="border: 1px solid black;">
+					<tr>
 				    <td><input type="file" name="sellhouse_photo1"></td>
-				    <td><input type="file" name="sellhouse_photo2"></td>
-				    <td><input type="file" name="sellhouse_photo3"></td>
+<!-- 				    <td><input type="file" name="sellhouse_photo2"></td> -->
+<!-- 				    <td><input type="file" name="sellhouse_photo3"></td> -->
 					</tr>
 					
 				</table>
@@ -90,11 +92,11 @@
 				<table>
 					<tbody>
 						<tr>
-							<td style="border: 1px solid black;"><input type="submit"
+							<td><input type="submit"
 								name="newsupdate" value="看目前的首頁資訊"></td>
 <!-- 							<td style="border: 1px solid black; width: 10px"><input -->
 <!-- 								type="submit" name="newsupdate" value="Insert"></td> -->
-							<td style="border: 1px solid black;"><input type="submit"
+							<td><input type="submit"
 								name="newsupdate" value="更新首頁資訊"></td>
 <!-- 							<td style="border: 1px solid black;"><input type="submit" -->
 <!-- 								name="newsupdate" value="Delete"></td> -->

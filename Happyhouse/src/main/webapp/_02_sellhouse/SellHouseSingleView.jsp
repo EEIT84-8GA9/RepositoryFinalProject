@@ -314,7 +314,7 @@ $(function(){
 		}
 		
 		.showbox {
-	width: 455px;
+	width: 500px;
 	height: 450px;
 	border: 2px solid #d0d0d0;
 	vertical-align: middle;
@@ -450,7 +450,7 @@ button:active {
 			<article>
 				<h2>${param.sellhouse_name}</h2>
 				<div class="showbox" >
-				<img id="show-image" src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"/></div>
+				<img id="show-image" src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:500px"/></div>
 				<p></p>
 					<div class="abgne-block-20120106">
 		<a href="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}"><img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" title="" /></a>
@@ -459,7 +459,7 @@ button:active {
 	</div>
 <%-- 				<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" style="height:450px;width:450px"> --%>
 <!-- 				</div>					 -->
-<div style="padding-left:500px">
+<div style="padding-left:510px">
 					<input type="hidden" value="${param.sellhouse_id}" name="sellhouse_id"/>
 					<input type="hidden" value="${param.user_account}" name="user_account"/>
 					<br>

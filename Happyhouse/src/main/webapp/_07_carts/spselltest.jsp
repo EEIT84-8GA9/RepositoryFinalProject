@@ -101,7 +101,7 @@
 							<li>${row.sellhouse_age}</li>
 							<form action="<c:url value="/gousejsp.controller" />" method="post">
 							<li><button name="deletecartsell" value="${row.cart_id}">刪除這個收藏</button></li>
-							<li><input type="hidden" name="deletesell" value="deletesell"><li>
+							<input type="hidden" name="deletesell" value="deletesell">
  							</form>
 						</ul>
 					</li> <!-- .product -->

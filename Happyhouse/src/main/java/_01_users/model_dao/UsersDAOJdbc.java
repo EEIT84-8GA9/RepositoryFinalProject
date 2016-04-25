@@ -1,5 +1,6 @@
 package _01_users.model_dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
 import _01_users.model.UsersBean;
 
 public class UsersDAOJdbc implements UserDAO {
-	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender,user_type) values(?,?,?,?,?,?,?,'A')";
+	private static final String USER_INSERT = "insert into users(user_account,user_password,user_name,user_address,user_phone,user_email,user_gender,user_type,user_photo1_name,user_photo1) values(?,?,?,?,?,?,?,'A',?,?)";
 	// private static final String URL =
 	// "jdbc:sqlserver://localhost:1433;database=HappyHouse";
 	// private static final String USERNAME = "sa";
@@ -30,8 +31,7 @@ public class UsersDAOJdbc implements UserDAO {
 	public UsersDAOJdbc() {
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx
-					.lookup("java:comp/env/jdbc/HappyHouse");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -73,7 +73,7 @@ public class UsersDAOJdbc implements UserDAO {
 				result.setUser_email(rs.getString("user_email"));
 				result.setUser_gender(rs.getString("user_gender"));
 				result.setUser_type(rs.getString("user_type"));
-
+				result.setUser_photo1(rs.getBlob("user_photo1"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,7 +127,7 @@ public class UsersDAOJdbc implements UserDAO {
 				user.setUser_email(rs.getString("user_email"));
 				user.setUser_gender(rs.getString("user_gender"));
 				user.setUser_type(rs.getString("user_type"));
-				user.setUser_photo(rs.getBytes("user_photo"));
+				user.setUser_photo1(rs.getBlob("user_photo1"));
 				users.add(user);
 			}
 		} catch (SQLException e) {
@@ -150,7 +150,7 @@ public class UsersDAOJdbc implements UserDAO {
 			System.out.print(user.getUser_email() + ", ");
 			System.out.print(user.getUser_gender() + ", ");
 			System.out.print(user.getUser_type() + ", ");
-			System.out.print(user.getUser_photo() + "\n");
+			System.out.print(user.getUser_photo1() + "\n");
 
 		}
 
@@ -181,22 +181,31 @@ public class UsersDAOJdbc implements UserDAO {
 	}
 
 	@Override
-	public int insert(UsersBean user) {
-
-		int insertcount = 0;
-		PreparedStatement pstmt = null;
+	public UsersBean insert(UsersBean bean,InputStream is1,long size1) {
+         
+		UsersBean result=null;
+		
 		try {
+			PreparedStatement pstmt = null;
 			conn = dataSource.getConnection();
 			// conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			pstmt = conn.prepareStatement(USER_INSERT);
-			pstmt.setString(1, user.getUser_account());
-			pstmt.setString(2, user.getUser_password());
-			pstmt.setString(3, user.getUser_name());
-			pstmt.setString(4, user.getUser_address());
-			pstmt.setString(5, user.getUser_phone());
-			pstmt.setString(6, user.getUser_email());
-			pstmt.setString(7, user.getUser_gender());
-			insertcount = pstmt.executeUpdate();
+			if(bean!=null){
+			pstmt.setString(1, bean.getUser_account());
+			pstmt.setString(2, bean.getUser_password());
+			pstmt.setString(3, bean.getUser_name());
+			pstmt.setString(4, bean.getUser_address());
+			pstmt.setString(5, bean.getUser_phone());
+			pstmt.setString(6, bean.getUser_email());
+			pstmt.setString(7, bean.getUser_gender());
+			pstmt.setString(8, bean.getUser_photo1_name());
+			pstmt.setBinaryStream(9,is1,size1);
+			int i = pstmt.executeUpdate();
+			if(i==1) {
+				result = bean;
+			}
+			
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -220,7 +229,7 @@ public class UsersDAOJdbc implements UserDAO {
 
 		}
 
-		return insertcount;
+		return result;
 	}
 
 	@Override

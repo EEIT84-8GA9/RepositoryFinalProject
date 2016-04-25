@@ -129,10 +129,9 @@ public class ProductServlet extends HttpServlet {
 		bean.setFurniture_message(insmessage);
 		bean.setFurniture_type(instype);
 		bean.setFurniture_id(id);
+		
 		//圖片上傳用
 	
-		
-		
 		
 		
 		

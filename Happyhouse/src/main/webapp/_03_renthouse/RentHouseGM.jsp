@@ -19,9 +19,9 @@
 <!--   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
 
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />	
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">              
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">              
 <script type="text/javascript" src="/Happyhouse/js/jquery-2.2.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/for_GMmessage/bootstrap-table-expandable.css">
 <script src="/Happyhouse/js/for_GMmessage/bootstrap-table-expandable.js"></script>
  

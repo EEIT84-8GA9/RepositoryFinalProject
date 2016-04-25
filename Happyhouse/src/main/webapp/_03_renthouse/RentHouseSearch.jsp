@@ -29,7 +29,7 @@ $(document).ready(function() {
 <style type="text/css">
 tr:hover td
 {
-background-color:#ECFFFF;
+background-color:#ACD6FF;
 overflow:hidden;
 }
 

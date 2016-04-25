@@ -469,7 +469,6 @@ button:active {
 					<p><font color="#7B7B7B">坪數:</font>${param.sellhouse_size}坪</p>
 					<p><font color="#7B7B7B">樓層:</font>${param.sellhouse_floor}</p>
 					<p><font color="#7B7B7B">屋齡:</font>${param.sellhouse_age}年</p>
-					<p><font color="#7B7B7B">格局:</font>${param.sellhouse_patterns}</p>
 					<p><font color="#7B7B7B">車位:</font>${param.sellhouse_car}</p>
 					<p><font color="#7B7B7B">地址:</font>${param.sellhouse_address}</p>
 					

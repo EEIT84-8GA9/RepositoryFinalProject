@@ -48,7 +48,7 @@
 			</div>
 			
 
-<form action="/Happyhouse/secure/regist.controller" method="get">
+<form  enctype="multipart/form-data"  action="/Happyhouse/secure/regist.controller" method="post">
 <table>
 	<tr>
 		<td>帳號 : </td>
@@ -87,6 +87,9 @@
 		<td><input type="text" name="user_gender" value="${param.user_gender}"></td>
 		<td><span class="error">${error.user_gender}</span></td>
 	</tr>
+	<tr>
+	<td><input type="file" name="user_photo1"></td>
+    </tr>
 	<tr>
 		<td>
 			<input type="submit" value="註冊">

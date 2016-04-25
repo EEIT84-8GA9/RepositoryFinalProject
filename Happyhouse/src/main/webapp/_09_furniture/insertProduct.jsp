@@ -120,7 +120,7 @@
 	</tr>
 	<tr>
 	<td><input type="file" name="Furnitur_photo1"></td>
-	<input type="file" name="Furnitur_photo2"></td>
+<!-- 	<input type="file" name="Furnitur_photo2"></td> -->
 	</tr>
 	<tr>
 		<td>

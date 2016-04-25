@@ -354,18 +354,19 @@ $(document).ready(function(){
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						</c:if>
 						<c:if test="${not empty LoginOK}">
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">個人收藏頁面</a></li>
+						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
+						<li><a href="/Happyhouse/renthousecart.controller">個人出售收藏</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
 						<li><a href="/Happyhouse/_03_renthouse/RentHouseUser.jsp">租屋管理</a></li>
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						</c:if>
 						<li></li>
 						</ul>
 						</li>

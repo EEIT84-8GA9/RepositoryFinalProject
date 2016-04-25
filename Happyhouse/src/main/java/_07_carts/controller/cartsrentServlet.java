@@ -18,12 +18,12 @@ import _07_carts.model.cartsrentBean;
 import _07_carts.model.cartssellBean;
 import _07_carts.model.dao.cartsDAO;
 
-@WebServlet("/sellhousecart.controller")
-public class cartsServlet extends HttpServlet {
+@WebServlet("/renthousecart.controller")
+public class cartsrentServlet extends HttpServlet {
 	private cartsService service = new cartsService();
 	private static final long serialVersionUID = 1L;
 
-	public cartsServlet() {
+	public cartsrentServlet() {
 		super();
 
 	}
@@ -60,36 +60,36 @@ public class cartsServlet extends HttpServlet {
 //			String rent = request.getParameter("rent");
 
 			
-			String selldelete = request.getParameter("deletecartsell");
-			String selldeletename = request.getParameter("deletesell");
+//			String selldelete = request.getParameter("deletecartsell");
+//			String selldeletename = request.getParameter("deletesell");
 			
-//			String rentdelete = request.getParameter("deletecartrent");
-//			String rentdeletename = request.getParameter("deleterent");
+			String rentdelete = request.getParameter("deletecartrent");
+			String rentdeletename = request.getParameter("deleterent");
 			
 			
 			
 			// 轉換HTML的資料(不用轉換)
 
-			int selldeleteid = 0;
-			if (selldelete != null && selldelete.trim().length() != 0) {
-				try {
-					selldeleteid = Integer.parseInt(selldelete.trim());
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-					error.put("id", "Id必須是整數");
-				}
-			}
-			
-//			int rentdeleteid = 0;
-//			if(rentdelete != null && rentdelete.trim().length() != 0){
+//			int selldeleteid = 0;
+//			if (selldelete != null && selldelete.trim().length() != 0) {
 //				try {
-//					rentdeleteid = Integer.parseInt(rentdelete.trim());
+//					selldeleteid = Integer.parseInt(selldelete.trim());
 //				} catch (NumberFormatException e) {
 //					e.printStackTrace();
 //					error.put("id", "Id必須是整數");
 //				}
-//				
 //			}
+			
+			int rentdeleteid = 0;
+			if(rentdelete != null && rentdelete.trim().length() != 0){
+				try {
+					rentdeleteid = Integer.parseInt(rentdelete.trim());
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+					error.put("id", "Id必須是整數");
+				}
+				
+			}
 
 			// 驗證HTML的資料 ()
 
@@ -119,56 +119,56 @@ public class cartsServlet extends HttpServlet {
 
 			cartsDAO dao = new cartsDAO();
 
-			cartssellBean bean = new cartssellBean();
+//			cartssellBean bean = new cartssellBean();
 
-//			cartsrentBean beanrent = new cartsrentBean();
+			cartsrentBean beanrent = new cartsrentBean();
 
-			bean.setUser_account(user_account);
+//			bean.setUser_account(user_account);
 
-//			beanrent.setUser_account(user_account);
+			beanrent.setUser_account(user_account);
 
 			// 根據Model執行結果顯示View
 			
-			if("deletesell".equals(selldeletename)){
-				
-				boolean result = service.delete(selldeleteid);
-				
-				if(!result) {
-					request.setAttribute("delete", 0);
-				} else {
-					request.setAttribute("delete", 1);
-				}
-				List<cartssellBean> resultsell = service.select(bean);
-				request.setAttribute("sell", resultsell);
-				request.getRequestDispatcher("/_07_carts/spselltest.jsp")
-				.forward(request, response);
-			}
-			
-//			if("deleterent".equals(rentdeletename)){
+//			if("deletesell".equals(selldeletename)){
 //				
-//                boolean result = service.delete(rentdeleteid);
+//				boolean result = service.delete(selldeleteid);
 //				
 //				if(!result) {
 //					request.setAttribute("delete", 0);
 //				} else {
 //					request.setAttribute("delete", 1);
 //				}
-//				List<cartsrentBean> resultrent = service.select(beanrent);
-//				request.setAttribute("rent", resultrent);
-//				request.getRequestDispatcher("/_07_carts/sprenttest.jsp")
+//				List<cartssellBean> resultsell = service.select(bean);
+//				request.setAttribute("sell", resultsell);
+//				request.getRequestDispatcher("/_07_carts/spselltest.jsp")
 //				.forward(request, response);
-//				
 //			}
+			
+			if("deleterent".equals(rentdeletename)){
+				
+                boolean result = service.delete(rentdeleteid);
+				
+				if(!result) {
+					request.setAttribute("delete", 0);
+				} else {
+					request.setAttribute("delete", 1);
+				}
+				List<cartsrentBean> resultrent = service.select(beanrent);
+				request.setAttribute("rent", resultrent);
+				request.getRequestDispatcher("/_07_carts/sprenttest.jsp")
+				.forward(request, response);
+				
+			}
 			
 			
 
 //			if ("這裡往出售".equals(sell)) {
-				List<cartssellBean> result = service.select(bean);
-				System.out.println("出售的bean" + result);
-				request.setAttribute("sell", result);
-				System.out.println("有咧");
-				request.getRequestDispatcher("/_07_carts/spselltest.jsp")
-						.forward(request, response);
+//				List<cartssellBean> result = service.select(bean);
+//				System.out.println("出售的bean" + result);
+//				request.setAttribute("sell", result);
+//				System.out.println("有咧");
+//				request.getRequestDispatcher("/_07_carts/spselltest.jsp")
+//						.forward(request, response);
 
 //				if (result.isEmpty()) {
 //
@@ -182,8 +182,11 @@ public class cartsServlet extends HttpServlet {
 //				}
 //			}
 //			if ("這裡往出租".equals(rent)) {
-//				List<cartsrentBean> result = service.select(beanrent);
-//				System.out.println("出租的bean" + result);
+				List<cartsrentBean> result = service.select(beanrent);
+				System.out.println("出租的bean" + result);
+				request.setAttribute("rent", result);
+				request.getRequestDispatcher("/_07_carts/sprenttest.jsp")
+						.forward(request, response);
 //
 //				if (result.isEmpty()) {
 //
@@ -193,9 +196,7 @@ public class cartsServlet extends HttpServlet {
 //
 //				} else {
 //
-//					request.setAttribute("rent", result);
-//					request.getRequestDispatcher("/_07_carts/sprenttest.jsp")
-//							.forward(request, response);
+
 //
 //				}
 

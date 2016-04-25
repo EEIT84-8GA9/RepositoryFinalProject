@@ -82,7 +82,7 @@
 					<li class="product">
 						<div class="top-info">
 							<div class="check"></div>　
-							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<form action="<c:url value="/sellhousecart.controller" />" method="post">
 <!-- 							<img src="/Happyhouse/img/product.png" alt="product image"> -->
 						<img src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${row.sellhouse_id}" alt="product image">
 							</form>
@@ -99,7 +99,7 @@
 							<li>${row.sellhouse_size}</li>
 							<li>${row.sellhouse_floor}</li>
 							<li>${row.sellhouse_age}</li>
-							<form action="<c:url value="/gousejsp.controller" />" method="post">
+							<form action="<c:url value="/sellhousecart.controller" />" method="post">
 							<li><button name="deletecartsell" value="${row.cart_id}">刪除這個收藏</button></li>
 							<input type="hidden" name="deletesell" value="deletesell">
  							</form>

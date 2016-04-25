@@ -40,7 +40,7 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/default.css">
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/style.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
 <script type="text/javascript">
@@ -54,9 +54,9 @@
 </script>
 </head>
  <!-- including css & jQuery Dialog UI here-->
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/for_sms/dialog.js"></script>
 <body>
 	<div id="main">

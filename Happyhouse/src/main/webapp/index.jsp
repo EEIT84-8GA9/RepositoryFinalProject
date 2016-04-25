@@ -383,7 +383,9 @@ $(document).ready(function(){
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
- 						    <img src="/Happyhouse/images/house.jpg" alt="" />                             
+<!--  						 <img src="/Happyhouse/images/house.jpg" alt="" />   -->
+<%--  						    <img src="${select.indeximg.new_photo1}" alt="" />         --%>
+ 						    <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.indeximg.new_id}">                      
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 

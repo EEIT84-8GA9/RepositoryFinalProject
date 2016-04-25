@@ -24,11 +24,6 @@
 	height:300px;
 }
 </style>
-<script type="text/javascript">
-	$(window).load(function() {
-		$('#slider').nivoSlider();
-	});
-</script>
 <script type="text/javascript" src="../js/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="../jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
@@ -48,7 +43,7 @@ $(document).ready(function() {
 	});
 	
 	$("table").DataTable({
-		"pageLength": 7,
+		"pageLength": 3,
 		"lengthMenu": [ 1, 3, 5, 7 ]
 	});
 });
@@ -60,8 +55,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-
-<h3>Select Product Table Result : XXX row(s) selected</h3>
 <div id="main">
 		<div id="site_content">
 			<div id="site_heading">
@@ -91,7 +84,7 @@ $(document).ready(function() {
 						<ul>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-												<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						</ul>
 						</li>
@@ -101,7 +94,7 @@ $(document).ready(function() {
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						<li><a href="">個人管理頁面</a>
 						<ul>
-				 <li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
+					 <li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li></li>
 						</ul>
@@ -112,15 +105,15 @@ $(document).ready(function() {
 				</div>
 				<!--close menubar-->
 			</div>
-			
+		
+<h3 align="center">更新刊登二手家具資訊</h3>
 <form action="<c:url value="/pages/product.controller" />" method="get">
-<c:if test="${not empty select}">
+<c:if test="${not empty select1}">
 
 <table>
 	<thead>
 	<tr>
-	
-		<th>商品編號</th>
+	    <th>商品編號</th>
 		<th>商品名稱</th>
 		<th>商品價格</th>
 		<th>商品新舊</th>
@@ -130,8 +123,8 @@ $(document).ready(function() {
 	</thead>
 
 	<tbody>
-	<c:forEach var="row" items="${select}">
-		<c:url value="/_09_furniture/product.jsp" var="path" scope="page">
+	<c:forEach var="row" items="${select1}">
+		<c:url value="/_09_furniture/updateProduct.jsp" var="path" scope="page">
 			<c:param name="furniture_id" value="${row.furniture_id}" />
 			<c:param name="name" value="${row.furniture_name}" />
 			<c:param name="price" value="${row.furniture_price}" />
@@ -142,44 +135,73 @@ $(document).ready(function() {
 		<c:url value="/pages/photo.view" var="url" scope="page">
 			<c:param name="photoid" value="${row.furniture_id}" />
 		</c:url>
-<!-- 	<tr> -->
-<!-- 		<td> -->
-<%-- 	<input type="button" value=":${row.furniture_id}" onclick="location.href= --%>
-<%-- 		'<c:url value="/_09_furniture/updateProduct.jsp" />'"> --%>
-<!-- 		</td> -->
-	<tr>	
-	<td><a href=""> ${row.furniture_id}</a></td>
-<%-- 		<td>${row.furniture_id}</td> --%>
+
+	 <tr>
+		<td><a href="${path}">更新商品資訊   :${row.furniture_id}</a></td>
 	    <td>${row.furniture_name}</td>
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" ><img src="../img/click.png"></a></td>
-	
-	
-	
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
 	</tr>
 	</c:forEach>
+	 
 	</tbody>
+	
+</table>
+
+
+<h3 align="center">刪除刊登的二手家具</h3>
+<table>
+	<thead>
+	<tr>
+	    <th>商品編號</th>
+		<th>商品名稱</th>
+		<th>商品價格</th>
+		<th>商品新舊</th>
+		<th>商品資訊</th>
+		<th>商品照片</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	<c:forEach var="row" items="${select1}">
+		<c:url value="/_09_furniture/deleteProduct.jsp" var="path" scope="page">
+			<c:param name="furniture_id" value="${row.furniture_id}" />
+			<c:param name="name" value="${row.furniture_name}" />
+			<c:param name="price" value="${row.furniture_price}" />
+			<c:param name="time" value="${row.furniture_time}" />
+			<c:param name="message" value="${row.furniture_message}" />
+		</c:url>
+		
+		<c:url value="/pages/photo.view" var="url" scope="page">
+			<c:param name="photoid" value="${row.furniture_id}" />
+		</c:url>
+
+		
+		<td><a href="${path}">刪除商品資訊    :${row.furniture_id}</a></td>
+	    <td>${row.furniture_name}</td>
+		<td>${row.furniture_price}</td>
+		<td>${row.furniture_time}</td>
+		<td>${row.furniture_message}</td>
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
+	</tr>
+	</c:forEach>
+	 
+	</tbody>
+	
 </table>
 </c:if>
+
 </form>
-<%-- <c:if test="${not empty update}"> --%>
-<!-- <h3>Update Product Table Success</h3> -->
-<!-- <table border="1"> -->
-<%-- 	<tr><td>Name</td><td>${update.furniture_name}</td></tr> --%>
-<%-- 	<tr><td>Price</td><td>${update.furniture_price}</td></tr> --%>
-<%-- 	<tr><td>Meaasge</td><td>${update.furniture_message}</td></tr> --%>
-<!-- </table> -->
-<!-- <script type="text/javascript">clearForm();</script> -->
-<%-- </c:if> --%>
+
 
 <h3 align="center"><a href="<c:url value="/_09_furniture/product.jsp" />">回二手家具首頁</a></h3>
  <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
 <div id="photo"></div>
 <script type="text/javascript" src="../js/lightbox.min.js"></script>
-		
-	<div id="menu">
+<div id="footer">
+			<a href="http://validator.w3.org/check?uri=referer">好宅網，最專業、最豐富的新屋、預售屋展示平台 |</a>
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 </body>

@@ -338,7 +338,7 @@ $(document).ready(function(){
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						</ul>	
 						<c:if test="${not empty LoginOK}">	
 						<ul>
@@ -346,6 +346,7 @@ $(document).ready(function(){
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
+						
 						</ul>
 					    </c:if>
 						</li>
@@ -353,18 +354,19 @@ $(document).ready(function(){
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
-						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
-						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
-						</c:if>
 						<c:if test="${not empty LoginOK}">
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
-						<li><a href="/Happyhouse/_07_carts/gousejsp.jsp">個人收藏頁面</a></li>
+						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
+						<li><a href="/Happyhouse/renthousecart.controller">個人出售收藏</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
 						<li><a href="/Happyhouse/_03_renthouse/RentHouseUser.jsp">租屋管理</a></li>
+						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">
+						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
+						</c:if>
 						<li></li>
 						</ul>
 						</li>
@@ -381,7 +383,9 @@ $(document).ready(function(){
 <!-- 			<div id="banner_image"> -->
 <!-- 				<div id="slider-wrapper"> -->
 <!-- 					<div id="slider" class="nivoSlider"> -->
- 						    <img src="/Happyhouse/images/house.jpg" alt="" />                             
+<!--  						 <img src="/Happyhouse/images/house.jpg" alt="" />   -->
+<%--  						    <img src="${select.indeximg.new_photo1}" alt="" />         --%>
+ 						    <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.indeximg.new_id}">                      
 <!--                        <img src="/Happyhouse/images/2.jpg" alt="" />  -->
 <!-- 					<img src="/Happyhouse/images/3.jpg" alt="" /> -->
 

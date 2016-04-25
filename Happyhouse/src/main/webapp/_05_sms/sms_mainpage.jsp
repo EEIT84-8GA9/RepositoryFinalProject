@@ -9,7 +9,6 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
-
 #re{
 
     width: 30%;
@@ -40,7 +39,7 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/normalize.css" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/sms_menu/default.css">
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/style.css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
 <script type="text/javascript">
@@ -54,14 +53,16 @@
 </script>
 </head>
  <!-- including css & jQuery Dialog UI here-->
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/for_sms/dialog.js"></script>
 <body>
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
+			<h1>好宅房屋網</h1>
+			<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
@@ -114,7 +115,7 @@
 	<article class="htmleaf-container">
 <font color="red">${error.deleteSms_idEmpty}</font>
 
-	<form action="/Happyhouse/sms.controller" method="post">
+	<form action="/Happyhouse/sms.controller" method="post" id="delete">
 
 		<table class="BH-table ML-tb1">
 			<tbody>
@@ -172,12 +173,16 @@
 	<!--close main-->
 	<script type="text/javascript">
 
-			$('#sms').submit(function() {
+			$('#delete').submit(function() {
     var c = confirm("Click OK to continue?");
     
     return c; 
 });
-		   
+			$('#sms').submit(function() {
+			    var c = confirm("Click OK to continue?");
+			    
+			    return c; 
+			});
 
 		</script>
 </body>

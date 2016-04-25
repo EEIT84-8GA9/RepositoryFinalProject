@@ -8,7 +8,7 @@
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 <style type="text/css">
 tr:hover td {
 	background: #DDDDDD;
@@ -55,7 +55,7 @@ tr:hover td {
                         <li><a href="#">查詢出售收藏</a></li>
 						</ul>
 						</li>
-						<li><a href="testimonials.html">刊登出租</a>
+						<li><a href="#">刊登出租</a>
 						<ul>
 						<li><a href="#">搜尋出租</a></li>
                         <li><a href="#">刊登出租</a></li>

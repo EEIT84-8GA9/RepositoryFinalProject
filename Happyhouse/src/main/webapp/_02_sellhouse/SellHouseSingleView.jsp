@@ -44,9 +44,9 @@
 
 
 
-	$(window).load(function() {
-		$('#slider').nivoSlider();
-	});
+// 	$(window).load(function() {
+// 		$('#slider').nivoSlider();
+// 	});
 	$(document).ready(function(){
 	    $("#response").click(function(){
 	        $("#form").slideToggle("slow");

@@ -527,7 +527,7 @@ var price_transes1 ="一樓";
 <!-- 	</tbody> -->
 <!-- </table> -->
 <%-- </c:if> --%>
-<h3>PIC~</h3>
+
 <!-- <div id="donutchart" style="width: 900px; height: 500px;"></div> -->
 <!-- <div id="piechart_3d" style="width: 900px; height: 500px;"></div> -->
 <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->

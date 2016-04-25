@@ -112,18 +112,26 @@
 //		         alert(chartobj); 
 		  		        var options = {
 		          title: 'Area x Price 散佈圖 ',
-		          hAxis: {title: 'Area-總坪數', minValue: 0, maxValue: 15},
-		          vAxis: {title: 'Price-總價', minValue: 0, maxValue: 15},
+		          hAxis: {title: '總坪數', minValue: 0, maxValue: 15},
+		          vAxis: {title: '總價', minValue: 0, maxValue: 15},
 		          pointSize: 10,
 		          pointShape: { type: 'star', sides: 6 },
 		          legend: 'none'
 		        };
+		  		  
 //		   		   alert(chartobj);             
 // 		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
 		  		 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
 		  	        chart.draw(data, options);
 			     	   
 			     	 },
+			     	 
+			     	beforeSend:function(){
+	                    $('#loadingIMG').show();
+	                },
+	                complete:function(){
+	                    $('#loadingIMG').hide();
+	                }, 	 
 		  		 error:function(jqXHR,textStatus,errorThrown){
 		  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
 		  		    }
@@ -173,8 +181,8 @@
 		  		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
 		             
 		             var options = {
-		                     title: 'The decline of BAR時間圖',
-		                     vAxis: {title: 'Accumulated Rating'},
+		                     title: '',
+		                     vAxis: {title: '坪價'},
 		                     isStacked: true
 		                   };
 		             
@@ -219,19 +227,26 @@
 // 		    'center': '台北市信義區台北101',
 // 		    'zoom'  : 14
 // 		});
+
+
 	
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 16
+    
   });
   var geocoder = new google.maps.Geocoder();
   geocodeAddress(geocoder, map);
+  
+  setMarkers(map);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
 	var address = "${param.sellhouse_address}";
+
+
 //   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
@@ -244,7 +259,11 @@ function geocodeAddress(geocoder, resultsMap) {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
+
 }
+	
+	
+	
 	
 	
 	
@@ -265,8 +284,11 @@ $(function(){
 	
 	
 	
+	
+	
 </script>
  
+
  
  <!-- 檢舉按鍵事件 -->
 <title>Insert title here</title>
@@ -522,44 +544,43 @@ button:active {
 </div>
 <section class="tabs-section">
 <nav class="tabs-wrapper">
-<input type="radio" name="tab" id="tab1" checked="checked"/><label for="tab1"><span>Example Tab</span></label>
-<input type="radio" name="tab" id="tab2"/><label for="tab2"><span>Tab Two</span></label>
-<input type="radio" name="tab" id="tab3"/><label for="tab3"><span>Tab Three</span></label>
-<input type="radio" name="tab" id="tab4"/><label for="tab4"><span>Another Tab</span></label>
+
+<input type="radio" name="tab" id="tab2"/><label for="tab2"><span>附近成交樣本</span></label>
+<input type="radio" name="tab" id="tab3"/><label for="tab3"><span>平均房價走勢</span></label>
+<input type="radio" name="tab" id="tab4"/><label for="tab4"><span>GOOGLE MAP</span></label>
 <div class="tabs-content">
 
 <section>
-<h1>Hi There!</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem repudiandae magni reprehenderit quibusdam, molestias sequi, voluptate quam id porro eaque placeat laboriosam quis quo. Repellat culpa veritatis quae non impedit.</p>
-<img id="img1"  src="${pageContext.servletContext.contextPath}/image1?sellhouse_id=${param.sellhouse_id}" width="150px">
-<img id="img1"  src="${pageContext.servletContext.contextPath}/image2?sellhouse_id=${param.sellhouse_id}" width="150px">
-<img id="img1"  src="${pageContext.servletContext.contextPath}/image3?sellhouse_id=${param.sellhouse_id}" width="150px">
+<h2>本建物所在區域自104/04成交物件</h2>
+<div id="loadingIMG" style="display:none"><img src="/Happyhouse/rinocss/ajax-loader2.gif" height='14'/>資料處理中，請稍後。</div>
+<div id="chart_div2" style="width: 680px; height:370px;"></div>
+
+
 </section>
 
 
 <section>
-<h2>Oh hi! I'm the second tab</h2>
-<h3>... aaaaaand</h3>
-<h6>this is awkward :s</h6>
-			<div id="chart_div2" style="width: 450px; height:250px;"></div>
-			<div id="chart_div" style="width: 450px; height: 250px;"></div>
+<h2>本建物所在區域自104/04成交物件</h2>
+<h3>以本物件分類之平均房價走勢圖</h3>
+<div id="chart_div" style="width: 600px; height: 320px;"></div>
+			
 
 
 
-<h2>I'm the best tab</h2>
-<h3>Because reasons</h3>
+
+
 </section>
 
 <section>
-<h2>Oh hi! I'm the second tab</h2>
-<h3>... aaaaaand</h3>
+<h3>本物件所在位置</h3>
 <div id="map"></div>	
+
 </section>
 
-<section>
-<h2>444444444.I'm the second tab</h2>
-<h3>... aaaaaand</h3>
-</section>
+<!-- <section> -->
+<!-- <h3>... aaaaaand</h3> -->
+
+<!-- </section> -->
 
 </nav>
 </section>

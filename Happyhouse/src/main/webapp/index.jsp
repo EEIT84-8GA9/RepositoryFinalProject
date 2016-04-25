@@ -249,17 +249,16 @@ $(document).ready(function(){
    	      		    //辦公大樓 住宅大樓 公寓(5樓以下)  套房  店面 倉庫 其它 透天厝 華廈(10樓以下)
                        var data = new google.visualization.DataTable();
                        data.addColumn('string','X');
-                       data.addColumn('number', '平均價格'); 
+                       data.addColumn('number', price_bdtype+'平均價格'); 
    	      		    data.addRows(chartobj);
 
    	      		    
    	      		    
    	      		   var options = {
-           		  
 //            	         title: '平均每坪價格X 時間變動圖',
 //                         subtitle: 'xxx',
                         hAxis: {
-                        title: 'YearMonth(民國月份)'
+                        title: 'Year/Month(民國/月份)-'+price_city
                         },
                         vAxis: {
                         title: '坪價'
@@ -471,8 +470,8 @@ $(document).ready(function(){
 		</select>
 		<!--  類型 >> -->
 </div>
-		<div id="columnchart_material" style="width: 300px; height: 250px; float:left"></div>
-		<div id="chart_div" style="width: 300px; height: 250px; float:left"></div>
+		<div id="columnchart_material" style="width: 345px; height: 280px; float:left"></div>
+		<div id="chart_div" style="width: 345px; height: 280px; float:left"></div>
 
 	</form>
 	</div>

@@ -76,7 +76,7 @@
 			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
 			</c:if>
 			<!--close header-->
-<form action="<c:url value="/gousejsp.controller" />" method="post">
+<form action="<c:url value="/sellhousecart.controller" />" method="post">
 
 
 

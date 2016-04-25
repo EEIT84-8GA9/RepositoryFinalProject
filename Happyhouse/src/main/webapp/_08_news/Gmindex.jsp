@@ -64,6 +64,19 @@
 <!-- <!-- 				close slider_wrapper --> 
 <!-- 			</div> -->
 			<!--close banner_image-->
+<form>
+<table>	
+<tr>			
+<td>會員狀態：<td>
+<SELECT NAME="STYLE">
+     <OPTION>A
+     <OPTION>B
+     <OPTION>C
+     <OPTION>D
+</SELECT>
+</tr>
+</table>	
+</form>
 					<div>
 					</div>
 	<div id="menu">

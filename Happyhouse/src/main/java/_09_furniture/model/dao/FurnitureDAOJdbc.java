@@ -90,8 +90,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 				fib.setFurniture_status(rs.getString("Furniture_status"));
 				fib.setFurniture_time(rs.getString("Furniture_time") );
 				fib.setFurniture_address(rs.getString("Furnitur_address"));
-//				fib.setFurniture_photo1(rs.getBytes("Furnitur_photo1"));
-//				fib.setFurniture_photo2(rs.getBytes("Furnitur_photo2"));
+				fib.setFurnitur_photo1(rs.getBlob("Furnitur_photo1"));
+				fib.setFurnitur_photo2(rs.getBlob("Furnitur_photo2"));
 				fib.setFurniture_message(rs.getString("Furnitur_message"));
 				fib.setFurniture_type(rs.getString("Furniture_type") + "\n");
 				fibs.add(fib);

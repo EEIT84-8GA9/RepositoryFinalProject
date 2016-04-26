@@ -52,7 +52,7 @@ tr:hover td {
 						<li><a href="">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
-                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
+                        <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 						</li>
 						<li><a href="">出租專區</a>
@@ -91,7 +91,7 @@ tr:hover td {
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
-						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
 						<li><a href="/Happyhouse/renthousecart.controller">個人出售收藏</a></li>

@@ -222,9 +222,9 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tbody>
 								<tr>
-
+									
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${messageVO.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>
@@ -276,7 +276,7 @@
 								<tr>
 
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${messageVO.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>
@@ -323,7 +323,7 @@
 								<tr>
 
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${resp.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>
@@ -364,7 +364,7 @@
 								<tr>
 
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${add.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>
@@ -407,7 +407,7 @@
 								<tr>
 
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${messageVO.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>
@@ -458,7 +458,7 @@
 								<tr>
 
 									<td colspan="2" align="center"><img
-										src="/Happyhouse/images/head-image.png"
+										src="${pageContext.servletContext.contextPath}/userimg?user_account=${messageVO.user_account}"
 										width="80" height="80"></td>
 								</tr>
 								<tr>

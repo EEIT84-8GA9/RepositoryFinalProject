@@ -355,7 +355,7 @@ $(document).ready(function(){
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="">${LoginOK.user_name}個人專區</a>
+						<li><a href="">${LoginOK.user_name}專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>

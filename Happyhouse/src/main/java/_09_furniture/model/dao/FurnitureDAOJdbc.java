@@ -22,9 +22,9 @@ import _09_furniture.model.FurnitureBean;
 
 
 public class FurnitureDAOJdbc implements FurnitureDAO  {
-	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
-	private static final String USERNAME = "sa";
-	private static final String PASSWORD = "sa123456";
+//	private static final String URL = "jdbc:sqlserver://localhost:1433;database=HappyHouse";
+//	private static final String USERNAME = "sa";
+//	private static final String PASSWORD = "sa123456";
 	UsersBean result = null;
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -32,16 +32,16 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 	FurnitureBean fb = new FurnitureBean();
 
 	
-//	private DataSource dataSource;
-//	
-//	public FurnitureDAOJdbc() {
-//		try {
-//			Context ctx = new InitialContext();
-//			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
-//	}
+	private DataSource dataSource;
+	
+	public FurnitureDAOJdbc() {
+		try {
+			Context ctx = new InitialContext();
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/HappyHouse");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 		FurnitureDAO fc = new FurnitureDAOJdbc();
@@ -76,8 +76,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 		
 		List<FurnitureBean> fibs = new ArrayList<FurnitureBean>();
 		try {
-		Connection conn = DriverManager.getConnection(URL, USERNAME,PASSWORD);
-		//	conn = dataSource.getConnection();
+	//	Connection conn = DriverManager.getConnection(URL, USERNAME,PASSWORD);
+			conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn
 					.prepareStatement(SELECT_ALL_FURNITURE);
 			ResultSet rs = pstmt.executeQuery();
@@ -114,8 +114,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 	public List<FurnitureBean> selectKeyWord(String furniture_name) {
 		List<FurnitureBean> fbs = new ArrayList<FurnitureBean>();
 		try {
-			Connection conn = DriverManager.getConnection(URL, USERNAME,PASSWORD);
-			//	conn = dataSource.getConnection();
+//			Connection conn = DriverManager.getConnection(URL, USERNAME,PASSWORD);
+				conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(SELECT_BY_KEYWORD);
 			pstmt.setString(1, "%" + furniture_name + "%");
 			ResultSet rs = pstmt.executeQuery();
@@ -155,8 +155,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 		FurnitureBean result = null;
 		ResultSet rset = null;
 		try(
-		   Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-				// 	Connection conn = dataSource.getConnection();
+//		   Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				 	Connection conn = dataSource.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(SELECT_BY_ID);) {
 			
 			stmt.setInt(1, id);
@@ -191,8 +191,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 		ResultSet rset = null;
 	
 		try(
-		   Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-				          // 	Connection conn = dataSource.getConnection();
+//		   Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				           	Connection conn = dataSource.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(SELECT_USER_FURNITURE)){
 			
 			stmt.setString(1,  user_account);
@@ -241,8 +241,9 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 	@Override
 	public FurnitureBean insert(FurnitureBean bean,InputStream is1,long size1,InputStream is2,long size2) {
 		FurnitureBean result = null;
-		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//			Connection conn = dataSource.getConnection();
+		try(
+//			Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(INSERT);) {
 			if(bean!=null) {
 				pstmt.setString(1, bean.getUser_account());
@@ -271,8 +272,9 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 	@Override
 	public FurnitureBean update(FurnitureBean bean) {
 		FurnitureBean result = null;
-		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//			Connection conn = dataSource.getConnection();
+		try(
+//			Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			Connection conn = dataSource.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(UPDATE);) {
 			stmt.setString(1, bean.getFurniture_name());
 			stmt.setDouble(2, bean.getFurniture_price());
@@ -296,8 +298,9 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 	private static final String DELETE = "delete from Furniture where Furniture_id=?";
 	@Override
 	public boolean delete(int id) {
-		try(Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-				//	Connection conn = dataSource.getConnection();
+		try(
+//				Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+					Connection conn = dataSource.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(DELETE);) {			
 			stmt.setInt(1, id);
 			int i = stmt.executeUpdate();

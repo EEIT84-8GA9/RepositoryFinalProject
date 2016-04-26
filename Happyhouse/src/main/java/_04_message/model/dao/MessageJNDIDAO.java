@@ -46,6 +46,7 @@ public class MessageJNDIDAO {
 	private static final String DELETE = "delete from message where message_id=?";
 	private static final String SELECT_BY_ACCOUNT = "select * from users where user_account=?";
 	private static final String TYPEUPDATE ="update message set User_account=?, Message_title=?, Message_describe=?, Message_date=?,Message_type=? ,message_actiontype=? ,message_reportfrom=?,message_reportreason=? where Message_id=?";
+	
 	public MessageVO select(MessageVO vo) {
 		MessageVO result = null;
 		Connection conn = null;

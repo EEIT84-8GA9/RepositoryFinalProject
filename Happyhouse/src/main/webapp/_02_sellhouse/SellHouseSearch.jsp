@@ -54,12 +54,12 @@ overflow:hidden;
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
-						<li><a href="#">搜尋出售</a></li>
-                        <li><a href="#">刊登出售</a></li>
+						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
+                        <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
                         <li><a href="#">查詢出售收藏</a></li>
 						</ul>
 						</li>
-						<li><a href="testimonials.html">刊登出租</a>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">出租專區</a>
 						<ul>
 						<li><a href="#">搜尋出租</a></li>
                         <li><a href="#">刊登出租</a></li>

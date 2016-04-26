@@ -52,7 +52,7 @@ tr:hover td {
 						<li><a href="">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
-                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
+                        <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 						</li>
 						<li><a href="">出租專區</a>

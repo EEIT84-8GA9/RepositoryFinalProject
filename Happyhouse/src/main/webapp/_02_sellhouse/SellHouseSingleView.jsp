@@ -14,7 +14,7 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
 
 
 
@@ -31,9 +31,9 @@
 <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
  
- 	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+ 	<link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 	
 
@@ -44,9 +44,9 @@
 
 
 
-	$(window).load(function() {
-		$('#slider').nivoSlider();
-	});
+// 	$(window).load(function() {
+// 		$('#slider').nivoSlider();
+// 	});
 	$(document).ready(function(){
 	    $("#response").click(function(){
 	        $("#form").slideToggle("slow");

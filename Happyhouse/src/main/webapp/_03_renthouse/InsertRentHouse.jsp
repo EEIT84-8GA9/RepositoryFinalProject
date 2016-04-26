@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
 <div>
-<a href="/Happyhouse/index.jsp" title="回首頁"><img src="http://localhost:8080/Happyhouse/img/MB__home.png" width="50px"></a>
+<a href="/Happyhouse/index.jsp" title="回首頁"><img src="/Happyhouse/img/MB__home.png" width="50px"></a>
 </div>
 
  </head> 
@@ -70,7 +70,7 @@
 	
 	
 	
-	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 	<script>window.jQuery || document.write('<script src="/Happyhouse/js/test/jquery-2.1.1.min.js"><\/script>')</script>
 	<script src="/Happyhouse/js/test/jquery.easing.min.js" type="text/javascript"></script>
 	<script>

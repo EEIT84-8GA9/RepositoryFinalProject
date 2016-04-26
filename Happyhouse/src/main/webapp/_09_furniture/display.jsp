@@ -61,7 +61,7 @@ $(document).ready(function() {
 </head>
 <body>
 
-<h3>Select Product Table Result : XXX row(s) selected</h3>
+
 <div id="main">
 		<div id="site_content">
 			<div id="site_heading">

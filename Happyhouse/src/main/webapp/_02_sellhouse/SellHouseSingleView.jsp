@@ -8,16 +8,17 @@
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 
-<link rel="stylesheet" type="text/css" href=
-"/Happyhouse/css/style.css" />
+
+
+
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
 
 
-
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" href="/Happyhouse/css/sms_menu/dialog.css"/>
 <link rel="stylesheet" href="/Happyhouse/rinocss/sellnormalize.css">
 <link rel="stylesheet" href="/Happyhouse/rinocss/sellstyle.css" media="screen" type="text/css" />
 
@@ -249,7 +250,7 @@
 		  
 		  
 // 		  @@!
-		})
+		});
 	
 	/*站內*/
 // 	  $(function() {

@@ -80,7 +80,6 @@
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseGM.jsp">出售區檢舉</a></li>
                         <li><a href="/Happyhouse/_03_renthouse/RentHouseGM.jsp">出租區檢舉</a></li>
                         <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>
-                        <li><a href="#">信件檢舉</a></li>                        
                         <li><a href="#">封鎖會員</a></li>                   
 						</ul>
 						</li>

@@ -167,7 +167,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 				result.setFurniture_name(rset.getString("furniture_name"));
 			    result.setFurniture_price(rset.getDouble("Furniture_price"));
 				result.setFurniture_time(rset.getString("Furniture_time"));
-				result.setFurniture_message(rset.getString("Furnitur_message"));;
+				result.setFurniture_message(rset.getString("Furnitur_message"));
+				result.setFurnitur_photo1(rset.getBlob("Furnitur_photo1"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -205,8 +206,8 @@ public class FurnitureDAOJdbc implements FurnitureDAO  {
 				fib.setFurniture_status(rset.getString("Furniture_status"));
 				fib.setFurniture_time(rset.getString("Furniture_time"));
 				fib.setFurniture_address(rset.getString("Furnitur_address"));
-//				fib.setFurniture_photo1(rset.getBytes("Furnitur_photo1"));
-//				fib.setFurniture_photo2(rset.getBytes("Furnitur_photo2"));
+				fib.setFurnitur_photo1(rset.getBlob("Furnitur_photo1"));
+				fib.setFurnitur_photo2(rset.getBlob("Furnitur_photo2"));
 				fib.setFurniture_message(rset.getString("Furnitur_message"));
 				fib.setFurniture_type(rset.getString("Furniture_type") + "\n");
 				fibs.add(fib);

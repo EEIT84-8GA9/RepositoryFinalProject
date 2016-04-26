@@ -1,5 +1,6 @@
 package _01_users.model_dao;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,10 +21,14 @@ public interface UserDAO {
 
 	public abstract int update(UsersBean user) throws SQLException;
 
-	public static final String USER_INSERT = "insert into users values(?,?,?,?,?,?,?,NULL,NULL)";
+	public static final String USER_INSERT = "insert into users values(?,?,?,?,?,?,?,?,?,?)";
 
-	public abstract int insert(UsersBean user);
+
 
 	public abstract UsersBean insertdata(UsersBean user);
+
+	
+
+	public UsersBean insert(UsersBean user,InputStream is1,long size1);
 
 }

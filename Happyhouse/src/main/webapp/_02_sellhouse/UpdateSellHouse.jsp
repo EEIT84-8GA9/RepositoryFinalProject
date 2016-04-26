@@ -70,7 +70,7 @@
 	
 	
 	
-	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script src="//libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
 	<script>window.jQuery || document.write('<script src="/Happyhouse/js/test/jquery-2.1.1.min.js"><\/script>')</script>
 	<script src="/Happyhouse/js/test/jquery.easing.min.js" type="text/javascript"></script>
 	<script>

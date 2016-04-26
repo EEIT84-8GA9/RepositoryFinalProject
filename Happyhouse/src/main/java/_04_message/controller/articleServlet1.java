@@ -54,7 +54,7 @@ public class articleServlet1 extends HttpServlet {
 				MessageVO vo =new MessageVO();
 				if(content!=null){
 				vo.setMessage_title(title);
-				vo.setMessage_describe(content.replaceAll(" ","& nbsp;").replaceAll("\n","<br>"));
+				vo.setMessage_describe(content.replaceAll(" ","&nbsp;").replaceAll("\n","<br>"));
 				UsersBean bean=(UsersBean) session.getAttribute("LoginOK");
 				vo.setUser_account(bean.getUser_account());
 				vo.setUser_name(bean.getUser_name());

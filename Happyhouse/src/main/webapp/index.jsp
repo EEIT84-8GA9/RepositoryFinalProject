@@ -315,7 +315,7 @@ $(document).ready(function(){
 				<div id="menubar">
 					<ul id="menu">
 					
-						<li class="current"><a href="index.jsp">首頁</a></li>
+						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
@@ -328,7 +328,7 @@ $(document).ready(function(){
                         <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
 						</ul>
 						</li>
-						<li><a href="testimonials.html">時價查詢</a>
+						<li><a href="">時價查詢</a>
 						<ul>
 						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
                         <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>

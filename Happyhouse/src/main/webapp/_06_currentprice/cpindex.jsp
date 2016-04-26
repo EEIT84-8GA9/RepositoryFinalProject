@@ -30,7 +30,6 @@
 
 <body>
 
-
 <div id="main">
 		<div id="site_content">
 <%-- 				<c:if test="${not empty LoginOK}"> --%>
@@ -38,32 +37,31 @@
 <%-- 				</c:if> --%>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				
 			</div>
 			<BR>
 			<!--close site_heading-->
 			<div id="header">			
-				<ul id="menu">
-					
+
+				<div id="menubar">
+					<ul id="menu">
+
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
                         <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
-						</li>
-						<li><a href="">出租專區</a>
-						<ul>
-						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
-                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
-						</ul>
-						</li>
+
+						
+						
 						<li><a href="">時價查詢</a>
 						<ul>
 						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
                         <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
                         </ul>
 						</li>
+						
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
@@ -110,7 +108,20 @@
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
             </c:if>
+	<section class="htmleaf-container">
+		<form onsubmit="submitFn(this, event);" action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input type="text" name="currentprice_address" value="${param.currentprice_address}" class="search-input" placeholder="Type to search" />
+                    <button class="search-icon" type="submit" name="prodaction" value="Pick" onclick="searchToggle(this, event);"><span></span></button>
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+                <div class="result-container">
 
+                </div>
+            </div>
+        </form>
+	</section>
 
 <script type="text/javascript">
 // var path = "${pageContext.request.contextPath}";
@@ -169,61 +180,59 @@
 
 
 
+ 
 
-<BR>
-<BR>
-<BR>
-<form action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
-<!-- 以各區分別     currentprice_city -->
-<!-- 以類別區分     currentprice_bdtype  -->
-<!-- 賣的樓層       currentprice_transes   -->
-<!-- 總坪數         currentprice_housearea -->
-<!-- 總價元         currentprice_tprice -->
-<table>
+<%-- <form action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get"> --%>
+<!-- <!-- 以各區分別     currentprice_city --> 
+<!-- <!-- 以類別區分     currentprice_bdtype  --> 
+<!-- <!-- 賣的樓層       currentprice_transes   -->
+<!-- <!-- 總坪數         currentprice_housearea -->
+<!-- <!-- 總價元         currentprice_tprice -->
+<!-- <table > -->
 
-<!--用"currentprice_city"  將 value="${param.currentprice_city}" 輸入的值  放到Servlet中   -->
-<!-- String currentprice_city = request.getParameter("currentprice_city"); -->
-<!-- 再轉換成字串使用 -->
-	<tr>
+<!-- <!--用"currentprice_city"  將 value="${param.currentprice_city}" 輸入的值  放到Servlet中   -->
+<!-- <!-- String currentprice_city = request.getParameter("currentprice_city"); --> 
+<!-- <!-- 再轉換成字串使用 -->
+<!-- 	<tr> -->
 		
-		<td>
-		<select id="cityend" >
-			<!-- <option value = document.getElementById(area)> -->
-			<option value="">城市</option>
-			<option value="台北市">台北市</option>
-			<option value="台北縣">台北縣</option>
-			<option value="桃園市">桃園市</option>
-			<option value="新竹市">新竹市</option>
-			<option value="高雄市">高雄市</option>
-			<option value="花蓮市">花蓮市</option>
-			<option value="台東市">台東市</option>
-			<option value="南投市">南投市</option>
-		</select> 
-		</td>
-		<td>(區域)時價查詢:請輸入..[EX:大安區安和路一段]</td>
-		<td><input type="text" name="currentprice_address" value="${param.currentprice_address}" onblur="doBlur()" onfocus="clearForm()"></td>
-		<td><span class="error">${error.currentprice_address}</span></td>
+<!-- 		<td> -->
+<!-- 		<select id="cityend" > -->
+<!-- 			<!-- <option value = document.getElementById(area)> --> 
+<!-- 			<option value="">城市</option> -->
+<!-- 			<option value="台北市">台北市</option> -->
+<!-- 			<option value="台北縣">台北縣</option> -->
+<!-- 			<option value="桃園市">桃園市</option> -->
+<!-- 			<option value="新竹市">新竹市</option> -->
+<!-- 			<option value="高雄市">高雄市</option> -->
+<!-- 			<option value="花蓮市">花蓮市</option> -->
+<!-- 			<option value="台東市">台東市</option> -->
+<!-- 			<option value="南投市">南投市</option> -->
+<!-- 		</select>  -->
+<!-- 		</td> -->
+<!-- 		<td>(區域)時價查詢:請輸入..[EX:大安區安和路一段]</td> -->
+<%-- 		<td><input type="text" name="currentprice_address" value="${param.currentprice_address}" onblur="doBlur()" onfocus="clearForm()"></td> --%>
+<%-- 		<td><span class="error">${error.currentprice_address}</span></td> --%>
 	    
-		<td>
-			<input type="submit" name="prodaction" value="Pick">
-			<input type="button" value="Clear" onclick="clearForm()">
-		</td>
-        <td>
-        <h3><span class="error">${error.action}</span></h3>	
-	    </td>
+<!-- 		<td> -->
+<!-- 			<input type="submit" name="prodaction" value="Pick"> -->
+<!-- 			<input type="button" value="Clear" onclick="clearForm()"> -->
+<!-- 		</td> -->
+<!--         <td> -->
+<%--         <h3><span class="error">${error.action}</span></h3>	 --%>
+<!-- 	    </td> -->
 	
-	</tr>
-	
-	
+<!-- 	</tr> -->
 	
 	
-</table>
-</form>
+	
+	
+<!-- </table> -->
+<!-- </form> -->
 
 
 
 
-<div id="currentprice_table"></div>
+<div id="currentprice_table" style="margin-top:90px;"></div>
 <script type="text/javascript">
 	$("#currentprice_table").tabulator({
 		height:"550px" ,
@@ -269,7 +278,7 @@
 // 	<th>一坪價格</th>
 	
 	//alert(tabledata);
-	alert(JSON.stringify(tabledata));
+// 	alert(JSON.stringify(tabledata));
 	$("#currentprice_table").tabulator("setData",tabledata);
 	$(window).resize(function(){
 		$("#currentprice_table").tabulator("redraw");
@@ -342,7 +351,7 @@ $(document).ready(function(){
              is3D: true,
            };
 //   		   alert(chartobj);             
-  		   alert("圓餅一圖"+chartdata);
+//   		   alert("圓餅一圖"+chartdata);
   		   var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
   	        chart.draw(data, options);
 	     	   
@@ -393,7 +402,7 @@ $(document).ready(function(){
           is3D: true,
         };
 //   		   alert(chartobj);             
-  		   alert("圓餅二圖"+chartdata);
+//   		   alert("圓餅二圖"+chartdata);
   		 var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
          chart.draw(data, options);
 	     	   
@@ -457,7 +466,7 @@ var price_transes1 ="一樓";
                 },
         };
 //   		   alert(chartobj);             
-  		   alert("圓餅三圖"+chartdata);
+//   		   alert("圓餅三圖"+chartdata);
   		 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
          chart.draw(data, options);
 	     	   
@@ -549,7 +558,7 @@ var price_transes1 ="一樓";
 
 <div class="container">	
 			<header class="clearfix">
-				<h1>Simple Multi-Item Slider <span>Category slider with CSS animations</span></h1>
+				<h1>房屋(類型/坪數/樓層)統計 <span>以下圖表統計自105/05起</span></h1>
 			</header>
 			<BR>
 			<BR>
@@ -557,33 +566,33 @@ var price_transes1 ="一樓";
 			<div class="main">
 				<div id="mi-slider" class="mi-slider">
 					<ul>
-						<li><a href="#"><div id="donutchart" style="width: 630px; height: 350px;"></div><h4>Boots</h4></a></li>
+						<li><a href="#"><div id="donutchart" style="width: 630px; height: 350px;"></div><h4></h4></a></li>
 						<li><a href="#"><h4></h4></a></li>
 						<li><a href="#"><h4></h4></a></li>
-						<li><a href="#"><img src="images/4.jpg" alt="img04"><h4>Sneakers</h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><div id="piechart_3d" style="width:630px; height: 350px;"><h4>Belts</h4></a></li>
-						<li><a href="#"><img src="images/6.jpg" alt="img06"><h4>Hats &amp; Caps</h4></a></li>
-						<li><a href="#"><img src="images/7.jpg" alt="img07"><h4>Sunglasses</h4></a></li>
-						<li><a href="#"><img src="images/8.jpg" alt="img08"><h4>Scarves</h4></a></li>
+						<li><a href="#"><div id="piechart_3d" style="width:630px; height: 350px;"><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><div id="piechart" style="width: 630px; height: 350px;"></div><h4>Casual</h4></a></li>
-						<li><a href="#"><img src="images/10.jpg" alt="img10"><h4>Luxury</h4></a></li>
-						<li><a href="#"><img src="images/11.jpg" alt="img11"><h4>Sport</h4></a></li>
+						<li><a href="#"><div id="piechart" style="width: 630px; height: 350px;"></div><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
+						<li><a href="#"><h4></h4></a></li>
 					</ul>
-					<ul>
-						<li><a href="#"><img src="images/12.jpg" alt="img12"><h4>Carry-Ons</h4></a></li>
-						<li><a href="#"><img src="images/13.jpg" alt="img13"><h4>Duffel Bags</h4></a></li>
-						<li><a href="#"><img src="images/14.jpg" alt="img14"><h4>Laptop Bags</h4></a></li>
-						<li><a href="#"><img src="images/15.jpg" alt="img15"><h4>Briefcases</h4></a></li>
-					</ul>
+<!-- 					<ul> -->
+<!-- 						<li><a href="#"><img src="images/12.jpg" alt="img12"><h4>Carry-Ons</h4></a></li> -->
+<!-- 						<li><a href="#"><img src="images/13.jpg" alt="img13"><h4>Duffel Bags</h4></a></li> -->
+<!-- 						<li><a href="#"><img src="images/14.jpg" alt="img14"><h4>Laptop Bags</h4></a></li> -->
+<!-- 						<li><a href="#"><img src="images/15.jpg" alt="img15"><h4>Briefcases</h4></a></li> -->
+<!-- 					</ul> -->
 					<nav>
-						<a href="#">House Type Percentage X</a>
-						<a href="#">House Area Percentage X</a>
-						<a href="#">House Floors Percentage X</a>
-						<a href="#">Bags</a>
+						<a href="#">房屋/類型 圓餅圖</a>
+						<a href="#">房屋/坪數 圓餅圖</a>
+						<a href="#">房屋/樓層 圓餅圖</a>
+<!-- 						<a href="#">Bags</a> -->
 					</nav>
 					
 				</div>
@@ -601,20 +610,7 @@ var price_transes1 ="一樓";
 
 <!-- ********************** -->
 
-	<section class="htmleaf-container">
-		<form onsubmit="submitFn(this, event);" action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" name="currentprice_address" value="${param.currentprice_address}" class="search-input" placeholder="Type to search" />
-                    <button class="search-icon" type="submit" name="prodaction" value="Pick" onclick="searchToggle(this, event);"><span></span></button>
-                </div>
-                <span class="close" onclick="searchToggle(this, event);"></span>
-                <div class="result-container">
 
-                </div>
-            </div>
-        </form>
-	</section>
 	
 	
 	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
@@ -654,7 +650,7 @@ var price_transes1 ="一樓";
     </script>
 
 
-<h3><a href="<c:url value="/index.jsp" />">index</a></h3>
+<%-- <h3><a href="<c:url value="/index.jsp" />">index</a></h3> --%>
 
 
        	

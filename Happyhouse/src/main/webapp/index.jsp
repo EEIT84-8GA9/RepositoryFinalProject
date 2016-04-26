@@ -344,7 +344,7 @@ $(document).ready(function(){
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						
 						</ul>
@@ -355,7 +355,7 @@ $(document).ready(function(){
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>
 						<c:if test="${not empty LoginOK}">
-						<li><a href="">${LoginOK.user_name}個人專區</a>
+						<li><a href="">${LoginOK.user_name}專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
 						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>

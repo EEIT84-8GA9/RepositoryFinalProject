@@ -43,21 +43,39 @@
 
 
 
+// $("#tab2").click(function() {
+// 	  $("#loadingIMG").show();
+// 	   setTimeout("$('#loadingIMG').hide();", 6000 );
+// });
 
-// 	$(window).load(function() {
-// 		$('#slider').nivoSlider();
-// 	});
+
 	$(document).ready(function(){
-	    $("#response").click(function(){
+		 $("#response").click(function(){
+		        $("#form").slideToggle("slow");
+		    });
+		
+		$("#response").click(function(){
 	        $("#form").slideToggle("slow");
 	    });
-	});
-	$(document).ready(function(){
-	    $("#response").click(function(){
-	        $("#form").slideToggle("slow");
-	    });
-	});
-	$(document).ready(function(){
+		
+
+		$("#tab2").click(function() {
+			  $("#loadingIMG").show();
+			   setTimeout("$('#loadingIMG').hide();", 6000 );
+		});
+
+		
+		$("#tab3").click(function() {
+			  $("#loadingIMG").show();
+			   setTimeout("$('#loadingIMG2').hide();", 6000 );
+		});
+		
+		$("#tab4").click(function() {
+			  $("#loadingIMG").show();
+			   setTimeout("$('#loadingIMG3').hide();", 6000 );
+		});
+		
+		
 		 google.charts.load("current", {packages:["corechart"]});
 
 		   google.charts.setOnLoadCallback(drawChart1);
@@ -104,10 +122,17 @@
 			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
 			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
 			     	     //arrayToDataTablev 是吃json格式  
+			     	     
+			     	     
+			     	 
+			     	  
+			     		 
+			     	   
+			     	     
 		  			  var data = google.visualization.arrayToDataTable(chartdata); 
 		  		
 // 		  			  data.addRows([[50,10000000,"point { size: 18; shape-type: star; fill-color: #a52714; }"]]);
-		  			 data.addRows([[50,10000000]]);
+// 		  			 data.addRows([[50,10000000]]);
 		  			  
 //		         alert(chartobj); 
 		  		        var options = {
@@ -116,22 +141,39 @@
 		          vAxis: {title: '總價', minValue: 0, maxValue: 15},
 		          pointSize: 10,
 		          pointShape: { type: 'star', sides: 6 },
-		          legend: 'none'
+		          legend: 'none' 
 		        };
 		  		  
+		  		        
+		  		      
+		  		   
 //		   		   alert(chartobj);             
 // 		  		   alert("散佈圖,84%以區/類型選擇"+chartdata);
 		  		 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div2'));
-		  	        chart.draw(data, options);
+		  	       
+		  		
+		  		 
+		  		//$("#loadingIMG").show();
+// 		  		$('#loadingIMG').show();
+// 		  		 setTimeout("$('#loadingIMG').hide();", 6000 );
+		      //  google.visualization.events.addListener(chart, 'ready',
+		        //    function() {
+ 		         //     $("#loadingIMG").hide();
+		//  });
+		  		 
+		  		
+		  		
+		  		 chart.draw(data, options);
 			     	   
+		  	 
 			     	 },
-			     	 
-			     	beforeSend:function(){
-	                    $('#loadingIMG').show();
-	                },
-	                complete:function(){
-	                    $('#loadingIMG').hide();
-	                }, 	 
+			      
+			    
+// 			     	ajaxStop:function(){
+// 			            $("#loadingIMG").hide();
+// 			        },
+	                
+	                
 		  		 error:function(jqXHR,textStatus,errorThrown){
 		  		    alert(textStatus+"  XDXDXDDXDD "+errorThrown);
 		  		    }
@@ -187,7 +229,12 @@
 		                   };
 		             
 		             var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
-				    chart.draw(data, options);
+				    
+		             
+// 		         	$('#loadingIMG2').show();
+// 			  		 setTimeout("$('#loadingIMG2').hide();", 6000 );
+		             
+		             chart.draw(data, options);
 		    	   
 		    	 },
 				 error:function(jqXHR,textStatus,errorThrown){
@@ -238,9 +285,13 @@ function initMap() {
     
   });
   var geocoder = new google.maps.Geocoder();
+  
+// 	$('#loadingIMG3').show();
+// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
+  
   geocodeAddress(geocoder, map);
   
-  setMarkers(map);
+//   setMarkers(map);
 }
 
 function geocodeAddress(geocoder, resultsMap) {
@@ -550,8 +601,8 @@ button:active {
 <div class="tabs-content">
 
 <section>
-<h2>本建物所在區域自104/04成交物件</h2>
-<div id="loadingIMG" style="display:none"><img src="/Happyhouse/rinocss/ajax-loader2.gif" height='14'/>資料處理中，請稍後。</div>
+<h2>本建物所在區域自104/05成交物件</h2>
+ <div id="loadingIMG"  style="display:none"><img src="/Happyhouse/rinocss/ajax-loader3.gif" height='10' />資料處理中，請稍後。</div>
 <div id="chart_div2" style="width: 680px; height:370px;"></div>
 
 
@@ -559,19 +610,20 @@ button:active {
 
 
 <section>
-<h2>本建物所在區域自104/04成交物件</h2>
+<h2>本建物所在區域自104/05成交物件</h2>
 <h3>以本物件分類之平均房價走勢圖</h3>
+<div id="loadingIMG2" ><img src="/Happyhouse/rinocss/ajax-loader32.gif" height='10'/>資料處理中，請稍後。</div>
 <div id="chart_div" style="width: 600px; height: 320px;"></div>
-			
+
 
 
 
 
 
 </section>
-
+			
 <section>
-<h3>本物件所在位置</h3>
+<h3>本物件所在位置<div id="loadingIMG3" ><img src="/Happyhouse/rinocss/ajax-loader33.gif" height='10'/>資料處理中，請稍後。</div></h3>
 <div id="map"></div>	
 
 </section>

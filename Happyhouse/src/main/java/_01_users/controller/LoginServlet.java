@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		}
 
 		if (error != null && !error.isEmpty()) {
-			request.getRequestDispatcher("/_01_users/login.jsp").forward(
+			request.getRequestDispatcher("../_01_users/login.jsp").forward(
 					request, response);
 			return;
 		}
@@ -57,14 +57,14 @@ public class LoginServlet extends HttpServlet {
 			if (bean == null) {
          
                  error.put("password", "登入失敗，請再次輸入ID/PWD");
-				request.getRequestDispatcher("/_01_users/login.jsp").forward(
+				request.getRequestDispatcher("../_01_users/login.jsp").forward(
 						request, response);
 			}
 			if("D".equals(bean.getUser_type())){
 				error.put("type", "此帳號已被封鎖");
 				HttpSession session = request.getSession();
 				session.removeAttribute("LoginOK");
-			    request.getRequestDispatcher("/_01_users/login.jsp").forward(
+			    request.getRequestDispatcher("../_01_users/login.jsp").forward(
 						request, response);
 			}
 			else {
@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 		if (log != null && "登出".equals(log)) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("LoginOK");
-			request.getRequestDispatcher("/_01_users/login.jsp").forward(
+			request.getRequestDispatcher("../_01_users/login.jsp").forward(
 					request, response);
 		}
 		if (log != null && "確認更改".equals(log)) {
@@ -97,10 +97,10 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("ChangeOK", bean);
 				String path = request.getContextPath();
-				response.sendRedirect(path + "/_01_users/changeOK.jsp");
+				response.sendRedirect("../_01_users/changeOK.jsp");
 
 			} else {
-				request.getRequestDispatcher("/_01_users/chasgePw.jsp")
+				request.getRequestDispatcher("../_01_users/chasgePw.jsp")
 						.forward(request, response);
 
 			}

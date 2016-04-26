@@ -75,7 +75,7 @@ public class RegistServlet extends HttpServlet {
 		}
 
 		if (error != null && !error.isEmpty()) {
-			request.getRequestDispatcher("/_01_users/regist.jsp").forward(request,
+			request.getRequestDispatcher("../_01_users/regist.jsp").forward(request,
 					response);
 			// request.getRequestDispatcher(
 			// "/secure/login.jsp").forward(request, response);
@@ -127,7 +127,7 @@ public class RegistServlet extends HttpServlet {
 			System.out.print(result);
 			if(result==null) {
 				error.put("action", "Insert 失敗");
-				request.getRequestDispatcher("/_01_users/login.jsp")
+				request.getRequestDispatcher("../_01_users/login.jsp")
 				.forward(request, response);
 			} else {
 				request.setAttribute("insert", result);

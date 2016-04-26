@@ -109,7 +109,7 @@ public class ProductServlet extends HttpServlet {
 		if(error!=null && !error.isEmpty()) {
 			System.out.println("5555");
 			request.getRequestDispatcher(
-					"/_09_furniture/product.jsp").forward(request, response);
+					"../_09_furniture/product.jsp").forward(request, response);
 			return;
 		}
 		
@@ -145,13 +145,13 @@ public class ProductServlet extends HttpServlet {
 		
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
-					"/_09_furniture/display.jsp").forward(request, response);
+					"../_09_furniture/display.jsp").forward(request, response);
 		} 
 		else if("查詢您的刊登家具".equals(prodaction)){
 			List<FurnitureBean> result = productService.selectSelf(user_account);
 			request.setAttribute("select1", result);
 			request.getRequestDispatcher(
-					"/_09_furniture/display1.jsp").forward(request, response);
+					"../_09_furniture/display1.jsp").forward(request, response);
 		}
 		else if(prodaction!=null && prodaction.equals("新增刊登")) {
 			Collection<Part> parts = request.getParts() ;
@@ -200,7 +200,7 @@ public class ProductServlet extends HttpServlet {
 				request.setAttribute("insert", result);
 			}
 			request.getRequestDispatcher(
-					"/_09_furniture/product.jsp").forward(request, response);
+					"../_09_furniture/product.jsp").forward(request, response);
 		} 
 		else if(prodaction!=null && prodaction.equals("更新商品資訊")) {
 			FurnitureBean result = productService.update(bean);
@@ -212,7 +212,7 @@ public class ProductServlet extends HttpServlet {
 				request.setAttribute("update", result);
 			}
 			request.getRequestDispatcher(
-					"/_09_furniture/product.jsp").forward(request, response);
+					"../_09_furniture/product.jsp").forward(request, response);
 		} else if(prodaction!=null && prodaction.equals("Delete")) {
 			boolean result = productService.delete(bean);
 			if(!result) {
@@ -223,12 +223,12 @@ public class ProductServlet extends HttpServlet {
 				request.setAttribute("delete", 1);
 			}
 			request.getRequestDispatcher(
-					"/_09_furniture/product.jsp").forward(request, response);
+					"../_09_furniture/product.jsp").forward(request, response);
 		} else  {
 			error.put("action", "Unknown Action:"+prodaction);
 			System.out.println("5555");
 			request.getRequestDispatcher(
-					"/_09_furniture/product.jsp").forward(request, response);
+					"../_09_furniture/product.jsp").forward(request, response);
 		}
 	}
 	@Override

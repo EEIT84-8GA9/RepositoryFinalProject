@@ -32,10 +32,10 @@
 					<ul id="menu">
 					
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<li><a href="">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
-                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
+                        <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 						</li>
 						<li><a href="">出租專區</a>
@@ -50,7 +50,7 @@
                         <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
                         </ul>
 						</li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>
+						<li><a href="">二手家具</a>
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	

@@ -95,8 +95,7 @@ $(document).ready(function() {
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
-						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
+	                    <li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
 						</ul>	
 						<c:if test="${not empty LoginOK}">	
 						<ul>

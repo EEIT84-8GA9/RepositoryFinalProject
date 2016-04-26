@@ -6,7 +6,7 @@ body {padding: 0px; margin:0px; background:url(../img/image.jpg) ; background-po
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top:30%;
+    top:29%;
     left:50%;
 }
 .search-wrapper.active {}

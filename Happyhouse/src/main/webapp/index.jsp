@@ -322,7 +322,7 @@ $(document).ready(function(){
                         <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 						</li>
-						<li><a href="">出租專區</a>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">出租專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
                         <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>

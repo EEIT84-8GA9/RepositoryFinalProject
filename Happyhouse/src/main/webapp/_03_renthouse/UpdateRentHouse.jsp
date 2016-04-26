@@ -13,7 +13,9 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/default.css">
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/Insert/styles.css">
 
-
+<div>
+<a href="/Happyhouse/index.jsp" title="回首頁"><img src="/Happyhouse/img/MB__home.png" width="50px"></a>
+</div>
  </head> 
  <body>
  

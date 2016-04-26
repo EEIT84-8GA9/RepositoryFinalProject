@@ -151,41 +151,41 @@
 			</div>
 			<!--close content-->
 
-			<div class="sidebar_container">
-				<div class="sidebar">
-					<div class="sidebar_item">
-						<h2>房屋資訊</h2>
-						<h4>2016/04/01</h4>
-						<p>因為我是最近回鍋 玩了第三天RB服就開了 現在感覺很多人因為活動才來 有人想一起定居RB服嗎
-							想定居原因：這邊應該不會有外掛問題 而且裝備不能強化所以玩家應該會很團結 一起組隊打王(我很喜歡那感覺 我練的是劍豪</p>
-						<a href="#">Read more</a>
-					</div>
-					<!--close sidebar_item-->
-				</div>
-				<!--close sidebar-->
-				<div class="sidebar">
-					<div class="sidebar_item">
-						<h2>重要公告</h2>
-						<h4>2016/04/01</h4>
-						<p>日光大廈全新拉皮 一樓門廳全面整新 安和路信義路商圈 鑽石地段層峰豪宅聚落 24小時管理 新外觀新門廳低公設
-							使用空間大 面安和路樹海 邊間採光一流 可隔四房 層峰人士換屋首選</p>
-						<a href="#">Read more</a>
-					</div>
-					<!--close sidebar_item-->
-				</div>
-				<!--close sidebar-->
-				<div class="sidebar">
-					<div class="sidebar_item">
-						<h2>特別服務</h2>
-						<h4>2016/04/01</h4>
-						<p>早在一月底張榮發逝世後，本刊即獨家披露張國煒不是長榮集團的唯一接班人，張國華早就帶著三個孩子回到集團內上班，主導重要決策；即使張榮發的遺囑，言明要把全部的遺產都給張國煒，但由於張榮發生前早已將財產、股票分配過一次，手上持股所剩不多。大房三兄弟相加後的持股數，遠遠超過張國煒，就連張國煒未來能否留在他最喜歡的航空事業擔任一官半職，也勢必得和張國華等大房兄弟協商同意才行。</p>
-						<a href="#">Read more</a>
-					</div>
-					<!--close sidebar_item-->
-				</div>
-				<!--close sidebar-->
-			</div>
-			<!--close sidebar_container-->
+<!-- 			<div class="sidebar_container"> -->
+<!-- 				<div class="sidebar"> -->
+<!-- 					<div class="sidebar_item"> -->
+<!-- 						<h2>房屋資訊</h2> -->
+<!-- 						<h4>2016/04/01</h4> -->
+<!-- 						<p>因為我是最近回鍋 玩了第三天RB服就開了 現在感覺很多人因為活動才來 有人想一起定居RB服嗎 -->
+<!-- 							想定居原因：這邊應該不會有外掛問題 而且裝備不能強化所以玩家應該會很團結 一起組隊打王(我很喜歡那感覺 我練的是劍豪</p> -->
+<!-- 						<a href="#">Read more</a> -->
+<!-- 					</div> -->
+<!-- 					close sidebar_item -->
+<!-- 				</div> -->
+<!-- 				close sidebar -->
+<!-- 				<div class="sidebar"> -->
+<!-- 					<div class="sidebar_item"> -->
+<!-- 						<h2>重要公告</h2> -->
+<!-- 						<h4>2016/04/01</h4> -->
+<!-- 						<p>日光大廈全新拉皮 一樓門廳全面整新 安和路信義路商圈 鑽石地段層峰豪宅聚落 24小時管理 新外觀新門廳低公設 -->
+<!-- 							使用空間大 面安和路樹海 邊間採光一流 可隔四房 層峰人士換屋首選</p> -->
+<!-- 						<a href="#">Read more</a> -->
+<!-- 					</div> -->
+<!-- 					close sidebar_item -->
+<!-- 				</div> -->
+<!-- 				close sidebar -->
+<!-- 				<div class="sidebar"> -->
+<!-- 					<div class="sidebar_item"> -->
+<!-- 						<h2>特別服務</h2> -->
+<!-- 						<h4>2016/04/01</h4> -->
+<!-- 						<p>早在一月底張榮發逝世後，本刊即獨家披露張國煒不是長榮集團的唯一接班人，張國華早就帶著三個孩子回到集團內上班，主導重要決策；即使張榮發的遺囑，言明要把全部的遺產都給張國煒，但由於張榮發生前早已將財產、股票分配過一次，手上持股所剩不多。大房三兄弟相加後的持股數，遠遠超過張國煒，就連張國煒未來能否留在他最喜歡的航空事業擔任一官半職，也勢必得和張國華等大房兄弟協商同意才行。</p> -->
+<!-- 						<a href="#">Read more</a> -->
+<!-- 					</div> -->
+<!-- 					close sidebar_item -->
+<!-- 				</div> -->
+<!-- 				close sidebar -->
+<!-- 			</div> -->
+<!-- 			<!--close sidebar_container-->
 
 		</div>
 		<!--close site_content-->

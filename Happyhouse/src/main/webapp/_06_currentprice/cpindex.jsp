@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CurrentPrice Page</title>
 </head>
-<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/cpindexstyle.css" />
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -39,10 +39,15 @@
 				<h1>好宅房屋網</h1>
 				
 			</div>
-			<BR>
 			<!--close site_heading-->
 			<div id="header">			
-
+				<c:if test="${empty LoginOK}">
+					<a href="/Happyhouse/_01_users/login.jsp">會員登入</a>
+				</c:if>
+				<c:if test="${not empty LoginOK}">
+					<a href="">${LoginOK.user_name}個人專區</a> | 
+					<a href="/Happyhouse/_01_users/logout.jsp">登出</a>
+					</c:if>
 				<div id="menubar">
 					<ul id="menu">
 
@@ -53,8 +58,12 @@
                         <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 
-						
-						
+						<li><a href="">出租專區</a>
+						<ul>
+						<li><a href="/Happyhouse/_03_renthouse/RentHouseSearch.jsp">搜尋出租</a></li>
+                        <li><a href="/Happyhouse/_03_renthouse/InsertRentHouse.jsp">刊登出租</a></li>
+						</ul>
+						</li>
 						<li><a href="">時價查詢</a>
 						<ul>
 						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
@@ -79,13 +88,9 @@
 					    </c:if>
 						</li>
 						<li><a href="/Happyhouse/addarticle.controller">討論區</a></li>										
-						<c:if test="${empty LoginOK}">
-						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
-						</c:if>
-						<c:if test="${not empty LoginOK}">
-						<li><a href="">${LoginOK.user_name}個人專區</a>
-						<ul>
-<!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
+						
+					<!-- <ul>
+						<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li>
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
@@ -96,10 +101,7 @@
 						<li><a href="/Happyhouse/_08_news/Gmindex.jsp">管理者頁面</a></li>
 						</c:if>
 						<li></li>
-						</ul>
-						</li>
-						<li><a href="/Happyhouse/_01_users/logout.jsp">登出</a></li>
-						</c:if>
+						</ul> -->  
 					</ul>
 					
                     </div>

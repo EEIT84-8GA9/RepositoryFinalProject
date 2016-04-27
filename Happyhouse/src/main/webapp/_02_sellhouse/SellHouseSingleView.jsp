@@ -43,41 +43,41 @@
 <script type="text/javascript">
 
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 16
+// var map;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+// //     center: {lat: -34.397, lng: 150.644},
+//     zoom: 16
     
-  });
-  var geocoder = new google.maps.Geocoder();
+//   });
+//   var geocoder = new google.maps.Geocoder();
   
-// 	$('#loadingIMG3').show();
-// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
+// // 	$('#loadingIMG3').show();
+// // 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
   
-  geocodeAddress(geocoder, map);
+//   geocodeAddress(geocoder, map);
   
-//   setMarkers(map);
-}
+// //   setMarkers(map);
+// }
 
-function geocodeAddress(geocoder, resultsMap) {
-	var address = "${param.sellhouse_address}";
+// function geocodeAddress(geocoder, resultsMap) {
+// 	var address = "${param.sellhouse_address}";
 
 
-//   var address = document.getElementById('address').value;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
+// //   var address = document.getElementById('address').value;
+//   geocoder.geocode({'address': address}, function(results, status) {
+//     if (status === google.maps.GeocoderStatus.OK) {
+//       resultsMap.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//         map: resultsMap,
+//         position: results[0].geometry.location
+//       });
+//     } else {
+//       alert('Geocode was not successful for the following reason: ' + status);
+//     }
+//   });
 
-}
+// }
 
 
 
@@ -368,7 +368,10 @@ $(function(){
     #map { 
     height:450px; 
     overflow: hidden; 
-    width:450px 
+    width:630px ;
+    border: 2px solid #d0d0d0;
+    display:block;
+    margin: auto;
      } 
 
 
@@ -620,23 +623,26 @@ button:active {
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>
-			
+		<div id="map" style=""></div>
 			
 <!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
+
+
+
 <div class="wrapper">
 <div style="text-align:center;clear:both;">
-<!-- <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script> -->
-<!-- <script src="/follow.js" type="text/javascript"></script> -->
+
 </div>
 <section class="tabs-section">
 <nav class="tabs-wrapper">
 
 <input type="radio" name="tab" id="tab2"/><label for="tab2"><span>附近成交樣本</span></label>
 <input type="radio" name="tab" id="tab3"/><label for="tab3"><span>平均房價走勢</span></label>
-<input type="radio" name="tab" id="tab4"/><label for="tab4"><span>GOOGLE MAP</span></label>
-<div class="tabs-content">
 
+
+<div class="tabs-content">
+    
 <section>
 <h2>本建物所在區域自104/05成交物件</h2>
  <div id="loadingIMG"  style="display:none"><img src="/Happyhouse/rinocss/ajax-loader3.gif" height='10' />資料處理中，請稍後。</div>
@@ -652,28 +658,17 @@ button:active {
 <div id="loadingIMG2" ><img src="/Happyhouse/rinocss/ajax-loader32.gif" height='10'/>資料處理中，請稍後。</div>
 <div id="chart_div" style="width: 600px; height: 320px;"></div>
 
-
-
-
-
-
 </section>
 			
-<section>
-<h3>本物件所在位置<div id="loadingIMG3" ><img src="/Happyhouse/rinocss/ajax-loader33.gif" height='10'/>資料處理中，請稍後。</div></h3>
-<div id="map"></div>	
-
-</section>
-
 <!-- <section> -->
-<!-- <h3>... aaaaaand</h3> -->
+<!-- <h3>本物件所在位置<div id="loadingIMG3" ><img src="/Happyhouse/rinocss/ajax-loader33.gif" height='10'/>資料處理中，請稍後。</div></h3> -->
+	
 
 <!-- </section> -->
-
 </nav>
 </section>
 </div>
-			
+	
 
 <!-- 			@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 			
@@ -779,9 +774,44 @@ button:active {
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 	</div>
+			
+<script type="text/javascript">
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+    
+  });
+  var geocoder = new google.maps.Geocoder();
+  
+// 	$('#loadingIMG3').show();
+// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
+  
+  geocodeAddress(geocoder, map);
+  
+//   setMarkers(map);
+}
 
-	
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.sellhouse_address}";
 
 
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
+}	
+
+</script>
 </body>
 </html>

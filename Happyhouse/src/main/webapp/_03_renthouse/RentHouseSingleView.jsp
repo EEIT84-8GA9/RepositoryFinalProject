@@ -29,31 +29,31 @@
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 <script type="text/javascript">
 
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 16
-  });
-  var geocoder = new google.maps.Geocoder();
-  geocodeAddress(geocoder, map);
-}
+// var map;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+// //     center: {lat: -34.397, lng: 150.644},
+//     zoom: 16
+//   });
+//   var geocoder = new google.maps.Geocoder();
+//   geocodeAddress(geocoder, map);
+// }
 
-function geocodeAddress(geocoder, resultsMap) {
-	var address = "${param.renthouse_address}";
-//   var address = document.getElementById('address').value;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
+// function geocodeAddress(geocoder, resultsMap) {
+// 	var address = "${param.renthouse_address}";
+// //   var address = document.getElementById('address').value;
+//   geocoder.geocode({'address': address}, function(results, status) {
+//     if (status === google.maps.GeocoderStatus.OK) {
+//       resultsMap.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//         map: resultsMap,
+//         position: results[0].geometry.location
+//       });
+//     } else {
+//       alert('Geocode was not successful for the following reason: ' + status);
+//     }
+//   });
+// }
 
 
 
@@ -61,11 +61,13 @@ function geocodeAddress(geocoder, resultsMap) {
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
+	
 	$(document).ready(function(){
 	    $("#response").click(function(){
 	        $("#form").slideToggle("slow");
 	    });
 	});
+	
 	$(document).ready(function(){
 	    $("#response").click(function(){
 	        $("#form").slideToggle("slow");
@@ -404,6 +406,39 @@ button:active {
 				
 			  </form>
 		 </div>
+<script type="text/javascript">
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+  });
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, map);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.renthouse_address}";
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+</script>
+		 
+		 
+		 
+		 
+		 
  <!-- 加入收藏 -->
  
 <div class="dialog" title="加入收藏" id="cartform">

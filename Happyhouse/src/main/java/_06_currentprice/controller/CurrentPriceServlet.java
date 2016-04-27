@@ -40,8 +40,7 @@ public class CurrentPriceServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-	
-	
+		
 //接收HTML Form資料
 		String currentprice_city = request.getParameter("currentprice_city");
 		String currentprice_bdtype = request.getParameter("currentprice_bdtype");

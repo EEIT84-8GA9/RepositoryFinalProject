@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>搜尋頁面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
@@ -348,7 +349,7 @@ $(function(){
 
  
  <!-- 檢舉按鍵事件 -->
-<title>Insert title here</title>
+<title>好宅房屋網</title>
 </head>
 <style>
     #map { 
@@ -469,7 +470,7 @@ button:active {
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
-				<h1>好宅房屋網</h1>		
+				<h1>好宅房屋網</h1>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -537,10 +538,6 @@ button:active {
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
-			<!--close header-->
 <div id="allpage">
 <!-- param -->
 <%-- <c:url value="/reportsellhouse.controller"/> --%>
@@ -606,7 +603,7 @@ button:active {
 <%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
 <!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
 <%-- 				</c:if> --%>
-				<fieldset>
+				<fieldset style="width:700px">
 				<legend>其他資訊</legend>
 				<p>${param.sellhouse_describe}</p>
 				</fieldset>

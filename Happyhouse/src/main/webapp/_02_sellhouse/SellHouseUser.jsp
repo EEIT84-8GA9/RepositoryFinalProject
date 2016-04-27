@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>好宅網-首頁</title>
+<title>賣屋管理頁面</title>
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -47,7 +47,7 @@
 		<div id="site_content">
 		<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -116,9 +116,6 @@
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
 			<!--close header-->
 			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/sellhouseuser.controller"/>"method="post" >

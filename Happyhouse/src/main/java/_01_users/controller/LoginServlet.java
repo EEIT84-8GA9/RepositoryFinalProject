@@ -85,7 +85,7 @@ public class LoginServlet extends HttpServlet {
 		if (log != null && "登出".equals(log)) {
 			HttpSession session = request.getSession();
 			session.removeAttribute("LoginOK");
-			request.getRequestDispatcher("/_01_users/login.jsp").forward(
+			request.getRequestDispatcher("_01_users/login.jsp").forward(
 					request, response);
 		}
 		if (log != null && "確認更改".equals(log)) {
@@ -97,7 +97,7 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("ChangeOK", bean);
 				String path = request.getContextPath();
-				response.sendRedirect("/_01_users/changeOK.jsp");
+				response.sendRedirect(path+"/_01_users/changeOK.jsp");
 
 			} else {
 				request.getRequestDispatcher("/_01_users/chasgePw.jsp")

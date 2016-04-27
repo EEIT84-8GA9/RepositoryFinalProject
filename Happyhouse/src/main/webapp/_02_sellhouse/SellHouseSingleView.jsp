@@ -161,7 +161,7 @@ function geocodeAddress(geocoder, resultsMap) {
 			    	   
 			     	   success: function(chartdata){ 	     		 
 //		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
-		 	     		alert(chartdata); 
+// 		 	     		alert(chartdata); 
 			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
 			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
 			     	     //arrayToDataTablev 是吃json格式  
@@ -180,7 +180,7 @@ function geocodeAddress(geocoder, resultsMap) {
 //           data.addColumn('number', 'A');
 //           data.addColumn( { type: 'string', role: 'annotation' });		  			 
 //           DATA.ADDROWS([[50,10000000]]);
-           alert(price_size1 + "PPPPP" + price_price1);
+//            alert(price_size1 + "PPPPP" + price_price1);
 //           data.addRows([[50 , 100000000, 'point { size: 10; shape-type: star; fill-color: #EA0000; }']]);
           
           data.addRows([[price_size2 , price_price2, 'point { size: 10; shape-type: star; fill-color: #EA0000; }']]);

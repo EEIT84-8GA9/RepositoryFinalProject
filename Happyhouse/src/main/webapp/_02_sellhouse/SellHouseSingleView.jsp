@@ -42,6 +42,45 @@
 <script type="text/javascript">
 
 
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+    
+  });
+  var geocoder = new google.maps.Geocoder();
+  
+// 	$('#loadingIMG3').show();
+// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
+  
+  geocodeAddress(geocoder, map);
+  
+//   setMarkers(map);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.sellhouse_address}";
+
+
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+
+}
+
+
+
+
 
 
 // $("#tab2").click(function() {
@@ -278,41 +317,7 @@
 
 
 	
-var map;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 16
-    
-  });
-  var geocoder = new google.maps.Geocoder();
-  
-// 	$('#loadingIMG3').show();
-// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
-  
-  geocodeAddress(geocoder, map);
-  
-//   setMarkers(map);
-}
 
-function geocodeAddress(geocoder, resultsMap) {
-	var address = "${param.sellhouse_address}";
-
-
-//   var address = document.getElementById('address').value;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-
-}
 	
 	
 	
@@ -575,7 +580,7 @@ button:active {
 					<div>
 						<table>
 						<tr>
-						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td><img src="${pageContext.servletContext.contextPath}/userimg?user_account=${param.user_account}" width="70px" padding-bottom="10px"></td>
 						<td>
 						<h3><font style="color:	#000000">姓名:${param.user_name}</font></h3>
 						<h3><font style="color:	#000000">電話:${param.sellhouse_phone}</font></h3>

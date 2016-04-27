@@ -349,7 +349,7 @@ $(function(){
 
  
  <!-- 檢舉按鍵事件 -->
-<title>Insert title here</title>
+<title>好宅房屋網</title>
 </head>
 <style>
     #map { 
@@ -470,7 +470,7 @@ button:active {
 	<div id="main">
 		<div id="site_content">
 			<div id="site_heading">
-				<h1>好宅房屋網</h1>		
+				<h1>好宅房屋網</h1>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -538,10 +538,6 @@ button:active {
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
-			<!--close header-->
 <div id="allpage">
 <!-- param -->
 <%-- <c:url value="/reportsellhouse.controller"/> --%>

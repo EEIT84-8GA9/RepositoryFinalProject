@@ -30,12 +30,12 @@
 				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
-			<div id="header">			
+			<div id="header">
 				<div id="menubar">
 					<ul id="menu">
 					
 						<li class="current"><a href="/Happyhouse/index.jsp">首頁</a></li>
-						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
+						<li><a href="">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
                         <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
@@ -53,7 +53,7 @@
                         <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
                         </ul>
 						</li>
-						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>
+						<li><a href="">二手家具</a>
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
@@ -63,7 +63,7 @@
 						<ul>
 					    <li><a href="/Happyhouse/_09_furniture/product.jsp">搜尋家具</a></li>	
 						<li><a href="/Happyhouse/_09_furniture/insertProduct.jsp">刊登二手家具</a></li>	
-						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢刊登家具">查詢所有刊登家具</a></li>	
+						<li><a href="/Happyhouse/pages/product.controller?furniture_id=&prodaction=查詢所有刊登家具">查詢所有刊登家具</a></li>	
 						<li><a href="/Happyhouse/pages/product.controller?user_account=${LoginOK.user_account}&prodaction=查詢您的刊登家具">查詢您刊登的家具</a></li>
 						
 						</ul>
@@ -77,7 +77,7 @@
 						<li><a href="">${LoginOK.user_name}個人專區</a>
 						<ul>
 <!-- 					<li><a href="/Happyhouse/sms.controller">修改個人密碼</a></li> -->
-						<li><a href="../_01_users/chasgePw.jsp">修改個人密碼</a></li>
+						<li><a href="/Happyhouse/_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
 						<li><a href="/Happyhouse/renthousecart.controller">個人出售收藏</a></li>
@@ -97,7 +97,6 @@
 				<!--close menubar-->
 			</div>
 
-			<h1 align="center"><font color=blue> ${LoginOK.user_name}您好</font></h1>
 			
 			<!--close header-->
 			<div style="padding-left:150px">

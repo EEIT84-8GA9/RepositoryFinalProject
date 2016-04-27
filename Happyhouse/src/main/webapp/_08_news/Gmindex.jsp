@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>好宅網-首頁</title>
+<title>好宅網-管理者首頁</title>
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -24,7 +24,7 @@
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">
@@ -36,8 +36,7 @@
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseGM.jsp">出售區檢舉</a></li>
                         <li><a href="/Happyhouse/_03_renthouse/RentHouseGM.jsp">出租區檢舉</a></li>
-                        <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>
-                        <li><a href="#">封鎖會員</a></li>                   
+                        <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>            
 						</ul>
 						</li>
 						<li><a href="/Happyhouse/_08_news/selectpage.jsp">首頁更新</a></li>									
@@ -64,19 +63,7 @@
 <!-- <!-- 				close slider_wrapper --> 
 <!-- 			</div> -->
 			<!--close banner_image-->
-<form>
-<table>	
-<tr>			
-<td>會員狀態：<td>
-<SELECT NAME="STYLE">
-     <OPTION>A
-     <OPTION>B
-     <OPTION>C
-     <OPTION>D
-</SELECT>
-</tr>
-</table>	
-</form>
+
 					<div>
 					</div>
 	<div id="menu">

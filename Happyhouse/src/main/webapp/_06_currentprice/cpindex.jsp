@@ -8,20 +8,22 @@
 <title>CurrentPrice Page</title>
 </head>
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/cpindexstyle.css" />
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" /> 
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+<!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
 
 <script type="text/javascript" src="../js/tabulator.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" /> 
+
 
 <!-- 抓這隻  Demo.style.body-->
 	
@@ -33,8 +35,8 @@
 <!-- <script src="/Happyhouse/js/main.js"></script> -->		
 		
 <!-- 上為選單效果 -->
-		<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/normalize.css" />
-	    <link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/search-form.css">
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/normalize.css" />
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/search-form.css">
 
 
 
@@ -47,7 +49,7 @@
 <%-- 				</c:if> --%>
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				
+				<h3>歡迎  ${LoginOK.user_name}</h3>
 			</div>
 			<!--close site_heading-->
 			<div id="header">							

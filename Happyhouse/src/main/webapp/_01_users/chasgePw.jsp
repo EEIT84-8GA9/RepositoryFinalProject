@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>修改個人密碼</title>
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -96,7 +97,6 @@
 				<!--close menubar-->
 			</div>
 
-<h1 align="center">Welcome ${LoginOK.user_name}</h1>
    
 
 <form action="<c:url value="/secure/login.controller" />" method="get">

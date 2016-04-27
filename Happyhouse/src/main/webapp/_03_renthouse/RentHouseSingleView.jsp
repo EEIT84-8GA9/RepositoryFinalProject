@@ -5,6 +5,7 @@
 ://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>租屋搜尋頁面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
@@ -354,7 +355,7 @@ button:active {
 <%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
 <!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
 <%-- 				</c:if> --%>
-				<fieldset>
+				<fieldset style="width:700px">
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
 				</fieldset>

@@ -130,9 +130,11 @@ function geocodeAddress(geocoder, resultsMap) {
 		  var price_bdtype0 = "${param.sellhouse_patterns}";
 		  var price_city1 = price_city0.substring(3,6);
 		  var price_bdtype1 = price_bdtype0.substring(0,2);
-		  
-		  
-		  
+		  var price_size1 = "${param.sellhouse_size}";
+		  var price_price0 = "${param.sellhouse_price}";
+		  var price_price1 = price_price0*10000;
+		  var price_price2 = parseFloat(price_price1);
+		  var price_size2 = parseFloat(price_size1);
 		  
 		  function drawChart1() {
 // 			      alert("hello");
@@ -159,7 +161,7 @@ function geocodeAddress(geocoder, resultsMap) {
 			    	   
 			     	   success: function(chartdata){ 	     		 
 //		 	     		 var chartobj =JSON.parse(chartdata);      //此處 很怪!!!!!!!!!!! jq 指定callback datatype了 json 所以回來已經是json 所以不必再轉 所以 var data 直接裡面塞 chardata而不是 chartobj
-//		 	     		alert(chartobj); 
+		 	     		alert(chartdata); 
 			     		 //成功執行servlet 並且得到servlet回傳資料 chartdata  res.getWriter().write 回傳的
 			     		 //又轉成json JSON.parse(chartdata); 是因為 得到的不知為何是string
 			     	     //arrayToDataTablev 是吃json格式  
@@ -172,17 +174,28 @@ function geocodeAddress(geocoder, resultsMap) {
 			     	     
 		  			  var data = google.visualization.arrayToDataTable(chartdata); 
 		  		
-// 		  			  data.addRows([[50,10000000,"point { size: 18; shape-type: star; fill-color: #a52714; }"]]);
-// 		  			 data.addRows([[50,10000000]]);
-		  			  
+// 		  			 data.addRows([[50,10000000,"point { size: 18; shape-type: star; fill-color: #a52714; }"]]);
+// 		  			 data.addRows([[50,10000000,"pointshape { type: 'star', sides: 5, dent: 0.8}"]]);
+//           data.addColumn('string', 'Element');
+//           data.addColumn('number', 'A');
+//           data.addColumn( { type: 'string', role: 'annotation' });		  			 
+//           DATA.ADDROWS([[50,10000000]]);
+           alert(price_size1 + "PPPPP" + price_price1);
+//           data.addRows([[50 , 100000000, 'point { size: 10; shape-type: star; fill-color: #EA0000; }']]);
+          
+          data.addRows([[price_size2 , price_price2, 'point { size: 10; shape-type: star; fill-color: #EA0000; }']]);
+     
 //		         alert(chartobj); 
 		  		        var options = {
 		          title: 'Area x Price 散佈圖 ',
 		          hAxis: {title: '總坪數', minValue: 0, maxValue: 15},
 		          vAxis: {title: '總價', minValue: 0, maxValue: 15},
 		          pointSize: 10,
-		          pointShape: { type: 'star', sides: 6 },
-		          legend: 'none' 
+		          pointShape: { type: 'star', sides: 5 },
+		          legend: 'none'
+		      
+		          
+		          
 		        };
 		  		  
 		  		        

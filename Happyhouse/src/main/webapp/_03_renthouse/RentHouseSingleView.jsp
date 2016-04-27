@@ -27,6 +27,36 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/Happyhouse/js/dialog.js"></script>
 <script type="text/javascript">
+
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 16
+  });
+  var geocoder = new google.maps.Geocoder();
+  geocodeAddress(geocoder, map);
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+	var address = "${param.renthouse_address}";
+//   var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+
+
+
 	$(window).load(function() {
 		$('#slider').nivoSlider();
 	});
@@ -42,31 +72,7 @@
 	});
 	
 	
-	var map;
-	function initMap() {
-	  map = new google.maps.Map(document.getElementById('map'), {
-	    center: {lat: -34.397, lng: 150.644},
-	    zoom: 16
-	  });
-	  var geocoder = new google.maps.Geocoder();
-	  geocodeAddress(geocoder, map);
-	}
 
-	function geocodeAddress(geocoder, resultsMap) {
-		var address = "${param.renthouse_address}";
-	//   var address = document.getElementById('address').value;
-	  geocoder.geocode({'address': address}, function(results, status) {
-	    if (status === google.maps.GeocoderStatus.OK) {
-	      resultsMap.setCenter(results[0].geometry.location);
-	      var marker = new google.maps.Marker({
-	        map: resultsMap,
-	        position: results[0].geometry.location
-	      });
-	    } else {
-	      alert('Geocode was not successful for the following reason: ' + status);
-	    }
-	  });
-	}
 	
 	$(function(){
 		// 用來顯示大圖片用
@@ -323,7 +329,7 @@ button:active {
 					<div>
 						<table>
 						<tr>
-						<td><img src="/Happyhouse/images/phone.jpg" width="70px" padding-bottom="10px"></td>
+						<td><img src="${pageContext.servletContext.contextPath}/userimg?user_account=${param.user_account}" width="70px" padding-bottom="10px"></td>
 						<td>
 						<h3>姓名:${param.user_name}</h3>
 						<h3>電話:${param.renthouse_phone}</h3>

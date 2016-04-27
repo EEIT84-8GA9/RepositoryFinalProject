@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 <link rel="stylesheet" type="text/css" href="../jquery-ui-1.11.4.custom/jquery-ui.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/lightbox.min.css" />
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 
 <title>Display</title>
 <style type="text/css">

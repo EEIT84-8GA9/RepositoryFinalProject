@@ -14,8 +14,8 @@
 
 <script type="text/javascript" src="/Happyhouse/js/jquery.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
-<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>
+<script type="text/javascript"	src="//www.gstatic.com/charts/loader.js"></script>
+
 
 
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
@@ -774,23 +774,18 @@ button:active {
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 	</div>
-			
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAFRq0_sxIvH_oCfO9n9pRVLqsfjSDET24&callback=initMap" async defer></script>	
 <script type="text/javascript">
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: -34.397, lng: 150.644},
     zoom: 16
     
   });
   var geocoder = new google.maps.Geocoder();
-  
-// 	$('#loadingIMG3').show();
-// 		 setTimeout("$('#loadingIMG3').hide();", 6000 );
-  
   geocodeAddress(geocoder, map);
   
-//   setMarkers(map);
+
 }
 
 function geocodeAddress(geocoder, resultsMap) {

@@ -130,7 +130,6 @@ $(window).load(function() {
 				<!--close menubar-->
 			</div>
 
-<h1 align="center"><font color=blue>${LoginOK.user_name}您好</font></h1>			
 <h3>Furniture Table</h3>
 
 <form action="<c:url value="/pages/product.controller" />" method="get">

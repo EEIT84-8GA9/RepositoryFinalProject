@@ -33,7 +33,7 @@ public class MessageService {
 		return result;
 
 	}
-
+	
 	public MessageVO resp(MessageVO vo) {
 
 		MessageVO result = dao.respArticle(vo);

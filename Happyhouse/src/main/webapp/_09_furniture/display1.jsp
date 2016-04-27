@@ -165,7 +165,7 @@ $(document).ready(function() {
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/01.png"></a></td>
 	</tr>
 	</c:forEach>
 	 
@@ -207,7 +207,7 @@ $(document).ready(function() {
 		<td>${row.furniture_price}</td>
 		<td>${row.furniture_time}</td>
 		<td>${row.furniture_message}</td>
-		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/click.png"></a></td>
+		<td><a href="${url}" data-title="${row.furniture_name}"><img src="../img/01.png"></a></td>
 	</tr>
 	</c:forEach>
 	 

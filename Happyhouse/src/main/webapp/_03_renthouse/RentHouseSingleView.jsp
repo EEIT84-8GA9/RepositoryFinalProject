@@ -5,6 +5,7 @@
 ://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>租屋搜尋頁面</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="free website template" />
 <meta name="keywords" content="enter your keywords here" />
@@ -213,7 +214,7 @@ button:active {
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -281,9 +282,6 @@ button:active {
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
 			<!--close header-->
 <div id="allpage">
 <!-- param -->
@@ -354,7 +352,7 @@ button:active {
 <%-- 				<c:if test="${LoginOK.user_account!=param.user_account}"> --%>
 <!-- 				<button type="button" class="buttonCart" value="" >加入收藏</button> -->
 <%-- 				</c:if> --%>
-				<fieldset>
+				<fieldset style="width:700px">
 				<legend>其他資訊</legend>
 				<p>${param.renthouse_describe}</p>
 				</fieldset>

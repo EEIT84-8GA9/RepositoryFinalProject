@@ -59,9 +59,6 @@
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
 			<!--close header-->
 			<form  enctype="multipart/form-data" action="<c:url value="/test.controller" />" method="post">
 				<table>

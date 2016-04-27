@@ -97,7 +97,6 @@
 				<!--close menubar-->
 			</div>
 
-			<h1 align="center"><font color=blue> ${LoginOK.user_name}您好</font></h1>
 			
 			<!--close header-->
 			<div style="padding-left:150px">

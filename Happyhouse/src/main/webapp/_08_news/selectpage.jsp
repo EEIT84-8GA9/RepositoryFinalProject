@@ -57,7 +57,7 @@
 				<!--close menubar-->
 			</div>
 			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
+			
 			<h1 align="center" >點擊標題即可更新首頁資訊</h1>
 			</c:if>
 			<!--close header-->

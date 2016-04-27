@@ -12,8 +12,8 @@
 <link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" /> 
 <link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
 <!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
@@ -21,7 +21,7 @@
 <script type="text/javascript" src="../js/tabulator.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
-<script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"	src="//www.gstatic.com/charts/loader.js"></script>
 
 
 
@@ -60,7 +60,7 @@
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">出售專區</a>
 						<ul>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseSearch.jsp">搜尋出售</a></li>
-                        <li><a href="http://localhost:8080/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
+                        <li><a href="/Happyhouse/_02_sellhouse/InsertSellHouse.jsp">刊登出售</a></li>
 						</ul>
 
 						<li><a href="">出租專區</a>
@@ -671,7 +671,7 @@ var price_transes1 ="一樓";
 
        	
 		<div id="menu">
-			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
+			<a href="//validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>
 		<!--close footer-->
 	</div>

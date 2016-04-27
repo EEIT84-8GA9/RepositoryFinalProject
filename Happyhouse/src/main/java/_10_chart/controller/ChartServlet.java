@@ -420,8 +420,8 @@ public class ChartServlet extends HttpServlet {
 //		  getcurrentprice_tradedate= getcurrentprice_tradedate+element.getCurrentprice_tradedate();
 //		  getavgoneprice_by_tradedate = getavgoneprice_by_tradedate+element.getAvgoneprice_by_tradedate();
 		  getboth = getboth + "[\""+element.getCurrentprice_tradedate() +"\"," + element.getAvgoneprice_by_tradedate() + "]"; 
-		  
-		  r2++;
+		 
+		  r2++; 
 		  
 //		  x = x +( "[\"" + 10.311 + "\"," + 93080.0 + "]");
 		  
@@ -431,6 +431,8 @@ public class ChartServlet extends HttpServlet {
 	  System.out.println("getboth-長條圖~!AVG坪數與年月 以區域和類型"+getboth);
 	  res.setContentType("application/json");
 	  res.setCharacterEncoding("UTF-8");
+	  
+	 
 	  
 	  res.getWriter().write("[[\"Date\", \"avgprice\"],"+getboth+"]");
 //	  res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");
@@ -503,7 +505,9 @@ for(CurrentPriceBean element : result4) {
 // getcurrentprice_tradedate= getcurrentprice_tradedate+("\""+element.getCurrentprice_tradedate()+"\"");   變字串
 // getcurrentprice_tradedate= getcurrentprice_tradedate+element.getCurrentprice_tradedate();
 // getavgoneprice_by_tradedate = getavgoneprice_by_tradedate+element.getAvgoneprice_by_tradedate();
- getboth = getboth + "["+element.getCurrentprice_housearea() +"," + element.getCurrentprice_tprice() + "]"; 
+
+// getboth = getboth + "["+element.getCurrentprice_housearea() +"," + element.getCurrentprice_tprice() + "]"; 
+ getboth = getboth + "["+element.getCurrentprice_housearea() +"," + element.getCurrentprice_tprice() +  ",null ]";
  
  r3++;
  
@@ -516,7 +520,9 @@ System.out.println("getboth-散佈圖-!總價 與 坪數 以區域和類型求"+
 res.setContentType("application/json");
 res.setCharacterEncoding("UTF-8");
 
-res.getWriter().write("[[\"area\", \"price\"],"+getboth+"]");
+res.getWriter().write("[[\"area\", \"price\", {\"type\":\"string\",\"role\":\"style\"}],"+getboth+"]");
+//res.getWriter().write("[[\"area\", \"price\"],"+getboth+"]");
+
 //res.getWriter().write("[["+getcurrentprice_tradedate+"],["+getavgoneprice_by_tradedate+"]]");
 //res.getWriter().write("[[\"區域\",\"辦公大樓\",\"住宅大樓\", \"公寓(5樓以下)\",\"套房\",\"店面\",\"其它\",\"透天厝\",\"華廈(10樓以下)\"],[\""+currentprice_city+"\","+getavgoneprice+"]]");
  

@@ -8,7 +8,9 @@
 <title>CurrentPrice Page</title>
 </head>
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/cpindexstyle.css" />
+
+<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" /> 
+<link rel="stylesheet" type="text/css" href="/Happyhouse/css/style.css" />
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -21,7 +23,7 @@
 <script type="text/javascript" src="/Happyhouse/js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript"	src="https://www.gstatic.com/charts/loader.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/Happyhouse/rinocss/style.css" /> 
+
 
 <!-- 抓這隻  Demo.style.body-->
 	

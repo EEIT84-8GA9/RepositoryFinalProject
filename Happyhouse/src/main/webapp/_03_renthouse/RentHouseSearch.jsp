@@ -41,7 +41,7 @@ overflow:hidden;
 		<div id="site_content">
 			<div id="site_heading">
 				<h1>好宅房屋網</h1>
-				<h2>你刊登房屋的超棒選擇</h2>
+				<h2>歡迎  ${LoginOK.user_name}</h2>
 			</div>
 			<!--close site_heading-->
 			<div id="header">			
@@ -109,9 +109,7 @@ overflow:hidden;
 				</div>
 				<!--close menubar-->
 			</div>
-			<c:if test="${not empty LoginOK}">
-			<h1 align="center"><font color=blue>${LoginOK.user_name}你好</font></h1>
-			</c:if>
+			
 			<!--close header-->
 			<div style="padding-left:1px">
 		<form  action="<c:url value="/house/renthouse.controller"/>"method="post" >

@@ -113,7 +113,7 @@
 						
 					 
 	                 <li class="q"><img src="/Happyhouse/img/arrow.png">${update.new_title}</li>
-	                 <li class="a">${update.new_describe} 更新時間為:${update.new_date}</li>
+	                 <li class="a">${update.new_describe} <br> 更新時間為:${update.new_date} <br> 更新圖片為:  <img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${update.new_id}" width="150px"></li>
 	                
 	        
 	                  </ul>			

@@ -403,7 +403,7 @@ $(document).ready(function(){
 				<div class="content_image">
 <!-- 					<a href="#"><img style="border: 10px solid #FFF;" alt="image" -->
 <!-- 						src="/Happyhouse/images/11.jpg" /></a> -->
-				<img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.one.new_id}" width="150px">		
+				<img style="border: 10px solid #FFF;" alt="image" src="${pageContext.servletContext.contextPath}/newimage1?new_id=${select.two.new_id}" width="150px">		
 				</div>
 				<!--close content_image-->
 				<div class="content_text">

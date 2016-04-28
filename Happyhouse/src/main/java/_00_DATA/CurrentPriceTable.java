@@ -17,7 +17,7 @@ public class CurrentPriceTable {
         //txt 檔也必須為 UTF8檔
 		
 			
-		FileReader fr=new FileReader("e:/cpfinal.txt");
+		FileReader fr=new FileReader("http://localhost:8080/Happyhouse/text?id=600");
 
 		// 附檔為 不動產 2015 5/1~ 10/31 台北 新北 *4   2015s3a 2015s3f 2015s4a 2015s4f
 		
@@ -95,7 +95,6 @@ public class CurrentPriceTable {
 			
 			pstmt.setString(1,items[0]);
 			pstmt.setString(2,items[2]);
-			
 			//此區取日期,為了使資料只有年月~ 所以截掉日期的部份
 			if (items[7].length()==7){
 				pstmt.setString(3,(String)items[7].subSequence(0,5)); 
@@ -103,10 +102,7 @@ public class CurrentPriceTable {
 				pstmt.setString(3,(String)items[7].subSequence(0,3)); 
 			}else{
 			pstmt.setString(3,items[7]);
-			}
-			
-			
-			
+			}								
 			pstmt.setString(4,items[8]);
 			pstmt.setString(5,items[9]);
 			pstmt.setString(6,items[10]);

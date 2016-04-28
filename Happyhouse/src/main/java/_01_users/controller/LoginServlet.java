@@ -97,8 +97,8 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("ChangeOK", bean);
 				String path = request.getContextPath();
-				
-				response.sendRedirect("/Happyhouse/_01_users/changeOK.jsp");
+				System.out.print("1111+="+path);
+				response.sendRedirect(path+ "/_01_users/changeOK.jsp");
 
 			} else {
 				request.getRequestDispatcher("/_01_users/chasgePw.jsp")

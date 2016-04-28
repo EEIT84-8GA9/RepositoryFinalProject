@@ -112,12 +112,12 @@
 	</tr>
 	<tr>
 		<td>欲變更的新密碼 : </td>
-       <td ><input type="text" name="password1"></td>
+       <td ><input type="password" name="password1"></td>
 		<td>${error.username}</td>
 	</tr>
 	<tr>
 		<td>請再次確認新密碼 : </td>
-		<td><input type="text" name="password2" ></td>
+		<td><input type="password" name="password2" ></td>
 		<td>${error.password}</td>
 	</tr>
 	<tr>

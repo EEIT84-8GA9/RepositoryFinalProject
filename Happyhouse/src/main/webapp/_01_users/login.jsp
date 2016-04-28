@@ -111,7 +111,7 @@
 	</tr>
 	<tr>
 		<td>請輸入密碼 : </td>
-		<td><input type="text" name="password" value="${param.user_password}"></td>
+		<td><input type="password" name="password" value="${param.user_password}"></td>
 		<td>${error.password}</td>
 	</tr>
 	<tr>

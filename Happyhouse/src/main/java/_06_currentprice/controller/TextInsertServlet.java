@@ -1,8 +1,12 @@
 package _06_currentprice.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Collection;
 import java.util.Enumeration;
 
@@ -28,55 +32,19 @@ public class TextInsertServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		long sizeInBytes1 = 0;
-		String fldName1 = "";
+		CurrentPriceUpdateJdbc dao=new CurrentPriceUpdateJdbc();
 		InputStream is1 = null;
-		String fileName1 = "";
-		String city=request.getParameter("city");
-		String update=request.getParameter("update");
+		ServletContext application;
 		Collection<Part> parts = request.getParts() ;
-		 if(update!=null&&"新增".equals(update)){
-				if (parts != null) {
-					for (Part p : parts) {
-						if (p.getContentType() == null) {
-							if (fldName1.equals("text")) {
-								//memberID = value1;
-							}
-						} else {
-							if (is1 == null) {
-								is1 = p.getInputStream();
-								sizeInBytes1 = p.getSize();
-								fileName1 = dao.getFileName(p); // 此為圖片檔的檔名
-								fileName1 = dao.adjustFileName(fileName1,
-										dao.IMAGE_FILENAME_LENGTH);
-							} 
-							
-//							if (fileName1 !=null && fileName1.trim().length() > 0) {
-//						
-//								
-//							}
-							
-						}
-						
-					}
-				
-				}
-			 dao.inserttext(city, fileName1, is1, sizeInBytes1);
-//			 http://localhost:8080/Happyhouse/text?id=600
-			 String	d=request.getServerName();
-			 int	e=request.getServerPort();
-			 String path="http://"+d+":"+e+"/Happyhouse/text?id=600";
-			FileReader fr=new FileReader(path);
-			dao.insert(fr);
-			 System.out.println(path);
-
-		 }
-		
-		
-		
-		
-		
+		for(Part p : parts){
+				String s=dao.getFileName(p);
+				if(s !=null){
+				is1=p.getInputStream();
+				}		
+		}
+		Reader r=new InputStreamReader(is1);
+		 BufferedReader bf=new BufferedReader(r);
+		 dao.insert(bf);		
 	}
 
 	@Override

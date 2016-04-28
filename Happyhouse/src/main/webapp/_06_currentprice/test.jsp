@@ -8,9 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form  enctype="multipart/form-data" action="<c:url value="/house/text.controller"/>" method="post">
-<input type="text" name="city">
-<input type="file" name="renthouse_photo1">
+<form enctype="multipart/form-data"  action="<c:url value="/house/text.controller"/>" method="post">
+<input type="file" name="file">
 <input type="submit" name="update"  value="新增" />
 </form>
 </body>

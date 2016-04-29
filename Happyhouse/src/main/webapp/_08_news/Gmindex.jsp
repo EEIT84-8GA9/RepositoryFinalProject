@@ -39,7 +39,8 @@
                         <li><a href="/Happyhouse/GMmessage.controller">留言板檢舉</a></li>            
 						</ul>
 						</li>
-						<li><a href="/Happyhouse/_08_news/selectpage.jsp">首頁更新</a></li>									
+						<li><a href="/Happyhouse/_08_news/selectpage.jsp">首頁更新</a></li>
+						<li><a href="/Happyhouse/_06_currentprice/test.jsp">時價更新</a></li>									
 						<c:if test="${empty LoginOK}">
 						<li><a href="/Happyhouse/_01_users/login.jsp">會員登入</a></li>
 						</c:if>

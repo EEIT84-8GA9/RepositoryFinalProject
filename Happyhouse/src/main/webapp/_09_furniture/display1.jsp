@@ -35,7 +35,7 @@ $(document).ready(function() {
 	$("tbody>tr>td:nth-child(2)").each(function() {
 		$(this).mouseover(function() {
 			var id = $(this).prev().text();
-			$("#photo").html('<img src="'+url+id+'">').show("bounce", null, 1000);
+// 			$("#photo").html('<img src="'+url+id+'">').show("bounce", null, 1000);
 		});
 	});
 	$("tbody>tr>td:nth-child(2)").mouseout(function() {
@@ -222,7 +222,7 @@ $(document).ready(function() {
 <h3 align="center"><a href="<c:url value="/_09_furniture/product.jsp" />">回二手家具首頁</a></h3>
  <img src="/Happyhouse/images/pro2.jpg" alt="" /> 
 <div id="photo"></div>
-<script type="text/javascript" src="../js/lightbox.min.js"></script>
+<!-- <script type="text/javascript" src="../js/lightbox.min.js"></script> -->
 	<div id="menu">
 			<a href="http://validator.w3.org/check?uri=referer">好宅網有限公司 版權所有 © 2015-2016 HappyHouse. All Rights Reserved. </a>
 		</div>

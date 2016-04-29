@@ -46,16 +46,11 @@ public class GetTextServlet01 extends HttpServlet {
 		String id = request.getParameter("id");
 		Connection conn=null;
 		OutputStream os1=null;
-		OutputStream os2=null;
-		InputStream is1=null;
-		InputStream is2=null;
+		InputStream is1=null;	
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		DataSource dataSource;
-		//SELECT sellhouse_photo1_name,sellhouse_photo1 from sellhouse where sellhouse_id='109'
 		String SELECT_IMAGE="SELECT text_name, city_text from currenttable where id=?";
-//		String SELECT_IMAGE="SELECT sellhouse_photo1_name,sellhouse_photo1,,sellhouse_photo2_name,sellhouse_photo2,sellhouse_photo3_name,sellhouse_photo3"
-//		+ " from sellhouse where sellhouse_id=?";
 		// 接收資料
 		String name=null;
 		int text_id=0;

@@ -53,9 +53,9 @@ public class CurrentPriceUpdateJdbc {
 		}
 	}
 	
-	public boolean insert(FileReader fr) throws FileNotFoundException{
+	public boolean insert(BufferedReader bf) throws FileNotFoundException{
 //			fr=new FileReader("e:/cpfinal.txt");
-			BufferedReader bf=new BufferedReader(fr);
+//			BufferedReader bf=new BufferedReader(fr);
 		 	StringTokenizer stk=null;
 		  	String FieldStr="";
 		  	String ValueStr="";
@@ -109,14 +109,7 @@ public class CurrentPriceUpdateJdbc {
 					e.printStackTrace();
 				}
 			}
-			if (fr !=null) {
-				try {
-					fr.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+
 			if (pstmt !=null) {
 				try {
 					pstmt.close();

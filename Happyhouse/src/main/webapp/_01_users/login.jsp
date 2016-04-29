@@ -81,7 +81,7 @@
 						<li><a href="_01_users/chasgePw.jsp">修改個人密碼</a></li>
 						<li><a href="/Happyhouse/sms.controller">個人站內信箱</a></li>
 						<li><a href="/Happyhouse/sellhousecart.controller">個人出售收藏</a></li>
-						<li><a href="/Happyhouse/renthousecart.controller">個人出售收藏</a></li>
+						<li><a href="/Happyhouse/renthousecart.controller">個人出租收藏</a></li>
 						<li><a href="/Happyhouse/_02_sellhouse/SellHouseUser.jsp">賣屋管理</a></li>
 						<li><a href="/Happyhouse/_03_renthouse/RentHouseUser.jsp">租屋管理</a></li>
 						<c:if test="${LoginOK.user_type=='B'||LoginOK.user_type=='C'}">

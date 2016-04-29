@@ -331,7 +331,7 @@ $(document).ready(function(){
 						<li><a href="">時價查詢</a>
 						<ul>
 						<li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">售屋時價查詢</a></li>
-                        <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查句</a></li>
+                        <li><a href="/Happyhouse/_06_currentprice/cpindex.jsp">出租時價查詢</a></li>
                         </ul>
 						</li>
 						<li><a href="/Happyhouse/_09_furniture/product.jsp">二手家具</a>

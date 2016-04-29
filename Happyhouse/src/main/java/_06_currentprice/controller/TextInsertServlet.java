@@ -45,6 +45,11 @@ public class TextInsertServlet extends HttpServlet {
 		Reader r=new InputStreamReader(is1);
 		 BufferedReader bf=new BufferedReader(r);
 		 dao.insert(bf);		
+		 
+		 System.out.println("導!!!!!!!!!!");
+//		 request.getRequestDispatcher("/Happyhouse/index.jsp");
+		 response.sendRedirect("/Happyhouse/index.jsp");
+		
 	}
 
 	@Override

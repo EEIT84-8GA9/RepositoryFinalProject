@@ -32,6 +32,7 @@ public class TextInsertServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		CurrentPriceUpdateJdbc dao=new CurrentPriceUpdateJdbc();
 		InputStream is1 = null;
 		ServletContext application;
@@ -45,10 +46,9 @@ public class TextInsertServlet extends HttpServlet {
 		Reader r=new InputStreamReader(is1);
 		 BufferedReader bf=new BufferedReader(r);
 		 dao.insert(bf);		
-		 
 		 System.out.println("導!!!!!!!!!!");
 //		 request.getRequestDispatcher("/Happyhouse/index.jsp");
-//		 response.sendRedirect("/Happyhouse/index.jsp");
+		 response.sendRedirect("/Happyhouse/index.jsp");
 		
 	}
 

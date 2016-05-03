@@ -29,12 +29,6 @@ setTimeout(function(){
  
 alertify.success('UPDATE SUCCESS!!! ready return to index!');  
 //alertify.alert("UPDATE SUCCESS!!! ready return to index!");
-//setTimeout(function(){     
-//	
-//	
-//	
-//	
-//	window.location.assign("/Happyhouse/index.jsp");
-//},5000);
+
      }         
 } 

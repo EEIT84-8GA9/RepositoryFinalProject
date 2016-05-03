@@ -32,23 +32,22 @@
 				<h2 class="fs-title">刊登您的房屋</h2>
 				<h3 class="fs-subtitle">請填寫詳細資料</h3>
 				<input type="hidden" name="user_account" placeholder="請輸入使用者帳號" value="${LoginOK.user_account}" />
-				<input type="text" style="${style.sellhouse_name}" name="sellhouse_name" placeholder="請輸入標題" value="${right.sellhouse_name}" />
-				<input type="text" style="${style.sellhouse_address}" name="sellhouse_address" placeholder="請輸入地址" value="${right.sellhouse_address}"/>
-				<input type="text" style="${style.sellhouse_price}" name="sellhouse_price" placeholder="請輸入售價，必須是數字單位為萬" value="${right.sellhouse_price}" />
-				<input type="text" style="${style.sellhouse_patterns}" name="sellhouse_patterns" placeholder="請輸入格局" value="${right.sellhouse_patterns}" />
-				<input type="text" style="${style.sellhouse_size}" name="sellhouse_size" placeholder="請輸入坪數，必須是數字" value="${right.sellhouse_size}"/>
-				<input type="text" style="${style.sellhouse_floor}" name="sellhouse_floor" placeholder="請輸入樓層" value="${right.sellhouse_floor}" />
+				<input type="text" style="${style.sellhouse_name}" name="sellhouse_name" placeholder="請輸入標題" value="${right.sellhouse_name}興隆路四段精緻豪宅附車位" />
+				<input type="text" style="${style.sellhouse_address}" name="sellhouse_address" placeholder="請輸入地址" value="${right.sellhouse_address}台北市文山區興隆路四段29巷"/>
+				<input type="text" style="${style.sellhouse_price}" name="sellhouse_price" placeholder="請輸入售價，必須是數字單位為萬" value="${right.sellhouse_price}2100" />
+				<input type="text" style="${style.sellhouse_patterns}" name="sellhouse_patterns" placeholder="請輸入格局" value="${right.sellhouse_patterns}店面/4房兩廳" />
+				<input type="text" style="${style.sellhouse_size}" name="sellhouse_size" placeholder="請輸入坪數，必須是數字" value="${right.sellhouse_size}50"/>
+				<input type="text" style="${style.sellhouse_floor}" name="sellhouse_floor" placeholder="請輸入樓層" value="${right.sellhouse_floor}5F" />
 				<input type="button"  name="next" class="next action-button" value="Next" />
 			</fieldset>
 			<fieldset>
 				<h2 class="fs-title">刊登您的房屋</h2>
 				<h3 class="fs-subtitle">請填寫詳細資料</h3>
-				<input type="text" style="${style.sellhouse_age}" name="sellhouse_age" placeholder="請填寫屋齡，必須是數字" value="${right.sellhouse_age}" />
-				<input type="text" style="${style.sellhouse_car}" name="sellhouse_car" placeholder="請填寫有無車位" value="${right.sellhouse_car}" />
-				<input type="text" style="${style.sellhouse_phone}" name="sellhouse_phone" placeholder="請填寫連絡電話" value="${right.sellhouse_phone}" />
-				<input type="text" style="${style.sellhouse_email}" name="sellhouse_email" placeholder="請填寫連絡EMAIL" value="${right.sellhouse_email}" />	
-<!-- 				<input type="text" name="sellhouse_type" placeholder="請填寫連絡EMAIL" />	 -->
-				<textarea name="sellhouse_describe" style="${style.sellhouse_describe}"  placeholder="請填寫額外描述" >${right.sellhouse_describe}</textarea>
+				<input type="text" style="${style.sellhouse_age}" name="sellhouse_age" placeholder="請填寫屋齡，必須是數字" value="${right.sellhouse_age}2" />
+				<input type="text" style="${style.sellhouse_car}" name="sellhouse_car" placeholder="請填寫有無車位" value="${right.sellhouse_car}有車位" />
+				<input type="text" style="${style.sellhouse_phone}" name="sellhouse_phone" placeholder="請填寫連絡電話" value="${right.sellhouse_phone}0987654321" />
+				<input type="text" style="${style.sellhouse_email}" name="sellhouse_email" placeholder="請填寫連絡EMAIL" value="${right.sellhouse_email}Tom123@gmail.com" />	
+				<textarea name="sellhouse_describe" style="${style.sellhouse_describe}"  placeholder="請填寫額外描述" >${right.sellhouse_describe}管理費:2000元</textarea>
 				<input type="button" name="previous" class="previous action-button" value="Previous" />
 				<input type="button" name="next" class="next action-button" value="Next" />
 			</fieldset>

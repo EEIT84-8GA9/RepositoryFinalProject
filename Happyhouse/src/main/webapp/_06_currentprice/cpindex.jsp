@@ -124,9 +124,10 @@
 			<c:if test="${not empty ChangeOK}">
             <h3 align="center">提示: 更改密碼成功</h3>
             </c:if>
-	<section class="htmleaf-container">
+<section class="htmleaf-container">
 		<form onsubmit="submitFn(this, event);" action="<c:url value="/_06_currentprice.controller/cpweb.controller"/>" method="get">
-            <div class="search-wrapper">
+            
+            <div class="wrapperoutside"><div class="search-wrapper">
                 <div class="input-holder">
                     <input type="text" name="currentprice_address" value="${param.currentprice_address}" class="search-input" placeholder="Type to search" />
                     <button class="search-icon" type="submit" name="prodaction" value="Pick" onclick="searchToggle(this, event);"><span></span></button>
@@ -135,7 +136,7 @@
                 <div class="result-container">
 
                 </div>
-            </div>
+            </div></div>
         </form>
 	</section>
 
@@ -248,7 +249,7 @@
 
 
 
-<div id="currentprice_table" style="margin-top:90px;"></div>
+<div id="currentprice_table"></div>
 <script type="text/javascript">
 	$("#currentprice_table").tabulator({
 		height:"550px" ,

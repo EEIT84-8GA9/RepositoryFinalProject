@@ -48,7 +48,7 @@ public class TextInsertServlet extends HttpServlet {
 		 
 		 System.out.println("導!!!!!!!!!!");
 //		 request.getRequestDispatcher("/Happyhouse/index.jsp");
-		 response.sendRedirect("/Happyhouse/index.jsp");
+//		 response.sendRedirect("/Happyhouse/index.jsp");
 		
 	}
 

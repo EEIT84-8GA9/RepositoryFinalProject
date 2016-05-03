@@ -104,7 +104,7 @@
 	</tr>
 	<tr>
 		<td>密碼 : </td>
-		<td><input type="text" name="user_password" value="${param.user_password}"></td>
+		<td><input type="password" name="user_password" value="${param.user_password}"></td>
 		<td><span class="error">${error.user_password}</span><img src="../img/ajax-loader.gif" style="display:none"/></td>
 		<td></td>
 	</tr>
